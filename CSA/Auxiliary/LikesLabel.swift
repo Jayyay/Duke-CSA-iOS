@@ -51,7 +51,7 @@ class LikesLabel: PPLabel, PPLabelDelegate {
         self.attributedText = attrTxt
     }
     
-    //********************<Delegate>********************
+    // MARK: - Delegate
     func label(label: PPLabel!, didBeginTouch touch: UITouch!, onCharacterAtIndex charIndex: CFIndex) -> Bool {
         return highlightWordContainingCharacterAtIndex(charIndex)
     }

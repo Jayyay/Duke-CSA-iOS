@@ -25,7 +25,7 @@ class BulletinDetailViewController: UIViewController, ENSideMenuDelegate {
     @IBOutlet weak var ctWhenTop: NSLayoutConstraint!
     @IBOutlet weak var ctWhereTop: NSLayoutConstraint!
     
-    // ******<Life Cycle>*******
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedBulletin = AppData.BulletinData.selectedBulletin
@@ -78,7 +78,6 @@ class BulletinDetailViewController: UIViewController, ENSideMenuDelegate {
     deinit{
         print("Release - EventDetailViewController")
     }
-    // ******</Life Cycle>*******
     
     // MARK: - ENSideMenu Delegate
     func sideMenuWillOpen() {

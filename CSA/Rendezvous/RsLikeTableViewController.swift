@@ -52,8 +52,7 @@ class RsLikeTableViewController: UITableViewController, ENSideMenuDelegate {
         print("Release - RsLikeTableViewController")
     }
     
-    
-    //********************<Data Query>********************
+    // MARK: - Data Query
     func rsLikeAutoRefresh(){
         refreshControl!.beginRefreshing()
         if tableView.contentOffset.y == 0 {
@@ -113,7 +112,6 @@ class RsLikeTableViewController: UITableViewController, ENSideMenuDelegate {
             print("query error: \(error) ", terminator: "")
         }
     }
-    //********************</Data Query>********************
     
     // MARK: - Table view data source
     

@@ -17,13 +17,11 @@ class EventDetailViewController: UIViewController, ENSideMenuDelegate {
     @IBOutlet weak var lblWhere: UILabel!
     @IBOutlet weak var txtviewDetail: UITextView!
 
-    // ******<Navigation Item>*******
     @IBAction func onClickMore(sender: AnyObject) {
         self.sideMenuController()?.sideMenu?.showSideMenu()
     }
-    // ******</Navigation Item>*******
     
-    // ******<Life Cycle>*******
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedEvent = AppData.EventData.selectedEvent
@@ -46,7 +44,6 @@ class EventDetailViewController: UIViewController, ENSideMenuDelegate {
         AppData.EventData.discussVC = nil
         print("Release - EventDetailViewController")
     }
-    // ******</Life Cycle>*******
     
     // MARK: - ENSideMenu Delegate
     func sideMenuWillOpen() {

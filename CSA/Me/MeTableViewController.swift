@@ -42,7 +42,7 @@ class MeTableViewController: UITableViewController {
         print("Release - MeTableViewController")
     }
 
-    // **********<Customs>*********
+    // MARK: - Customs
     func displayLogoutAlert(){
         let str = "Are you sure you want to log out?"
         let alert = UIAlertController(title: nil, message: str, preferredStyle: UIAlertControllerStyle.Alert)
@@ -72,7 +72,6 @@ class MeTableViewController: UITableViewController {
         lblName.text = PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as? String
         lblAboutMe.text = PFUser.currentUser()![PFKey.USER.ABOUT_ME] as? String
     }
-    // **********</Customs>*********
     
     // MARK: - Table view
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -95,8 +94,4 @@ class MeTableViewController: UITableViewController {
     override func shouldAutorotate() -> Bool {
         return false
     }
-    /*override func supportedInterfaceOrientations() -> Int {
-        return UIInterfaceOrientationMask.Portrait
-    }*/
-
 }

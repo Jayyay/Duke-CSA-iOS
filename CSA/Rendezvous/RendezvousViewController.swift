@@ -133,7 +133,7 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
-    //********************<Data Query>********************
+    // MARK: - Data Query
     func rsTableAutoRefresh(){
         tableRefresher.beginRefreshing()
         if tableView.contentOffset.y == 0 {
@@ -237,7 +237,6 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
             print("query error: (error)")
         }
     }
-    //********************</Data Query>********************
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -262,7 +261,7 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
-    //********************<Pull to load more>********************
+    //// MARK: - Pull to load more
     // LoadMoreTableFooterViewDelegate
     func loadMoreTableFooterDidTriggerRefresh(view: LoadMoreTableFooterView) {
         loadMoreTableViewDataSource()
@@ -296,7 +295,6 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
             loadMoreFooterView.loadMoreScrollViewDidEndDragging(scrollView)
         }
     }
-    //********************</Pull to load more>********************
     
     
     // MARK: - ENSideMenu Delegate

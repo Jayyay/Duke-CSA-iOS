@@ -151,7 +151,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     }
     
     
-    //************<text delegate>************
+    //// MARK: - text delegate
     //textview
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
         if textView.text == PLACEHOLDER_FOR_TEXTVIEW {
@@ -219,9 +219,6 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         }
     }*/
     
-    //************</text delegate>************
-    
-    
     func cleanPostView(shouldPop shouldPop:Bool){
         
         for check in checkArr {
@@ -250,7 +247,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     }
 
     
-    //********************<Keyboard>********************
+    // MARK: - Keyboard
     func registerForKeyboardNotifications ()-> Void   {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         
@@ -266,8 +263,6 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             self.tableView.setContentOffset(CGPointMake(0, y), animated: true)
         }
     }
-
-    //********************</Keyboard>********************
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
          self.view.endEditing(true)

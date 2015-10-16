@@ -51,7 +51,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
     var bulletinIsLoadingMore: Bool = false
     var bulletinCouldLoadMore: Bool = false
     
-    //*******<segment control>*********
+    // MARK: - Segment control
     @IBOutlet weak var segCtrl: UISegmentedControl!
     
     @IBAction func segIndexChanged(sender: AnyObject) {
@@ -80,7 +80,6 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
             break
         }
     }
-    //*******</segment control>*********
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -136,15 +135,10 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
     deinit{
         print("Release - EventTableViewController")
     }
-    // ************* </Life Cycle> **********
     
     
     
-    
-    
-    // ************* <Custom methods> **********
-    
-    // ******<Event>*******
+    // MARK: - Events
     func eventTableInitUI(){
         eventTableView.rowHeight = UITableViewAutomaticDimension
         eventTableView.estimatedRowHeight = 100
@@ -251,10 +245,9 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
             print("query error: \(error)")
         }
     }
-    // ******</Event>*******
     
     
-    // ******<Bulletin>*******
+    // MARK: - Bulletins
     func bulletinTableInit(){
         let nib = UINib(nibName: "BulletinCellNib", bundle: nil)
         bulletinTableView.rowHeight = UITableViewAutomaticDimension
@@ -357,12 +350,10 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
             print("query error: \(error)", terminator: "")
         }
     }
-    // ******</Bulletin>*******
-    // ************* </Custom methods> **********
     
     
     
-    // ****************** <Table view data source> ****************
+    // MARK: - Table View Data Source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if tableView == eventTableView {
             return events.count
@@ -398,7 +389,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-    //********************<Pull to load more>********************
+    // MARK: - Pull to load more
     // LoadMoreTableFooterViewDelegate
     func loadMoreTableFooterDidTriggerRefresh(view: LoadMoreTableFooterView) {
         if currentTableView == eventTableView {
@@ -462,8 +453,6 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
     }
-    //********************</Pull to load more>********************
-    
     
     
     // MARK: - ENSideMenu Delegate

@@ -30,7 +30,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func onClickMore(sender: AnyObject) {
         self.sideMenuController()?.sideMenu?.showSideMenu()
     }
-    // MARK: Post & Delete
+    // MARK: - Post & Delete
     func replyPressed(scrollTo scrollTo:CGFloat, replyTo:PFUser?){
         scrollToY = scrollTo
         if let r = replyTo {
@@ -140,7 +140,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     
-    // MARK: Data Query
+    // MARK: - Data Query
     func rsReplyAutoRefresh(){
         tableRefresher.beginRefreshing()
         if tableView.contentOffset.y == 0 {
@@ -211,11 +211,9 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
             print("query error: \(error)")
         }
     }
-    //********************</Data Query>********************
     
     
-    
-    //********************<Keyboard>********************
+    // MARK: - Keyboard
     func registerForKeyboardNotifications ()-> Void   {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         
@@ -248,7 +246,6 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         return true
     }
-    //********************</Keyboard>********************
     
     
     
