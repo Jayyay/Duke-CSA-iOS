@@ -20,9 +20,12 @@ class Event: NSObject {
     var urlForSignUp:String!
     var createdAt:NSDate!
     
+    //optional
+    var shortTitle:String?
+    
     
     //optional
-    var pictureFile:PFFile?
+    var pictureFile:[PFFile] = []
     
     init?(parseObject:PFObject){
         PFInstance = parseObject
@@ -73,6 +76,6 @@ class Event: NSObject {
         }
         
         //optional
-        pictureFile = parseObject[PFKey.EVENT.PICTURE] as? PFFile
+        //pictureFile = parseObject[PFKey.EVENT.PICTURE] as? PFFile
     }
 }

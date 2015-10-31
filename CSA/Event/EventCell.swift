@@ -31,12 +31,12 @@ class EventCell: UITableViewCell {
         lblTitle.text = childEvent.title
         
         //when
-        lblWhen.text = "When: \(AppTools.formatDateUserFriendly(childEvent.date))"
+        lblWhen.text = "Time: \(AppTools.formatDateUserFriendly(childEvent.date))"
         
         //where
-        lblWhere.text = "Where: \(childEvent.location)"
+        lblWhere.text = "Location: \(childEvent.location)"
         
-        lblPostTime.text = AppTools.formatDateUserFriendly(childEvent.createdAt)
+        lblPostTime.text = "Post time: \(AppTools.formatDateUserFriendly(childEvent.createdAt))"
         
         layoutIfNeeded()
     }
