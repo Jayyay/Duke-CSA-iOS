@@ -54,7 +54,7 @@ class BulletinCell: UITableViewCell {
             ctWhenTop.constant = 8
             ctWhenHeight.constant = 20
             lblWhen.hidden = false
-            lblWhen.text = "When: \(AppTools.formatDateUserFriendly(date))"
+            lblWhen.text = "Time: \(AppTools.formatDateUserFriendly(date))"
         }else{
             ctWhenTop.constant = 0
             ctWhenHeight.constant = 0
@@ -64,13 +64,13 @@ class BulletinCell: UITableViewCell {
             ctWhereTop.constant = 8
             ctWhereHeight.constant = 20
             lblWhere.hidden = false
-            lblWhere.text = "Where: \(location)"
+            lblWhere.text = "Location: \(location)"
         }else{
             ctWhereTop.constant = 0
             ctWhereHeight.constant = 0
             lblWhere.hidden = true
         }
-        lblPostTime.text = AppTools.formatDateUserFriendly(childBulletin.createdAt)
+        lblPostTime.text = "Post time: \(AppTools.formatDateUserFriendly(childBulletin.createdAt))"
         layoutIfNeeded()
     }
 }

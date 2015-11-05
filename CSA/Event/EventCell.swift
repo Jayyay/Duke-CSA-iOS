@@ -15,6 +15,7 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var lblWhen: UILabel!
     @IBOutlet weak var lblWhere: UILabel!
     @IBOutlet weak var lblPostTime: UILabel!
+    @IBOutlet weak var imgCheck: UIImageView!
     
     var childEvent:Event!
     
@@ -38,6 +39,12 @@ class EventCell: UITableViewCell {
         
         lblPostTime.text = "Post time: \(AppTools.formatDateUserFriendly(childEvent.createdAt))"
         
+        if evt.date.compare(NSDate()) == NSComparisonResult.OrderedAscending {
+            imgCheck.image = UIImage(named: "icon_check")
+        }else {
+            let imgArr = [UIImage(named: "icon_slime"), UIImage(named: "icon_snail"),UIImage(named: "icon_eliza"),UIImage(named: "icon_pig")]
+            imgCheck.image = imgArr[Int(arc4random_uniform(4))]
+        }
         layoutIfNeeded()
     }
 
