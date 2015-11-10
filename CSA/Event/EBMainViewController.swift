@@ -366,14 +366,24 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         return 1
     }
     
+    func setCellTranslucent(cell:UITableViewCell) {
+        
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if tableView == eventTableView {
             let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_EventCell, forIndexPath: indexPath) as! EventCell
             cell.initWithEvent(events[indexPath.section])
+            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundView = UIView()
+            cell.selectedBackgroundView = UIView()
             return cell
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_BulletinCell, forIndexPath: indexPath) as! BulletinCell
             cell.initWithBulletin(bulletins[indexPath.section])
+            cell.backgroundColor = UIColor.clearColor()
+            cell.backgroundView = UIView()
+            cell.selectedBackgroundView = UIView()
             return cell
         }
     }
