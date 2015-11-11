@@ -54,21 +54,21 @@
 		696533D51B57BDE700AD9953 /* EventLikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696533D41B57BDE700AD9953 /* EventLikeCell.swift */; };
 		696533D71B57C19B00AD9953 /* LikesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696533D61B57C19B00AD9953 /* LikesLabel.swift */; };
 		696533D91B57EE7B00AD9953 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 696533D81B57EE7B00AD9953 /* like.png */; };
-		696C24AA1BB26C5F0016DE44 /* heart0.png in Resources */ = {isa = PBXBuildFile; fileRef = 696C24A91BB26C5F0016DE44 /* heart0.png */; settings = {ASSET_TAGS = (); }; };
+		696C24AA1BB26C5F0016DE44 /* heart0.png in Resources */ = {isa = PBXBuildFile; fileRef = 696C24A91BB26C5F0016DE44 /* heart0.png */; };
 		696E3ECF1B8EC5590016658F /* DukeChapelCut.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 696E3ECE1B8EC5590016658F /* DukeChapelCut.jpg */; };
 		69703B3C1B618F4C0072B5F1 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 69703B3B1B618F4C0072B5F1 /* heart.png */; };
 		69703B3E1B61904C0072B5F1 /* milkshake.png in Resources */ = {isa = PBXBuildFile; fileRef = 69703B3D1B61904C0072B5F1 /* milkshake.png */; };
 		69703B401B6192080072B5F1 /* contactsAndroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 69703B3F1B6192080072B5F1 /* contactsAndroid.png */; };
 		69703B421B6192E20072B5F1 /* comingSoon.png in Resources */ = {isa = PBXBuildFile; fileRef = 69703B411B6192E20072B5F1 /* comingSoon.png */; };
 		69703B441B6193AF0072B5F1 /* cup.png in Resources */ = {isa = PBXBuildFile; fileRef = 69703B431B6193AF0072B5F1 /* cup.png */; };
-		6971CE511BEAA48700384723 /* EventDetailMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6971CE4F1BEAA48700384723 /* EventDetailMainCell.swift */; settings = {ASSET_TAGS = (); }; };
-		6971CE541BEAA8C700384723 /* EventTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6971CE531BEAA8C700384723 /* EventTitleCell.swift */; settings = {ASSET_TAGS = (); }; };
-		6971CE671BEAEB4900384723 /* green_slime.png in Resources */ = {isa = PBXBuildFile; fileRef = 6971CE611BEAEB4900384723 /* green_slime.png */; settings = {ASSET_TAGS = (); }; };
-		6971CE681BEAEB4900384723 /* icon_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 6971CE621BEAEB4900384723 /* icon_check.png */; settings = {ASSET_TAGS = (); }; };
-		6971CE691BEAEB4900384723 /* icon_eliza.png in Resources */ = {isa = PBXBuildFile; fileRef = 6971CE631BEAEB4900384723 /* icon_eliza.png */; settings = {ASSET_TAGS = (); }; };
-		6971CE6A1BEAEB4900384723 /* icon_pig.png in Resources */ = {isa = PBXBuildFile; fileRef = 6971CE641BEAEB4900384723 /* icon_pig.png */; settings = {ASSET_TAGS = (); }; };
-		6971CE6B1BEAEB4900384723 /* icon_slime.png in Resources */ = {isa = PBXBuildFile; fileRef = 6971CE651BEAEB4900384723 /* icon_slime.png */; settings = {ASSET_TAGS = (); }; };
-		6971CE6C1BEAEB4900384723 /* icon_snail.png in Resources */ = {isa = PBXBuildFile; fileRef = 6971CE661BEAEB4900384723 /* icon_snail.png */; settings = {ASSET_TAGS = (); }; };
+		6971CE511BEAA48700384723 /* EventDetailMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6971CE4F1BEAA48700384723 /* EventDetailMainCell.swift */; };
+		6971CE541BEAA8C700384723 /* EventTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6971CE531BEAA8C700384723 /* EventTitleCell.swift */; };
+		6971CE671BEAEB4900384723 /* green_slime.png in Resources */ = {isa = PBXBuildFile; fileRef = 6971CE611BEAEB4900384723 /* green_slime.png */; };
+		6971CE681BEAEB4900384723 /* icon_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 6971CE621BEAEB4900384723 /* icon_check.png */; };
+		6971CE691BEAEB4900384723 /* icon_eliza.png in Resources */ = {isa = PBXBuildFile; fileRef = 6971CE631BEAEB4900384723 /* icon_eliza.png */; };
+		6971CE6A1BEAEB4900384723 /* icon_pig.png in Resources */ = {isa = PBXBuildFile; fileRef = 6971CE641BEAEB4900384723 /* icon_pig.png */; };
+		6971CE6B1BEAEB4900384723 /* icon_slime.png in Resources */ = {isa = PBXBuildFile; fileRef = 6971CE651BEAEB4900384723 /* icon_slime.png */; };
+		6971CE6C1BEAEB4900384723 /* icon_snail.png in Resources */ = {isa = PBXBuildFile; fileRef = 6971CE661BEAEB4900384723 /* icon_snail.png */; };
 		69784DCC1AEF64330084B317 /* RsMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69784DCB1AEF64330084B317 /* RsMenuTableViewController.swift */; };
 		69784DCE1AEF64600084B317 /* RsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69784DCD1AEF64600084B317 /* RsNavigationController.swift */; };
 		697918651AFB55CA0098CAFB /* BasicUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697918611AFB55CA0098CAFB /* BasicUserCell.swift */; };
@@ -132,6 +132,7 @@
 		69C5A3BB1B941F430007AFBE /* paper_scroll in Resources */ = {isa = PBXBuildFile; fileRef = 69C5A3B41B9402330007AFBE /* paper_scroll */; };
 		69C5A3BD1B942DEC0007AFBE /* dukeBlueDevilGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C5A3BC1B942DEC0007AFBE /* dukeBlueDevilGrey.png */; };
 		69C5A3BF1B942E5F0007AFBE /* ExSpotlightUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C5A3BE1B942E5F0007AFBE /* ExSpotlightUserCell.swift */; };
+		69C7C7CF1BEC28E0003B4622 /* flag_wood_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C7CE1BEC28E0003B4622 /* flag_wood_bg.jpg */; };
 		69C9994C1AEF6E07001511D6 /* RsGoingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C9994B1AEF6E07001511D6 /* RsGoingTableViewController.swift */; };
 		69C9994E1AEF6E13001511D6 /* RsLikeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C9994D1AEF6E13001511D6 /* RsLikeTableViewController.swift */; };
 		69CAB40C1AD8CF3100A266F0 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CAB4061AD8CF3100A266F0 /* ENSideMenu.swift */; };
@@ -316,6 +317,7 @@
 		69C5A3B91B9417630007AFBE /* ExSpotlightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSpotlightViewController.swift; sourceTree = "<group>"; };
 		69C5A3BC1B942DEC0007AFBE /* dukeBlueDevilGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dukeBlueDevilGrey.png; sourceTree = "<group>"; };
 		69C5A3BE1B942E5F0007AFBE /* ExSpotlightUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSpotlightUserCell.swift; sourceTree = "<group>"; };
+		69C7C7CE1BEC28E0003B4622 /* flag_wood_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flag_wood_bg.jpg; sourceTree = "<group>"; };
 		69C9994B1AEF6E07001511D6 /* RsGoingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsGoingTableViewController.swift; sourceTree = "<group>"; };
 		69C9994D1AEF6E13001511D6 /* RsLikeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsLikeTableViewController.swift; sourceTree = "<group>"; };
 		69CAB4061AD8CF3100A266F0 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 		69058F5C1ACFFCA3003DFB3C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				69C7C7CE1BEC28E0003B4622 /* flag_wood_bg.jpg */,
 				6971CE611BEAEB4900384723 /* green_slime.png */,
 				6971CE621BEAEB4900384723 /* icon_check.png */,
 				6971CE631BEAEB4900384723 /* icon_eliza.png */,
@@ -955,6 +958,7 @@
 				69AC5C511B9AC317002C2CFA /* coins.png in Resources */,
 				696C24AA1BB26C5F0016DE44 /* heart0.png in Resources */,
 				69CD64B81B97F22900A232AD /* under_construction in Resources */,
+				69C7C7CF1BEC28E0003B4622 /* flag_wood_bg.jpg in Resources */,
 				69CD64B21B97EBD100A232AD /* spotlight0.png in Resources */,
 				69C5A3BB1B941F430007AFBE /* paper_scroll in Resources */,
 				69D43AF31AD98214001DD44B /* EventCellNib.xib in Resources */,
@@ -1177,9 +1181,10 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhe Wang (X6RJNL8TPF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhe Wang (X6RJNL8TPF)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1199,7 +1204,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "c607024c-2593-463c-9165-71358fd0f7a3";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1223,8 +1228,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhe Wang (X6RJNL8TPF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhe Wang (X6RJNL8TPF)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1237,7 +1242,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "c607024c-2593-463c-9165-71358fd0f7a3";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1249,8 +1254,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhe Wang (X6RJNL8TPF)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhe Wang (X6RJNL8TPF)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1261,7 +1267,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jayzw.Duke-CSA";
 				PRODUCT_NAME = "Duke CSA";
-				PROVISIONING_PROFILE = "c607024c-2593-463c-9165-71358fd0f7a3";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CSA/CSA-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1273,7 +1279,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhe Wang (X6RJNL8TPF)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhe Wang (X6RJNL8TPF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1285,7 +1291,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jayzw.Duke-CSA";
 				PRODUCT_NAME = "Duke CSA";
-				PROVISIONING_PROFILE = "c607024c-2593-463c-9165-71358fd0f7a3";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CSA/CSA-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
