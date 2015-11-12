@@ -30,6 +30,7 @@ class EventCell: UITableViewCell {
         
         //title
         lblTitle.text = childEvent.title
+        lblTitle.font = UIFont (name: "Papyrus", size: 20)
         
         //when
         lblWhen.text = "Time: \(AppTools.formatDateUserFriendly(childEvent.date))"
