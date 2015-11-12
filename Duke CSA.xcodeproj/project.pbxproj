@@ -100,6 +100,8 @@
 		69926B441ACF9C130080E51E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69926B431ACF9C130080E51E /* SystemConfiguration.framework */; };
 		6992EC511AD03AF9009F7197 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6992EC451AD03AF9009F7197 /* calendar.png */; };
 		699D67FC1B6015A7009783ED /* crush.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 699D67FB1B6015A7009783ED /* crush.jpg */; };
+		69A727B71BF52D4F00A8445E /* line1.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A727B61BF52D4F00A8445E /* line1.png */; };
+		69A727B91BF5390900A8445E /* line0.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A727B81BF5390900A8445E /* line0.png */; };
 		69A9D9331B2EC1D500A91759 /* ProfileEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9D9321B2EC1D500A91759 /* ProfileEditTableViewController.swift */; };
 		69A9D9351B2ECB0A00A91759 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9D9341B2ECB0A00A91759 /* ProfileTableViewController.swift */; };
 		69A9D9371B2EE39800A91759 /* ProfilePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9D9361B2EE39800A91759 /* ProfilePickerViewController.swift */; };
@@ -287,6 +289,8 @@
 		69926B431ACF9C130080E51E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6992EC451AD03AF9009F7197 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
 		699D67FB1B6015A7009783ED /* crush.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crush.jpg; sourceTree = "<group>"; };
+		69A727B61BF52D4F00A8445E /* line1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line1.png; sourceTree = "<group>"; };
+		69A727B81BF5390900A8445E /* line0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line0.png; sourceTree = "<group>"; };
 		69A9D9321B2EC1D500A91759 /* ProfileEditTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditTableViewController.swift; sourceTree = "<group>"; };
 		69A9D9341B2ECB0A00A91759 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		69A9D9361B2EE39800A91759 /* ProfilePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePickerViewController.swift; sourceTree = "<group>"; };
@@ -399,6 +403,8 @@
 		69058F5C1ACFFCA3003DFB3C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				69A727B81BF5390900A8445E /* line0.png */,
+				69A727B61BF52D4F00A8445E /* line1.png */,
 				69DDBF821BF2D8B000ABE83C /* randombg0.jpeg */,
 				69C7C7CE1BEC28E0003B4622 /* flag_wood_bg.jpg */,
 				6971CE611BEAEB4900384723 /* green_slime.png */,
@@ -1009,6 +1015,7 @@
 				69339C1F1B650E3B00EC8D99 /* Garden_5.jpg in Resources */,
 				69703B3E1B61904C0072B5F1 /* milkshake.png in Resources */,
 				69AC5C551B9AC6DC002C2CFA /* coins_dis.png in Resources */,
+				69A727B91BF5390900A8445E /* line0.png in Resources */,
 				696533D91B57EE7B00AD9953 /* like.png in Resources */,
 				6971CE6A1BEAEB4900384723 /* icon_pig.png in Resources */,
 				692BAE451ADF5B850008F29B /* boat.png in Resources */,
@@ -1039,6 +1046,7 @@
 				697918661AFB55CA0098CAFB /* BasicUserCellNib.xib in Resources */,
 				69AC5C531B9AC515002C2CFA /* lollipop_dis.png in Resources */,
 				69CD64B71B97EFCD00A232AD /* spotlight_bg.jpg in Resources */,
+				69A727B71BF52D4F00A8445E /* line1.png in Resources */,
 				69339C211B65164A00EC8D99 /* flake3.png in Resources */,
 				69F195331B02F95300872B19 /* TextUserCellNib.xib in Resources */,
 			);

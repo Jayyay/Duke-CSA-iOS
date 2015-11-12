@@ -291,7 +291,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag_wood_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lIC-Rh-Heu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lIC-Rh-Heu">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <animations/>
                             </imageView>
@@ -314,7 +314,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.54117647058823526" green="0.55294117647058827" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="uA4-Tf-foT" id="W0s-PO-HTa"/>
@@ -5989,7 +5989,6 @@ IHBlcm1pc3Npb24uA
         <image name="dukeBlueDevil0 copy.png" width="300" height="300"/>
         <image name="dukeBlueDevilGrey.png" width="300" height="300"/>
         <image name="fbRound.png" width="61" height="61"/>
-        <image name="flag_wood_bg.jpg" width="3000" height="2000"/>
         <image name="gardenNoLogo.jpg" width="1827" height="3248"/>
         <image name="geo.png" width="30" height="30"/>
         <image name="green_arrow.png" width="512" height="512"/>
