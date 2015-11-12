@@ -374,16 +374,12 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         if tableView == eventTableView {
             let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_EventCell, forIndexPath: indexPath) as! EventCell
             cell.initWithEvent(events[indexPath.section])
-            cell.backgroundColor = UIColor.clearColor()
-            cell.backgroundView = UIView()
-            cell.selectedBackgroundView = UIView()
+            AppFunc.setCellTransparent(cell)
             return cell
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_BulletinCell, forIndexPath: indexPath) as! BulletinCell
             cell.initWithBulletin(bulletins[indexPath.section])
-            cell.backgroundColor = UIColor.clearColor()
-            cell.backgroundView = UIView()
-            cell.selectedBackgroundView = UIView()
+            AppFunc.setCellTransparent(cell)
             return cell
         }
     }
