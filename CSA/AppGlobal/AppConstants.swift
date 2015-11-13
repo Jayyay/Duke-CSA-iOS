@@ -12,7 +12,7 @@ struct AppConstants {
         static let usernameColor = UIColor(red: 51/255, green: 102/255, blue: 153/255, alpha: 1.0)
         static let DukeBlue = UIColor(red: 7/255, green: 54/255, blue: 164/255, alpha: 1.0)
         static let DukeBlueTranslucent = UIColor(red: 7/255, green: 54/255, blue: 164/255, alpha: 0.6)
-        //static let cuteRed = UIColor(red: 233/255.0, green: 54/255.0, blue: 61/255.0, alpha: 1.0)
+        static let cuteRed = UIColor(red: 233/255.0, green: 54/255.0, blue: 61/255.0, alpha: 1.0)
         static let placeholder = UIColor(red: 187/255, green: 186/255, blue: 193/255, alpha: 1.0)
         static let tintDefault = UIColor(red:0.0, green:122.0/255.0, blue:1.0, alpha:1.0)
     }
