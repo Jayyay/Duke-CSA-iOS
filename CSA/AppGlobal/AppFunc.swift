@@ -24,6 +24,11 @@ struct AppFunc{
         
         print("reach here")
     }
+    static func setCellTransparent(cell:UITableViewCell) {
+        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundView = UIView()
+        cell.selectedBackgroundView = UIView()
+    }
     static func downloadPropicFromParse(user user:PFUser, saveToImgView:UIImageView?, inTableView tableView:UITableView!, forIndexPath indexPath:NSIndexPath!) {
         saveToImgView?.image = UIImage(named: "placeholder-user")
         if let propicFile = user[PFKey.USER.PROPIC_COMPRESSED] as? PFFile {

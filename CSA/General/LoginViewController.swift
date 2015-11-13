@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     
     
     let lblStatus = UILabel()
-    let statusMsg = ["Connecting ...", "Authorizing ...", "Retrieving profile ...", "Setting Up...", "Failed", "Failed to retrieve", "Not authorized"]
+    let statusMsg = ["Connecting ...", "Authorizing ...", "Retrieving profile ...", "Setting Up...", "Failed, try again", "Failed to retrieve", "Not authorized"]
     //var statusOriginalPosition = CGPointZero
     
     @IBOutlet weak var btnLogin: UIButton!
@@ -138,14 +138,28 @@ class LoginViewController: UIViewController {
                     }
                 } else {
                     print("User logged in through Facebook!")
-                    AppFunc.resumeApp()
-                    self.readyForLogin()
+                    self.checkProfile()
                 }
             }
         }
     }
     
-    func buildProfile(result:AnyObject) {
+    func checkProfile() {
+        let u = PFUser.currentUser()!
+        if let _ = u[PFKey.IS_VALID] as? Bool {
+            AppFunc.resumeApp()
+            self.readyForLogin()
+        }else {
+            self.removeMessage(){_ in
+                self.resetStatus()
+                self.showMessage(index: 2){_ in
+                    self.retrieveFacebookProfile()
+                }
+            }
+        }
+    }
+    
+    func buildProfile(result:AnyObject, completion: (Bool, NSError?) -> (Void)) {
         let u = PFUser.currentUser()!
         u[PFKey.IS_VALID] = true
         u[PFKey.USER.IS_ADMIN] = false
@@ -194,7 +208,7 @@ class LoginViewController: UIViewController {
         newSpUser[PFKey.SPOTLIGHT.VOTE0] = []
         newSpUser[PFKey.SPOTLIGHT.VOTE1] = []
         newSpUser[PFKey.SPOTLIGHT.VOTE2] = []
-        newSpUser.saveInBackground()
+        newSpUser.saveInBackgroundWithBlock(completion)
     }
 
     func retrieveFacebookProfile() {
@@ -203,22 +217,31 @@ class LoginViewController: UIViewController {
                 self.removeMessage(){_ in
                     self.resetStatus()
                     self.showMessage(index: 3){_ in
-                        self.buildProfile(result)
-                        let userFBID = result["id"] as! String
-                        let facebookProfileUrl = NSURL(string:"http://graph.facebook.com/\(userFBID)/picture?width=320&height=320")!
-                        let urlRequest = NSURLRequest(URL: facebookProfileUrl)
-                        NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse?, data:NSData?, error:NSError?) -> Void in
-                            if error == nil {
-                                let u = PFUser.currentUser()!
-                                if let compressedImg = AppTools.compressImage(UIImage(data: data!)){
-                                    u[PFKey.USER.PROPIC_COMPRESSED] = PFFile(name: "compPropic.png",data: UIImagePNGRepresentation(compressedImg)!)
+                        self.buildProfile(result) {(success:Bool, error:NSError?) in
+                            if success { //important data is uploaded successfully
+                                let userFBID = result["id"] as! String
+                                let facebookProfileUrl = NSURL(string:"http://graph.facebook.com/\(userFBID)/picture?width=320&height=320")!
+                                let urlRequest = NSURLRequest(URL: facebookProfileUrl)
+                                NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse?, data:NSData?, error:NSError?) -> Void in
+                                    if error == nil {
+                                        let u = PFUser.currentUser()!
+                                        if let compressedImg = AppTools.compressImage(UIImage(data: data!)){
+                                            u[PFKey.USER.PROPIC_COMPRESSED] = PFFile(name: "compPropic.png",data: UIImagePNGRepresentation(compressedImg)!)
+                                        }
+                                        //Think: do we need to save original picture?
+                                        //u[PFKey.USER.PROPIC_ORIGINAL] = PFFile(name: "propic.png", data: data)
+                                        u.saveInBackground()
+                                    }
+                                    AppFunc.resumeApp()
+                                    self.readyForLogin()
                                 }
-                                //To think: do we need to save original picture?
-                                //u[PFKey.USER.PROPIC_ORIGINAL] = PFFile(name: "propic.png", data: data)
-                                u.saveInBackground()
+                            } else {
+                                AppFunc.resumeApp()
+                                self.showMessage(index: 4){_ in
+                                    //failure message shown. Ends here.
+                                    self.endAnimation()
+                                }
                             }
-                            AppFunc.resumeApp()
-                            self.readyForLogin()
                         }
                     }
                 }

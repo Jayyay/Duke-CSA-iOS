@@ -161,6 +161,8 @@
 		69D43AF81AD98214001DD44B /* EventSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D43AEE1AD98214001DD44B /* EventSignUpViewController.swift */; };
 		69D50A1C1AFB05380074EAEA /* AlbumTriangleEdge.png in Resources */ = {isa = PBXBuildFile; fileRef = 69D50A1B1AFB05380074EAEA /* AlbumTriangleEdge.png */; };
 		69DBE7DC1B09907A00E42C86 /* retroBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 69DBE7DB1B09907A00E42C86 /* retroBG.png */; };
+		69DDBF7C1BF2D32400ABE83C /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DDBF7B1BF2D32400ABE83C /* ExploreViewController.swift */; };
+		69DDBF831BF2D8B000ABE83C /* randombg0.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 69DDBF821BF2D8B000ABE83C /* randombg0.jpeg */; };
 		69EC09F01ADBFD2D00DF4849 /* EBMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC09EF1ADBFD2D00DF4849 /* EBMainViewController.swift */; };
 		69EC09F41ADC150C00DF4849 /* Bulletin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC09F31ADC150C00DF4849 /* Bulletin.swift */; };
 		69EF3BD61AF088830065D449 /* KeyboardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EF3BD51AF088830065D449 /* KeyboardInputView.swift */; };
@@ -346,6 +348,8 @@
 		69D43AEE1AD98214001DD44B /* EventSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSignUpViewController.swift; sourceTree = "<group>"; };
 		69D50A1B1AFB05380074EAEA /* AlbumTriangleEdge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlbumTriangleEdge.png; sourceTree = "<group>"; };
 		69DBE7DB1B09907A00E42C86 /* retroBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retroBG.png; sourceTree = "<group>"; };
+		69DDBF7B1BF2D32400ABE83C /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		69DDBF821BF2D8B000ABE83C /* randombg0.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = randombg0.jpeg; sourceTree = "<group>"; };
 		69EC09EF1ADBFD2D00DF4849 /* EBMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBMainViewController.swift; sourceTree = "<group>"; };
 		69EC09F31ADC150C00DF4849 /* Bulletin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bulletin.swift; sourceTree = "<group>"; };
 		69EF3BD51AF088830065D449 /* KeyboardInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInputView.swift; sourceTree = "<group>"; };
@@ -395,6 +399,7 @@
 		69058F5C1ACFFCA3003DFB3C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				69DDBF821BF2D8B000ABE83C /* randombg0.jpeg */,
 				69C7C7CE1BEC28E0003B4622 /* flag_wood_bg.jpg */,
 				6971CE611BEAEB4900384723 /* green_slime.png */,
 				6971CE621BEAEB4900384723 /* icon_check.png */,
@@ -818,6 +823,14 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		69DDBF7D1BF2D40D00ABE83C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				69DDBF7B1BF2D32400ABE83C /* ExploreViewController.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		69EBCA5F1B2C123F00A889FC /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -832,6 +845,7 @@
 		69F195341B02FBDB00872B19 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				69DDBF7D1BF2D40D00ABE83C /* Main */,
 				69A091701B90B7490077C8A4 /* Spotlight */,
 				699D67FE1B601AF7009783ED /* Contacts */,
 				699D67FD1B601AED009783ED /* Crush */,
@@ -999,6 +1013,7 @@
 				6971CE6A1BEAEB4900384723 /* icon_pig.png in Resources */,
 				692BAE451ADF5B850008F29B /* boat.png in Resources */,
 				69AC5C4F1B9AC317002C2CFA /* lollipop.png in Resources */,
+				69DDBF831BF2D8B000ABE83C /* randombg0.jpeg in Resources */,
 				69703B421B6192E20072B5F1 /* comingSoon.png in Resources */,
 				69339C251B6516C800EC8D99 /* flake2.png in Resources */,
 				69B4DA361B9BF9FE00A83CEF /* arrow_right_blue.png in Resources */,
@@ -1093,6 +1108,7 @@
 				690E34FD1AE4AC63007690CA /* Reply.swift in Sources */,
 				69AC5C2C1B9A20A6002C2CFA /* MeNotifTableViewController.swift in Sources */,
 				69FF45791ADCC0A200C56788 /* BulletinDetailViewController.swift in Sources */,
+				69DDBF7C1BF2D32400ABE83C /* ExploreViewController.swift in Sources */,
 				69A9D9351B2ECB0A00A91759 /* ProfileTableViewController.swift in Sources */,
 				6971CE541BEAA8C700384723 /* EventTitleCell.swift in Sources */,
 				69D1B8061B6A53F200D6B2FF /* MeAboutDukeCSAViewController.swift in Sources */,
