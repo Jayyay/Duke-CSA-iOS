@@ -27,6 +27,9 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     var postAllowed = true
     let timeoutInSec:NSTimeInterval = 5.0
     
+    var lineOfText = 0
+    var lastHeight = CGFloat(0)
+    
     @IBAction func onClickMore(sender: AnyObject) {
         self.sideMenuController()?.sideMenu?.showSideMenu()
     }
@@ -232,6 +235,38 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    // resize the textview height according to user input
+    // credit to Han Yu, huge thanks.
+    func textViewDidChange(textView: UITextView) {
+        
+        let fixedWidth = textView.frame.size.width
+        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        
+        if (newSize.height == lastHeight) || (newSize.height > lastHeight && lineOfText >= 4) {
+            // no need to resize frame
+            return
+        }
+        lineOfText += newSize.height > lastHeight ? 1 : -1
+        lastHeight = newSize.height
+        if lineOfText >= 4 {
+            textView.scrollEnabled = true
+        }else {
+            textView.scrollEnabled = false
+        }
+        
+        var newFrame = textView.frame
+        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        newFrame.origin.y = newFrame.origin.y - newSize.height + textView.frame.height
+        
+        var boxFrame = kbInput.frame
+        boxFrame.origin.y = boxFrame.origin.y - newSize.height + textView.frame.height
+        boxFrame.size = CGSize(width: boxFrame.width, height: newSize.height + 16)
+        
+        textView.frame = newFrame;
+        kbInput.frame = boxFrame
+    }
+    
     func keyboardWillHide (notification:NSNotification) {
         kbInput.frame.origin.y = self.view.frame.height
         kbInput.hidden = true
@@ -255,11 +290,11 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         kbInput = nib.instantiateWithOwner(self, options: nil)[0] as! KeyboardInputView
         kbInput.txtview.delegate = self
         kbInput.userInteractionEnabled = true
-        kbInput.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 50)
+        kbInput.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 49)
         kbInput.hidden = true
         self.view.addSubview(kbInput)
     }
-
+    
     func initUI() {
         //tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
         tableView.rowHeight = UITableViewAutomaticDimension
