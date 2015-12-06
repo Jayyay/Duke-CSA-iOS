@@ -29,14 +29,14 @@ struct AppFunc{
         cell.backgroundView = UIView()
         cell.selectedBackgroundView = UIView()
     }
-    static func downloadPropicFromParse(user user:PFUser, saveToImgView:UIImageView?, inTableView tableView:UITableView!, forIndexPath indexPath:NSIndexPath!) {
-        saveToImgView?.image = UIImage(named: "placeholder-user")
+    static func downloadPropicFromParse(user user:PFUser, saveToImgView:UIImageView, inTableView tableView:UITableView!, forIndexPath indexPath:NSIndexPath!) {
+        saveToImgView.image = UIImage(named: "placeholder-user")
         if let propicFile = user[PFKey.USER.PROPIC_COMPRESSED] as? PFFile {
             propicFile.getDataInBackgroundWithBlock({ (data:NSData?, error:NSError?) -> Void in
                 if let d = data {
                     if tableView != nil && indexPath != nil && tableView.cellForRowAtIndexPath(indexPath) != nil {//cell in table is visible
                         dispatch_async(dispatch_get_main_queue(), { _ in
-                            saveToImgView?.image = UIImage(data: d)
+                            saveToImgView.image = UIImage(data: d)
                         })
                     }
                 }else{

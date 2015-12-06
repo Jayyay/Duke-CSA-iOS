@@ -19,4 +19,5 @@ struct StoryboardID {
     static let LOGIN = "loginVC"
     static let USER_INFO = "userProfileVC"
     static let PROFILE_EDIT = "editProfileVC"
+    static let ZOOM_IMAGE = "zoomImageVC"
 }

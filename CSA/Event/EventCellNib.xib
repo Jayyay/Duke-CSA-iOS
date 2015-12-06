@@ -120,6 +120,7 @@
             </tableViewCellContentView>
             <animations/>
             <connections>
+                <outlet property="ctProfileWidth" destination="gjW-EE-wcs" id="hzO-0x-xOr"/>
                 <outlet property="ctTagHeight" destination="8QG-wg-MKQ" id="Av5-QL-eYe"/>
                 <outlet property="imgProfile" destination="tQY-Mn-s2w" id="2Sp-W1-Ab7"/>
                 <outlet property="lblPostTime" destination="rUI-Tq-4fn" id="g9E-Ig-OBa"/>

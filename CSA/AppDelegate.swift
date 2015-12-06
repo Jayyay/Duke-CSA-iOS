@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         //navigation bar style
-        UINavigationBar.appearance().barStyle = UIBarStyle.BlackTranslucent
-        UINavigationBar.appearance().barTintColor = AppConstants.Color.cuteRed
+        UINavigationBar.appearance().barStyle = UIBarStyle.BlackOpaque
+        UINavigationBar.appearance().barTintColor = AppConstants.Color.color0
         UINavigationBar.appearance().translucent = true
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]

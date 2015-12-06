@@ -14,6 +14,7 @@ class UserProfileTableViewController: UITableViewController {
     @IBOutlet weak var imgPropic: UIImageView!
     
     
+    
     @IBOutlet weak var lblTitleAbout: UILabel!
     
     @IBOutlet weak var lblName: UILabel!
@@ -63,7 +64,16 @@ class UserProfileTableViewController: UITableViewController {
         lblPhone.text = user[PFKey.USER.CELL_PHONE] as? String
         lblRelationship.text = user[PFKey.USER.RELATIONSHIP] as? String
         tvAbout.text = user[PFKey.USER.ABOUT_ME] as? String
+        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("tapView:"))
+        imgPropic.gestureRecognizers = [tapGesture]
         AppFunc.downloadPropicFromParse(user: user, saveToImgView: imgPropic, inTableView: tableView, forIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+    }
+    
+    func tapView(gesture: UITapGestureRecognizer) {
+        print("tap image")
+        AppData.GlobalData.selectedImage = imgPropic.image
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardID.ZOOM_IMAGE) as! ZoomImageViewController
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
