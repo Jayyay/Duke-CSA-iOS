@@ -313,5 +313,9 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
         }
         return indexPath
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
 
 }
