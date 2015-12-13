@@ -135,10 +135,38 @@ struct AppTools {
     }
     
     static func compareUserIsOrderedBefore(u1 u1:ExContact, u2:ExContact) -> Bool{
-        if u1.netID_letterReverse == u2.netID_letterReverse {
-            return u1.netID_number < u2.netID_number
-        }else{
-            return u1.netID_letterReverse < u2.netID_letterReverse
+        let name1 = u1.displayName
+        let name2 = u2.displayName
+        
+        // weird names fall behind
+        if getLastName(name1) == "" {
+            return false
+        }
+        else if getLastName(name2) == "" {
+            return true
+        }
+        else {
+            return getLastName(name1).compare(getLastName(name2)).rawValue < 0
+        }
+    }
+    
+    static func getLastName(name: String) -> String {
+        let index = name.rangeOfString(" ", options: .BackwardsSearch)?.endIndex
+        if let index = index {
+            return name.substringWithRange(Range<String.Index>(start: index, end: name.endIndex))
+        }
+        else {
+            return ""
+        }
+    }
+    
+    static func getNamePivot(name: String) -> String {
+        let lastName = getLastName(name)
+        if lastName != "" {
+            return lastName.substringWithRange(Range<String.Index>(start: lastName.startIndex, end: lastName.startIndex.advancedBy(1)))
+        }
+        else {
+            return "-"
         }
     }
 }
