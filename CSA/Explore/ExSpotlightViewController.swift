@@ -284,7 +284,6 @@ class ExSpotlightViewController: UIViewController, UITableViewDelegate, UITableV
         indexList.removeAll(keepCapacity: true)
         var curIndexPivot: String = " ", curSection = -1
         for spu in filteredSpUser {
-            print(spu.contact.displayName)
             if AppTools.getNamePivot(spu.contact.displayName) != curIndexPivot { //new index
                 //append new index
                 curIndexPivot = AppTools.getNamePivot(spu.contact.displayName)
