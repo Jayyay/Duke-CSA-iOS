@@ -11,8 +11,10 @@ import UIKit
 class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    let REUSEID_FIRST = "IDFirstCell"
-    let REUSEID_SECOND = "IDSecondCell"
+    let REUSEID_FIRST = "IDCell0"
+    let REUSEID_SECOND = "IDCell1"
+    let REUSEID_THIRD = "IDCell2"
+    let REUSEID_FOURTH = "IDCell3"
     
     
     override func viewDidLoad() {
@@ -32,20 +34,24 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var id:String
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier(REUSEID_FIRST, forIndexPath: indexPath)
-            AppFunc.setCellTransparent(cell)
-            return cell
+            id = REUSEID_FIRST
+        case 1:
+            id = REUSEID_SECOND
+        case 2:
+            id = REUSEID_THIRD
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier(REUSEID_SECOND, forIndexPath: indexPath)
-            AppFunc.setCellTransparent(cell)
-            return cell
+            id = REUSEID_FOURTH
         }
+        let cell = tableView.dequeueReusableCellWithIdentifier(id, forIndexPath: indexPath)
+        return cell
+
     }
     /*
     // MARK: - Navigation

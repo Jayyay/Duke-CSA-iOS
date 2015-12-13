@@ -13,6 +13,9 @@ struct AppData {
         static var mainTabBarVC:TabBarController!
     }
     */
+    struct GlobalData {
+        static var selectedImage:UIImage!
+    }
     struct EventData {
         static var selectedEvent:Event!
         static var signupVC:EventSignUpViewController!

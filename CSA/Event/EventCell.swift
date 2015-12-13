@@ -19,6 +19,7 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblTag: UILabel!
     @IBOutlet weak var ctTagHeight: NSLayoutConstraint!
+    @IBOutlet weak var ctProfileWidth: NSLayoutConstraint!
     
     var childEvent:Event!
     let colorComing = AppConstants.Color.cuteRed, colorOld = AppConstants.Color.DukeBlue
@@ -52,6 +53,14 @@ class EventCell: UITableViewCell {
             lblTag.hidden = false
             ctTagHeight.constant = 15
         }
+        
+        if evt.pictureFile.count == 0 {
+            imgProfile.hidden = true
+            ctProfileWidth.constant = 0
+        }else {
+            imgProfile.hidden = true //TODO
+        }
+        
         layoutIfNeeded()
     }
 

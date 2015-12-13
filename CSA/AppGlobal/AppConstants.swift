@@ -15,6 +15,7 @@ struct AppConstants {
         static let cuteRed = UIColor(red: 233/255.0, green: 54/255.0, blue: 61/255.0, alpha: 1.0)
         static let placeholder = UIColor(red: 187/255, green: 186/255, blue: 193/255, alpha: 1.0)
         static let tintDefault = UIColor(red:0.0, green:122.0/255.0, blue:1.0, alpha:1.0)
+        static let color0 = UIColor(red: 216, green: 0, blue: 0, alpha: 1.0)
     }
     struct SoundFile {
         static let NOTIF_1 = "notif1.mp3"

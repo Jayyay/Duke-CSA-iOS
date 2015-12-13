@@ -120,7 +120,6 @@ struct AppTools {
         }
     }
     
-    
     static func compressImage(img:UIImage?) -> UIImage?{
         if let image = img {
             let newSize = CGSizeMake(120, 120)
@@ -169,4 +168,5 @@ struct AppTools {
             return "-"
         }
     }
+    
 }

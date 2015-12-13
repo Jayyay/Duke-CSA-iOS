@@ -23,7 +23,6 @@ class Event: NSObject {
     //optional
     var shortTitle:String?
     
-    
     //optional
     var pictureFile:[PFFile] = []
     

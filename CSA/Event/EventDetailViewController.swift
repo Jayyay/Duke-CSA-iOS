@@ -32,8 +32,8 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
 
-        refreshControl = UIRefreshControl()
-        tableView.addSubview(refreshControl)
+        //refreshControl = UIRefreshControl()
+        //tableView.addSubview(refreshControl)
     }
     
     override func viewDidLoad() {
