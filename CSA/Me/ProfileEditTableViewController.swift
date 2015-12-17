@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var imgPropic: UIImageView!
     @IBOutlet weak var tvAboutMe: UITextView!
@@ -32,7 +32,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet weak var imgCheckEmail: UIImageView!
     @IBOutlet weak var imgCheckCell: UIImageView!
     @IBOutlet weak var imgCheckAboutMe: UIImageView!
-    
+
     var lblToPick:UILabel!
     var pickTitle = ""
     var pickType = 0
@@ -67,6 +67,31 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
     var aboutMeValid = false {
         willSet{imgCheckAboutMe.hidden = !newValue}
     }
+    
+    // picker view variables
+    var pickerView = UIPickerView()
+    @IBOutlet weak var datePicker: UIDatePicker!
+    var expand: NSIndexPath?
+    enum PickCategory: Int {
+        case Gender = 0
+        case Year = 1
+        case Relationship = 2
+        case Birthday = 3
+        
+        var index: Int {
+            switch self {
+            case .Gender: return 0
+            case .Year: return 1
+            case .Relationship: return 2
+            case .Birthday: return 3
+            }
+        }
+    }
+    var toPick: PickCategory = .Gender
+    let pickerViewTitles = [
+        /*0*/[UserConstants.Gender.MALE, UserConstants.Gender.FEMALE, UserConstants.Gender.OTHER],
+        /*1*/[UserConstants.WhichYear.FRESHMAN, UserConstants.WhichYear.SOPHOMORE, UserConstants.WhichYear.JUNIOR, UserConstants.WhichYear.SENIOR, UserConstants.WhichYear.ANCESTOR],
+        /*2*/[UserConstants.Relationship.SINGLE, UserConstants.Relationship.IN_LOVE, UserConstants.Relationship.UNKNOWN]]
     
     @IBAction func onSave(sender: AnyObject) {
         if !nameValid {
@@ -225,6 +250,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
         tfNetID.delegate = self
         tfEmail.delegate = self
         tfCellPhone.delegate = self
+        pickerView.delegate = self
         
         tfDisplayName.addTarget(self, action: Selector("tfNameDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
         tfMajors.addTarget(self, action: Selector("tfMajorDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
@@ -281,41 +307,79 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
             dvc.initWithMode(dateMode: dateMode, title: pickTitle, pickerType: pickType, parentLabel: lblToPick)
         }
     }
-
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 && indexPath.row == 0 {
             return 100
         }
-        return 44
-    }
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        dateMode = false
-        switch (indexPath.section, indexPath.row){
-        case (0,2)://gender
-            pickType = 0
-            pickTitle = "Gender"
-            lblToPick = lblGender
-        case (0,3)://birthday
-            dateMode = true
-            pickTitle = "Birthday"
-            lblToPick = lblBday
-        case (1,0)://year
-            pickType = 1
-            pickTitle = "Year"
-            lblToPick = lblYear
-        case (2,1)://relationship
-            pickType = 2
-            pickTitle = "Relationship"
-            lblToPick = lblRelationship
-        default:
-            break
+        else if indexPath == expand {
+            if toPick == .Birthday {
+                return 250
+            }
+            return 200
         }
-        return indexPath
+        return 44
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        datePicker.hidden = true
+        switch (indexPath.section, indexPath.row) {
+        case (0, 2):
+            toPick = .Gender
+        case (0, 3):
+            toPick = .Birthday
+            datePicker.hidden = false
+            expand = indexPath
+            tableView.reloadData()
+            return
+        case (1, 0):
+            toPick = .Year
+        case (2, 1):
+            toPick = .Relationship
+        default:
+            return
+        }
+        expand = indexPath
+        cell?.contentView.addSubview(pickerView)
+        //pickerView.removeConstraints(pickerView.constraints)
+        //pickerView.addConstraint(NSLayoutConstraint(item: pickerView, attribute: .Bottom, relatedBy: .Equal, toItem: cell?.contentView, attribute: .BottomMargin, multiplier: 1, constant: 3))
+        pickerView.reloadAllComponents()
+        tableView.reloadData()
     }
-
+    
+    // picker view
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerViewTitles[toPick.index].count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerViewTitles[toPick.index][row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch toPick {
+        case .Gender:
+            lblGender.text = pickerViewTitles[toPick.index][row]
+        case .Year:
+            lblYear.text = pickerViewTitles[toPick.index][row]
+        case .Relationship:
+            lblRelationship.text = pickerViewTitles[toPick.index][row]
+        default:
+            break
+        }
+    }
+    
+    // date picker
+    @IBAction func dateSelectionDidChange(sender: AnyObject) {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        lblBday.text = formatter.stringFromDate(datePicker.date)
+    }
+    
 }
