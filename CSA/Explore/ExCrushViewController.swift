@@ -191,12 +191,12 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         //build contacts and index adapter
         contacts.removeAll(keepCapacity: true)
         indexList.removeAll(keepCapacity: true)
-        var curIndexChar:Character = " ", curSection = -1
+        var curIndexPivot: String = " ", curSection = -1
         for ct in filteredCt {
-            if ct.netID_pivot != curIndexChar { //new index
+            if AppTools.getNamePivot(ct.displayName) != curIndexPivot { //new index
                 //append new index
-                curIndexChar = ct.netID_pivot
-                indexList.append(String(curIndexChar).uppercaseString)
+                curIndexPivot = AppTools.getNamePivot(ct.displayName)
+                indexList.append(curIndexPivot)
                 //create new section for contacts
                 contacts.append([])
                 curSection++

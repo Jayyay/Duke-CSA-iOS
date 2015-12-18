@@ -282,12 +282,12 @@ class ExSpotlightViewController: UIViewController, UITableViewDelegate, UITableV
         //build contacts and index adapter
         spUsers.removeAll(keepCapacity: true)
         indexList.removeAll(keepCapacity: true)
-        var curIndexChar:Character = " ", curSection = -1
+        var curIndexPivot: String = " ", curSection = -1
         for spu in filteredSpUser {
-            if spu.contact.netID_pivot != curIndexChar { //new index
+            if AppTools.getNamePivot(spu.contact.displayName) != curIndexPivot { //new index
                 //append new index
-                curIndexChar = spu.contact.netID_pivot
-                indexList.append(String(curIndexChar).uppercaseString)
+                curIndexPivot = AppTools.getNamePivot(spu.contact.displayName)
+                indexList.append(curIndexPivot)
                 //create new section for contacts
                 spUsers.append([])
                 curSection++
