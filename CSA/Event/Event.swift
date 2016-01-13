@@ -24,7 +24,7 @@ class Event: NSObject {
     var shortTitle:String?
     
     //optional
-    var pictureFile:[PFFile] = []
+    var propic:PFFile?
     
     init?(parseObject:PFObject){
         PFInstance = parseObject
@@ -75,6 +75,6 @@ class Event: NSObject {
         }
         
         //optional
-        //pictureFile = parseObject[PFKey.EVENT.PICTURE] as? PFFile
+        propic = parseObject[PFKey.EVENT.PICTURE] as? PFFile
     }
 }

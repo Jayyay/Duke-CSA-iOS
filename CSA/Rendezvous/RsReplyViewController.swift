@@ -219,16 +219,17 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Keyboard
     func registerForKeyboardNotifications ()-> Void   {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
     }
     
     func keyboardWillShow(notification: NSNotification) {
+        
         let info : NSDictionary = notification.userInfo!
         let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
         kbInput.hidden = false
         kbInput.frame.origin.y = keyboardRect.origin.y - kbInput.frame.height
+        print(kbInput.frame)
         let y = scrollToY - (UIScreen.mainScreen().bounds.height - keyboardRect.height - kbInput.frame.height)
         if y > -tableRefresher.frame.height {
             self.tableView.setContentOffset(CGPointMake(0, y), animated: true)
@@ -238,11 +239,10 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     // resize the textview height according to user input
     // credit to Han Yu, huge thanks.
     func textViewDidChange(textView: UITextView) {
-        
+        print("did change ", kbInput.frame)
         let fixedWidth = textView.frame.size.width
-        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        //textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
         let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-        
         if (newSize.height == lastHeight) || (newSize.height > lastHeight && lineOfText >= 4) {
             // no need to resize frame
             return
@@ -265,6 +265,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         
         textView.frame = newFrame;
         kbInput.frame = boxFrame
+        
     }
     
     func keyboardWillHide (notification:NSNotification) {
@@ -288,11 +289,11 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     func keyboardInputViewInit(){
         let nib = UINib(nibName: "KeyboardInputViewNib", bundle: nil)
         kbInput = nib.instantiateWithOwner(self, options: nil)[0] as! KeyboardInputView
-        kbInput.txtview.delegate = self
-        kbInput.userInteractionEnabled = true
         kbInput.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 49)
-        kbInput.hidden = true
+        kbInput.txtview.delegate = self
         self.view.addSubview(kbInput)
+        kbInput.hidden = true
+        print(kbInput.frame)
     }
     
     func initUI() {

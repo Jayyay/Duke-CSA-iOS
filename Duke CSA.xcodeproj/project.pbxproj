@@ -107,6 +107,7 @@
 		69926B441ACF9C130080E51E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69926B431ACF9C130080E51E /* SystemConfiguration.framework */; };
 		6992EC511AD03AF9009F7197 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6992EC451AD03AF9009F7197 /* calendar.png */; };
 		699D67FC1B6015A7009783ED /* crush.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 699D67FB1B6015A7009783ED /* crush.jpg */; };
+		69A608181C444F0200D57ADC /* placeholder_event.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69A608171C444F0200D57ADC /* placeholder_event.jpg */; };
 		69A727B71BF52D4F00A8445E /* line1.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A727B61BF52D4F00A8445E /* line1.png */; };
 		69A727B91BF5390900A8445E /* line0.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A727B81BF5390900A8445E /* line0.png */; };
 		69A9D9331B2EC1D500A91759 /* ProfileEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9D9321B2EC1D500A91759 /* ProfileEditTableViewController.swift */; };
@@ -135,6 +136,7 @@
 		69B7C7B01AE8EC9500CF1F9C /* RendezvousCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B7C7AF1AE8EC9500CF1F9C /* RendezvousCell.swift */; };
 		69BFFA851B661A0100986F6E /* RendezvousCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69BFFA841B661A0100986F6E /* RendezvousCellNib.xib */; };
 		69C3F6AA1AEB6E4400D23907 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C3F6A91AEB6E4400D23907 /* green.png */; };
+		69C4AE061C46E883009BEEC8 /* EventPicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C4AE051C46E883009BEEC8 /* EventPicCell.swift */; };
 		69C5A3B61B940B560007AFBE /* ExRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C5A3B51B940B560007AFBE /* ExRankTableViewCell.swift */; };
 		69C5A3B81B940D860007AFBE /* ExSpotlightUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C5A3B71B940D860007AFBE /* ExSpotlightUser.swift */; };
 		69C5A3BA1B9417630007AFBE /* ExSpotlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C5A3B91B9417630007AFBE /* ExSpotlightViewController.swift */; };
@@ -303,6 +305,7 @@
 		69926B431ACF9C130080E51E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6992EC451AD03AF9009F7197 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
 		699D67FB1B6015A7009783ED /* crush.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crush.jpg; sourceTree = "<group>"; };
+		69A608171C444F0200D57ADC /* placeholder_event.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder_event.jpg; sourceTree = "<group>"; };
 		69A727B61BF52D4F00A8445E /* line1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line1.png; sourceTree = "<group>"; };
 		69A727B81BF5390900A8445E /* line0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line0.png; sourceTree = "<group>"; };
 		69A9D9321B2EC1D500A91759 /* ProfileEditTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditTableViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +334,7 @@
 		69B7C7AF1AE8EC9500CF1F9C /* RendezvousCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendezvousCell.swift; sourceTree = "<group>"; };
 		69BFFA841B661A0100986F6E /* RendezvousCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RendezvousCellNib.xib; sourceTree = "<group>"; };
 		69C3F6A91AEB6E4400D23907 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
+		69C4AE051C46E883009BEEC8 /* EventPicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPicCell.swift; sourceTree = "<group>"; };
 		69C5A3B41B9402330007AFBE /* paper_scroll */ = {isa = PBXFileReference; lastKnownFileType = file; path = paper_scroll; sourceTree = "<group>"; };
 		69C5A3B51B940B560007AFBE /* ExRankTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExRankTableViewCell.swift; sourceTree = "<group>"; };
 		69C5A3B71B940D860007AFBE /* ExSpotlightUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSpotlightUser.swift; sourceTree = "<group>"; };
@@ -417,6 +421,7 @@
 		69058F5C1ACFFCA3003DFB3C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				69A608171C444F0200D57ADC /* placeholder_event.jpg */,
 				69A727B81BF5390900A8445E /* line0.png */,
 				694600791C13ECEF0080E3DE /* expcrush.png */,
 				6946007A1C13ECEF0080E3DE /* expspotlight.png */,
@@ -506,6 +511,7 @@
 			children = (
 				6971CE531BEAA8C700384723 /* EventTitleCell.swift */,
 				6971CE4F1BEAA48700384723 /* EventDetailMainCell.swift */,
+				69C4AE051C46E883009BEEC8 /* EventPicCell.swift */,
 				69D43AEA1AD98214001DD44B /* EventDetailViewController.swift */,
 			);
 			name = EventDetail;
@@ -1058,6 +1064,7 @@
 				695336A61B0B0B54007EF5A9 /* fbRound.png in Resources */,
 				69D420761AFCB4CB0072FCD7 /* notif1.mp3 in Resources */,
 				69C5A3BD1B942DEC0007AFBE /* dukeBlueDevilGrey.png in Resources */,
+				69A608181C444F0200D57ADC /* placeholder_event.jpg in Resources */,
 				6971CE681BEAEB4900384723 /* icon_check.png in Resources */,
 				6971CE691BEAEB4900384723 /* icon_eliza.png in Resources */,
 				6946007F1C13ECEF0080E3DE /* expmore.png in Resources */,
@@ -1093,6 +1100,7 @@
 			files = (
 				69CD64BC1B97FD5D00A232AD /* ExRankingPlaceholderCell.swift in Sources */,
 				69CAB40C1AD8CF3100A266F0 /* ENSideMenu.swift in Sources */,
+				69C4AE061C46E883009BEEC8 /* EventPicCell.swift in Sources */,
 				69AC5C301B9A806D002C2CFA /* ExCrushViewController.swift in Sources */,
 				69810BE91B00930E00B86DD7 /* LoadMoreTableFooterView.swift in Sources */,
 				69D27C7D1B9CB9CD00C1A000 /* ExSpDetailTableViewController.swift in Sources */,

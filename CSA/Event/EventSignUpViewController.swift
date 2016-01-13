@@ -10,9 +10,9 @@ import UIKit
 
 class EventSignUpViewController: UIViewController, UIWebViewDelegate, ENSideMenuDelegate {
     
-    @IBOutlet weak var lblTitle: UILabel!
+    /*@IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblWhen: UILabel!
-    @IBOutlet weak var lblWhere: UILabel!
+    @IBOutlet weak var lblWhere: UILabel!*/
     
     @IBOutlet weak var openView: UIView!
     @IBOutlet weak var closeView: UIView!
@@ -36,11 +36,11 @@ class EventSignUpViewController: UIViewController, UIWebViewDelegate, ENSideMenu
         selectedEvent = AppData.EventData.selectedEvent
         AppData.EventData.signupVC = self
         
-        lblTitle.text = selectedEvent.title
+        /*lblTitle.text = selectedEvent.title
         let formatter = NSDateFormatter()
         formatter.dateFormat = "E, MM-dd 'at' HH:mm"
         lblWhen.text = "When: " + formatter.stringFromDate(selectedEvent.date)
-        lblWhere.text = "Where: \(selectedEvent.location)"
+        lblWhere.text = "Where: \(selectedEvent.location)"*/
         
         /*
         closeView.layer.cornerRadius = 20.0

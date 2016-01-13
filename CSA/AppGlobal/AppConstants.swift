@@ -17,6 +17,13 @@ struct AppConstants {
         static let tintDefault = UIColor(red:0.0, green:122.0/255.0, blue:1.0, alpha:1.0)
         static let color0 = UIColor(red: 216, green: 0, blue: 0, alpha: 1.0)
     }
+    struct ColorSet0 {
+        static let c0 = UIColor(red: 248/255, green: 177/255, blue: 149/255, alpha: 1) //rgb(248, 177, 149)
+        static let c1 = UIColor(red: 246/255, green: 114/255, blue: 128/255, alpha: 1) //rgb(246, 114, 128)
+        static let c2 = UIColor(red: 192/255, green: 108/255, blue: 132/255, alpha: 1) //rgb(192, 108, 132)
+        static let c3 = UIColor(red: 108/255, green: 91/255, blue: 123/255, alpha: 1) //rgb(108, 91, 123)
+        static let c4 = UIColor(red: 53/255, green: 92/255, blue: 125/255, alpha: 1) //rgb(53, 92, 125)
+    }
     struct SoundFile {
         static let NOTIF_1 = "notif1.mp3"
     }

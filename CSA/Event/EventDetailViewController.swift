@@ -15,8 +15,9 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     var refreshControl:UIRefreshControl!
     
-    let ReuseID_Main = "IDMainPostCell"
     let ReuseID_Title = "IDTitleCell"
+    let ReuseID_Main = "IDMainPostCell"
+    let ReuseID_Pic = "IDPicCell"
     
     
     @IBAction func onClickMore(sender: AnyObject) {
@@ -61,7 +62,7 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return selectedEvent.propic == nil ? 2 : 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -75,8 +76,13 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
             let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_Main, forIndexPath: indexPath) as! EventDetailMainCell
             cell.initWithEvent(selectedEvent)
             return cell
+            
+        case 2:
+            let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_Pic, forIndexPath: indexPath) as! EventPicCell
+            cell.initWithEvent(selectedEvent, fromTableView: tableView, forIndexPath: indexPath)
+            return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("gg", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("may the crash be with you", forIndexPath: indexPath)
             return cell
         }
     }

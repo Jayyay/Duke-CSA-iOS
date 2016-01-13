@@ -19,8 +19,8 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblTag: UILabel!
     @IBOutlet weak var ctTagHeight: NSLayoutConstraint!
-    @IBOutlet weak var ctProfileWidth: NSLayoutConstraint!
-    
+    @IBOutlet weak var ctProfileHeight: NSLayoutConstraint!
+
     var childEvent:Event!
     let colorComing = AppConstants.Color.cuteRed, colorOld = AppConstants.Color.DukeBlue
     
@@ -30,7 +30,7 @@ class EventCell: UITableViewCell {
         lblTag.layer.masksToBounds = true
     }
     
-    func initWithEvent(evt:Event){
+    func initWithEvent(evt:Event, fromTableView tableView:UITableView, forIndexPath indexPath:NSIndexPath){
         childEvent = evt
         
         //title
@@ -54,11 +54,13 @@ class EventCell: UITableViewCell {
             ctTagHeight.constant = 15
         }
         
-        if evt.pictureFile.count == 0 {
+        if let p = evt.propic {
+            imgProfile.hidden = false //TODO
+            ctProfileHeight.constant = 185
+            AppFunc.downloadPictureFile(file: p, saveToImgView: imgProfile, inTableView: tableView, forIndexPath: indexPath)
+            }else {
             imgProfile.hidden = true
-            ctProfileWidth.constant = 0
-        }else {
-            imgProfile.hidden = true //TODO
+            ctProfileHeight.constant = 0
         }
         
         layoutIfNeeded()

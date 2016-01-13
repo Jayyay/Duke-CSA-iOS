@@ -32,6 +32,8 @@ class UserProfileTableViewController: UITableViewController {
     @IBOutlet weak var tvAbout: UITextView!
     
     override func viewDidLoad() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
         imgPropic.layer.cornerRadius = imgPropic.frame.height * 0.5
         imgPropic.layer.masksToBounds = true
         
@@ -74,13 +76,6 @@ class UserProfileTableViewController: UITableViewController {
         AppData.GlobalData.selectedImage = imgPropic.image
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardID.ZOOM_IMAGE) as! ZoomImageViewController
         self.presentViewController(vc, animated: true, completion: nil)
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0 && indexPath.row == 0 {
-            return 100
-        }
-        return 44
     }
     
     deinit{

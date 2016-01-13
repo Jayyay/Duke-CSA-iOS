@@ -51,7 +51,8 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
     var bulletinIsLoadingMore: Bool = false
     var bulletinCouldLoadMore: Bool = false
     
-    // MARK: - Segment control
+    // MARK: - Segment control deprecated
+    /*
     @IBOutlet weak var segCtrl: UISegmentedControl!
     
     @IBAction func segIndexChanged(sender: AnyObject) {
@@ -79,18 +80,19 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         default:
             break
         }
-    }
+    }*/
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad - EventTableViewController")
+        generalInitUI()
         eventTableInitUI()
-        bulletinTableInit()
+        //bulletinTableInit()
         
-        shouldPresentViewOfSegIndex(0, reload: false)
-        segCtrl.layer.cornerRadius = 3.0
-        segCtrl.layer.masksToBounds = true
+        //shouldPresentViewOfSegIndex(0, reload: false)
+        //segCtrl.layer.cornerRadius = 3.0
+        //segCtrl.layer.masksToBounds = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -99,9 +101,9 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         hideSideMenuView()
         
         AppData.EventData.wipeSelectedEventData()
-        AppData.BulletinData.wipeSelectedBulletinData()
-        eventTableRefresher.endRefreshing()
-        bulletinTableRefresher.endRefreshing()
+        //AppData.BulletinData.wipeSelectedBulletinData()
+        eventTableRefresher?.endRefreshing()
+        //bulletinTableRefresher?.endRefreshing()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -127,7 +129,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
             eventTableAutoRefresh()
         }
         if AppStatus.BulletinStatus.tableShouldRefresh {
-            bulletinTableAutoRefresh()
+            //bulletinTableAutoRefresh()
         }
         
     }
@@ -137,9 +139,13 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
+    func generalInitUI(){
+        self.title = "Events"
+    }
     
     // MARK: - Events
     func eventTableInitUI(){
+        currentTableView = eventTableView
         eventTableView.rowHeight = UITableViewAutomaticDimension
         eventTableView.estimatedRowHeight = 100
         
@@ -211,7 +217,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
             return
         }
         if self.eventQueryCompletionCounter >= 2 {
-            eventTableRefresher.endRefreshing()
+            eventTableRefresher!.endRefreshing()
             if error == nil{
                 /*if currentTableView == eventTableView {
                     self.view.makeToast(message: "Events refresh succeeded", duration: 0.5, position: HRToastPositionCenterAbove)
@@ -366,20 +372,16 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         return 1
     }
     
-    func setCellTranslucent(cell:UITableViewCell) {
-        
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if tableView == eventTableView {
             let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_EventCell, forIndexPath: indexPath) as! EventCell
-            cell.initWithEvent(events[indexPath.section])
-            AppFunc.setCellTransparent(cell)
+            cell.initWithEvent(events[indexPath.section], fromTableView: tableView, forIndexPath: indexPath)
+            //AppFunc.setCellTransparent(cell)
             return cell
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_BulletinCell, forIndexPath: indexPath) as! BulletinCell
             cell.initWithBulletin(bulletins[indexPath.section])
-            AppFunc.setCellTransparent(cell)
+            //AppFunc.setCellTransparent(cell)
             return cell
         }
     }

@@ -29,6 +29,23 @@ struct AppFunc{
         cell.backgroundView = UIView()
         cell.selectedBackgroundView = UIView()
     }
+    
+    static func downloadPictureFile(file file:PFFile, saveToImgView:UIImageView, inTableView tableView:UITableView!, forIndexPath indexPath:NSIndexPath!) {
+        saveToImgView.image = UIImage(named: "placeholder_event")
+        file.getDataInBackgroundWithBlock({ (data:NSData?, error:NSError?) -> Void in
+            if let d = data {
+                if tableView != nil && indexPath != nil && tableView.cellForRowAtIndexPath(indexPath) != nil {//cell in table is visible
+                    dispatch_async(dispatch_get_main_queue(), { _ in
+                        saveToImgView.hidden = false
+                        saveToImgView.image = UIImage(data: d)
+                    })
+                }
+            }else{
+                print("Can't retrieve picture file: \(error)")
+            }
+        })
+    }
+    
     static func downloadPropicFromParse(user user:PFUser, saveToImgView:UIImageView, inTableView tableView:UITableView!, forIndexPath indexPath:NSIndexPath!) {
         saveToImgView.image = UIImage(named: "placeholder-user")
         if let propicFile = user[PFKey.USER.PROPIC_COMPRESSED] as? PFFile {

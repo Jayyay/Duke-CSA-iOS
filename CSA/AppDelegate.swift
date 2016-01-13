@@ -25,14 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //navigation bar style
         UINavigationBar.appearance().barStyle = UIBarStyle.BlackOpaque
-        UINavigationBar.appearance().barTintColor = AppConstants.Color.color0
-        UINavigationBar.appearance().translucent = true
+        UINavigationBar.appearance().barTintColor = AppConstants.ColorSet0.c2
+        UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         //tab bar style
-        UITabBar.appearance().barTintColor = UIColor(red: 232/255, green: 248/255, blue: 247/255, alpha: 1)
+        UITabBar.appearance().barTintColor = AppConstants.ColorSet0.c4
         UITabBar.appearance().translucent = true
+        UITabBar.appearance().tintColor = UIColor.whiteColor()
         
         /*notification handled
         if let notif = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {

@@ -27,6 +27,5 @@ class KeyboardInputView: UIView {
         txtview.returnKeyType = UIReturnKeyType.Send
         txtview.enablesReturnKeyAutomatically = true
         txtview.userInteractionEnabled = true
-        txtview.autoresizingMask = UIViewAutoresizing.FlexibleHeight
     }
 }

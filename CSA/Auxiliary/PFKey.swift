@@ -43,7 +43,7 @@ struct PFKey {
         static let TITLE = "title"
         static let WHEN = "when"
         static let WHERE = "where"
-        static let PICTURE = "eventPictureFile"
+        static let PICTURE = "profilePic"
         static let DETAIL = "detail"
         static let NEED_SIGN_UP = "needToSignUp"
         static let OPEN_FOR_SIGN_UP = "openForSignUp"

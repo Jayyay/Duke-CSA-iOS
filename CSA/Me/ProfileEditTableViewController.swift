@@ -235,6 +235,8 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
     }
     
     func initUI(){
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
         imgPropic.layer.cornerRadius = imgPropic.frame.height * 0.5
         imgPropic.layer.masksToBounds = true
         

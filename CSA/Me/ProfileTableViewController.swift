@@ -34,6 +34,8 @@ class ProfileTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
         imgPropic.layer.cornerRadius = imgPropic.frame.height * 0.5
         imgPropic.layer.masksToBounds = true
         tvAbout.layer.cornerRadius = 5.0
@@ -57,12 +59,6 @@ class ProfileTableViewController: UITableViewController {
         lblRelationship.text = u[PFKey.USER.RELATIONSHIP] as? String
         tvAbout.text = u[PFKey.USER.ABOUT_ME] as? String
     }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0 && indexPath.row == 0 {
-            return 100
-        }
-        return 44
-    }
+
     
 }
