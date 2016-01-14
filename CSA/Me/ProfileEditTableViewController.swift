@@ -72,6 +72,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
     var pickerView = UIPickerView()
     @IBOutlet weak var datePicker: UIDatePicker!
     var expand: NSIndexPath?
+    var lastPickerView: UIPickerView?
     enum PickCategory: Int {
         case Gender = 0
         case Year = 1
@@ -330,24 +331,41 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
         switch (indexPath.section, indexPath.row) {
         case (0, 2):
             toPick = .Gender
+            if let last = lastPickerView {
+                last.removeFromSuperview()
+            }
+            pickerView.reloadAllComponents()
+            cell?.contentView.addSubview(pickerView)
+            lastPickerView = pickerView
         case (0, 3):
             toPick = .Birthday
+            if let last = lastPickerView {
+                last.removeFromSuperview()
+            }
             datePicker.hidden = false
             expand = indexPath
             tableView.reloadData()
             return
         case (1, 0):
             toPick = .Year
+            if let last = lastPickerView {
+                last.removeFromSuperview()
+            }
+            pickerView.reloadAllComponents()
+            cell?.contentView.addSubview(pickerView)
+            lastPickerView = pickerView
         case (2, 1):
             toPick = .Relationship
+            if let last = lastPickerView {
+                last.removeFromSuperview()
+            }
+            pickerView.reloadAllComponents()
+            cell?.contentView.addSubview(pickerView)
+            lastPickerView = pickerView
         default:
             return
         }
         expand = indexPath
-        cell?.contentView.addSubview(pickerView)
-        //pickerView.removeConstraints(pickerView.constraints)
-        //pickerView.addConstraint(NSLayoutConstraint(item: pickerView, attribute: .Bottom, relatedBy: .Equal, toItem: cell?.contentView, attribute: .BottomMargin, multiplier: 1, constant: 3))
-        pickerView.reloadAllComponents()
         tableView.reloadData()
     }
     
