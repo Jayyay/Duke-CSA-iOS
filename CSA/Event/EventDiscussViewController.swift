@@ -33,6 +33,8 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
     var postAllowed = true
     
     var kbInput:KeyboardInputView!
+    var lineOfText = 0
+    var lastHeight = CGFloat(0)
     
     // MARK: - IBAction
     @IBAction func onPost(sender: AnyObject) {
@@ -93,11 +95,12 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
     func keyboardInputViewInit(){
         let nib = UINib(nibName: "KeyboardInputViewNib", bundle: nil)
         kbInput = nib.instantiateWithOwner(self, options: nil)[0] as! KeyboardInputView
+        kbInput.frame = CGRectMake(0, self.view.bounds.height, self.view.bounds.width, 49)
         kbInput.txtview.delegate = self
-        kbInput.userInteractionEnabled = true
-        kbInput.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 50)
-        kbInput.hidden = true
+        kbInput.translatesAutoresizingMaskIntoConstraints = true
         self.view.addSubview(kbInput)
+        kbInput.hidden = false
+        print("fffff\(kbInput.frame)")
     }
     
     func initUI() {
@@ -117,7 +120,6 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         tableRefresher = UIRefreshControl()
         tableRefresher.addTarget(self, action: Selector("discussRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(tableRefresher)
-        keyboardInputViewInit()
         registerForKeyboardNotifications()
     }
     
@@ -129,6 +131,14 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         print("viewDidLoad - EventDiscussViewController")
         initUI()
         discussTableAutoRefresh()
+    }
+    
+    var firstTimeLayingOut: Bool = true
+    override func viewWillLayoutSubviews() {
+        if firstTimeLayingOut {
+            keyboardInputViewInit()
+            firstTimeLayingOut = false
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -241,6 +251,39 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         kbInput.hidden = true
     }
     
+    /*
+    func textViewDidChange(textView: UITextView) {
+        print(textView)
+        if (textView === kbInput) {
+            print("did change ", kbInput.frame)
+            let fixedWidth = textView.frame.size.width
+            //textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+            let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+            if (newSize.height == lastHeight) || (newSize.height > lastHeight && lineOfText >= 4) {
+                // no need to resize frame
+                return
+            }
+            lineOfText += newSize.height > lastHeight ? 1 : -1
+            lastHeight = newSize.height
+            if lineOfText >= 4 {
+                textView.scrollEnabled = true
+            }else {
+                textView.scrollEnabled = false
+            }
+            
+            var newFrame = textView.frame
+            newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+            newFrame.origin.y = newFrame.origin.y - newSize.height + textView.frame.height
+            
+            var boxFrame = kbInput.frame
+            boxFrame.origin.y = boxFrame.origin.y - newSize.height + textView.frame.height
+            boxFrame.size = CGSize(width: boxFrame.width, height: newSize.height + 16)
+            
+            textView.frame = newFrame;
+            kbInput.frame = boxFrame
+        }
+    }
+    */
     func registerForKeyboardNotifications ()-> Void   {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
@@ -252,7 +295,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
             let info : NSDictionary = notification.userInfo!
             let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
             kbInput.hidden = false
-            kbInput.frame.origin.y = keyboardRect.origin.y - kbInput.frame.height
+            kbInput.frame.origin.y = keyboardRect.origin.y - kbInput.frame.height - 64
             let y = scrollToY - (self.view.frame.height - keyboardRect.height - kbInput.frame.height)
             if y > -tableRefresher.frame.height {
                 self.tableView.setContentOffset(CGPointMake(0, y), animated: true)
@@ -347,7 +390,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
                 return
             }
             //2.reply to other reply
-            kbInput.txtview.delegate = cell
+            kbInput.txtview.delegate = self
             replyPressed(scrollTo: cell.frame.maxY)
         }
     }

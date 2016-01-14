@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -20,10 +20,10 @@
             </subviews>
             <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="Fhe-Ni-rjn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="9BB-yu-2aA"/>
-                <constraint firstAttribute="trailing" secondItem="Fhe-Ni-rjn" secondAttribute="trailing" constant="8" id="Qdg-8U-ZMS"/>
-                <constraint firstAttribute="bottom" secondItem="Fhe-Ni-rjn" secondAttribute="bottom" constant="8" id="SI6-0e-6U0"/>
-                <constraint firstItem="Fhe-Ni-rjn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cBI-fl-tor"/>
+                <constraint firstAttribute="trailing" secondItem="Fhe-Ni-rjn" secondAttribute="trailing" constant="8" id="3xG-HY-rdW"/>
+                <constraint firstAttribute="bottom" secondItem="Fhe-Ni-rjn" secondAttribute="bottom" constant="8" id="Hqb-Uc-aOB"/>
+                <constraint firstItem="Fhe-Ni-rjn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="JmG-ej-4zx"/>
+                <constraint firstItem="Fhe-Ni-rjn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="ymn-rF-SId"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

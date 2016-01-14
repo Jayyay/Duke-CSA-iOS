@@ -34,12 +34,17 @@ class EventReplyCell: UITableViewCell, UITextViewDelegate {
     
     //called everytime textview's text is changed. Used here to detect return (send) pressed.
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        print(textView)
         if text == "\n" {
             onPostReply(textView.text)
             textView.resignFirstResponder()
             return false
         }
         return true
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        print(textView)
     }
     
     func onPostReply(txt:String) {

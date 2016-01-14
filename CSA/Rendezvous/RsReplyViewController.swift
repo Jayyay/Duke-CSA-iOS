@@ -228,7 +228,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         let info : NSDictionary = notification.userInfo!
         let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
         kbInput.hidden = false
-        kbInput.frame.origin.y = keyboardRect.origin.y - kbInput.frame.height
+        kbInput.frame.origin.y = keyboardRect.origin.y - kbInput.bounds.height - 64
         print(kbInput.frame)
         let y = scrollToY - (UIScreen.mainScreen().bounds.height - keyboardRect.height - kbInput.frame.height)
         if y > -tableRefresher.frame.height {
@@ -289,11 +289,12 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     func keyboardInputViewInit(){
         let nib = UINib(nibName: "KeyboardInputViewNib", bundle: nil)
         kbInput = nib.instantiateWithOwner(self, options: nil)[0] as! KeyboardInputView
-        kbInput.frame = CGRectMake(0, self.view.frame.height, self.view.frame.width, 49)
+        kbInput.frame = CGRectMake(0, self.view.bounds.height, self.view.bounds.width, 49)
         kbInput.txtview.delegate = self
+        kbInput.translatesAutoresizingMaskIntoConstraints = true
         self.view.addSubview(kbInput)
         kbInput.hidden = true
-        print(kbInput.frame)
+        print("fffff\(kbInput.frame)")
     }
     
     func initUI() {
@@ -308,9 +309,11 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         tableRefresher.addTarget(self, action: Selector("replyRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(tableRefresher)
         
-        keyboardInputViewInit()
+        
         registerForKeyboardNotifications()
     }
+    
+    var firstTimeLayingOut: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -322,6 +325,13 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         self.sideMenuController()?.sideMenu?.delegate = self
         AppStatus.RendezvousStatus.currentlyDisplayedView = AppStatus.RendezvousStatus.ViewName.Reply
         self.sideMenuController()?.sideMenu?.resetMenuSelectionForRow(AppStatus.RendezvousStatus.ViewName.Reply.rawValue)
+        
+    }
+    override func viewWillLayoutSubviews() {
+        if firstTimeLayingOut {
+            keyboardInputViewInit()
+            firstTimeLayingOut = false
+        }
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
