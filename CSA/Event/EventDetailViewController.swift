@@ -21,7 +21,7 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     @IBAction func onClickMore(sender: AnyObject) {
-        self.sideMenuController()?.sideMenu?.showSideMenu()
+        self.sideMenuController()?.sideMenu?.toggleMenu()
     }
     
     // MARK: - Life Cycle
@@ -79,7 +79,7 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
             
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_Pic, forIndexPath: indexPath) as! EventPicCell
-            cell.initWithEvent(selectedEvent, fromTableView: tableView, forIndexPath: indexPath)
+            cell.initWithEvent(selectedEvent, fromVC: self, fromTableView: tableView, forIndexPath: indexPath)
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("may the crash be with you", forIndexPath: indexPath)

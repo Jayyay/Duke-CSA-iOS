@@ -8,7 +8,7 @@
 
 class RsMenuTableViewController: UITableViewController {
     var sourceNavigationController : ENSideMenuProtocol!
-    let vcNames:[String] = ["Comments","Goings","Likes"]
+    let vcNames:[String] = ["Comments","Goings","Likes","→"]
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,7 +50,11 @@ class RsMenuTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        if indexPath.row < 3{
+            return 50
+        }else{
+            return 30
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -62,6 +66,11 @@ class RsMenuTableViewController: UITableViewController {
         
         if indexPath.row == 0 {//choose to go to main view, just pop
             sourceNavigationController.popToMainView()
+            return
+        }
+        
+        if indexPath.row == 3 {//right arrow chosen, simply close the side menu
+            sourceNavigationController.sideMenu?.hideSideMenu()
             return
         }
         

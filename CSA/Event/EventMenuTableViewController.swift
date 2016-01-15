@@ -10,7 +10,7 @@ import UIKit
 
 class EventMenuTableViewController: UITableViewController {
     var sourceNavigationController : ENSideMenuProtocol!
-    let vcNames:[String] = ["Details","Sign Up","Discussions"]
+    let vcNames:[String] = ["Details","Sign Up","Discussions","→"]
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,8 +52,8 @@ class EventMenuTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row < 4{
-            return 50.0
+        if indexPath.row < 3{
+            return 50
         }else{
             return 30
         }
@@ -61,6 +61,7 @@ class EventMenuTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if (indexPath.row == AppStatus.EventStatus.currentlyDisplayedView.rawValue) {
             print("select same row, nothing happens")
             return
@@ -71,6 +72,11 @@ class EventMenuTableViewController: UITableViewController {
         
         if indexPath.row == 0 {//choose to go to main view, just pop
             sourceNavigationController.popToMainView()
+            return
+        }
+        
+        if indexPath.row == 3 {//right arrow chosen, simply close the side menu
+            sourceNavigationController.sideMenu?.hideSideMenu()
             return
         }
         

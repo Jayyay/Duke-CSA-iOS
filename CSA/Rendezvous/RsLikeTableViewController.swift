@@ -54,12 +54,12 @@ class RsLikeTableViewController: UITableViewController, ENSideMenuDelegate {
     
     // MARK: - Data Query
     func rsLikeAutoRefresh(){
-        refreshControl!.beginRefreshing()
+        /*refreshControl!.beginRefreshing()
         if tableView.contentOffset.y == 0 {
             UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
                 self.tableView.contentOffset.y = -self.refreshControl!.frame.height
                 }, completion: nil)
-        }
+        }*/
         rsLikeRefreshSelectorCacheFirst()
     }
     
@@ -91,7 +91,6 @@ class RsLikeTableViewController: UITableViewController, ENSideMenuDelegate {
     }
     
     func queryCompletionUIHandler(error error: NSError!) {
-        refreshControl!.endRefreshing()
         if self.queryCompletionCounter == 1 {return}
         if self.queryCompletionCounter >= 2 {
             refreshControl!.endRefreshing()

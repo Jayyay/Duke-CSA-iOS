@@ -13,6 +13,7 @@ class ExCrushDetailViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var tableView: UITableView!
     var refreshControl:UIRefreshControl!
     let ReuseID_UserCell = "IDUserCell"
+    let ReuseID_CountCell = "IDCrushCountCell"
     let ReuseID_NoCrushCell = "IDNoCrushCell"
     let ReuseID_NoMutualCell = "IDNoMutualCell"
     
@@ -210,14 +211,16 @@ class ExCrushDetailViewController: UIViewController, UITableViewDataSource, UITa
     
     // MARK: - Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return mutualCrushArray.count > 0 ? mutualCrushArray.count : 1
+            return 1
         case 1:
+            return mutualCrushArray.count > 0 ? mutualCrushArray.count : 1
+        case 2:
             return AppData.CrushData.myCrusheeArray.count > 0 ? AppData.CrushData.myCrusheeArray.count : 1
         default:
             return 0
@@ -227,8 +230,10 @@ class ExCrushDetailViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Mutual Crush"
+            return "Crush Count"
         case 1:
+            return "Mutual Crush"
+        case 2:
             return "My Crush"
         default:
             return nil
@@ -238,7 +243,11 @@ class ExCrushDetailViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case 0: //mutual
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_CountCell, forIndexPath: indexPath) as! ExCrushCountCell
+            cell.initWithCount(AppData.CrushData.myCrusherArray.count)
+            return cell
+        case 1: //mutual
             if mutualCrushArray.count > 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_UserCell, forIndexPath: indexPath) as! BasicUserCell
                 cell.initWithUser(mutualCrushArray[indexPath.row], fromTableView: tableView, forIndexPath: indexPath)

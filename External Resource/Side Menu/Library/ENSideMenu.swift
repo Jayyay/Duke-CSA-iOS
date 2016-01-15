@@ -41,7 +41,6 @@ public extension UIViewController {
     }
     
     public func showSideMenuView () {
-        
         sideMenuController()?.sideMenu?.showSideMenu()
     }
     
@@ -80,7 +79,7 @@ public extension UIViewController {
 
 public class ENSideMenu : NSObject, UIGestureRecognizerDelegate {
     
-    public var menuWidth : CGFloat = 160.0 {
+    public var menuWidth : CGFloat = 120 {
         didSet {
             needUpdateApperance = true
             updateFrame()

@@ -251,7 +251,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         kbInput.hidden = true
     }
     
-    /*
+    
     func textViewDidChange(textView: UITextView) {
         print(textView)
         if (textView === kbInput) {
@@ -283,7 +283,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
             kbInput.frame = boxFrame
         }
     }
-    */
+    
     func registerForKeyboardNotifications ()-> Void   {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
@@ -296,7 +296,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
             let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
             kbInput.hidden = false
             kbInput.frame.origin.y = keyboardRect.origin.y - kbInput.frame.height - 64
-            let y = scrollToY - (self.view.frame.height - keyboardRect.height - kbInput.frame.height)
+            let y = scrollToY - (self.view.frame.height - keyboardRect.height - kbInput.frame.height - 64)
             if y > -tableRefresher.frame.height {
                 self.tableView.setContentOffset(CGPointMake(0, y), animated: true)
             }
@@ -391,6 +391,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
             }
             //2.reply to other reply
             kbInput.txtview.delegate = self
+            kbInput.hidden = false
             replyPressed(scrollTo: cell.frame.maxY)
         }
     }

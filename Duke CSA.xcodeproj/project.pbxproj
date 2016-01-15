@@ -155,6 +155,8 @@
 		69CD64B81B97F22900A232AD /* under_construction in Resources */ = {isa = PBXBuildFile; fileRef = 69CD64B51B97EF5D00A232AD /* under_construction */; };
 		69CD64BA1B97F8ED00A232AD /* WANTED.png in Resources */ = {isa = PBXBuildFile; fileRef = 69CD64B91B97F8ED00A232AD /* WANTED.png */; };
 		69CD64BC1B97FD5D00A232AD /* ExRankingPlaceholderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CD64BB1B97FD5D00A232AD /* ExRankingPlaceholderCell.swift */; };
+		69D0FE571C483A2F00064A94 /* ExCrushCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D0FE561C483A2F00064A94 /* ExCrushCountCell.swift */; };
+		69D0FE5B1C4888B500064A94 /* placeholder-event.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69D0FE5A1C4888B500064A94 /* placeholder-event.jpg */; };
 		69D1B8041B6A4D1800D6B2FF /* DukeChapel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69D1B8031B6A4D1800D6B2FF /* DukeChapel.jpg */; };
 		69D1B8061B6A53F200D6B2FF /* MeAboutDukeCSAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1B8051B6A53F200D6B2FF /* MeAboutDukeCSAViewController.swift */; };
 		69D1B8081B6A779500D6B2FF /* gardenNoLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69D1B8071B6A779500D6B2FF /* gardenNoLogo.jpg */; };
@@ -353,6 +355,8 @@
 		69CD64B61B97EFCD00A232AD /* spotlight_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spotlight_bg.jpg; sourceTree = "<group>"; };
 		69CD64B91B97F8ED00A232AD /* WANTED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WANTED.png; sourceTree = "<group>"; };
 		69CD64BB1B97FD5D00A232AD /* ExRankingPlaceholderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExRankingPlaceholderCell.swift; sourceTree = "<group>"; };
+		69D0FE561C483A2F00064A94 /* ExCrushCountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExCrushCountCell.swift; sourceTree = "<group>"; };
+		69D0FE5A1C4888B500064A94 /* placeholder-event.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "placeholder-event.jpg"; sourceTree = "<group>"; };
 		69D1B8031B6A4D1800D6B2FF /* DukeChapel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DukeChapel.jpg; sourceTree = "<group>"; };
 		69D1B8051B6A53F200D6B2FF /* MeAboutDukeCSAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeAboutDukeCSAViewController.swift; sourceTree = "<group>"; };
 		69D1B8071B6A779500D6B2FF /* gardenNoLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gardenNoLogo.jpg; sourceTree = "<group>"; };
@@ -421,6 +425,7 @@
 		69058F5C1ACFFCA3003DFB3C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				69D0FE5A1C4888B500064A94 /* placeholder-event.jpg */,
 				69A608171C444F0200D57ADC /* placeholder_event.jpg */,
 				69A727B81BF5390900A8445E /* line0.png */,
 				694600791C13ECEF0080E3DE /* expcrush.png */,
@@ -552,12 +557,12 @@
 		692F12501AD983E1000A67A0 /* Me */ = {
 			isa = PBXGroup;
 			children = (
-				69AC5C281B9A2060002C2CFA /* Notifications */,
-				692195F21B6A8ED100F9A501 /* Bug Report */,
-				69EBCA5F1B2C123F00A889FC /* Profile */,
 				692BAE3B1ADF53EB0008F29B /* MeNavigationController.swift */,
 				692F12561AD983E1000A67A0 /* MeTableViewController.swift */,
 				69D1B8051B6A53F200D6B2FF /* MeAboutDukeCSAViewController.swift */,
+				69AC5C281B9A2060002C2CFA /* Notifications */,
+				692195F21B6A8ED100F9A501 /* Bug Report */,
+				69EBCA5F1B2C123F00A889FC /* Profile */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -717,6 +722,7 @@
 			children = (
 				697D89C81B64030D00D4B05F /* ExCrush.swift */,
 				69AC5C2F1B9A806D002C2CFA /* ExCrushViewController.swift */,
+				69D0FE561C483A2F00064A94 /* ExCrushCountCell.swift */,
 				69AC5C311B9A98F9002C2CFA /* ExCrushDetailViewController.swift */,
 			);
 			name = Crush;
@@ -1040,6 +1046,7 @@
 				69CD64BA1B97F8ED00A232AD /* WANTED.png in Resources */,
 				695B172E1AF9EBBA00EBC1DF /* dukeBlueDevil0 copy.png in Resources */,
 				696E3ECF1B8EC5590016658F /* DukeChapelCut.jpg in Resources */,
+				69D0FE5B1C4888B500064A94 /* placeholder-event.jpg in Resources */,
 				69BFFA851B661A0100986F6E /* RendezvousCellNib.xib in Resources */,
 				6946007D1C13ECEF0080E3DE /* expcrush.png in Resources */,
 				69339C1F1B650E3B00EC8D99 /* Garden_5.jpg in Resources */,
@@ -1144,6 +1151,7 @@
 				692195F11B6A8B0A00F9A501 /* MeReportBugTableViewController.swift in Sources */,
 				69D420791AFD20600072FCD7 /* BreakOutToRefreshView.swift in Sources */,
 				69926AF71ACF94C60080E51E /* AppDelegate.swift in Sources */,
+				69D0FE571C483A2F00064A94 /* ExCrushCountCell.swift in Sources */,
 				692195F51B6A8F0D00F9A501 /* BasicPostCell.swift in Sources */,
 				693D92591AE111F9009A2758 /* EventDiscussViewController.swift in Sources */,
 				6979186A1AFB560C0098CAFB /* UserProfileTableViewController.swift in Sources */,

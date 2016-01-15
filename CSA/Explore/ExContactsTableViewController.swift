@@ -143,12 +143,15 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
     
     // MARK: - Life Cycle
     func initUI() {
+        
         self.navigationItem.title = "Contacts"
         
         refreshControl = UIRefreshControl()
         //refreshControl!.attributedTitle = NSAttributedString(string: "Refreshing")
         refreshControl!.addTarget(self, action: Selector("refreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
         searchController = UISearchController(searchResultsController:nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false

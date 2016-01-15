@@ -40,8 +40,8 @@ class ProfileTableViewController: UITableViewController {
         imgPropic.layer.masksToBounds = true
         tvAbout.layer.cornerRadius = 5.0
         tvAbout.layer.masksToBounds = true
-        tvAbout.layer.borderColor = UIColor.blackColor().CGColor
-        tvAbout.layer.borderWidth = 0.5
+        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("tapView:"))
+        imgPropic.gestureRecognizers = [tapGesture]
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,6 +59,23 @@ class ProfileTableViewController: UITableViewController {
         lblRelationship.text = u[PFKey.USER.RELATIONSHIP] as? String
         tvAbout.text = u[PFKey.USER.ABOUT_ME] as? String
     }
-
+    
+    /*
+    let tapGesture = UITapGestureRecognizer(target: self, action: Selector("tapView:"))
+    imgPropic.gestureRecognizers = [tapGesture]
+    */
+    func tapView(gesture: UITapGestureRecognizer) {
+        print("tap image")
+        AppData.ImageData.userPropicMode = true
+        AppData.ImageData.selectedUser = PFUser.currentUser()
+        AppData.ImageData.selectedImage = imgPropic.image
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardID.ZOOM_IMAGE) as! ZoomImageViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     
 }

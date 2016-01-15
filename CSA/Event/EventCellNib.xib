@@ -35,7 +35,7 @@
                                 <color key="textColor" red="0.42352941176470588" green="0.35686274509803922" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DukeChapel.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="tQY-Mn-s2w">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-event.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="tQY-Mn-s2w">
                                 <rect key="frame" x="16" y="115.5" width="288" height="185"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="185" id="81V-zZ-G3B"/>
@@ -102,6 +102,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="DukeChapel.jpg" width="2000" height="1000"/>
+        <image name="placeholder-event.jpg" width="800" height="529"/>
     </resources>
 </document>

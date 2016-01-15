@@ -42,7 +42,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
     var saveConnectSuccess = false
     
     var propicChanged = false
-    var timeoutInSec:NSTimeInterval = 5.0
+    var timeoutInSec:NSTimeInterval = 15.0
     let MAXLENGTH_NAME = 24
     
     //valid checking properties
@@ -191,13 +191,13 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage originalImage: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         
         let u = PFUser.currentUser()!
-        let compressedImage = AppTools.compressImage(image)!
+        let compressedImage = AppTools.compressImage(originalImage)!
         imgPropic.image = compressedImage
         u[PFKey.USER.PROPIC_COMPRESSED] = PFFile(name: "compressedPropic.png", data: UIImagePNGRepresentation(compressedImage)!)
-        //u[PFKey.USER.PROPIC_ORIGINAL] = PFFile(name: "propic.png", data: UIImagePNGRepresentation(image))
+        u[PFKey.USER.PROPIC_ORIGINAL] = PFFile(name: "propic.png", data: UIImagePNGRepresentation(originalImage)!)
         propicChanged = true
         self.dismissViewControllerAnimated(true, completion: nil)
     }

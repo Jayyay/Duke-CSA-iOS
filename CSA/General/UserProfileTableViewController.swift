@@ -52,8 +52,6 @@ class UserProfileTableViewController: UITableViewController {
         
         tvAbout.layer.cornerRadius = 5.0
         tvAbout.layer.masksToBounds = true
-        tvAbout.layer.borderColor = UIColor.blackColor().CGColor
-        tvAbout.layer.borderWidth = 0.5
         
         lblName.text = user[PFKey.USER.DISPLAY_NAME] as? String
         lblGender.text = user[PFKey.USER.GENDER] as? String
@@ -70,12 +68,21 @@ class UserProfileTableViewController: UITableViewController {
         imgPropic.gestureRecognizers = [tapGesture]
         AppFunc.downloadPropicFromParse(user: user, saveToImgView: imgPropic, inTableView: tableView, forIndexPath: NSIndexPath(forRow: 0, inSection: 0))
     }
-    
+    /*
+    let tapGesture = UITapGestureRecognizer(target: self, action: Selector("tapView:"))
+    imgPropic.gestureRecognizers = [tapGesture]
+    */
     func tapView(gesture: UITapGestureRecognizer) {
         print("tap image")
-        AppData.GlobalData.selectedImage = imgPropic.image
+        AppData.ImageData.userPropicMode = true
+        AppData.ImageData.selectedUser = user
+        AppData.ImageData.selectedImage = imgPropic.image
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardID.ZOOM_IMAGE) as! ZoomImageViewController
         self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     deinit{

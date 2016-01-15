@@ -13,8 +13,15 @@ struct AppData {
         static var mainTabBarVC:TabBarController!
     }
     */
-    struct GlobalData {
+    struct ImageData {
+        static var userPropicMode = false
+        static var selectedUser:PFUser!
         static var selectedImage:UIImage!
+        static func wipeSelectedImageData() {
+            userPropicMode = false
+            selectedUser = nil
+            selectedImage = nil
+        }
     }
     struct EventData {
         static var selectedEvent:Event!

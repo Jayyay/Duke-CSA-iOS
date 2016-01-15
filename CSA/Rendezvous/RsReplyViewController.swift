@@ -31,7 +31,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     var lastHeight = CGFloat(0)
     
     @IBAction func onClickMore(sender: AnyObject) {
-        self.sideMenuController()?.sideMenu?.showSideMenu()
+        self.sideMenuController()?.sideMenu?.toggleMenu()
     }
     // MARK: - Post & Delete
     func replyPressed(scrollTo scrollTo:CGFloat, replyTo:PFUser?){
@@ -135,8 +135,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.tableView.reloadData()
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { _ in
-        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
         alert.addAction(defaultAction)
         alert.addAction(cancelAction)
         self.presentViewController(alert, animated: true, completion: nil)
@@ -145,12 +144,12 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Data Query
     func rsReplyAutoRefresh(){
-        tableRefresher.beginRefreshing()
+        /*tableRefresher.beginRefreshing()
         if tableView.contentOffset.y == 0 {
             UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
                 self.tableView.contentOffset.y = -self.tableRefresher.frame.height
                 }, completion: nil)
-        }
+        }*/
         replyRefreshSelectorCacheFirst()
     }
     
@@ -184,9 +183,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func queryCompletionUIHandler(error error: NSError!) {
-        if self.queryCompletionCounter == 1 {
-            return
-        }
+        if self.queryCompletionCounter == 1 {return}
         if self.queryCompletionCounter >= 2 {
             tableRefresher.endRefreshing()
             if error != nil{
@@ -230,7 +227,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         kbInput.hidden = false
         kbInput.frame.origin.y = keyboardRect.origin.y - kbInput.bounds.height - 64
         print(kbInput.frame)
-        let y = scrollToY - (UIScreen.mainScreen().bounds.height - keyboardRect.height - kbInput.frame.height)
+        let y = scrollToY - (UIScreen.mainScreen().bounds.height - keyboardRect.height - kbInput.frame.height - 64)
         if y > -tableRefresher.frame.height {
             self.tableView.setContentOffset(CGPointMake(0, y), animated: true)
         }

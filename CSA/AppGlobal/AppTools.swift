@@ -140,11 +140,9 @@ struct AppTools {
         // weird names fall behind
         if getLastName(name1) == "" {
             return false
-        }
-        else if getLastName(name2) == "" {
+        }else if getLastName(name2) == "" {
             return true
-        }
-        else {
+        }else {
             return getLastName(name1).compare(getLastName(name2)).rawValue < 0
         }
     }
