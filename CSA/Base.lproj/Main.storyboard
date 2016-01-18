@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -3953,23 +3953,9 @@ Z290IHRvIHVwZGF0ZQ
                     <view key="view" contentMode="scaleToFill" id="9w5-xG-ME2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ujk-yX-EZf">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Ujk-yX-EZf" firstAttribute="leading" secondItem="9w5-xG-ME2" secondAttribute="leading" id="PwR-tP-ysf"/>
-                            <constraint firstAttribute="trailing" secondItem="Ujk-yX-EZf" secondAttribute="trailing" id="gdk-qi-NL5"/>
-                            <constraint firstItem="Y5O-ot-dwn" firstAttribute="top" secondItem="Ujk-yX-EZf" secondAttribute="bottom" id="hkU-ht-ZNE"/>
-                            <constraint firstItem="Ujk-yX-EZf" firstAttribute="top" secondItem="GjG-ns-LvQ" secondAttribute="bottom" id="i8I-vG-3xG"/>
-                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="imgMain" destination="Ujk-yX-EZf" id="1jN-mI-xIm"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MxV-Fv-QiK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

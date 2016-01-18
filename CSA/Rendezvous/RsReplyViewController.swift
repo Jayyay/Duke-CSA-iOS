@@ -280,8 +280,6 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         return true
     }
     
-    
-    
     //MARK: Init and Life Cycle
     func keyboardInputViewInit(){
         let nib = UINib(nibName: "KeyboardInputViewNib", bundle: nil)

@@ -20,6 +20,9 @@ class EventReplyCell: UITableViewCell, UITextViewDelegate {
     var postConnectSuccess = false
     var postAllowed = true
     
+    var lineOfText = 0
+    var lastHeight = CGFloat(0)
+    
     func initWithReply(rep:Reply, fromVC:EventDiscussViewController) {
         childReply = rep
         parentVC = fromVC
@@ -44,7 +47,34 @@ class EventReplyCell: UITableViewCell, UITextViewDelegate {
     }
     
     func textViewDidChange(textView: UITextView) {
-        print(textView)
+        if textView == kbInput.txtview {
+            print("did change ", textView.frame)
+            let fixedWidth = textView.frame.size.width
+            //textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+            let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+            if (newSize.height == lastHeight) || (newSize.height > lastHeight && lineOfText >= 4) {
+                // no need to resize frame
+                return
+            }
+            lineOfText += newSize.height > lastHeight ? 1 : -1
+            lastHeight = newSize.height
+            if lineOfText >= 4 {
+                textView.scrollEnabled = true
+            } else {
+                textView.scrollEnabled = false
+            }
+            
+            var newFrame = textView.frame
+            newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+            newFrame.origin.y = newFrame.origin.y - newSize.height + textView.frame.height
+            
+            var boxFrame = kbInput.frame
+            boxFrame.origin.y = boxFrame.origin.y - newSize.height + textView.frame.height
+            boxFrame.size = CGSize(width: boxFrame.width, height: newSize.height + 16)
+            
+            textView.frame = newFrame;
+            kbInput.frame = boxFrame
+        }
     }
     
     func onPostReply(txt:String) {
@@ -86,7 +116,7 @@ class EventReplyCell: UITableViewCell, UITextViewDelegate {
             self.parentVC.view.hideToastActivity()
             
             if success{
-                self.parentVC.kbInput.txtview.text = ""
+                kbInput.txtview.text = ""
                 let newRep = Reply(parseObject: newPFReply, parentDis: parentDis)!
                 self.childReply.parent.replies.append(newRep)
                 self.parentVC.view.makeToast(message: "Succeeded.", duration: 0.5, position: HRToastPositionCenterAbove)

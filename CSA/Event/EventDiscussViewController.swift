@@ -8,6 +8,8 @@
 
 import UIKit
 
+var kbInput:KeyboardInputView!
+
 class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, ENSideMenuDelegate{
     
     @IBOutlet weak var tableView: UITableView!
@@ -31,10 +33,6 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
     var queryCompletionCounter:Int = 0
     var postConnectSuccess = false
     var postAllowed = true
-    
-    var kbInput:KeyboardInputView!
-    var lineOfText = 0
-    var lastHeight = CGFloat(0)
     
     // MARK: - IBAction
     @IBAction func onPost(sender: AnyObject) {
@@ -243,45 +241,13 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         scrollToY = scrollTo
         kbInputViewNeeded = true
         kbInput.txtview.becomeFirstResponder() //this leads to keyboardWillShow getting called
+        kbInput.hidden = false
     }
     
     //uitextview for posting a new discussion
     func textViewDidBeginEditing(textView: UITextView) {
         kbInputViewNeeded = false
         kbInput.hidden = true
-    }
-    
-    
-    func textViewDidChange(textView: UITextView) {
-        print(textView)
-        if (textView === kbInput) {
-            print("did change ", kbInput.frame)
-            let fixedWidth = textView.frame.size.width
-            //textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-            let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-            if (newSize.height == lastHeight) || (newSize.height > lastHeight && lineOfText >= 4) {
-                // no need to resize frame
-                return
-            }
-            lineOfText += newSize.height > lastHeight ? 1 : -1
-            lastHeight = newSize.height
-            if lineOfText >= 4 {
-                textView.scrollEnabled = true
-            }else {
-                textView.scrollEnabled = false
-            }
-            
-            var newFrame = textView.frame
-            newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-            newFrame.origin.y = newFrame.origin.y - newSize.height + textView.frame.height
-            
-            var boxFrame = kbInput.frame
-            boxFrame.origin.y = boxFrame.origin.y - newSize.height + textView.frame.height
-            boxFrame.size = CGSize(width: boxFrame.width, height: newSize.height + 16)
-            
-            textView.frame = newFrame;
-            kbInput.frame = boxFrame
-        }
     }
     
     func registerForKeyboardNotifications ()-> Void   {
@@ -389,8 +355,9 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
                 onDeleteReply(cell.childReply, forDis:discussions[indexPath.section], section: NSIndexSet(index: indexPath.section))
                 return
             }
+            
             //2.reply to other reply
-            kbInput.txtview.delegate = self
+            kbInput.txtview.delegate = cell
             kbInput.hidden = false
             replyPressed(scrollTo: cell.frame.maxY)
         }
