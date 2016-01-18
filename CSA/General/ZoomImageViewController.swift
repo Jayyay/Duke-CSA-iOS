@@ -34,6 +34,26 @@ class ZoomImageViewController: UIViewController {
         setZoomParametersForSize(scrollView.bounds.size)
         
         recenterImage()
+        
+        if AppData.ImageData.userPropicMode {//need to download user's full propic
+            if let u = AppData.ImageData.selectedUser {
+                if let fullPropicFile = u[PFKey.USER.PROPIC_ORIGINAL] as? PFFile {
+                    self.view.makeToastActivity(position: HRToastPositionCenterAbove)
+                    fullPropicFile.getDataInBackgroundWithBlock({ (data:NSData?, error:NSError?) -> Void in
+                        self.view.hideToastActivity()
+                        if let d = data {
+                            if self.imageView != nil {
+                                dispatch_async(dispatch_get_main_queue(), { _ in
+                                    self.imageView.image = UIImage(data: d)
+                                })
+                            }
+                        }else{
+                            print("Can't retrieve propic: \(error)")
+                        }
+                    })
+                }
+            }
+        }
     }
     
     func setZoomParametersForSize(scrollViewSize: CGSize) {
@@ -67,10 +87,11 @@ class ZoomImageViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    deinit {
+        print("deinit - ZoomImage")
+        AppData.ImageData.wipeSelectedImageData()
     }
+    
 }
 
 extension ZoomImageViewController: UIScrollViewDelegate {

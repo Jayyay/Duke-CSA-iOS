@@ -14,8 +14,19 @@ class EventTitleCell: UITableViewCell {
     @IBOutlet weak var lblWhere: UILabel!
     
     func initWithEvent(event:Event) {
-        lblWhen.text = "Time: \(AppTools.formatDateWithWeekDay(event.date))"
-        lblWhere.text = "Location: \(event.location)"
+        //when
+        if let d = event.date {
+            lblWhen.text = "Time: \(AppTools.formatDateWithWeekDay(d))"
+        }else {
+            lblWhen.text = "Time: N/A"
+        }
+        
+        //where
+        if let l = event.location {
+            lblWhere.text = "Location: \(l)"
+        }else {
+            lblWhere.text = "Location: N/A"
+        }
     }
 
 }

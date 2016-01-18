@@ -102,12 +102,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CSA/Event/EventDiscussViewController.swift"
-            timestampString = "462323112.988949"
+            timestampString = "474835183.387776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
-            landmarkName = "textViewDidChange(_:)"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "onDeleteReply(_:forDis:section:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -214,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CSA/Event/EBMainViewController.swift"
-            timestampString = "474246724.072798"
+            timestampString = "474833945.993375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "eventQueryCompletionDataHandler(result:error:removeAll:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -501,8 +501,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "342"
             endingLineNumber = "342"
-            landmarkName = "RsReplyViewController"
-            landmarkType = "3">
+            landmarkName = "numberOfSectionsInTableView(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -733,11 +733,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CSA/Event/EBMainViewController.swift"
-            timestampString = "474246783.060401"
+            timestampString = "474833945.993375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "eventTableInitUI()"
             landmarkType = "5">
          </BreakpointContent>

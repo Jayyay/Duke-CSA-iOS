@@ -12,8 +12,6 @@ class Event: NSObject {
     //required
     let PFInstance:PFObject
     var title:String!
-    var date:NSDate!
-    var location:String!
     var detail:String!
     var needToSignUp:Bool = false
     var openForSignUp:Bool = false
@@ -21,10 +19,10 @@ class Event: NSObject {
     var createdAt:NSDate!
     
     //optional
-    var shortTitle:String?
-    
-    //optional
     var propic:PFFile?
+    var date:NSDate!
+    var location:String!
+    //var shortTitle:String?
     
     init?(parseObject:PFObject){
         PFInstance = parseObject
@@ -33,16 +31,6 @@ class Event: NSObject {
         //required. If not valid, a failure will be triggered and nil returned.
         if let t = parseObject[PFKey.EVENT.TITLE] as? String{
             title = t
-        }else{
-            return nil
-        }
-        if let d = parseObject[PFKey.EVENT.WHEN] as? NSDate{
-            date = d
-        }else{
-            return nil
-        }
-        if let l = parseObject[PFKey.EVENT.WHERE] as? String{
-            location = l
         }else{
             return nil
         }
@@ -75,6 +63,8 @@ class Event: NSObject {
         }
         
         //optional
+        date = parseObject[PFKey.EVENT.WHEN] as? NSDate
+        location = parseObject[PFKey.EVENT.WHERE] as? String
         propic = parseObject[PFKey.EVENT.PICTURE] as? PFFile
     }
 }

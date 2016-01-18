@@ -90,7 +90,6 @@ class EventDiscussCell: UITableViewCell, UITextViewDelegate{
     
     func textViewDidChange(textView: UITextView) {
         if textView == kbInput.txtview {
-            print("did change ", textView.frame)
             let fixedWidth = textView.frame.size.width
             //textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
             let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))

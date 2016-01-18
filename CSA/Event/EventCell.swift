@@ -37,28 +37,32 @@ class EventCell: UITableViewCell {
         lblTitle.text = childEvent.title
         
         //when
-        lblWhen.text = "Time: \(AppTools.formatDateUserFriendly(childEvent.date))"
+        lblTag.hidden = true
+        ctTagHeight.constant = 0
+        if let d = childEvent.date {
+            lblWhen.text = "Time: \(AppTools.formatDateUserFriendly(d))"
+            if d.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+                lblTag.hidden = false
+                ctTagHeight.constant = 15
+            }
+        }else {
+            lblWhen.text = "Time: N/A"
+        }
         
         //where
-        lblWhere.text = "Location: \(childEvent.location)"
+        if let l = childEvent.location {
+            lblWhere.text = "Location: \(l)"
+        }else {
+            lblWhere.text = "Location: N/A"
+        }
         
         lblPostTime.text = "Post time: \(AppTools.formatDateUserFriendly(childEvent.createdAt))"
         
-        if evt.date.compare(NSDate()) == NSComparisonResult.OrderedAscending {
-            lblTag.hidden = true
-            ctTagHeight.constant = 0
-        }else {
-            /*let imgArr = [UIImage(named: "icon_slime"), UIImage(named: "icon_snail"),UIImage(named: "icon_eliza"),UIImage(named: "icon_pig")]
-            imgCheck.image = imgArr[Int(arc4random_uniform(4))]*/
-            lblTag.hidden = false
-            ctTagHeight.constant = 15
-        }
-        
         if let p = evt.propic {
-            imgProfile.hidden = false //TODO
+            imgProfile.hidden = false 
             ctProfileHeight.constant = 185
             AppFunc.downloadPictureFile(file: p, saveToImgView: imgProfile, inTableView: tableView, forIndexPath: indexPath)
-            }else {
+        }else {
             imgProfile.hidden = true
             ctProfileHeight.constant = 0
         }

@@ -98,7 +98,6 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         kbInput.translatesAutoresizingMaskIntoConstraints = true
         self.view.addSubview(kbInput)
         kbInput.hidden = false
-        print("fffff\(kbInput.frame)")
     }
     
     func initUI() {
@@ -262,7 +261,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
             let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
             kbInput.hidden = false
             kbInput.frame.origin.y = keyboardRect.origin.y - kbInput.frame.height - 64
-            let y = scrollToY - (self.view.frame.height - keyboardRect.height - kbInput.frame.height - 64)
+            let y = scrollToY - (self.view.frame.height - keyboardRect.height - kbInput.frame.height)
             if y > -tableRefresher.frame.height {
                 self.tableView.setContentOffset(CGPointMake(0, y), animated: true)
             }

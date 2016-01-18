@@ -89,7 +89,6 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         generalInitUI()
         eventTableInitUI()
         //bulletinTableInit()
-        
         //shouldPresentViewOfSegIndex(0, reload: false)
         //segCtrl.layer.cornerRadius = 3.0
         //segCtrl.layer.masksToBounds = true
@@ -210,8 +209,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
     
     func eventQueryCompletionUIHandler(error error:NSError!){
         if self.eventQueryCompletionCounter == 1 {
-            /*
-            if currentTableView == eventTableView {
+            /*if currentTableView == eventTableView {
                 self.view.makeToast(message: "Fetching events", duration: 1.0, position: HRToastPositionCenterAbove)
             }*/
             return
