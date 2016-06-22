@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import ParseFacebookUtilsV4
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Parse.setApplicationId("Gfb36k13JiVKIcDDZAwjOAYUT1m6p1Nl0CddTq03", clientKey: "nPSLgS4du3j0Zumn2e1dM3viPGTInELP9feF9yrq")
-        PFFacebookUtils.initializeFacebook()
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         let userNotificationTypes: UIUserNotificationType = ([UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]);
         let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
         application.registerUserNotificationSettings(settings)
@@ -66,13 +68,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         openURL url: NSURL,
         sourceApplication: String?,
         annotation: AnyObject) -> Bool {
-            return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication,
-                withSession:PFFacebookUtils.session())
+        return FBSDKApplicationDelegate.sharedInstance().application(application,
+                                                                     openURL: url,
+                                                                     sourceApplication: sourceApplication,
+                                                                     annotation: annotation)
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
+        FBSDKAppEvents.activateApp()
         let installation = PFInstallation.currentInstallation()
         if installation.badge != 0{
             installation.badge = 0

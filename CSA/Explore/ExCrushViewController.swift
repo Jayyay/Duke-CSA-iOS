@@ -108,7 +108,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         query.whereKey(PFKey.IS_VALID, equalTo: true)
         query.whereKey(PFKey.CRUSH.CRUSHER, equalTo: PFUser.currentUser()!)
         query.includeKey(PFKey.CRUSH.CRUSHEE)
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
                 self.crusheeQueryCompletionDataHandler(result: result,error: error)
                 self.allContactsRefreshSelector()
@@ -118,7 +118,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func crusheeQueryCompletionDataHandler(result result:[AnyObject]!, error:NSError!) {
+    func crusheeQueryCompletionDataHandler(result result:[PFObject]!, error:NSError!) {
         print("Crushees query completed in main view with ", terminator: "")
         if error == nil && result != nil{
             print("success!")
@@ -143,7 +143,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         query.limit = 1000
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.allContactsQueryCompletionCounter = 0
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
             self.allContactsQueryCompletionCounter++
             self.allContactsQueryCompletionDataHandler(result: result, error: error)
             self.allContactsQueryCompletionUIHandler(error: error)
@@ -157,7 +157,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func allContactsQueryCompletionDataHandler(result result:[AnyObject]!, error:NSError!) {
+    func allContactsQueryCompletionDataHandler(result result:[PFObject]!, error:NSError!) {
         print("Crush contacts query completed for the \(self.allContactsQueryCompletionCounter) time with: ", terminator: "")
         if error == nil && result != nil{
             print("success!")

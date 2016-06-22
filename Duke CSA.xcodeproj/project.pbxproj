@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0086CFD51D1B01F400DE0A9F /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD11D1B01F400DE0A9F /* ParseFacebookUtilsV4.framework */; };
+		0086CFD61D1B01F400DE0A9F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD21D1B01F400DE0A9F /* FBSDKCoreKit.framework */; };
+		0086CFD71D1B01F400DE0A9F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD31D1B01F400DE0A9F /* FBSDKLoginKit.framework */; };
+		0086CFD81D1B01F400DE0A9F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD41D1B01F400DE0A9F /* FBSDKShareKit.framework */; };
+		00C6E0101D1ADB50008F8B9F /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */; };
+		00C6E0111D1ADB50008F8B9F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00C1D1ADB50008F8B9F /* Bolts.framework */; };
+		00C6E0121D1ADB50008F8B9F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00D1D1ADB50008F8B9F /* Parse.framework */; };
 		6902101F1AE9E91200789A67 /* RsTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6902101E1AE9E91200789A67 /* RsTag.swift */; };
 		6904E02E1AE896C9009F018D /* Rendezvous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6904E02D1AE896C9009F018D /* Rendezvous.swift */; };
 		6904E0341AE89DB0009F018D /* RsReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6904E0331AE89DB0009F018D /* RsReply.swift */; };
-		69062A1E1ACFA7520016EAC5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69062A1B1ACFA7520016EAC5 /* Bolts.framework */; };
-		69062A1F1ACFA7520016EAC5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69062A1C1ACFA7520016EAC5 /* Parse.framework */; };
 		6907DD1D1AE88624005AA203 /* RendezvousViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6907DD1C1AE88624005AA203 /* RendezvousViewController.swift */; };
 		690E34FB1AE4AC26007690CA /* Discussion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690E34FA1AE4AC26007690CA /* Discussion.swift */; };
 		690E34FD1AE4AC63007690CA /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690E34FC1AE4AC63007690CA /* Reply.swift */; };
@@ -89,8 +94,6 @@
 		697C3D7F1AF7131500154ED6 /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697C3D7E1AF7131500154ED6 /* HRToast+UIView.swift */; };
 		697D89C91B64030D00D4B05F /* ExCrush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697D89C81B64030D00D4B05F /* ExCrush.swift */; };
 		69810BE91B00930E00B86DD7 /* LoadMoreTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69810BE81B00930E00B86DD7 /* LoadMoreTableFooterView.swift */; };
-		6981C7B51AD257AB00ED1D9E /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6981C7B41AD257AB00ED1D9E /* ParseFacebookUtils.framework */; };
-		6981C7B71AD2580400ED1D9E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6981C7B61AD2580400ED1D9E /* FacebookSDK.framework */; };
 		6987BECE1AFA23E600612F18 /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6987BECD1AFA23E600612F18 /* UserConstants.swift */; };
 		69926AF71ACF94C60080E51E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69926AF61ACF94C60080E51E /* AppDelegate.swift */; };
 		69926AFE1ACF94C60080E51E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69926AFC1ACF94C60080E51E /* Main.storyboard */; };
@@ -201,11 +204,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0086CFD11D1B01F400DE0A9F /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		0086CFD21D1B01F400DE0A9F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		0086CFD31D1B01F400DE0A9F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		0086CFD41D1B01F400DE0A9F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		00C6E00C1D1ADB50008F8B9F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		00C6E00D1D1ADB50008F8B9F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		6902101E1AE9E91200789A67 /* RsTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsTag.swift; sourceTree = "<group>"; };
 		6904E02D1AE896C9009F018D /* Rendezvous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rendezvous.swift; sourceTree = "<group>"; };
 		6904E0331AE89DB0009F018D /* RsReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsReply.swift; sourceTree = "<group>"; };
-		69062A1B1ACFA7520016EAC5 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		69062A1C1ACFA7520016EAC5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		6907DD1C1AE88624005AA203 /* RendezvousViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendezvousViewController.swift; sourceTree = "<group>"; };
 		690E34FA1AE4AC26007690CA /* Discussion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Discussion.swift; sourceTree = "<group>"; };
 		690E34FC1AE4AC63007690CA /* Reply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
@@ -285,8 +293,6 @@
 		697C3D7E1AF7131500154ED6 /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HRToast+UIView.swift"; sourceTree = "<group>"; };
 		697D89C81B64030D00D4B05F /* ExCrush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExCrush.swift; sourceTree = "<group>"; };
 		69810BE81B00930E00B86DD7 /* LoadMoreTableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreTableFooterView.swift; sourceTree = "<group>"; };
-		6981C7B41AD257AB00ED1D9E /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		6981C7B61AD2580400ED1D9E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		6987BECD1AFA23E600612F18 /* UserConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
 		69926AF11ACF94C60080E51E /* Duke CSA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Duke CSA.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69926AF51ACF94C60080E51E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -395,13 +401,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0086CFD51D1B01F400DE0A9F /* ParseFacebookUtilsV4.framework in Frameworks */,
+				0086CFD61D1B01F400DE0A9F /* FBSDKCoreKit.framework in Frameworks */,
+				0086CFD71D1B01F400DE0A9F /* FBSDKLoginKit.framework in Frameworks */,
+				0086CFD81D1B01F400DE0A9F /* FBSDKShareKit.framework in Frameworks */,
+				00C6E0101D1ADB50008F8B9F /* ParseUI.framework in Frameworks */,
+				00C6E0111D1ADB50008F8B9F /* Bolts.framework in Frameworks */,
+				00C6E0121D1ADB50008F8B9F /* Parse.framework in Frameworks */,
 				691FCAD41BEBF4D900AC35AF /* libsqlite3.tbd in Frameworks */,
 				691FCAD21BEBF4BF00AC35AF /* libz.tbd in Frameworks */,
-				69062A1E1ACFA7520016EAC5 /* Bolts.framework in Frameworks */,
 				69926B441ACF9C130080E51E /* SystemConfiguration.framework in Frameworks */,
-				6981C7B71AD2580400ED1D9E /* FacebookSDK.framework in Frameworks */,
-				6981C7B51AD257AB00ED1D9E /* ParseFacebookUtils.framework in Frameworks */,
-				69062A1F1ACFA7520016EAC5 /* Parse.framework in Frameworks */,
 				69926B401ACF9C080080E51E /* Security.framework in Frameworks */,
 				69926B3E1ACF9C000080E51E /* QuartzCore.framework in Frameworks */,
 				69926B3C1ACF9BFB0080E51E /* MobileCoreServices.framework in Frameworks */,
@@ -701,10 +710,13 @@
 			children = (
 				691FCAD31BEBF4D900AC35AF /* libsqlite3.tbd */,
 				691FCAD11BEBF4BF00AC35AF /* libz.tbd */,
-				6981C7B61AD2580400ED1D9E /* FacebookSDK.framework */,
-				6981C7B41AD257AB00ED1D9E /* ParseFacebookUtils.framework */,
-				69062A1B1ACFA7520016EAC5 /* Bolts.framework */,
-				69062A1C1ACFA7520016EAC5 /* Parse.framework */,
+				0086CFD11D1B01F400DE0A9F /* ParseFacebookUtilsV4.framework */,
+				0086CFD21D1B01F400DE0A9F /* FBSDKCoreKit.framework */,
+				0086CFD31D1B01F400DE0A9F /* FBSDKLoginKit.framework */,
+				0086CFD41D1B01F400DE0A9F /* FBSDKShareKit.framework */,
+				00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */,
+				00C6E00C1D1ADB50008F8B9F /* Bolts.framework */,
+				00C6E00D1D1ADB50008F8B9F /* Parse.framework */,
 				69926B431ACF9C130080E51E /* SystemConfiguration.framework */,
 				69926B3F1ACF9C080080E51E /* Security.framework */,
 				69926B3D1ACF9C000080E51E /* QuartzCore.framework */,
@@ -971,7 +983,7 @@
 				TargetAttributes = {
 					69926AF01ACF94C60080E51E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = B63DMH8A29;
+						DevelopmentTeam = 3966BMHW6X;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -1323,8 +1335,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhe Wang (B63DMH8A29)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhe Wang (B63DMH8A29)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1348,8 +1360,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhe Wang (B63DMH8A29)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhe Wang (B63DMH8A29)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

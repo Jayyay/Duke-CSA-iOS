@@ -120,7 +120,7 @@ class ExCrushDetailViewController: UIViewController, UITableViewDataSource, UITa
         query.whereKey(PFKey.IS_VALID, equalTo: true)
         query.whereKey(PFKey.CRUSH.CRUSHER, equalTo: PFUser.currentUser()!)
         query.includeKey(PFKey.CRUSH.CRUSHEE)
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
                 self.myCrusheeQueryCompletionDataHandler(result: result, error: error)
                 self.myCrusherRefreshSelector()
@@ -130,7 +130,7 @@ class ExCrushDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    func myCrusheeQueryCompletionDataHandler(result result:[AnyObject]!, error:NSError!) {
+    func myCrusheeQueryCompletionDataHandler(result result:[PFObject]!, error:NSError!) {
         print("Crushees query completed in detail view with ", terminator: "")
         if error == nil && result != nil{
             print("success!")
@@ -154,7 +154,7 @@ class ExCrushDetailViewController: UIViewController, UITableViewDataSource, UITa
         query.whereKey(PFKey.IS_VALID, equalTo: true)
         query.whereKey(PFKey.CRUSH.CRUSHEE, equalTo: PFUser.currentUser()!)
         query.includeKey(PFKey.CRUSH.CRUSHER)
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
                 self.myCrusherQueryCompletionDataHandler(result: result,error: error)
                 self.queryCompletionUIHandler(error: error)
@@ -164,7 +164,7 @@ class ExCrushDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    func myCrusherQueryCompletionDataHandler(result result:[AnyObject]!, error:NSError!) {
+    func myCrusherQueryCompletionDataHandler(result result:[PFObject]!, error:NSError!) {
         print("My crushers query completed with ", terminator: "")
         if error == nil && result != nil{
             print("success!")

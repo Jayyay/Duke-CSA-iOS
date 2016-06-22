@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import ParseFacebookUtilsV4
 
 class LoginViewController: UIViewController {
     
@@ -116,7 +118,7 @@ class LoginViewController: UIViewController {
         showMessage(index: 0){ _ in
             let permissions = ["email", "public_profile"]//, "user_friends"]
             print("try to login")
-            PFFacebookUtils.logInWithPermissions(permissions) {
+            PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
                 (user: PFUser?, error: NSError?) -> Void in
                 if user == nil {
                     print("Uh oh. The user cancelled the Facebook login.")
@@ -159,7 +161,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func buildProfile(result:AnyObject, completion: (Bool, NSError?) -> (Void)) {
+    func buildProfile(result: PFObject, completion: (Bool, NSError?) -> (Void)) {
         let u = PFUser.currentUser()!
         u[PFKey.IS_VALID] = true
         u[PFKey.USER.IS_ADMIN] = false
@@ -211,9 +213,9 @@ class LoginViewController: UIViewController {
         newSpUser.saveInBackgroundWithBlock(completion)
     }
 
-    func retrieveFacebookProfile() {
+    func retrieveFacebookProfile() {/*
         FBRequestConnection.startForMeWithCompletionHandler { (connection:FBRequestConnection!, result:AnyObject!, error:NSError!) -> Void in
-            if result != nil{
+            if let result = result as? PFObject{
                 self.removeMessage(){_ in
                     self.resetStatus()
                     self.showMessage(index: 3){_ in
@@ -254,7 +256,7 @@ class LoginViewController: UIViewController {
                     }
                 }
             }
-        }
+        }*/
     }
     
     func resetAppStatus(){

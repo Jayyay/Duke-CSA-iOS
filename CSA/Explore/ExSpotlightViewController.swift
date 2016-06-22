@@ -236,7 +236,7 @@ class ExSpotlightViewController: UIViewController, UITableViewDelegate, UITableV
         query.whereKey(PFKey.SPOTLIGHT.IS_ON, equalTo: true)
         query.includeKey(PFKey.SPOTLIGHT.USER)
         query.limit = 1000
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
             self.allContactsQueryCompletionDataHandler(result: result, error: error)
             self.allContactsQueryCompletionUIHandler(error: error)
         }
@@ -250,7 +250,7 @@ class ExSpotlightViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    func allContactsQueryCompletionDataHandler(result result:[AnyObject]!, error:NSError!) {
+    func allContactsQueryCompletionDataHandler(result result:[PFObject]!, error:NSError!) {
         print("Spotlight contacts query completed with: ", terminator: "")
         if error == nil && result != nil{
             print("success!")
@@ -314,7 +314,7 @@ class ExSpotlightViewController: UIViewController, UITableViewDelegate, UITableV
         query.whereKey(PFKey.SPOTLIGHT.IS_ON, equalTo: true)
         query.includeKey(PFKey.SPOTLIGHT.USER)
         query.limit = 1000
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
             self.rankContactsQueryCompletionDataHandler(result: result, error: error)
             self.rankContactsQueryCompletionUIHandler(error: error)
         }
@@ -324,7 +324,7 @@ class ExSpotlightViewController: UIViewController, UITableViewDelegate, UITableV
         rankingTableRefresher!.endRefreshing()
     }
     
-    func rankContactsQueryCompletionDataHandler(result result:[AnyObject]!, error:NSError!) {
+    func rankContactsQueryCompletionDataHandler(result result:[PFObject]!, error:NSError!) {
         print("Ranking contacts query completed with: ", terminator: "")
         if error == nil && result != nil{
             print("success!")

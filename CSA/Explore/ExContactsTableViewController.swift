@@ -39,7 +39,7 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
         query.limit = 1000
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.queryCompletionCounter = 0
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
             self.queryCompletionCounter++
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
@@ -59,7 +59,7 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
         self.navigationItem.title = "\(contactCount) \(contactStr)"
     }
     
-    func queryCompletionDataHandler(result result:[AnyObject]!, error:NSError!) {
+    func queryCompletionDataHandler(result result:[PFObject]!, error:NSError!) {
         print("Contacts query completed for the \(self.queryCompletionCounter) time with: ", terminator: "")
         if error == nil && result != nil{
             print("success!")

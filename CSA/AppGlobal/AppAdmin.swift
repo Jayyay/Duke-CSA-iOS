@@ -17,7 +17,7 @@ struct AppAdmin { //Do not use it!
         }
         let query = PFUser.query()!
         query.limit = 300
-        query.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock({ (result:[PFObject]?, error:NSError?) -> Void in
             if let re = result as? [PFUser] {
                 for u in re {
                     //Spotlight User
@@ -49,8 +49,8 @@ struct AppAdmin { //Do not use it!
         }
         let query = PFQuery(className: PFKey.SPOTLIGHT.CLASSKEY)
         query.limit = 300
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
-            if let re = result as? [PFObject] {
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
+            if let re = result {
                 for u in re {
                     u[PFKey.SPOTLIGHT.LIKES] = []
                     u[PFKey.SPOTLIGHT.VOTE0] = []
@@ -77,8 +77,8 @@ struct AppAdmin { //Do not use it!
         }
         let query = PFQuery(className: PFKey.SPOTLIGHT.CLASSKEY)
         query.limit = 300
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
-            if let re = result as? [PFObject] {
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
+            if let re = result {
                 for u in re {
                     u.incrementKey(PFKey.SPOTLIGHT.POINTS, byAmount: 30)
                     u.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
@@ -103,8 +103,8 @@ struct AppAdmin { //Do not use it!
         }
         let query = PFQuery(className: PFKey.SPOTLIGHT.CLASSKEY)
         query.limit = 300
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
-            if let re = result as? [PFObject] {
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
+            if let re = result {
                 for u in re {
                     u[PFKey.SPOTLIGHT.POINTS] = 0
                     u.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
@@ -130,7 +130,7 @@ struct AppAdmin { //Do not use it!
         let withMessage = "New Event - Hotpot Night. Signup needed!"
         let query = PFUser.query()!
         query.limit = 300
-        query.findObjectsInBackgroundWithBlock({ (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock({ (result:[PFObject]?, error:NSError?) -> Void in
             if let re = result as? [PFUser] {
                 for u in re {
                     //Spotlight User
@@ -180,7 +180,7 @@ struct AppAdmin { //Do not use it!
         // Create our Installation query
         let pushQuery = PFInstallation.query()!
         let uQuery = PFUser.query()
-        let toUser = uQuery?.getObjectWithId("")
+        let toUser = try! uQuery?.getObjectWithId("")
         pushQuery.whereKey(PFKey.INSTALL.BINDED_USER, equalTo: toUser!)
         // Send push notification to query
         let push = PFPush()

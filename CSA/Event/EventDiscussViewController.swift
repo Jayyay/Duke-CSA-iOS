@@ -35,7 +35,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
     var postAllowed = true
     
     // MARK: - IBAction
-    @IBAction func onPost(sender: AnyObject) {
+    @IBAction func onPost(sender: PFObject) {
         if !postAllowed{
             return
         }
@@ -175,7 +175,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         query.includeKey("\(PFKey.EVENT.DIS.REPLIES).\(PFKey.EVENT.DIS.RE.AUTHOR)")
         query.includeKey("\(PFKey.EVENT.DIS.REPLIES).\(PFKey.EVENT.DIS.RE.REPLY_TO)")
         queryCompletionCounter = 2
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         }
@@ -194,7 +194,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         query.includeKey("\(PFKey.EVENT.DIS.REPLIES).\(PFKey.EVENT.DIS.RE.REPLY_TO)")
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.queryCompletionCounter = 0
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
             self.queryCompletionCounter++
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
@@ -216,7 +216,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         }
     }
     
-    func queryCompletionDataHandler(result result:[AnyObject]!, error:NSError!) {
+    func queryCompletionDataHandler(result result:[PFObject]!, error:NSError!) {
         print("Discussion query completed with: ", terminator: "")
         if error == nil && result != nil{
             print("success!")
