@@ -18,7 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        Parse.setApplicationId("Gfb36k13JiVKIcDDZAwjOAYUT1m6p1Nl0CddTq03", clientKey: "nPSLgS4du3j0Zumn2e1dM3viPGTInELP9feF9yrq")
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "Gfb36k13JiVKIcDDZAwjOAYUT1m6p1Nl0CddTq03"
+            $0.clientKey = "nPSLgS4du3j0Zumn2e1dM3viPGTInELP9feF9yrq"
+            $0.server = "https://parseapi.back4app.com"
+        }
+        Parse.initializeWithConfiguration(configuration)
+        //Parse.setApplicationId("Gfb36k13JiVKIcDDZAwjOAYUT1m6p1Nl0CddTq03", clientKey: "nPSLgS4du3j0Zumn2e1dM3viPGTInELP9feF9yrq")
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         let userNotificationTypes: UIUserNotificationType = ([UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]);
         let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)

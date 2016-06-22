@@ -193,7 +193,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.eventQueryCompletionCounter = 0
         query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
-            self.eventQueryCompletionCounter++
+            self.eventQueryCompletionCounter += 1
             self.eventQueryCompletionDataHandler(result: result,error: error, removeAll: true)
             self.eventQueryCompletionUIHandler(error: error)
             if self.eventQueryCompletionCounter >= 2 {
@@ -247,7 +247,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
             eventCouldLoadMore = result.count >= EVENT_SINGLE_LOAD_AMOUNT
             EVENT_SKIP_AMOUNT += result.count
             print("Find \(result.count) events.")
-            for re in result as! [PFObject]{
+            for re in result{
                 if let newEvent = Event(parseObject:re) {
                     events.append(newEvent)
                 }
@@ -267,7 +267,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         bulletinTableView.registerNib(nib, forCellReuseIdentifier: ReuseID_BulletinCell)
         bulletinTableRefresher = UIRefreshControl()
         //bulletinTableRefresher.attributedTitle = NSAttributedString(string: "Refreshing")
-        bulletinTableRefresher.addTarget(self, action: Selector("bulletinTableRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        bulletinTableRefresher.addTarget(self, action: #selector(bulletinTableRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         bulletinTableView.addSubview(bulletinTableRefresher)
         
         bulletinLoadMoreFooterView = LoadMoreTableFooterView(frame: CGRectMake(0, bulletinTableView.contentSize.height, bulletinTableView.frame.size.width, bulletinTableView.frame.size.height))
@@ -298,7 +298,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.bulletinQueryCompletionCounter = 0
         query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
-            self.bulletinQueryCompletionCounter++
+            self.bulletinQueryCompletionCounter += 1
             self.bulletinQueryCompletionDataHandler(result: result,error: error, removeAll: true)
             self.bulletinQueryCompletionUIHandler(error: error)
             if self.bulletinQueryCompletionCounter >= 2 {
@@ -352,7 +352,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
             bulletinCouldLoadMore = result.count >= BULLETIN_SINGLE_LOAD_AMOUNT
             BULLETIN_SKIP_AMOUNT += result.count
             print("Find \(result.count) bulletins.")
-            for re in result as! [PFObject]{
+            for re in result {
                 if let newBulletin = Bulletin(parseObject: re){
                     bulletins.append(newBulletin)
                 }
