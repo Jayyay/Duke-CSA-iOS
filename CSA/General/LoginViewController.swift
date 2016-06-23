@@ -223,7 +223,7 @@ class LoginViewController: UIViewController {
                     self.showMessage(index: 3){_ in
                         self.buildProfile(result) {(success:Bool, error:NSError?) in
                             if success { //important data is uploaded successfully
-                                let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["fields": "", "redirect": false, "height": 120, "width": 120], HTTPMethod: "GET")
+                                let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["fields": "", "redirect": false, "height": 320, "width": 320], HTTPMethod: "GET")
                                 pictureRequest.startWithCompletionHandler {
                                     (connection: FBSDKGraphRequestConnection!, pInfo: AnyObject?, error: NSError!) -> Void in
                                     if let pInfo = pInfo {
@@ -234,8 +234,11 @@ class LoginViewController: UIViewController {
                                         NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse?, data:NSData?, error:NSError?) -> Void in
                                             if error == nil {
                                                 let u = PFUser.currentUser()!
-                                                if let img = AppTools.compressImage(UIImage(data: data!)) {
-                                                    u[PFKey.USER.PROPIC_COMPRESSED] = PFFile(name: "compPropic.png", data: UIImagePNGRepresentation(img)!)
+                                                if let data = data {
+                                                    u[PFKey.USER.PROPIC_ORIGINAL] = PFFile(name: "Propic.png", data: data)
+                                                    if let img = AppTools.compressImage(UIImage(data: data)) {
+                                                        u[PFKey.USER.PROPIC_COMPRESSED] = PFFile(name: "compPropic.png", data: UIImagePNGRepresentation(img)!)
+                                                    }
                                                 }
                                                 u.saveInBackground()
                                             }
