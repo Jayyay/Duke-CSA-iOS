@@ -64,7 +64,7 @@ class UserProfileTableViewController: UITableViewController {
         lblPhone.text = user[PFKey.USER.CELL_PHONE] as? String
         lblRelationship.text = user[PFKey.USER.RELATIONSHIP] as? String
         tvAbout.text = user[PFKey.USER.ABOUT_ME] as? String
-        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("tapView:"))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UserProfileTableViewController.tapView(_:)))
         imgPropic.gestureRecognizers = [tapGesture]
         AppFunc.downloadPropicFromParse(user: user, saveToImgView: imgPropic, inTableView: tableView, forIndexPath: NSIndexPath(forRow: 0, inSection: 0))
     }

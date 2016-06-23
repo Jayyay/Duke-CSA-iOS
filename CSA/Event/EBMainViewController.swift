@@ -108,12 +108,6 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        let testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            print("Object has been saved.")
-        }
-        
         print("event view did appear")
         
         if PFUser.currentUser() == nil{

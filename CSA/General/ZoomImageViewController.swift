@@ -18,7 +18,7 @@ class ZoomImageViewController: UIViewController {
         super.viewDidLoad()
         
         image = AppData.ImageData.selectedImage
-        let hideGesture = UITapGestureRecognizer(target: self, action: Selector("hideImage"))
+        let hideGesture = UITapGestureRecognizer(target: self, action: #selector(ZoomImageViewController.hideImage))
         view.addGestureRecognizer(hideGesture)
         
         imageView = UIImageView(image: image)

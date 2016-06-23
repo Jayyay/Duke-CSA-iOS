@@ -146,7 +146,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
         }else{
             timeoutInSec = 10.0
         }
-        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: Selector("saveTimeOut"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: #selector(ProfileEditTableViewController.saveTimeOut), userInfo: nil, repeats: false)
         
         u.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
             //change app status
@@ -255,12 +255,12 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
         tfCellPhone.delegate = self
         pickerView.delegate = self
         
-        tfDisplayName.addTarget(self, action: Selector("tfNameDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
-        tfMajors.addTarget(self, action: Selector("tfMajorDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
-        tfMinors.addTarget(self, action: Selector("tfMinorDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
-        tfNetID.addTarget(self, action: Selector("tfNetIDDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
-        tfEmail.addTarget(self, action: Selector("tfEmailDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
-        tfCellPhone.addTarget(self, action: Selector("tfCellDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
+        tfDisplayName.addTarget(self, action: #selector(ProfileEditTableViewController.tfNameDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        tfMajors.addTarget(self, action: #selector(ProfileEditTableViewController.tfMajorDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        tfMinors.addTarget(self, action: #selector(ProfileEditTableViewController.tfMinorDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        tfNetID.addTarget(self, action: #selector(ProfileEditTableViewController.tfNetIDDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        tfEmail.addTarget(self, action: #selector(ProfileEditTableViewController.tfEmailDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        tfCellPhone.addTarget(self, action: #selector(ProfileEditTableViewController.tfCellDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
     }
     
     

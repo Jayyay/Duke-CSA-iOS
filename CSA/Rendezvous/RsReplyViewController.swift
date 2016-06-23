@@ -68,7 +68,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         AppFunc.pauseApp()
         
         //set time out
-        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: Selector("postTimeOut"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: #selector(RsReplyViewController.postTimeOut), userInfo: nil, repeats: false)
         
         //notif message
         let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) replied to your rendezvous."
@@ -93,7 +93,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
             
             if success{
                 self.kbInput.txtview.text = ""
-                self.selectedRs.countReplies++
+                self.selectedRs.countReplies += 1
                 self.replies.append(RsReply(parseObject: newReply, parentRs: self.selectedRs)!)
                 self.tableView.reloadData()
                 AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_REPLY, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1)
@@ -176,7 +176,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         queryCompletionCounter = 0
         query.getObjectInBackgroundWithId(selectedRs.PFInstance.objectId!, block: { (result:PFObject?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         })
@@ -215,8 +215,8 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Keyboard
     func registerForKeyboardNotifications ()-> Void   {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RsReplyViewController.keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
         
     }
     
@@ -236,7 +236,6 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     // resize the textview height according to user input
     // credit to Han Yu, huge thanks.
     func textViewDidChange(textView: UITextView) {
-        print("did change ", kbInput.frame)
         let fixedWidth = textView.frame.size.width
         //textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
         let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
@@ -301,7 +300,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_MainCell)
         
         tableRefresher = UIRefreshControl()
-        tableRefresher.addTarget(self, action: Selector("replyRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        tableRefresher.addTarget(self, action: #selector(RsReplyViewController.replyRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(tableRefresher)
         
         

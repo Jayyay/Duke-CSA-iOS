@@ -161,12 +161,12 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func buildProfile(result: PFObject, completion: (Bool, NSError?) -> (Void)) {
+    func buildProfile(result: AnyObject!, completion: (Bool, NSError?) -> (Void)) {
         let u = PFUser.currentUser()!
         u[PFKey.IS_VALID] = true
         u[PFKey.USER.IS_ADMIN] = false
         //gender string can only be "male", "female", "other"
-        if let gender = result["gender"] as? String {
+        if let gender = result.valueForKey("gender") as? String {
             if gender == UserConstants.Gender.MALE || gender == UserConstants.Gender.FEMALE {
                 u[PFKey.USER.GENDER] = gender
             }else {
@@ -176,7 +176,7 @@ class LoginViewController: UIViewController {
             u[PFKey.USER.GENDER] = UserConstants.Gender.OTHER
         }
         //name 
-        if let n = result["name"] as? String {
+        if let n = result.valueForKey("name") as? String {
             u[PFKey.USER.REAL_NAME] = n
             u[PFKey.USER.DISPLAY_NAME] = n
         }else {
@@ -184,7 +184,7 @@ class LoginViewController: UIViewController {
             u[PFKey.USER.DISPLAY_NAME] = "Developer"
         }
         //email
-        if let e = result["email"] as? String {
+        if let e = result.valueForKey("email") as? String {
             u[PFKey.USER.EMAIL] = e
         }else {
             u[PFKey.USER.EMAIL] = "developer@duke.edu"
@@ -213,33 +213,40 @@ class LoginViewController: UIViewController {
         newSpUser.saveInBackgroundWithBlock(completion)
     }
 
-    func retrieveFacebookProfile() {/*
-        FBRequestConnection.startForMeWithCompletionHandler { (connection:FBRequestConnection!, result:AnyObject!, error:NSError!) -> Void in
-            if let result = result as? PFObject{
+    func retrieveFacebookProfile() {
+        let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, gender, email"], HTTPMethod: "GET")
+        request.startWithCompletionHandler {
+            (connection: FBSDKGraphRequestConnection!, result: AnyObject?, error: NSError!) -> Void in
+            if let result = result {
                 self.removeMessage(){_ in
                     self.resetStatus()
                     self.showMessage(index: 3){_ in
                         self.buildProfile(result) {(success:Bool, error:NSError?) in
                             if success { //important data is uploaded successfully
-                                let userFBID = result["id"] as! String
-                                let facebookProfileUrl = NSURL(string:"http://graph.facebook.com/\(userFBID)/picture?width=320&height=320")!
-                                let urlRequest = NSURLRequest(URL: facebookProfileUrl)
-                                NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse?, data:NSData?, error:NSError?) -> Void in
-                                    if error == nil {
-                                        let u = PFUser.currentUser()!
-                                        if let compressedImg = AppTools.compressImage(UIImage(data: data!)){
-                                            u[PFKey.USER.PROPIC_COMPRESSED] = PFFile(name: "compPropic.png",data: UIImagePNGRepresentation(compressedImg)!)
+                                let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["fields": "", "redirect": false, "height": 120, "width": 120], HTTPMethod: "GET")
+                                pictureRequest.startWithCompletionHandler {
+                                    (connection: FBSDKGraphRequestConnection!, pInfo: AnyObject?, error: NSError!) -> Void in
+                                    if let pInfo = pInfo {
+                                        let data = pInfo.valueForKey("data")!
+                                        let url = data.valueForKey("url") as! String
+                                        let facebookProfileUrl = NSURL(string: url)!
+                                        let urlRequest = NSURLRequest(URL: facebookProfileUrl)
+                                        NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse?, data:NSData?, error:NSError?) -> Void in
+                                            if error == nil {
+                                                let u = PFUser.currentUser()!
+                                                if let img = AppTools.compressImage(UIImage(data: data!)) {
+                                                    u[PFKey.USER.PROPIC_COMPRESSED] = PFFile(name: "compPropic.png", data: UIImagePNGRepresentation(img)!)
+                                                }
+                                                u.saveInBackground()
+                                            }
+                                            AppFunc.resumeApp()
+                                            self.readyForLogin()
                                         }
-                                        //Think: do we need to save original picture?
-                                        //u[PFKey.USER.PROPIC_ORIGINAL] = PFFile(name: "propic.png", data: data)
-                                        u.saveInBackground()
                                     }
-                                    AppFunc.resumeApp()
-                                    self.readyForLogin()
                                 }
                             } else {
                                 AppFunc.resumeApp()
-                                self.showMessage(index: 4){_ in
+                                self.showMessage(index: 4) {_ in
                                     //failure message shown. Ends here.
                                     self.endAnimation()
                                 }
@@ -247,8 +254,10 @@ class LoginViewController: UIViewController {
                         }
                     }
                 }
-            }else{
-                self.removeMessage(){_ in
+
+            }
+            else {
+                self.removeMessage() {_ in
                     self.resetStatus()
                     AppFunc.resumeApp()
                     self.showMessage(index: 6){_ in
@@ -256,7 +265,7 @@ class LoginViewController: UIViewController {
                     }
                 }
             }
-        }*/
+        }
     }
     
     func resetAppStatus(){

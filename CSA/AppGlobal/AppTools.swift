@@ -128,7 +128,7 @@ struct AppTools {
             let newImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             return newImage
-        }else{
+        } else {
             return nil
         }
     }
