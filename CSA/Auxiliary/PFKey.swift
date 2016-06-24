@@ -109,6 +109,19 @@ struct PFKey {
         static let POINTS = "points"
         
     }
+    
+    struct QA {
+        static let CLASSKEY = "QAPost"
+        static let AUTHOR = "author"
+        static let TITLE = "title"
+        static let VOTE = "vote"
+        static let UPVOTES = "upvotes"
+        static let DOWNVOTES = "downvotes"
+        static let CONTENT = "content"
+        static let LIKES = "likes"
+        static let REPLIES = "replies"
+    }
+    
     struct CRUSH {
         static let CLASSKEY = "ExpCrush"
         static let CRUSHER = "crusher"

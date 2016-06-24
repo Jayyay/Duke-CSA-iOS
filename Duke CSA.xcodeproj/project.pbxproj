@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		005FED0E1D1D905900538715 /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005FED0D1D1D905900538715 /* QAViewController.swift */; };
+		005FED101D1D990700538715 /* QAPostCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005FED0F1D1D990700538715 /* QAPostCellNib.xib */; };
+		005FED121D1D993000538715 /* QAPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005FED111D1D993000538715 /* QAPostCell.swift */; };
 		0086CFD51D1B01F400DE0A9F /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD11D1B01F400DE0A9F /* ParseFacebookUtilsV4.framework */; };
 		0086CFD61D1B01F400DE0A9F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD21D1B01F400DE0A9F /* FBSDKCoreKit.framework */; };
 		0086CFD71D1B01F400DE0A9F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD31D1B01F400DE0A9F /* FBSDKLoginKit.framework */; };
 		0086CFD81D1B01F400DE0A9F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD41D1B01F400DE0A9F /* FBSDKShareKit.framework */; };
+		0086CFDC1D1CD69400DE0A9F /* QAPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CFDB1D1CD69400DE0A9F /* QAPost.swift */; };
 		00C6E0101D1ADB50008F8B9F /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */; };
 		00C6E0111D1ADB50008F8B9F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00C1D1ADB50008F8B9F /* Bolts.framework */; };
 		00C6E0121D1ADB50008F8B9F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00D1D1ADB50008F8B9F /* Parse.framework */; };
@@ -204,10 +208,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		005FED0D1D1D905900538715 /* QAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
+		005FED0F1D1D990700538715 /* QAPostCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QAPostCellNib.xib; sourceTree = "<group>"; };
+		005FED111D1D993000538715 /* QAPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAPostCell.swift; sourceTree = "<group>"; };
 		0086CFD11D1B01F400DE0A9F /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		0086CFD21D1B01F400DE0A9F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		0086CFD31D1B01F400DE0A9F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		0086CFD41D1B01F400DE0A9F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		0086CFDB1D1CD69400DE0A9F /* QAPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAPost.swift; sourceTree = "<group>"; };
 		00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		00C6E00C1D1ADB50008F8B9F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		00C6E00D1D1ADB50008F8B9F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -431,6 +439,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0086CFD91D1CD63200DE0A9F /* QA */ = {
+			isa = PBXGroup;
+			children = (
+				0086CFDB1D1CD69400DE0A9F /* QAPost.swift */,
+				005FED0D1D1D905900538715 /* QAViewController.swift */,
+				005FED0F1D1D990700538715 /* QAPostCellNib.xib */,
+				005FED111D1D993000538715 /* QAPostCell.swift */,
+			);
+			name = QA;
+			sourceTree = "<group>";
+		};
 		69058F5C1ACFFCA3003DFB3C /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,8 +810,8 @@
 			isa = PBXGroup;
 			children = (
 				6902101E1AE9E91200789A67 /* RsTag.swift */,
-				69BFFA841B661A0100986F6E /* RendezvousCellNib.xib */,
 				69B7C7AF1AE8EC9500CF1F9C /* RendezvousCell.swift */,
+				69BFFA841B661A0100986F6E /* RendezvousCellNib.xib */,
 				6907DD1C1AE88624005AA203 /* RendezvousViewController.swift */,
 			);
 			name = Main;
@@ -896,6 +915,7 @@
 		69F195341B02FBDB00872B19 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				0086CFD91D1CD63200DE0A9F /* QA */,
 				69DDBF7D1BF2D40D00ABE83C /* Main */,
 				69A091701B90B7490077C8A4 /* Spotlight */,
 				699D67FE1B601AF7009783ED /* Contacts */,
@@ -1053,6 +1073,7 @@
 				692BAE3E1ADF58E00008F29B /* cat.png in Resources */,
 				6946007E1C13ECEF0080E3DE /* expspotlight.png in Resources */,
 				69926AFE1ACF94C60080E51E /* Main.storyboard in Resources */,
+				005FED101D1D990700538715 /* QAPostCellNib.xib in Resources */,
 				69FF45751ADCB91A00C56788 /* BulletinCellNib.xib in Resources */,
 				692BAE441ADF5B850008F29B /* android.png in Resources */,
 				69CD64BA1B97F8ED00A232AD /* WANTED.png in Resources */,
@@ -1133,6 +1154,7 @@
 				69C5A3B61B940B560007AFBE /* ExRankTableViewCell.swift in Sources */,
 				692F12681AD98433000A67A0 /* TabBarController.swift in Sources */,
 				69AC5C321B9A98F9002C2CFA /* ExCrushDetailViewController.swift in Sources */,
+				005FED121D1D993000538715 /* QAPostCell.swift in Sources */,
 				69D43AF41AD98214001DD44B /* EventDetailViewController.swift in Sources */,
 				6987BECE1AFA23E600612F18 /* UserConstants.swift in Sources */,
 				69D43AF61AD98214001DD44B /* EventMenuTableViewController.swift in Sources */,
@@ -1140,6 +1162,7 @@
 				69D27C811B9CD7B200C1A000 /* ExSpConstants.swift in Sources */,
 				69C5A3BA1B9417630007AFBE /* ExSpotlightViewController.swift in Sources */,
 				69FF45711ADCB8CF00C56788 /* BulletinCell.swift in Sources */,
+				0086CFDC1D1CD69400DE0A9F /* QAPost.swift in Sources */,
 				69AC5C3C1B9A9F38002C2CFA /* AppData.swift in Sources */,
 				69D27C7F1B9CD30C00C1A000 /* AppAdmin.swift in Sources */,
 				69AC5C3D1B9A9F38002C2CFA /* AppFunc.swift in Sources */,
@@ -1166,6 +1189,7 @@
 				69D0FE571C483A2F00064A94 /* ExCrushCountCell.swift in Sources */,
 				692195F51B6A8F0D00F9A501 /* BasicPostCell.swift in Sources */,
 				693D92591AE111F9009A2758 /* EventDiscussViewController.swift in Sources */,
+				005FED0E1D1D905900538715 /* QAViewController.swift in Sources */,
 				6979186A1AFB560C0098CAFB /* UserProfileTableViewController.swift in Sources */,
 				690E34FD1AE4AC63007690CA /* Reply.swift in Sources */,
 				69AC5C2C1B9A20A6002C2CFA /* MeNotifTableViewController.swift in Sources */,

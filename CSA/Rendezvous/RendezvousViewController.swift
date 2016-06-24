@@ -226,7 +226,7 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
             couldLoadMore = result.count >= SINGLE_LOAD_AMOUNT
             skipAmount += result.count
             print("Find \(result.count) results.")
-            for re in result as! [PFObject]{
+            for re in result {
                 if let newRs = Rendezvous(parseObject: re) {
                     rdzvs.append(newRs)
                 }

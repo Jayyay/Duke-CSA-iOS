@@ -60,7 +60,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         AppFunc.pauseApp()
         
         //set time out
-        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: Selector("postTimeOut"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: #selector(EventDiscussViewController.postTimeOut), userInfo: nil, repeats: false)
         newDis.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
             //change app status
             self.postConnectSuccess = true
@@ -115,7 +115,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         tableView.estimatedRowHeight = 100
         
         tableRefresher = UIRefreshControl()
-        tableRefresher.addTarget(self, action: Selector("discussRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        tableRefresher.addTarget(self, action: #selector(EventDiscussViewController.discussRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(tableRefresher)
         registerForKeyboardNotifications()
     }
@@ -195,7 +195,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.queryCompletionCounter = 0
         query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         }
@@ -250,8 +250,8 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
     }
     
     func registerForKeyboardNotifications ()-> Void   {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EventDiscussViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EventDiscussViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
     }
     

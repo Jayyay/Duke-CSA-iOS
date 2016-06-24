@@ -68,7 +68,7 @@ class RendezvousCell: UITableViewCell {
     
     @IBAction func onGoing(sender: AnyObject) {
         if didGo == false { //change to 'going'
-            childRs.countGoings++
+            childRs.countGoings += 1
             didGo = true
             childRs.PFInstance[PFKey.RENDEZVOUS.GOINGS]!.addObject(PFUser.currentUser()!)
             
