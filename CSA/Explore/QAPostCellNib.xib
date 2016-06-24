@@ -24,7 +24,7 @@
                         <rect key="frame" x="8" y="8" width="504" height="166"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBa-Ua-cBh" userLabel="Mainpost">
-                                <rect key="frame" x="50" y="102" width="446" height="51"/>
+                                <rect key="frame" x="58" y="102" width="438" height="51"/>
                                 <string key="text">Is there a good way in Cocoa Touch to get the rect that will hold all of the lines in the text view so that I can adjust the parent view accordingly?</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.42352941179999998" green="0.35686274509999999" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -73,7 +73,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" text="QAPost Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9z-Xz-Zd6">
-                                <rect key="frame" x="50" y="68" width="100" height="26"/>
+                                <rect key="frame" x="58" y="68" width="100" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="OcN-1q-E0s"/>
                                 </constraints>
@@ -81,26 +81,22 @@
                                 <color key="textColor" red="0.42352941179999998" green="0.35686274509999999" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-D1-Lfa">
-                                <rect key="frame" x="0.0" y="23" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YP9-LP-Qc2">
-                                <rect key="frame" x="0.0" y="61" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1n-Ey-hfp">
+                                <rect key="frame" x="8" y="22" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iBa-Ua-cBh" firstAttribute="top" secondItem="J9z-Xz-Zd6" secondAttribute="bottom" constant="8" id="1sc-1K-EUO"/>
                             <constraint firstAttribute="trailing" secondItem="iBa-Ua-cBh" secondAttribute="trailing" constant="8" id="C5b-t3-IgM"/>
-                            <constraint firstItem="J9z-Xz-Zd6" firstAttribute="leading" secondItem="C3o-zx-o7o" secondAttribute="leading" id="FLC-2S-X6l"/>
-                            <constraint firstItem="iBa-Ua-cBh" firstAttribute="leading" secondItem="J9z-Xz-Zd6" secondAttribute="leading" id="Jyo-FM-iT9"/>
                             <constraint firstItem="C3o-zx-o7o" firstAttribute="leading" secondItem="nf0-qp-cVg" secondAttribute="leading" constant="50" id="Kqi-dz-tSF"/>
-                            <constraint firstItem="YP9-LP-Qc2" firstAttribute="top" secondItem="VtB-D1-Lfa" secondAttribute="bottom" constant="8" id="Lff-Tg-FxN"/>
-                            <constraint firstItem="VtB-D1-Lfa" firstAttribute="top" secondItem="nf0-qp-cVg" secondAttribute="top" constant="23" id="OTg-3x-EY5"/>
+                            <constraint firstItem="iBa-Ua-cBh" firstAttribute="leading" secondItem="J9z-Xz-Zd6" secondAttribute="leading" id="KrQ-pV-Us5"/>
+                            <constraint firstItem="d1n-Ey-hfp" firstAttribute="centerY" secondItem="r6l-6S-xGD" secondAttribute="centerY" id="MUa-jZ-GcF"/>
+                            <constraint firstItem="J9z-Xz-Zd6" firstAttribute="leading" secondItem="r6l-6S-xGD" secondAttribute="leading" id="PNQ-9y-odz"/>
                             <constraint firstItem="J9z-Xz-Zd6" firstAttribute="top" secondItem="C3o-zx-o7o" secondAttribute="bottom" constant="10" id="bSI-QR-NB2"/>
-                            <constraint firstItem="YP9-LP-Qc2" firstAttribute="leading" secondItem="VtB-D1-Lfa" secondAttribute="leading" id="fTi-Z0-fPb"/>
                             <constraint firstAttribute="trailing" secondItem="C3o-zx-o7o" secondAttribute="trailing" constant="20" id="kbq-Da-8Dt"/>
                         </constraints>
                     </view>
@@ -108,20 +104,19 @@
                 <constraints>
                     <constraint firstItem="nf0-qp-cVg" firstAttribute="leading" secondItem="JsF-jG-My1" secondAttribute="leadingMargin" id="8rF-AA-hEl"/>
                     <constraint firstAttribute="trailingMargin" secondItem="nf0-qp-cVg" secondAttribute="trailing" id="CEw-yf-nVu"/>
+                    <constraint firstItem="d1n-Ey-hfp" firstAttribute="leading" secondItem="JsF-jG-My1" secondAttribute="leadingMargin" constant="8" id="Kea-OY-3Q0"/>
                     <constraint firstItem="nf0-qp-cVg" firstAttribute="top" secondItem="JsF-jG-My1" secondAttribute="topMargin" id="R4D-do-Twz"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="VtB-D1-Lfa" secondAttribute="leading" id="fwK-8t-huF"/>
                     <constraint firstItem="C3o-zx-o7o" firstAttribute="top" secondItem="JsF-jG-My1" secondAttribute="topMargin" constant="8" id="ocI-OB-tL7"/>
                     <constraint firstAttribute="bottomMargin" secondItem="nf0-qp-cVg" secondAttribute="bottom" id="w4u-Aj-x4K"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="authorLabel" destination="rY7-1D-5Dn" id="xcN-1Q-RsG"/>
-                <outlet property="downvoteButton" destination="YP9-LP-Qc2" id="gG8-Pl-x2O"/>
                 <outlet property="mainPostLabel" destination="iBa-Ua-cBh" id="tl0-dO-SwV"/>
                 <outlet property="postTitle" destination="J9z-Xz-Zd6" id="FgW-he-414"/>
                 <outlet property="propicView" destination="r6l-6S-xGD" id="Wdj-KO-f0C"/>
                 <outlet property="timeLabel" destination="PEh-3S-7ff" id="3JT-TY-cTU"/>
-                <outlet property="upvoteButton" destination="VtB-D1-Lfa" id="yyl-Ed-WJk"/>
+                <outlet property="voteLabel" destination="d1n-Ey-hfp" id="wmE-yu-KZ2"/>
             </connections>
             <point key="canvasLocation" x="-88" y="608.5"/>
         </tableViewCell>

@@ -120,6 +120,12 @@ struct PFKey {
         static let CONTENT = "content"
         static let LIKES = "likes"
         static let REPLIES = "replies"
+        static let KIND = "type"
+        struct TYPE {
+            static let QUESTION = "Question"
+            static let ANSWER = "Answer"
+            static let NOTE = "Note"
+        }
     }
     
     struct CRUSH {

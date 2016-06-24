@@ -97,7 +97,7 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
         
         tableRefresher = UIRefreshControl()
         //tableRefresher.attributedTitle = NSAttributedString(string: "Refreshing")
-        tableRefresher.addTarget(self, action: Selector("rsRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        tableRefresher.addTarget(self, action: #selector(RendezvousViewController.rsRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(tableRefresher)
         
         loadMoreFooterView = LoadMoreTableFooterView(frame: CGRectMake(0, tableView.contentSize.height, tableView.frame.size.width, tableView.frame.size.height))
@@ -174,7 +174,7 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.queryCompletionCounter = 0
         query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error, removeAll: true)
             self.queryCompletionUIHandler(error: error)
             if self.queryCompletionCounter >= 2 {
