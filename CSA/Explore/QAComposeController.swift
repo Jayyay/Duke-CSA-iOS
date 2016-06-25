@@ -29,9 +29,11 @@ class QAComposeController: UIViewController, UITextViewDelegate, UITextFieldDele
         }
         
         self.view.endEditing(true)
-        validInput()
+        if (!validateInput()) {
+            return
+        }
         
-        let newPost = QAPost(type: PFKey.QA.CLASSKEY)
+        let newPost = QAPost(type: PFKey.QA.TYPE.QUESTION)
         newPost.title = titleTextField.text
         newPost.content = contentTextView.text
         
@@ -62,18 +64,20 @@ class QAComposeController: UIViewController, UITextViewDelegate, UITextFieldDele
         }
     }
     
-    func validInput() {
-        validTitle = !(titleTextField.text!.characters.count < 5)
-        validContent = !(contentTextView.text!.characters.count < 5)
+    func validateInput() -> Bool{
+        validTitle = titleTextField.text!.characters.count > 5
+        validContent = contentTextView.text! != PLACEHOLDER_FOR_TEXTVIEW
         
         if !validTitle {
             self.view.makeToast(message: "Please put in a longer title", duration: 1.0, position: HRToastPositionCenterAbove)
+            return false
         }
         
         if !validContent {
             self.view.makeToast(message: "Details Needed", duration: 1.0, position: HRToastPositionCenterAbove)
-            return
+            return false
         }
+        return true
     }
     
     func postTimeOut() {

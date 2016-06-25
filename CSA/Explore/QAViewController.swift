@@ -31,6 +31,8 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var couldLoadMore: Bool = false
     
     var queryPredicate: NSPredicate!
+    var ascendingOrder = PFKey.CREATED_AT
+    var descendingOrder = "\(PFKey.QA.VOTE),\(PFKey.CREATED_AT)"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +95,7 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         AppStatus.QAStatus.tableShouldRefresh = false
         allowLoadingMore = false
         let query = PFQuery(className: PFKey.QA.CLASSKEY, predicate: queryPredicate)
-        query.orderByDescending(PFKey.QA.VOTE)
+        query.orderByDescending(descendingOrder)
         query.includeKey(PFKey.QA.AUTHOR)
         query.cachePolicy = PFCachePolicy.NetworkOnly
         query.limit = SINGLE_LOAD_AMOUNT
@@ -110,7 +112,7 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         AppStatus.QAStatus.tableShouldRefresh = false
         allowLoadingMore = false
         let query = PFQuery(className: PFKey.QA.CLASSKEY, predicate: queryPredicate)
-        query.orderByDescending(PFKey.CREATED_AT)
+        query.orderByDescending(descendingOrder)
         query.whereKey(PFKey.IS_VALID, equalTo: true)
         query.includeKey(PFKey.QA.AUTHOR)
         query.limit = SINGLE_LOAD_AMOUNT
@@ -129,7 +131,7 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func QALoadMoreSelector() {
         print("QA Begin Loading More")
         let query = PFQuery(className: PFKey.QA.CLASSKEY, predicate: queryPredicate)
-        query.orderByDescending(PFKey.CREATED_AT)
+        query.orderByDescending(descendingOrder)
         query.whereKey(PFKey.IS_VALID, equalTo: true)
         query.includeKey(PFKey.QA.AUTHOR)
         query.limit = SINGLE_LOAD_AMOUNT
@@ -205,6 +207,7 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         AppData.QAData.selectedQAPost = cell.childQA
         cameBackFromIndexPath = indexPath
         self.performSegueWithIdentifier(QADetailSegueID, sender: self)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     //// MARK: - Pull to load more
