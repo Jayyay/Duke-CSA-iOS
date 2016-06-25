@@ -12,6 +12,7 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     let ReuseID_QACell = "QAPostCell"
+    let ReuseID_NoAnswer = "NoAnswerCell"
     
     var tableRefresher: UIRefreshControl!
     var QACellMaxY: CGFloat = 0
@@ -20,6 +21,7 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
     var question: QAPost!
     var posts:[QAPost] = [] // for tableview
     var answers: [PFObject] = []
+    var noAnswer: Bool = true
     
     var textFieldNeedsAdjust = false
     var queryCompletionCounter:Int = 0
@@ -53,8 +55,10 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
         
-        let nib = UINib(nibName: "QAPostCellNib", bundle: nil)
+        var nib = UINib(nibName: "QAPostCellNib", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_QACell)
+        nib = UINib(nibName: "NoAnswerCellNib", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_NoAnswer)
         
         tableRefresher = UIRefreshControl()
         //tableRefresher.attributedTitle = NSAttributedString(string: "Refreshing")
@@ -182,6 +186,7 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
             for re in result {
                 print(re["vote"])
                 if let newPost = QAPost(parseObject: re) {
+                    noAnswer = false
                     posts.append(newPost)
                 }
             }
@@ -198,10 +203,16 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count;
+        return noAnswer ? 2 : posts.count;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // display "no answer yet" when there is no answer
+        if (indexPath.row == 1 && noAnswer) {
+            let noCell = tableView.dequeueReusableCellWithIdentifier(ReuseID_NoAnswer, forIndexPath: indexPath)
+            return noCell
+        }
+        
         let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_QACell, forIndexPath: indexPath) as! QAPostCell
         cell.initWithPost(posts[indexPath.row], fromVC: self, fromTableView: tableView, forIndexPath: indexPath)
         
