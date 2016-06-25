@@ -58,19 +58,16 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        AppData.QAData.wipeSelectedRsData()
         tableRefresher.endRefreshing()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if AppStatus.QAStatus.tableShouldRefresh {
-            QATableAutoRefresh()
-        }
-        else {
-            if let i = cameBackFromIndexPath {
-                tableView.reloadRowsAtIndexPaths([i], withRowAnimation: UITableViewRowAnimation.None)
-                cameBackFromIndexPath = nil
-            }
+        QATableAutoRefresh()
+        if let i = cameBackFromIndexPath {
+            tableView.reloadRowsAtIndexPaths([i], withRowAnimation: UITableViewRowAnimation.None)
+            cameBackFromIndexPath = nil
         }
     }
     
@@ -82,7 +79,7 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 self.tableView.contentOffset.y = -self.tableRefresher.frame.height
                 }, completion: nil)
         }
-        QARefreshSelectorCacheFirst()
+        QARefreshSelector()
     }
     
     func QARefreshSelector() {
@@ -184,7 +181,6 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(posts.count);
         return posts.count;
     }
     

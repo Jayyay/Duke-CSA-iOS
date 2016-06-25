@@ -15,10 +15,9 @@ class QAPost: NSObject {
     var title: String?
     var content: String! = ""
     var vote: NSInteger! = 0
-    var upvotes: [PFUser]?
-    var downvotes: [PFUser]?
-    var answers: [PFObject]? // answers to this post
-    var question: [PFObject]? // this post is an answer, points to the question
+    var upvotes: [PFUser] = []
+    var downvotes: [PFUser] = []
+    var answers: [PFObject] = [] // answers to this post
     var postTime: NSDate!
     
     init? (parseObject: PFObject) {
@@ -55,20 +54,15 @@ class QAPost: NSObject {
         }
     }
     
-    init? (type: String!) {
+    init (type: String!) {
         PFInstance = PFObject(className: PFKey.QA.CLASSKEY)
         super.init()
         self.type = type
-        if let user = PFUser.currentUser() {
-            self.author = user
-        }
-        else {
-            print("user not logged in for some weird reason")
-            return nil
-        }
+        self.author = PFUser.currentUser()
     }
     
     func saveWithBlock(block: (Bool, NSError?) -> Void) {
+        PFInstance[PFKey.QA.KIND] = type;
         PFInstance[PFKey.QA.AUTHOR] = author;
         PFInstance[PFKey.QA.CONTENT] = content;
         PFInstance[PFKey.QA.TITLE] = title;

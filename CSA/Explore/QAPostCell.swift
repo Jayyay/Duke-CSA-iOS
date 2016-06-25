@@ -12,17 +12,15 @@ class QAPostCell: UITableViewCell {
 
     @IBOutlet weak var authorLabel: UserLabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var propicView: UIImageView!
     @IBOutlet weak var postTitle: UILabel!
-    @IBOutlet weak var mainPostLabel: UILabel!
     @IBOutlet weak var voteLabel: UILabel!
+    @IBOutlet weak var mainPostLabel: UILabel!
     
     weak var parentVC: UIViewController!
     var childQA: QAPost!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -35,14 +33,13 @@ class QAPostCell: UITableViewCell {
         childQA = post
         self.parentVC = fromVC
         
-        AppFunc.downloadPropicFromParse(user: post.author, saveToImgView: propicView, inTableView: tableView, forIndexPath: indexPath)
-        
         //required
         authorLabel.initLabel(author: post.author, fontSize: 17, fromVC: parentVC)
         timeLabel.text = AppTools.formatDateUserFriendly(post.postTime)
         if let ttl = post.title {
             postTitle.text = ttl
         }
+        
         mainPostLabel.text = post.content
         voteLabel.text = String(post.vote)
         

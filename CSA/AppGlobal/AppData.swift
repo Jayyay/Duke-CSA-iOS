@@ -53,6 +53,14 @@ struct AppData {
         }
     }
     
+    struct QAData {
+        static var selectedRendezvous:QAPost!
+        static var postVC:QAComposeController!
+        static func wipeSelectedRsData() {
+            selectedRendezvous = nil
+        }
+    }
+    
     struct CrushData {
         static var myCrusherArray:[ExCrush] = []
         static var myCrusherDict:[String:Bool] = [:]

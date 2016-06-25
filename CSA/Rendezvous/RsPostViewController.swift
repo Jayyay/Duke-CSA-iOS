@@ -80,7 +80,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         
         //tags
         var finalTags:[String] = []
-        for var i = 0; i < tagIsOn.count; i++ {
+        for i in 0..<tagIsOn.count {
             if tagIsOn[i] {
                 print(RsTag.tagIndexToName[i])
                 finalTags.append(RsTag.tagIndexToName[i])
@@ -100,7 +100,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         AppFunc.pauseApp()
         
         //set time out
-        NSTimer.scheduledTimerWithTimeInterval(TIME_OUT_IN_SEC, target: self, selector: Selector("postTimeOut"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(TIME_OUT_IN_SEC, target: self, selector: #selector(postTimeOut), userInfo: nil, repeats: false)
 
         //post
         newPost.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
@@ -136,7 +136,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         if tagIsOn[index]{//unchoose
             tagIsOn[index] = false
             tagChosen.backgroundColor = UIColor.whiteColor()
-            validTag--
+            validTag -= 1
             if validTag <= 0 {
                 imgTagCheck.hidden = true
             }
