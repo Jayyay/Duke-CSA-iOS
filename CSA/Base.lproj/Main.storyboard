@@ -2831,6 +2831,7 @@ Z290IHRvIHVwZGF0ZQ
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="aKp-Et-9IA" id="XOq-Wf-hkW"/>
+                        <segue destination="NFS-GJ-Xay" kind="show" identifier="QADetailSegue" id="qhC-Ka-FG8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubp-kR-Z3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2909,6 +2910,41 @@ Z290IHRvIHVwZGF0ZQ
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r2q-ik-KeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1018" y="1055"/>
+        </scene>
+        <!--Question Detail-->
+        <scene sceneID="qaO-9p-kHH">
+            <objects>
+                <viewController id="NFS-GJ-Xay" customClass="QADetailViewController" customModule="Duke_CSA" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XWb-uo-rGS"/>
+                        <viewControllerLayoutGuide type="bottom" id="C1A-7G-Zq1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m4D-tu-5Wj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tir-C6-rVM">
+                                <rect key="frame" x="-4" y="64" width="328" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Tir-C6-rVM" secondAttribute="trailing" constant="-20" id="YvU-uS-yur"/>
+                            <constraint firstItem="C1A-7G-Zq1" firstAttribute="top" secondItem="Tir-C6-rVM" secondAttribute="bottom" id="hCS-oL-fWX"/>
+                            <constraint firstItem="Tir-C6-rVM" firstAttribute="leading" secondItem="m4D-tu-5Wj" secondAttribute="leadingMargin" constant="-20" id="nEm-WG-NOh"/>
+                            <constraint firstItem="Tir-C6-rVM" firstAttribute="top" secondItem="XWb-uo-rGS" secondAttribute="bottom" id="rSN-ma-vvG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Question Detail" id="5Iq-dy-xKP"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="Tir-C6-rVM" id="Yfu-0d-qsx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qvK-HO-d2k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="1055"/>
         </scene>
         <!--Instructions-->
         <scene sceneID="i7j-r1-rHE">

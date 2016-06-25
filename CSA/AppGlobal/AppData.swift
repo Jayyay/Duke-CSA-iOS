@@ -54,10 +54,10 @@ struct AppData {
     }
     
     struct QAData {
-        static var selectedRendezvous:QAPost!
+        static var selectedQAPost:QAPost!
         static var postVC:QAComposeController!
         static func wipeSelectedRsData() {
-            selectedRendezvous = nil
+            selectedQAPost = nil
         }
     }
     

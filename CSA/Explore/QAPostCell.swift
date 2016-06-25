@@ -15,6 +15,7 @@ class QAPostCell: UITableViewCell {
     @IBOutlet weak var postTitle: UILabel!
     @IBOutlet weak var voteLabel: UILabel!
     @IBOutlet weak var mainPostLabel: UILabel!
+    @IBOutlet weak var mainPostTop: NSLayoutConstraint!
     
     weak var parentVC: UIViewController!
     var childQA: QAPost!
@@ -43,17 +44,14 @@ class QAPostCell: UITableViewCell {
         mainPostLabel.text = post.content
         voteLabel.text = String(post.vote)
         
-//        //optional
-//        if let title = post.title {
-//            ctRsTitleHeight.constant = 26
-//            ctRsTitleTop.constant = 8
-//            lblRsTitle.hidden = false
-//            lblRsTitle.text = title
-//        }else{
-//            ctRsTitleHeight.constant = 0
-//            ctRsTitleTop.constant = 0
-//            lblRsTitle.hidden = true
-//        }
+        //optional
+        if let _ = post.title {
+            mainPostTop.constant = 34
+            postTitle.hidden = false
+        } else {
+            mainPostTop.constant = 10
+            postTitle.hidden = true
+        }
 //        if let ww = post.whenWhere {
 //            ctRsWhenHeight.constant = 22
 //            ctRsWhenTop.constant = 2

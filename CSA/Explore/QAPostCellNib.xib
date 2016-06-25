@@ -16,7 +16,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="QAPostCell" rowHeight="183" id="ira-sx-PTj" userLabel="Main Post Cell" customClass="QAPostCell" customModule="Duke_CSA" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="520" height="183"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ira-sx-PTj" id="JsF-jG-My1">
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ira-sx-PTj" id="JsF-jG-My1">
                 <rect key="frame" x="0.0" y="0.0" width="487" height="182"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -66,7 +66,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gWC-FH-xZ6" firstAttribute="top" secondItem="J9z-Xz-Zd6" secondAttribute="bottom" constant="8" id="4co-Fw-VMH"/>
+                            <constraint firstItem="gWC-FH-xZ6" firstAttribute="leading" secondItem="nf0-qp-cVg" secondAttribute="leading" constant="58" id="8xF-fk-rqA"/>
                             <constraint firstAttribute="bottom" secondItem="gWC-FH-xZ6" secondAttribute="bottom" constant="22" id="Gou-h8-fdT"/>
                             <constraint firstItem="J9z-Xz-Zd6" firstAttribute="leading" secondItem="nf0-qp-cVg" secondAttribute="leading" constant="58" id="HO3-0Q-9yo"/>
                             <constraint firstAttribute="trailing" secondItem="J9z-Xz-Zd6" secondAttribute="trailing" constant="10" id="K3V-lw-gcg"/>
@@ -74,7 +74,6 @@
                             <constraint firstItem="d1n-Ey-hfp" firstAttribute="top" secondItem="nf0-qp-cVg" secondAttribute="top" constant="22" id="MeK-tA-4xo"/>
                             <constraint firstItem="PEh-3S-7ff" firstAttribute="leading" secondItem="rY7-1D-5Dn" secondAttribute="trailing" constant="8" id="eil-UE-547"/>
                             <constraint firstItem="rY7-1D-5Dn" firstAttribute="baseline" secondItem="PEh-3S-7ff" secondAttribute="baseline" id="pM2-WD-nPr"/>
-                            <constraint firstItem="gWC-FH-xZ6" firstAttribute="leading" secondItem="J9z-Xz-Zd6" secondAttribute="leading" id="sPd-ER-g2Z"/>
                             <constraint firstItem="J9z-Xz-Zd6" firstAttribute="leading" secondItem="d1n-Ey-hfp" secondAttribute="trailing" constant="8" id="swo-fK-UcS"/>
                             <constraint firstItem="gWC-FH-xZ6" firstAttribute="trailing" secondItem="PEh-3S-7ff" secondAttribute="trailing" id="tvH-XR-3nr"/>
                         </constraints>
@@ -91,6 +90,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="J9z-Xz-Zd6" secondAttribute="trailing" constant="10" id="A4T-gg-Y94"/>
                     <constraint firstAttribute="trailingMargin" secondItem="nf0-qp-cVg" secondAttribute="trailing" id="CEw-yf-nVu"/>
                     <constraint firstItem="d1n-Ey-hfp" firstAttribute="leading" secondItem="JsF-jG-My1" secondAttribute="leadingMargin" constant="8" id="Kea-OY-3Q0"/>
+                    <constraint firstItem="gWC-FH-xZ6" firstAttribute="top" secondItem="JsF-jG-My1" secondAttribute="topMargin" constant="34" id="Ow3-YJ-MJM"/>
                     <constraint firstItem="nf0-qp-cVg" firstAttribute="top" secondItem="JsF-jG-My1" secondAttribute="topMargin" id="R4D-do-Twz"/>
                     <constraint firstAttribute="bottomMargin" secondItem="PEh-3S-7ff" secondAttribute="bottom" id="a9F-i6-aFH"/>
                     <constraint firstAttribute="bottomMargin" secondItem="nf0-qp-cVg" secondAttribute="bottom" id="w4u-Aj-x4K"/>
@@ -99,11 +99,12 @@
             <connections>
                 <outlet property="authorLabel" destination="rY7-1D-5Dn" id="xcN-1Q-RsG"/>
                 <outlet property="mainPostLabel" destination="gWC-FH-xZ6" id="s4a-Fy-x6G"/>
+                <outlet property="mainPostTop" destination="Ow3-YJ-MJM" id="kEa-xr-k9T"/>
                 <outlet property="postTitle" destination="J9z-Xz-Zd6" id="FgW-he-414"/>
                 <outlet property="timeLabel" destination="PEh-3S-7ff" id="3JT-TY-cTU"/>
                 <outlet property="voteLabel" destination="d1n-Ey-hfp" id="wmE-yu-KZ2"/>
             </connections>
-            <point key="canvasLocation" x="-88" y="608.5"/>
+            <point key="canvasLocation" x="-369" y="600.5"/>
         </tableViewCell>
     </objects>
 </document>

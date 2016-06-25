@@ -18,6 +18,7 @@ class QAPost: NSObject {
     var upvotes: [PFUser] = []
     var downvotes: [PFUser] = []
     var answers: [PFObject] = [] // answers to this post
+    var question: AnyObject = NSNull()
     var postTime: NSDate!
     
     init? (parseObject: PFObject) {
@@ -51,6 +52,9 @@ class QAPost: NSObject {
             postTime = p
         } else {
             return nil
+        }
+        if let ans = parseObject[PFKey.QA.ANSWERS] as? [PFObject] {
+            answers = ans
         }
     }
     

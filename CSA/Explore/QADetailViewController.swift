@@ -1,31 +1,32 @@
 //
-//  QAViewController.swift
+//  QADetailViewController.swift
 //  Duke CSA
 //
-//  Created by Bill Yu on 6/24/16.
+//  Created by Bill Yu on 6/25/16.
 //  Copyright © 2016 Zhe Wang. All rights reserved.
 //
 
 import UIKit
 
-class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoadMoreTableFooterViewDelegate {
-
+class QADetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, LoadMoreTableFooterViewDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
     let ReuseID_QACell = "QAPostCell"
-    let QADetailSegueID = "QADetailSegue"
     
-    var tableRefresher:UIRefreshControl!
-    var QACellMaxY:CGFloat = 0
-    var cameBackFromIndexPath:NSIndexPath!
+    var tableRefresher: UIRefreshControl!
+    var QACellMaxY: CGFloat = 0
+    var cameBackFromIndexPath: NSIndexPath!
     
-    var posts:[QAPost] = []
+    var question: QAPost!
+    var posts:[QAPost] = [] // for tableview
+    var answers: [PFObject] = []
     
     var textFieldNeedsAdjust = false
     var queryCompletionCounter:Int = 0
     var allowLoadingMore = true
     
-    let SINGLE_LOAD_AMOUNT:Int = 8
-    var skipAmount:Int = 0
+    let SINGLE_LOAD_AMOUNT: Int = 8
+    var skipAmount: Int = 0
     var loadMoreFooterView: LoadMoreTableFooterView!
     var isLoadingMore: Bool = false
     var couldLoadMore: Bool = false
@@ -35,7 +36,11 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        queryPredicate = NSPredicate(format: "type = %@", PFKey.QA.TYPE.QUESTION)
+        question = AppData.QAData.selectedQAPost
+        posts.append(question)
+        answers = question.answers
+        
+        queryPredicate = NSPredicate(format: "question = %@", self.question.PFInstance)
         
         initUI();
         // Do any additional setup after loading the view.
@@ -163,13 +168,19 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if error == nil && result != nil{
             print("success!")
             if removeAll {
-                posts.removeAll(keepCapacity: true)
+                // save the first one because it's the question
+                var i = posts.count - 1
+                while (i > 0) {
+                    posts.removeAtIndex(i)
+                    i -= 1
+                }
                 skipAmount = 0
             }
             couldLoadMore = result.count >= SINGLE_LOAD_AMOUNT
             skipAmount += result.count
             print("Find \(result.count) results.")
             for re in result {
+                print(re["vote"])
                 if let newPost = QAPost(parseObject: re) {
                     posts.append(newPost)
                 }
@@ -193,18 +204,25 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_QACell, forIndexPath: indexPath) as! QAPostCell
         cell.initWithPost(posts[indexPath.row], fromVC: self, fromTableView: tableView, forIndexPath: indexPath)
+        
+        // the question cannot be clicked anymore
+        if (indexPath.row == 0) {
+            cell.accessoryType = .None
+        }
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 150
+        if (indexPath.row > 0) {
+            return 150
+        }
+        return UITableViewAutomaticDimension
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! QAPostCell
-        AppData.QAData.selectedQAPost = cell.childQA
-        cameBackFromIndexPath = indexPath
-        self.performSegueWithIdentifier(QADetailSegueID, sender: self)
+        if (indexPath.row == 0) {
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        }
     }
     
     //// MARK: - Pull to load more
@@ -241,7 +259,7 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             loadMoreFooterView.loadMoreScrollViewDidEndDragging(scrollView)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -121,6 +121,7 @@ struct PFKey {
         static let LIKES = "likes"
         static let REPLIES = "replies"
         static let KIND = "type"
+        static let ANSWERS = "answers"
         struct TYPE {
             static let QUESTION = "Question"
             static let ANSWER = "Answer"

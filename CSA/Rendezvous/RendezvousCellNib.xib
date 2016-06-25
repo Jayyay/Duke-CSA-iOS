@@ -349,7 +349,7 @@
                 <outlet property="lblTag4" destination="a7d-P2-YJ4" id="urP-Nt-cXH"/>
                 <outlet property="lblTag5" destination="HPC-dA-GNK" id="bAC-iI-6li"/>
             </connections>
-            <point key="canvasLocation" x="-30" y="136.5"/>
+            <point key="canvasLocation" x="-46" y="229.5"/>
         </tableViewCell>
     </objects>
     <resources>

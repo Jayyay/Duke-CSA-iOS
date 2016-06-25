@@ -48,7 +48,7 @@ class RendezvousCell: UITableViewCell {
             childRs.IdidGo = newValue
             if newValue == false { //not going.
                 lblGoing.text = "  Going (\(childRs.countGoings))"
-            }else{//Is Going
+            } else {//Is Going
                 lblGoing.text = "✓ Going (\(childRs.countGoings))"
             }
         }
@@ -82,7 +82,7 @@ class RendezvousCell: UITableViewCell {
             })
             
         }else{//change to 'not going'
-            childRs.countGoings--
+            childRs.countGoings -= 1
             didGo = false
             let goArr = childRs.PFInstance[PFKey.RENDEZVOUS.GOINGS] as! [PFUser]
             for go in goArr {
@@ -98,7 +98,7 @@ class RendezvousCell: UITableViewCell {
     
     @IBAction func onLike(sender: AnyObject) {
         if didLike == false { //change to 'like'
-            childRs.countLikes++
+            childRs.countLikes += 1
             didLike = true
             childRs.PFInstance[PFKey.RENDEZVOUS.LIKES]!.addObject(PFUser.currentUser()!)
             
@@ -113,7 +113,7 @@ class RendezvousCell: UITableViewCell {
                 })
             }
         }else {//change to 'not like'
-            childRs.countLikes--
+            childRs.countLikes -= 1
             didLike = false
             let likeArr = childRs.PFInstance[PFKey.RENDEZVOUS.LIKES] as! [PFObject]
             for like in likeArr {
@@ -204,15 +204,14 @@ class RendezvousCell: UITableViewCell {
         }
         
         //tags
-        var i = 0
-        for ; i < childRs.tags.count; i++ {
+        for i in 0..<childRs.tags.count {
             let tagStr = childRs.tags[i]
             lblTagsArr[i].text = tagStr
             let (R, G, B) = RsTag.colorDict[tagStr]!
             lblTagsArr[i].backgroundColor = UIColor(red: R/255, green: G/255, blue: B/255, alpha: 1.0)
             lblTagsArr[i].hidden = false
         }
-        for ; i < lblTagsArr.count; i++ {
+        for i in 0..<lblTagsArr.count {
             lblTagsArr[i].hidden = true
         }
         
