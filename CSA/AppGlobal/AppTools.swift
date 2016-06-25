@@ -167,4 +167,27 @@ struct AppTools {
         }
     }
     
+    static func compareQAPostIsOrderedBefore(p1 p1: QAPost, p2: QAPost) -> Bool{
+        let vote1 = p1.vote
+        let vote2 = p2.vote
+        let time1 = p1.postTime
+        let time2 = p2.postTime
+        
+        if (vote1 > vote2) {
+            return true
+        }
+        else if (vote1 < vote2) {
+            return false
+        }
+        else {
+            let compare = time1.compare(time2).rawValue
+            if (compare > 0) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+    }
+    
 }

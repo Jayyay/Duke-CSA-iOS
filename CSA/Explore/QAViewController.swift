@@ -95,7 +95,6 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         AppStatus.QAStatus.tableShouldRefresh = false
         allowLoadingMore = false
         let query = PFQuery(className: PFKey.QA.CLASSKEY, predicate: queryPredicate)
-        query.orderByDescending(descendingOrder)
         query.includeKey(PFKey.QA.AUTHOR)
         query.cachePolicy = PFCachePolicy.NetworkOnly
         query.limit = SINGLE_LOAD_AMOUNT
@@ -112,7 +111,6 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         AppStatus.QAStatus.tableShouldRefresh = false
         allowLoadingMore = false
         let query = PFQuery(className: PFKey.QA.CLASSKEY, predicate: queryPredicate)
-        query.orderByDescending(descendingOrder)
         query.whereKey(PFKey.IS_VALID, equalTo: true)
         query.includeKey(PFKey.QA.AUTHOR)
         query.limit = SINGLE_LOAD_AMOUNT
@@ -131,7 +129,6 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func QALoadMoreSelector() {
         print("QA Begin Loading More")
         let query = PFQuery(className: PFKey.QA.CLASSKEY, predicate: queryPredicate)
-        query.orderByDescending(descendingOrder)
         query.whereKey(PFKey.IS_VALID, equalTo: true)
         query.includeKey(PFKey.QA.AUTHOR)
         query.limit = SINGLE_LOAD_AMOUNT
@@ -176,6 +173,7 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                     posts.append(newPost)
                 }
             }
+            posts.sortInPlace({AppTools.compareQAPostIsOrderedBefore(p1: $0, p2: $1)})
             //beginFilter()
             tableView.reloadData()
         }
