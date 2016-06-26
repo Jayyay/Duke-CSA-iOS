@@ -35,6 +35,9 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
     var isLoadingMore: Bool = false
     var couldLoadMore: Bool = false
     
+    var didAnswer = false
+    var myAnswer: QAPost?
+    
     var queryPredicate: NSPredicate!
     
     override func viewDidLoad() {
@@ -188,10 +191,13 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
             skipAmount += result.count
             print("Find \(result.count) results.")
             for re in result {
-                print(re["vote"])
                 if let newPost = QAPost(parseObject: re) {
                     noAnswer = false
                     posts.append(newPost)
+                    if (newPost.author.objectId == PFUser.currentUser()!.objectId) {
+                        didAnswer = true
+                        myAnswer = newPost
+                    }
                 }
             }
             sortPosts()
@@ -232,7 +238,6 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
             return noCell
         }
         let postIndex = indexPath.row > 0 ? indexPath.row - 1 : 0
-        print("post index: \(postIndex)")
         let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_QACell, forIndexPath: indexPath) as! QAPostCell
         cell.initWithPost(posts[postIndex], fromVC: self, fromTableView: tableView, forIndexPath: indexPath)
         
@@ -249,13 +254,18 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch (indexPath.row) {
+        // ignore selection on question
         case 0:
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             break
+        // edit answer cell, if the user already answered, pull up the answer
+            // if not, compose new answer
         case 1:
-            AppData.QAData.selectedQAPost = question
+            AppData.QAData.selectedQAPost = self.question
+            AppData.QAData.myAnswer = self.myAnswer
             self.performSegueWithIdentifier(ReuseID_EditAnswerSegue, sender: self)
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        // ignore selection on no answer cell
         case 2:
             if (noAnswer) {
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)

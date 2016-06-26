@@ -21,7 +21,7 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate, UITextFie
     
     let TIME_OUT_IN_SEC: NSTimeInterval = 5.0
     
-    var newPost = QAPost(type: PFKey.QA.TYPE.ANSWER)
+    var newPost: QAPost!
     
     @IBAction func onPost(sender: AnyObject) {
         if !postAllowed{
@@ -34,8 +34,6 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate, UITextFie
         }
         
         newPost.content = contentTextView.text
-        print(AppData.QAData.selectedQAPost)
-        print(AppData.QAData.selectedQAPost.PFInstance)
         newPost.question = AppData.QAData.selectedQAPost.PFInstance
         
         //change app status
@@ -64,7 +62,9 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate, UITextFie
             }
         }
         
-        AppData.QAData.selectedQAPost.answers.append(newPost.PFInstance)
+        if (!AppData.QAData.selectedQAPost.answers.contains(newPost.PFInstance)) {
+            AppData.QAData.selectedQAPost.answers.append(newPost.PFInstance)
+        }
         AppData.QAData.selectedQAPost.saveWithBlock { (sucess: Bool, error: NSError?) in
             if let error = error {
                 print("error saving answer to question: \(error)")
@@ -135,6 +135,19 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate, UITextFie
         super.viewDidLoad()
         print("viewDidLoad - QAComposeAnswerViewController ")
         contentTextView.delegate = self
+        
+        initAnswerContent()
+    }
+    
+    func initAnswerContent() {
+        if let ans = AppData.QAData.myAnswer {
+            newPost = ans
+            contentTextView.text = ans.content
+            contentTextView.textColor = UIColor.blackColor()
+        } else {
+            newPost = QAPost(type: PFKey.QA.TYPE.ANSWER)
+            contentTextView.text = PLACEHOLDER_ANSWER_CONTENT
+        }
     }
     
     deinit{
