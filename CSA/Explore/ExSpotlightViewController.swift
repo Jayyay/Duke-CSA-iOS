@@ -183,11 +183,11 @@ class ExSpotlightViewController: UIViewController, UITableViewDelegate, UITableV
         
         
         userTableRefresher = UIRefreshControl()
-        userTableRefresher.addTarget(self, action: Selector("myInfoRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        userTableRefresher.addTarget(self, action: #selector(ExSpotlightViewController.myInfoRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         userTableView.addSubview(userTableRefresher)
         
         rankingTableRefresher = UIRefreshControl()
-        rankingTableRefresher.addTarget(self, action: Selector("rankContactsRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        rankingTableRefresher.addTarget(self, action: #selector(ExSpotlightViewController.rankContactsRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         rankingTableView.addSubview(rankingTableRefresher)
     
         currentFilterGender = "all"
@@ -257,7 +257,7 @@ class ExSpotlightViewController: UIViewController, UITableViewDelegate, UITableV
             print("Find \(result.count) spotlight contacts")
             
             allSpUser.removeAll(keepCapacity: true)
-            for re in result as! [PFObject] {
+            for re in result {
                 if let u = ExSpotlightUser(parseObject: re) {
                     allSpUser.append(u)
                 }
@@ -290,7 +290,7 @@ class ExSpotlightViewController: UIViewController, UITableViewDelegate, UITableV
                 indexList.append(curIndexPivot)
                 //create new section for contacts
                 spUsers.append([])
-                curSection++
+                curSection += 1
             }
             spUsers[curSection].append(spu)
         }
@@ -331,7 +331,7 @@ class ExSpotlightViewController: UIViewController, UITableViewDelegate, UITableV
             print("Find \(result.count) ranking contacts")
             
             allRankSpUser.removeAll(keepCapacity: true)
-            for re in result as! [PFObject] {
+            for re in result {
                 if let u = ExSpotlightUser(parseObject: re) {
                     allRankSpUser.append(u)
                 }

@@ -20,7 +20,7 @@ class EventPicCell: UITableViewCell {
             AppFunc.downloadPictureFile(file: p, saveToImgView: imgPropic, inTableView: tableView, forIndexPath: indexPath)
         }
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("tapView:"))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EventPicCell.tapView(_:)))
         imgPropic.gestureRecognizers = [tapGesture]
 
         layoutIfNeeded()

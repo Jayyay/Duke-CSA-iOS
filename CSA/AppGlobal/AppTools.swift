@@ -43,7 +43,8 @@ struct AppTools {
         formatter.dateFormat = "MM-dd, E, h:mm a"
         return formatter.stringFromDate(date)
     }
-    static func capitalizeFirstLetter (var str:String) -> String {
+    static func capitalizeFirstLetter (s:String) -> String {
+        var str = s
         str.replaceRange(str.startIndex...str.startIndex, with: String(str[str.startIndex]).capitalizedString)
         return str
     }

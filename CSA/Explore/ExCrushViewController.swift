@@ -124,7 +124,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
             print("success!")
             print("Find \(result.count) crushees")
             AppData.CrushData.myCrusheeArray.removeAll(keepCapacity: true)
-            for c in result as! [PFObject] {
+            for c in result {
                 if let newCrush = ExCrush(parseObject: c) {
                     AppData.CrushData.myCrusheeArray.append(newCrush)
                 }
@@ -144,7 +144,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.allContactsQueryCompletionCounter = 0
         query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
-            self.allContactsQueryCompletionCounter++
+            self.allContactsQueryCompletionCounter += 1
             self.allContactsQueryCompletionDataHandler(result: result, error: error)
             self.allContactsQueryCompletionUIHandler(error: error)
         }
@@ -199,7 +199,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
                 indexList.append(curIndexPivot)
                 //create new section for contacts
                 contacts.append([])
-                curSection++
+                curSection += 1
             }
             contacts[curSection].append(ct)
         }
@@ -257,7 +257,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         storedRightBarButtonItem = self.navigationItem.rightBarButtonItem!
         
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: Selector("refreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(ExCrushViewController.refreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(refreshControl)
         
         let nib = UINib(nibName: "BasicUserCellNib", bundle: nil)

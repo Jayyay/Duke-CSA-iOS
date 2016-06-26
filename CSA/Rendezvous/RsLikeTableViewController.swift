@@ -23,7 +23,7 @@ class RsLikeTableViewController: UITableViewController, ENSideMenuDelegate {
         tableView.estimatedRowHeight = 66
         refreshControl = UIRefreshControl()
         //refreshControl!.attributedTitle = NSAttributedString(string: "Refreshing")
-        refreshControl!.addTarget(self, action: Selector("rsLikeRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl!.addTarget(self, action: #selector(RsLikeTableViewController.rsLikeRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         
         let nib = UINib(nibName: "BasicUserCellNib", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_BasicUserCell)
@@ -71,7 +71,7 @@ class RsLikeTableViewController: UITableViewController, ENSideMenuDelegate {
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.queryCompletionCounter = 0
         query.getObjectInBackgroundWithId(selectedRs.PFInstance.objectId!, block: {(result:PFObject?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         })

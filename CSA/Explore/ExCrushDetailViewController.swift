@@ -66,7 +66,7 @@ class ExCrushDetailViewController: UIViewController, UITableViewDataSource, UITa
         tableView.estimatedRowHeight = 66
         
         refreshControl = UIRefreshControl()
-        refreshControl!.addTarget(self, action: Selector("myCrusheeRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl!.addTarget(self, action: #selector(ExCrushDetailViewController.myCrusheeRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(refreshControl)
         
         let nib = UINib(nibName: "BasicUserCellNib", bundle: nil)
@@ -136,7 +136,7 @@ class ExCrushDetailViewController: UIViewController, UITableViewDataSource, UITa
             print("success!")
             print("Find \(result.count) crushees")
             AppData.CrushData.myCrusheeArray.removeAll(keepCapacity: true)
-            for c in result as! [PFObject] {
+            for c in result {
                 if let newCrush = ExCrush(parseObject: c) {
                     AppData.CrushData.myCrusheeArray.append(newCrush)
                 }
@@ -170,7 +170,7 @@ class ExCrushDetailViewController: UIViewController, UITableViewDataSource, UITa
             print("success!")
             print("Find \(result.count) crushers")
             AppData.CrushData.myCrusherArray.removeAll(keepCapacity: true)
-            for c in result as! [PFObject] {
+            for c in result {
                 if let newCrush = ExCrush(parseObject: c) {
                     AppData.CrushData.myCrusherArray.append(newCrush)
                 }

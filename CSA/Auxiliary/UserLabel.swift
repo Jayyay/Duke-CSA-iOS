@@ -121,7 +121,7 @@ class UserLabel: PPLabel, PPLabelDelegate {
             let attrStr = self.attributedText!.mutableCopy() as! NSMutableAttributedString
             attrStr.addAttribute(NSBackgroundColorAttributeName, value: UIColor.lightGrayColor(), range: highLightedRange)
             self.attributedText = attrStr
-            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "displayUserInfo:", userInfo: userSelected, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(UserLabel.displayUserInfo(_:)), userInfo: userSelected, repeats: false)
         }
         return preventPropagateTouchToSuperView
     }

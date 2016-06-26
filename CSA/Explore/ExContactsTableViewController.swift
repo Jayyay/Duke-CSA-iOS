@@ -40,7 +40,7 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.queryCompletionCounter = 0
         query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         }
@@ -71,7 +71,7 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
                 }
             }
             //This code is a hack. If change title immediately there would a quick inconsistency in title which looks ugly. So delay the change in 0.1s
-            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "changeTitle", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(ExContactsTableViewController.changeTitle), userInfo: nil, repeats: false)
             allCt.sortInPlace({AppTools.compareUserIsOrderedBefore(u1: $0, u2: $1)})
             
             //configure contacts by seperating user by netID_pivot (last name)
@@ -85,7 +85,7 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
                     indexList.append(curIndexPivot)
                     //create new section for contacts
                     contacts.append([])
-                    curSection++
+                    curSection += 1
                 }
                 contacts[curSection].append(ct)
             }
@@ -148,7 +148,7 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
         
         refreshControl = UIRefreshControl()
         //refreshControl!.attributedTitle = NSAttributedString(string: "Refreshing")
-        refreshControl!.addTarget(self, action: Selector("refreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl!.addTarget(self, action: #selector(ExContactsTableViewController.refreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100

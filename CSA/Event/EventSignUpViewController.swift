@@ -70,7 +70,7 @@ class EventSignUpViewController: UIViewController, UIWebViewDelegate, ENSideMenu
         refreshConnectSuccess = false
         AppFunc.pauseApp()
         //set time out
-        NSTimer.scheduledTimerWithTimeInterval(TIME_OUT_IN_SEC, target: self, selector: Selector("refreshTimeOut"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(TIME_OUT_IN_SEC, target: self, selector: #selector(EventSignUpViewController.refreshTimeOut), userInfo: nil, repeats: false)
         selectedEvent.PFInstance.fetchInBackgroundWithBlock { (result:PFObject?, error:NSError?) -> Void in
             self.refreshConnectSuccess = true
             self.view.hideToastActivity()

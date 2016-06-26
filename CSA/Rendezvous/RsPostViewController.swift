@@ -145,7 +145,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             let tagStr = RsTag.tagIndexToName[index]
             let (R, G, B) = RsTag.colorDict[tagStr]!
             tagChosen.backgroundColor = UIColor(red: R/255, green: G/255, blue: B/255, alpha: 1.0)
-            validTag++
+            validTag += 1
             imgTagCheck.hidden = false
         }
     }
@@ -225,7 +225,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             check.hidden = true
         }
         
-        for var i = 0; i < tagIsOn.count; i++ {
+        for i in 0 ..< tagIsOn.count {
             tagIsOn[i] = false
         }
         for t in tagArr {
@@ -249,7 +249,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     
     // MARK: - Keyboard
     func registerForKeyboardNotifications ()-> Void   {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RsPostViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
@@ -295,8 +295,8 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             check.hidden = true
         }
         
-        tfTitle.addTarget(self, action: Selector("tfTitleDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
-        tfWhenWhere.addTarget(self, action: Selector("tfWhenDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
+        tfTitle.addTarget(self, action: #selector(RsPostViewController.tfTitleDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        tfWhenWhere.addTarget(self, action: #selector(RsPostViewController.tfWhenDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         registerForKeyboardNotifications()
     }
     

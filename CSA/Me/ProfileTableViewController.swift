@@ -40,7 +40,7 @@ class ProfileTableViewController: UITableViewController {
         imgPropic.layer.masksToBounds = true
         tvAbout.layer.cornerRadius = 5.0
         tvAbout.layer.masksToBounds = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("tapView:"))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProfileTableViewController.tapView(_:)))
         imgPropic.gestureRecognizers = [tapGesture]
     }
     override func viewWillAppear(animated: Bool) {

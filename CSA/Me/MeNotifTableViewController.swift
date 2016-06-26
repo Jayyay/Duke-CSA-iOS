@@ -19,7 +19,7 @@ class MeNotifTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         self.refreshControl = UIRefreshControl()
-        self.refreshControl!.addTarget(self, action: Selector("refreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl!.addTarget(self, action: #selector(MeNotifTableViewController.refreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         tableAutoRefresh()
     }
 
@@ -44,7 +44,7 @@ class MeNotifTableViewController: UITableViewController {
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.queryCompletionCounter = 0
         query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         }
@@ -60,7 +60,7 @@ class MeNotifTableViewController: UITableViewController {
         query.cachePolicy = PFCachePolicy.NetworkOnly
         self.queryCompletionCounter = 2
         query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         }

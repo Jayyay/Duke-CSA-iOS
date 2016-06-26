@@ -101,7 +101,7 @@ class EventReplyCell: UITableViewCell, UITextViewDelegate {
         AppFunc.pauseApp()
         
         //set time out timer
-        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: Selector("postTimeOut"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: #selector(EventReplyCell.postTimeOut), userInfo: nil, repeats: false)
         
         
         let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) mentioned you in a reply about the event '\(childReply.parent.parent[PFKey.EVENT.TITLE] as! String)'."

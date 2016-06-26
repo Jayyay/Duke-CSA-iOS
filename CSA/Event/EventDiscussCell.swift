@@ -140,7 +140,7 @@ class EventDiscussCell: UITableViewCell, UITextViewDelegate{
         AppFunc.pauseApp()
         
         //set time out timer
-        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: Selector("postTimeOut"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: #selector(EventDiscussCell.postTimeOut), userInfo: nil, repeats: false)
         
         let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) replied to your discussion about the event '\(childDis.parent[PFKey.EVENT.TITLE] as! String)'."
         let sendToUser = childDis.author

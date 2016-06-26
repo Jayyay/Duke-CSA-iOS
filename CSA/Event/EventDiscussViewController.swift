@@ -222,7 +222,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
             print("success!")
             discussions.removeAll(keepCapacity: true)
             print("Find \(result.count) results.")
-            for re in (result as! [PFObject]){
+            for re in result {
                 if let newDis = Discussion(parseObject: re){
                     discussions.append(newDis)
                 }
