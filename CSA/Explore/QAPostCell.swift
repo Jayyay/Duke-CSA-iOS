@@ -76,18 +76,19 @@ class QAPostCell: UITableViewCell {
     }
     
     @IBAction func upvote(sender: AnyObject) {
-        let u = PFUser.currentUser()!
+        let id = PFUser.currentUser()!.objectId!
         let post = self.childQA
-        if (post.upvotes.contains(u)) {
-            post.upvotes.removeAtIndex(post.upvotes.indexOf(u)!)
+        print(post.upvotes)
+        if (post.upvotes.contains(id)) {
+            post.upvotes.removeAtIndex(post.upvotes.indexOf(id)!)
             post.vote -= 1
         }
-        else if (post.downvotes.contains(u)) {
-            post.downvotes.removeAtIndex(post.downvotes.indexOf(u)!)
+        else if (post.downvotes.contains(id)) {
+            post.downvotes.removeAtIndex(post.downvotes.indexOf(id)!)
             post.vote += 1
         }
         else {
-            post.upvotes.append(u)
+            post.upvotes.append(id)
             post.vote += 1
         }
         voteLabel.text = String(post.vote)
@@ -99,18 +100,18 @@ class QAPostCell: UITableViewCell {
     }
     
     @IBAction func downvote(sender: AnyObject) {
-        let u = PFUser.currentUser()!
+        let id = PFUser.currentUser()!.objectId!
         let post = self.childQA
-        if (post.downvotes.contains(u)) {
-            post.downvotes.removeAtIndex(post.downvotes.indexOf(u)!)
+        if (post.downvotes.contains(id)) {
+            post.downvotes.removeAtIndex(post.downvotes.indexOf(id)!)
             post.vote += 1
         }
-        else if (post.upvotes.contains(u)) {
-            post.upvotes.removeAtIndex(post.upvotes.indexOf(u)!)
+        else if (post.upvotes.contains(id)) {
+            post.upvotes.removeAtIndex(post.upvotes.indexOf(id)!)
             post.vote -= 1
         }
         else {
-            post.downvotes.append(u)
+            post.downvotes.append(id)
             post.vote -= 1
         }
         voteLabel.text = String(post.vote)

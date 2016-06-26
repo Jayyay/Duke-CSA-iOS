@@ -15,8 +15,8 @@ class QAPost: NSObject {
     var title: String! = ""
     var content: String! = ""
     var vote = 0
-    var upvotes: [PFUser] = []
-    var downvotes: [PFUser] = []
+    var upvotes: [String] = []
+    var downvotes: [String] = []
     var answers: [PFObject] = [] // answers to this post
     var question: AnyObject = NSNull()
     var postTime: NSDate!
@@ -56,10 +56,10 @@ class QAPost: NSObject {
         if let ans = parseObject[PFKey.QA.ANSWERS] as? [PFObject] {
             answers = ans
         }
-        if let up = parseObject[PFKey.QA.UPVOTES] as? [PFUser] {
+        if let up = parseObject[PFKey.QA.UPVOTES] as? [String] {
             self.upvotes = up
         }
-        if let down = parseObject[PFKey.QA.DOWNVOTES] as? [PFUser] {
+        if let down = parseObject[PFKey.QA.DOWNVOTES] as? [String] {
             self.downvotes = down
         }
         if let question = parseObject[PFKey.QA.TOQUESTION] as? PFObject {
