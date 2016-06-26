@@ -62,6 +62,9 @@ class QAPost: NSObject {
         if let down = parseObject[PFKey.QA.DOWNVOTES] as? [PFUser] {
             self.downvotes = down
         }
+        if let question = parseObject[PFKey.QA.TOQUESTION] as? PFObject {
+            self.question = question
+        }
     }
     
     init (type: String!) {
