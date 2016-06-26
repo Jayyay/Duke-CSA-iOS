@@ -12,7 +12,7 @@ class QAPost: NSObject {
     var PFInstance: PFObject
     var type: String!
     var author: PFUser!
-    var title: String?
+    var title: String! = ""
     var content: String! = ""
     var vote = 0
     var upvotes: [PFUser] = []
@@ -79,6 +79,7 @@ class QAPost: NSObject {
         PFInstance[PFKey.QA.UPVOTES] = upvotes;
         PFInstance[PFKey.QA.DOWNVOTES] = downvotes;
         PFInstance[PFKey.QA.VOTE] = vote;
+        PFInstance[PFKey.QA.TOQUESTION] = question;
         PFInstance.saveInBackgroundWithBlock { (success: Bool, error: NSError?) in
             block(success, error)
         }

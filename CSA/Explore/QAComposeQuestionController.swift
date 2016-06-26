@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QAComposeController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!

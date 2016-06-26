@@ -15,7 +15,7 @@
 		0086CFD71D1B01F400DE0A9F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD31D1B01F400DE0A9F /* FBSDKLoginKit.framework */; };
 		0086CFD81D1B01F400DE0A9F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD41D1B01F400DE0A9F /* FBSDKShareKit.framework */; };
 		0086CFDC1D1CD69400DE0A9F /* QAPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CFDB1D1CD69400DE0A9F /* QAPost.swift */; };
-		00B07A991D1E1EA1005F73DF /* QAComposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B07A981D1E1EA1005F73DF /* QAComposeController.swift */; };
+		00B07A991D1E1EA1005F73DF /* QAComposeQuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B07A981D1E1EA1005F73DF /* QAComposeQuestionController.swift */; };
 		00B07A9B1D1EDD18005F73DF /* QADetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B07A9A1D1EDD18005F73DF /* QADetailViewController.swift */; };
 		00B07A9F1D1EF026005F73DF /* NoAnswerCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B07A9E1D1EF026005F73DF /* NoAnswerCellNib.xib */; };
 		00C6E0101D1ADB50008F8B9F /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */; };
@@ -23,6 +23,7 @@
 		00C6E0121D1ADB50008F8B9F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00D1D1ADB50008F8B9F /* Parse.framework */; };
 		00DE44D61D1F792600D6D351 /* compose.png in Resources */ = {isa = PBXBuildFile; fileRef = 00DE44D51D1F792600D6D351 /* compose.png */; };
 		00DE44D81D1F794C00D6D351 /* ComposeAnswerCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */; };
+		00DE44DB1D1F893F00D6D351 /* QAComposeAnswerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE44DA1D1F893F00D6D351 /* QAComposeAnswerController.swift */; };
 		6902101F1AE9E91200789A67 /* RsTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6902101E1AE9E91200789A67 /* RsTag.swift */; };
 		6904E02E1AE896C9009F018D /* Rendezvous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6904E02D1AE896C9009F018D /* Rendezvous.swift */; };
 		6904E0341AE89DB0009F018D /* RsReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6904E0331AE89DB0009F018D /* RsReply.swift */; };
@@ -221,7 +222,7 @@
 		0086CFD31D1B01F400DE0A9F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		0086CFD41D1B01F400DE0A9F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		0086CFDB1D1CD69400DE0A9F /* QAPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAPost.swift; sourceTree = "<group>"; };
-		00B07A981D1E1EA1005F73DF /* QAComposeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAComposeController.swift; sourceTree = "<group>"; };
+		00B07A981D1E1EA1005F73DF /* QAComposeQuestionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAComposeQuestionController.swift; sourceTree = "<group>"; };
 		00B07A9A1D1EDD18005F73DF /* QADetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QADetailViewController.swift; sourceTree = "<group>"; };
 		00B07A9E1D1EF026005F73DF /* NoAnswerCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoAnswerCellNib.xib; sourceTree = "<group>"; };
 		00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
@@ -229,6 +230,7 @@
 		00C6E00D1D1ADB50008F8B9F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		00DE44D51D1F792600D6D351 /* compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose.png; sourceTree = "<group>"; };
 		00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeAnswerCellNib.xib; sourceTree = "<group>"; };
+		00DE44DA1D1F893F00D6D351 /* QAComposeAnswerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAComposeAnswerController.swift; sourceTree = "<group>"; };
 		6902101E1AE9E91200789A67 /* RsTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsTag.swift; sourceTree = "<group>"; };
 		6904E02D1AE896C9009F018D /* Rendezvous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rendezvous.swift; sourceTree = "<group>"; };
 		6904E0331AE89DB0009F018D /* RsReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsReply.swift; sourceTree = "<group>"; };
@@ -452,16 +454,25 @@
 		0086CFD91D1CD63200DE0A9F /* QA */ = {
 			isa = PBXGroup;
 			children = (
+				00DE44D91D1F82F400D6D351 /* cellnibs */,
 				0086CFDB1D1CD69400DE0A9F /* QAPost.swift */,
 				005FED0D1D1D905900538715 /* QAViewController.swift */,
-				005FED0F1D1D990700538715 /* QAPostCellNib.xib */,
-				00B07A9E1D1EF026005F73DF /* NoAnswerCellNib.xib */,
 				005FED111D1D993000538715 /* QAPostCell.swift */,
-				00B07A981D1E1EA1005F73DF /* QAComposeController.swift */,
+				00B07A981D1E1EA1005F73DF /* QAComposeQuestionController.swift */,
 				00B07A9A1D1EDD18005F73DF /* QADetailViewController.swift */,
-				00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */,
+				00DE44DA1D1F893F00D6D351 /* QAComposeAnswerController.swift */,
 			);
 			name = QA;
+			sourceTree = "<group>";
+		};
+		00DE44D91D1F82F400D6D351 /* cellnibs */ = {
+			isa = PBXGroup;
+			children = (
+				005FED0F1D1D990700538715 /* QAPostCellNib.xib */,
+				00B07A9E1D1EF026005F73DF /* NoAnswerCellNib.xib */,
+				00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */,
+			);
+			name = cellnibs;
 			sourceTree = "<group>";
 		};
 		69058F5C1ACFFCA3003DFB3C /* UI */ = {
@@ -1174,6 +1185,7 @@
 				69AC5C321B9A98F9002C2CFA /* ExCrushDetailViewController.swift in Sources */,
 				005FED121D1D993000538715 /* QAPostCell.swift in Sources */,
 				69D43AF41AD98214001DD44B /* EventDetailViewController.swift in Sources */,
+				00DE44DB1D1F893F00D6D351 /* QAComposeAnswerController.swift in Sources */,
 				6987BECE1AFA23E600612F18 /* UserConstants.swift in Sources */,
 				69D43AF61AD98214001DD44B /* EventMenuTableViewController.swift in Sources */,
 				6904E02E1AE896C9009F018D /* Rendezvous.swift in Sources */,
@@ -1237,7 +1249,7 @@
 				69EF3BD61AF088830065D449 /* KeyboardInputView.swift in Sources */,
 				694600821C13F7510080E3DE /* BulletinTitleCell.swift in Sources */,
 				693D92571AE108CC009A2758 /* EventReplyCell.swift in Sources */,
-				00B07A991D1E1EA1005F73DF /* QAComposeController.swift in Sources */,
+				00B07A991D1E1EA1005F73DF /* QAComposeQuestionController.swift in Sources */,
 				697C3D7F1AF7131500154ED6 /* HRToast+UIView.swift in Sources */,
 				692093B41AEF28290040B6DC /* RsReplyViewController.swift in Sources */,
 				69C9994E1AEF6E13001511D6 /* RsLikeTableViewController.swift in Sources */,

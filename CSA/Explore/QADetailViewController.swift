@@ -14,6 +14,7 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
     let ReuseID_QACell = "QAPostCell"
     let ReuseID_NoAnswer = "NoAnswerCell"
     let ReuseID_ComposeAnswer = "ComposeAnswerCell"
+    let ReuseID_EditAnswerSegue = "QAEditAnswerSegue"
     
     var tableRefresher: UIRefreshControl!
     var QACellMaxY: CGFloat = 0
@@ -193,12 +194,20 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
                     posts.append(newPost)
                 }
             }
+            sortPosts()
             //beginFilter()
             tableView.reloadData()
         }
         else {
             print("query error: (error)")
         }
+    }
+    
+    // only sort the answers
+    func sortPosts() {
+        posts.removeAtIndex(0)
+        posts.sortInPlace({AppTools.compareQAPostIsOrderedBefore(p1: $0, p2: $1)})
+        posts.insert(question, atIndex: 0)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -223,6 +232,7 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
             return noCell
         }
         let postIndex = indexPath.row > 0 ? indexPath.row - 1 : 0
+        print("post index: \(postIndex)")
         let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_QACell, forIndexPath: indexPath) as! QAPostCell
         cell.initWithPost(posts[postIndex], fromVC: self, fromTableView: tableView, forIndexPath: indexPath)
         
@@ -238,11 +248,20 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (indexPath.row == 0) {
+        switch (indexPath.row) {
+        case 0:
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        }
-        if (indexPath.row == 2 && noAnswer) {
+            break
+        case 1:
+            AppData.QAData.selectedQAPost = question
+            self.performSegueWithIdentifier(ReuseID_EditAnswerSegue, sender: self)
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        case 2:
+            if (noAnswer) {
+                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            }
+            break
+        default: break
         }
     }
     
