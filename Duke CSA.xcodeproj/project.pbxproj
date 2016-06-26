@@ -21,6 +21,8 @@
 		00C6E0101D1ADB50008F8B9F /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */; };
 		00C6E0111D1ADB50008F8B9F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00C1D1ADB50008F8B9F /* Bolts.framework */; };
 		00C6E0121D1ADB50008F8B9F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00D1D1ADB50008F8B9F /* Parse.framework */; };
+		00DE44D61D1F792600D6D351 /* compose.png in Resources */ = {isa = PBXBuildFile; fileRef = 00DE44D51D1F792600D6D351 /* compose.png */; };
+		00DE44D81D1F794C00D6D351 /* ComposeAnswerCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */; };
 		6902101F1AE9E91200789A67 /* RsTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6902101E1AE9E91200789A67 /* RsTag.swift */; };
 		6904E02E1AE896C9009F018D /* Rendezvous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6904E02D1AE896C9009F018D /* Rendezvous.swift */; };
 		6904E0341AE89DB0009F018D /* RsReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6904E0331AE89DB0009F018D /* RsReply.swift */; };
@@ -225,6 +227,8 @@
 		00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		00C6E00C1D1ADB50008F8B9F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		00C6E00D1D1ADB50008F8B9F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		00DE44D51D1F792600D6D351 /* compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose.png; sourceTree = "<group>"; };
+		00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeAnswerCellNib.xib; sourceTree = "<group>"; };
 		6902101E1AE9E91200789A67 /* RsTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsTag.swift; sourceTree = "<group>"; };
 		6904E02D1AE896C9009F018D /* Rendezvous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rendezvous.swift; sourceTree = "<group>"; };
 		6904E0331AE89DB0009F018D /* RsReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsReply.swift; sourceTree = "<group>"; };
@@ -455,6 +459,7 @@
 				005FED111D1D993000538715 /* QAPostCell.swift */,
 				00B07A981D1E1EA1005F73DF /* QAComposeController.swift */,
 				00B07A9A1D1EDD18005F73DF /* QADetailViewController.swift */,
+				00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */,
 			);
 			name = QA;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 			children = (
 				69D0FE5A1C4888B500064A94 /* placeholder-event.jpg */,
 				69A608171C444F0200D57ADC /* placeholder_event.jpg */,
+				00DE44D51D1F792600D6D351 /* compose.png */,
 				69A727B81BF5390900A8445E /* line0.png */,
 				694600791C13ECEF0080E3DE /* expcrush.png */,
 				6946007A1C13ECEF0080E3DE /* expspotlight.png */,
@@ -1088,6 +1094,7 @@
 				692BAE441ADF5B850008F29B /* android.png in Resources */,
 				69CD64BA1B97F8ED00A232AD /* WANTED.png in Resources */,
 				695B172E1AF9EBBA00EBC1DF /* dukeBlueDevil0 copy.png in Resources */,
+				00DE44D61D1F792600D6D351 /* compose.png in Resources */,
 				696E3ECF1B8EC5590016658F /* DukeChapelCut.jpg in Resources */,
 				69D0FE5B1C4888B500064A94 /* placeholder-event.jpg in Resources */,
 				69BFFA851B661A0100986F6E /* RendezvousCellNib.xib in Resources */,
@@ -1124,6 +1131,7 @@
 				691859581ADD0E2C0063D0AE /* bike@2x.png in Resources */,
 				69339C1E1B650E3B00EC8D99 /* Garden_4.jpg in Resources */,
 				69D1B8041B6A4D1800D6B2FF /* DukeChapel.jpg in Resources */,
+				00DE44D81D1F794C00D6D351 /* ComposeAnswerCellNib.xib in Resources */,
 				69926B001ACF94C60080E51E /* Images.xcassets in Resources */,
 				697918661AFB55CA0098CAFB /* BasicUserCellNib.xib in Resources */,
 				69AC5C531B9AC515002C2CFA /* lollipop_dis.png in Resources */,

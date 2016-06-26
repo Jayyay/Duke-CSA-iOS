@@ -13,7 +13,7 @@ class QAComposeController: UIViewController, UITextViewDelegate, UITextFieldDele
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
 
-    let PLACEHOLDER_FOR_TEXTVIEW: String = "Further descriptions about your question."
+    let PLACEHOLDER_QUESTION_CONTENT: String = "Further descriptions about your question."
     
     var validTitle = false
     var validContent = false
@@ -21,7 +21,7 @@ class QAComposeController: UIViewController, UITextViewDelegate, UITextFieldDele
     var postConnectSuccess = false
     var postAllowed = true
     
-    let TIME_OUT_IN_SEC:NSTimeInterval = 5.0
+    let TIME_OUT_IN_SEC: NSTimeInterval = 5.0
     
     @IBAction func onPost(sender: AnyObject) {
         if !postAllowed{
@@ -66,7 +66,7 @@ class QAComposeController: UIViewController, UITextViewDelegate, UITextFieldDele
     
     func validateInput() -> Bool{
         validTitle = titleTextField.text!.characters.count > 5
-        validContent = contentTextView.text! != PLACEHOLDER_FOR_TEXTVIEW
+        validContent = contentTextView.text! != PLACEHOLDER_QUESTION_CONTENT
         
         if !validTitle {
             self.view.makeToast(message: "Please put in a longer title", duration: 1.0, position: HRToastPositionCenterAbove)
@@ -92,7 +92,7 @@ class QAComposeController: UIViewController, UITextViewDelegate, UITextFieldDele
     //// MARK: - text delegate
     //textview
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-        if textView.text == PLACEHOLDER_FOR_TEXTVIEW {
+        if textView.text == PLACEHOLDER_QUESTION_CONTENT {
             textView.text = ""
             textView.textColor = UIColor.blackColor()
         }
@@ -101,7 +101,7 @@ class QAComposeController: UIViewController, UITextViewDelegate, UITextFieldDele
     
     func textViewDidEndEditing(textView: UITextView) {
         if textView.text == nil || textView.text == "" {
-            textView.text = PLACEHOLDER_FOR_TEXTVIEW
+            textView.text = PLACEHOLDER_QUESTION_CONTENT
             textView.textColor = AppConstants.Color.placeholder
         }
     }

@@ -13,6 +13,7 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tableView: UITableView!
     let ReuseID_QACell = "QAPostCell"
     let ReuseID_NoAnswer = "NoAnswerCell"
+    let ReuseID_ComposeAnswer = "ComposeAnswerCell"
     
     var tableRefresher: UIRefreshControl!
     var QACellMaxY: CGFloat = 0
@@ -59,6 +60,8 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_QACell)
         nib = UINib(nibName: "NoAnswerCellNib", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_NoAnswer)
+        nib = UINib(nibName: "ComposeAnswerCellNib", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_ComposeAnswer)
         
         tableRefresher = UIRefreshControl()
         //tableRefresher.attributedTitle = NSAttributedString(string: "Refreshing")
@@ -203,18 +206,25 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return noAnswer ? 2 : posts.count;
+        // no answer: question + edit answer + no answer cell
+        // yes answer: question + edit answer + answers
+        return noAnswer ? 3 : posts.count + 1;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // row #1 is the edit answer cell, other answers have an offset index of 1 because of this
+        if (indexPath.row == 1) {
+            let editCell = tableView.dequeueReusableCellWithIdentifier(ReuseID_ComposeAnswer, forIndexPath: indexPath)
+            return editCell
+        }
         // display "no answer yet" when there is no answer
-        if (indexPath.row == 1 && noAnswer) {
+        if (indexPath.row == 2 && noAnswer) {
             let noCell = tableView.dequeueReusableCellWithIdentifier(ReuseID_NoAnswer, forIndexPath: indexPath)
             return noCell
         }
-        
+        let postIndex = indexPath.row > 0 ? indexPath.row - 1 : 0
         let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_QACell, forIndexPath: indexPath) as! QAPostCell
-        cell.initWithPost(posts[indexPath.row], fromVC: self, fromTableView: tableView, forIndexPath: indexPath)
+        cell.initWithPost(posts[postIndex], fromVC: self, fromTableView: tableView, forIndexPath: indexPath)
         
         // the question cannot be clicked anymore
         if (indexPath.row == 0) {
@@ -231,7 +241,7 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
         if (indexPath.row == 0) {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
-        if (indexPath.row == 1 && noAnswer) {
+        if (indexPath.row == 2 && noAnswer) {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
