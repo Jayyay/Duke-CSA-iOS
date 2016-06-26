@@ -14,7 +14,7 @@ class QAPost: NSObject {
     var author: PFUser!
     var title: String?
     var content: String! = ""
-    var vote: NSInteger! = 0
+    var vote = 0
     var upvotes: [PFUser] = []
     var downvotes: [PFUser] = []
     var answers: [PFObject] = [] // answers to this post
@@ -56,6 +56,12 @@ class QAPost: NSObject {
         if let ans = parseObject[PFKey.QA.ANSWERS] as? [PFObject] {
             answers = ans
         }
+        if let up = parseObject[PFKey.QA.UPVOTES] as? [PFUser] {
+            self.upvotes = up
+        }
+        if let down = parseObject[PFKey.QA.DOWNVOTES] as? [PFUser] {
+            self.downvotes = down
+        }
     }
     
     init (type: String!) {
@@ -77,4 +83,6 @@ class QAPost: NSObject {
             block(success, error)
         }
     }
+    
+    
 }

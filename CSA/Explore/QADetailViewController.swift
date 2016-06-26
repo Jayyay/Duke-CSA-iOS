@@ -224,15 +224,15 @@ class QADetailViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (indexPath.row > 0) {
-            return 150
-        }
         return UITableViewAutomaticDimension
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.row == 0) {
-            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+        if (indexPath.row == 1 && noAnswer) {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
     
