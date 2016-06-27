@@ -15,8 +15,11 @@
 		0086CFD71D1B01F400DE0A9F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD31D1B01F400DE0A9F /* FBSDKLoginKit.framework */; };
 		0086CFD81D1B01F400DE0A9F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD41D1B01F400DE0A9F /* FBSDKShareKit.framework */; };
 		0086CFDC1D1CD69400DE0A9F /* QAPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0086CFDB1D1CD69400DE0A9F /* QAPost.swift */; };
+		00980B0E1D21BE6F00BF1CD0 /* QAAnswerCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00980B0D1D21BE6F00BF1CD0 /* QAAnswerCellNib.xib */; };
+		00980B101D21BEBD00BF1CD0 /* QAAnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00980B0F1D21BEBD00BF1CD0 /* QAAnswerCell.swift */; };
+		00980B131D21C18100BF1CD0 /* QAAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00980B121D21C18100BF1CD0 /* QAAnswerViewController.swift */; };
 		00B07A991D1E1EA1005F73DF /* QAComposeQuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B07A981D1E1EA1005F73DF /* QAComposeQuestionController.swift */; };
-		00B07A9B1D1EDD18005F73DF /* QADetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B07A9A1D1EDD18005F73DF /* QADetailViewController.swift */; };
+		00B07A9B1D1EDD18005F73DF /* QAQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B07A9A1D1EDD18005F73DF /* QAQuestionViewController.swift */; };
 		00B07A9F1D1EF026005F73DF /* NoAnswerCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B07A9E1D1EF026005F73DF /* NoAnswerCellNib.xib */; };
 		00C6E0101D1ADB50008F8B9F /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */; };
 		00C6E0111D1ADB50008F8B9F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00C1D1ADB50008F8B9F /* Bolts.framework */; };
@@ -222,8 +225,11 @@
 		0086CFD31D1B01F400DE0A9F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		0086CFD41D1B01F400DE0A9F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		0086CFDB1D1CD69400DE0A9F /* QAPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAPost.swift; sourceTree = "<group>"; };
+		00980B0D1D21BE6F00BF1CD0 /* QAAnswerCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QAAnswerCellNib.xib; sourceTree = "<group>"; };
+		00980B0F1D21BEBD00BF1CD0 /* QAAnswerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAAnswerCell.swift; sourceTree = "<group>"; };
+		00980B121D21C18100BF1CD0 /* QAAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAAnswerViewController.swift; sourceTree = "<group>"; };
 		00B07A981D1E1EA1005F73DF /* QAComposeQuestionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAComposeQuestionController.swift; sourceTree = "<group>"; };
-		00B07A9A1D1EDD18005F73DF /* QADetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QADetailViewController.swift; sourceTree = "<group>"; };
+		00B07A9A1D1EDD18005F73DF /* QAQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAQuestionViewController.swift; sourceTree = "<group>"; };
 		00B07A9E1D1EF026005F73DF /* NoAnswerCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoAnswerCellNib.xib; sourceTree = "<group>"; };
 		00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		00C6E00C1D1ADB50008F8B9F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -454,21 +460,32 @@
 		0086CFD91D1CD63200DE0A9F /* QA */ = {
 			isa = PBXGroup;
 			children = (
+				00980B111D21C08A00BF1CD0 /* cellControllers */,
 				00DE44D91D1F82F400D6D351 /* cellnibs */,
 				0086CFDB1D1CD69400DE0A9F /* QAPost.swift */,
 				005FED0D1D1D905900538715 /* QAViewController.swift */,
-				005FED111D1D993000538715 /* QAPostCell.swift */,
 				00B07A981D1E1EA1005F73DF /* QAComposeQuestionController.swift */,
-				00B07A9A1D1EDD18005F73DF /* QADetailViewController.swift */,
+				00B07A9A1D1EDD18005F73DF /* QAQuestionViewController.swift */,
+				00980B121D21C18100BF1CD0 /* QAAnswerViewController.swift */,
 				00DE44DA1D1F893F00D6D351 /* QAComposeAnswerController.swift */,
 			);
 			name = QA;
+			sourceTree = "<group>";
+		};
+		00980B111D21C08A00BF1CD0 /* cellControllers */ = {
+			isa = PBXGroup;
+			children = (
+				00980B0F1D21BEBD00BF1CD0 /* QAAnswerCell.swift */,
+				005FED111D1D993000538715 /* QAPostCell.swift */,
+			);
+			name = cellControllers;
 			sourceTree = "<group>";
 		};
 		00DE44D91D1F82F400D6D351 /* cellnibs */ = {
 			isa = PBXGroup;
 			children = (
 				005FED0F1D1D990700538715 /* QAPostCellNib.xib */,
+				00980B0D1D21BE6F00BF1CD0 /* QAAnswerCellNib.xib */,
 				00B07A9E1D1EF026005F73DF /* NoAnswerCellNib.xib */,
 				00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */,
 			);
@@ -1101,6 +1118,7 @@
 				00B07A9F1D1EF026005F73DF /* NoAnswerCellNib.xib in Resources */,
 				69926AFE1ACF94C60080E51E /* Main.storyboard in Resources */,
 				005FED101D1D990700538715 /* QAPostCellNib.xib in Resources */,
+				00980B0E1D21BE6F00BF1CD0 /* QAAnswerCellNib.xib in Resources */,
 				69FF45751ADCB91A00C56788 /* BulletinCellNib.xib in Resources */,
 				692BAE441ADF5B850008F29B /* android.png in Resources */,
 				69CD64BA1B97F8ED00A232AD /* WANTED.png in Resources */,
@@ -1211,13 +1229,15 @@
 				690E34FB1AE4AC26007690CA /* Discussion.swift in Sources */,
 				697918651AFB55CA0098CAFB /* BasicUserCell.swift in Sources */,
 				697918671AFB55CA0098CAFB /* LoginViewController.swift in Sources */,
-				00B07A9B1D1EDD18005F73DF /* QADetailViewController.swift in Sources */,
+				00B07A9B1D1EDD18005F73DF /* QAQuestionViewController.swift in Sources */,
 				69AC5C401B9A9F38002C2CFA /* AppStatus.swift in Sources */,
 				69C9994C1AEF6E07001511D6 /* RsGoingTableViewController.swift in Sources */,
+				00980B101D21BEBD00BF1CD0 /* QAAnswerCell.swift in Sources */,
 				692195F11B6A8B0A00F9A501 /* MeReportBugTableViewController.swift in Sources */,
 				69D420791AFD20600072FCD7 /* BreakOutToRefreshView.swift in Sources */,
 				69926AF71ACF94C60080E51E /* AppDelegate.swift in Sources */,
 				69D0FE571C483A2F00064A94 /* ExCrushCountCell.swift in Sources */,
+				00980B131D21C18100BF1CD0 /* QAAnswerViewController.swift in Sources */,
 				692195F51B6A8F0D00F9A501 /* BasicPostCell.swift in Sources */,
 				693D92591AE111F9009A2758 /* EventDiscussViewController.swift in Sources */,
 				005FED0E1D1D905900538715 /* QAViewController.swift in Sources */,

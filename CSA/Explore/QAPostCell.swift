@@ -76,49 +76,10 @@ class QAPostCell: UITableViewCell {
     }
     
     @IBAction func upvote(sender: AnyObject) {
-        let id = PFUser.currentUser()!.objectId!
-        let post = self.childQA
-        print(post.upvotes)
-        if (post.upvotes.contains(id)) {
-            post.upvotes.removeAtIndex(post.upvotes.indexOf(id)!)
-            post.vote -= 1
-        }
-        else if (post.downvotes.contains(id)) {
-            post.downvotes.removeAtIndex(post.downvotes.indexOf(id)!)
-            post.vote += 1
-        }
-        else {
-            post.upvotes.append(id)
-            post.vote += 1
-        }
-        voteLabel.text = String(post.vote)
-        post.saveWithBlock { (success: Bool, error: NSError?) in
-            if let error = error {
-                print("Saving vote info error: \(error)")
-            }
-        }
+        self.childQA.upvote(voteLabel)
     }
     
     @IBAction func downvote(sender: AnyObject) {
-        let id = PFUser.currentUser()!.objectId!
-        let post = self.childQA
-        if (post.downvotes.contains(id)) {
-            post.downvotes.removeAtIndex(post.downvotes.indexOf(id)!)
-            post.vote += 1
-        }
-        else if (post.upvotes.contains(id)) {
-            post.upvotes.removeAtIndex(post.upvotes.indexOf(id)!)
-            post.vote -= 1
-        }
-        else {
-            post.downvotes.append(id)
-            post.vote -= 1
-        }
-        voteLabel.text = String(post.vote)
-        post.saveWithBlock { (success: Bool, error: NSError?) in
-            if let error = error {
-                print("Saving vote info error: \(error)")
-            }
-        }
+        self.childQA.downvote(voteLabel)
     }
 }

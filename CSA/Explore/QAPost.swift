@@ -88,5 +88,52 @@ class QAPost: NSObject {
         }
     }
     
+    func upvote(voteLabel: UILabel!) {
+        let id = PFUser.currentUser()!.objectId!
+        print(self.upvotes)
+        if (self.upvotes.contains(id)) {
+            self.upvotes.removeAtIndex(self.upvotes.indexOf(id)!)
+            self.vote -= 1
+        }
+        else if (self.downvotes.contains(id)) {
+            self.downvotes.removeAtIndex(self.downvotes.indexOf(id)!)
+            self.vote += 1
+        }
+        else {
+            self.upvotes.append(id)
+            self.vote += 1
+        }
+        self.saveWithBlock { (success: Bool, error: NSError?) in
+            if let error = error {
+                print("Saving vote info error: \(error)")
+            }
+            else {
+                voteLabel.text = String(self.vote)
+            }
+        }
+    }
     
+    func downvote(voteLabel: UILabel!) {
+        let id = PFUser.currentUser()!.objectId!
+        if (self.downvotes.contains(id)) {
+            self.downvotes.removeAtIndex(self.downvotes.indexOf(id)!)
+            self.vote += 1
+        }
+        else if (self.upvotes.contains(id)) {
+            self.upvotes.removeAtIndex(self.upvotes.indexOf(id)!)
+            self.vote -= 1
+        }
+        else {
+            self.downvotes.append(id)
+            self.vote -= 1
+        }
+        self.saveWithBlock { (success: Bool, error: NSError?) in
+            if let error = error {
+                print("Saving vote info error: \(error)")
+            }
+            else {
+                voteLabel.text = String(self.vote)
+            }
+        }
+    }
 }

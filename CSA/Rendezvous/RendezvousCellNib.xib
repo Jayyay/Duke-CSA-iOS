@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="273"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fJ7-WA-dCn" id="eMc-as-qer">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="272"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="272.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iuj-Eg-g7m" userLabel="AuthorView">
@@ -214,7 +214,7 @@
                                     <constraint firstItem="4KQ-bZ-PN4" firstAttribute="leading" secondItem="PLL-yb-Vge" secondAttribute="leading" id="w2Q-31-9Ru"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1g9-hA-HlF" userLabel="Like View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1g9-hA-HlF" userLabel="Like View">
                                 <rect key="frame" x="106" y="0.0" width="107" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="♡ Like (27)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYZ-a2-5i4">
@@ -223,7 +223,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AP3-nG-nJ3">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AP3-nG-nJ3">
                                         <rect key="frame" x="0.0" y="0.0" width="107" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>

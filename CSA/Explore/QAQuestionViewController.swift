@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QADetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, LoadMoreTableFooterViewDelegate {
+class QAQuestionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, LoadMoreTableFooterViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     let ReuseID_QACell = "QAPostCell"

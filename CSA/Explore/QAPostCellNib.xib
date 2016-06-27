@@ -127,7 +127,7 @@
                 <outlet property="upvoteButton" destination="eAm-OZ-D3r" id="yp0-Bn-fuL"/>
                 <outlet property="voteLabel" destination="d1n-Ey-hfp" id="wmE-yu-KZ2"/>
             </connections>
-            <point key="canvasLocation" x="-628" y="603.5"/>
+            <point key="canvasLocation" x="-660" y="613.5"/>
         </tableViewCell>
     </objects>
 </document>
