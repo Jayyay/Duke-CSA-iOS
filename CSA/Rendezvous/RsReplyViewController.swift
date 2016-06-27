@@ -233,6 +233,11 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    func keyboardWillHide (notification:NSNotification) {
+        kbInput.frame.origin.y = self.view.frame.height
+        kbInput.hidden = true
+    }
+    
     // resize the textview height according to user input
     // credit to Han Yu, huge thanks.
     func textViewDidChange(textView: UITextView) {
@@ -262,11 +267,6 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         textView.frame = newFrame;
         kbInput.frame = boxFrame
         
-    }
-    
-    func keyboardWillHide (notification:NSNotification) {
-        kbInput.frame.origin.y = self.view.frame.height
-        kbInput.hidden = true
     }
     
     //called everytime text is changed. Used here to detect return (send) pressed.

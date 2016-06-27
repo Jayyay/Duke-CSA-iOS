@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QAComposeAnswerController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+class QAComposeAnswerController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var contentTextView: UITextView!
     
@@ -22,6 +22,8 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate, UITextFie
     let TIME_OUT_IN_SEC: NSTimeInterval = 5.0
     
     var newPost: QAPost!
+    
+    var scrollToY:CGFloat = 0
     
     @IBAction func onPost(sender: AnyObject) {
         if !postAllowed{
@@ -108,16 +110,6 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate, UITextFie
         }
     }
     
-    //textfield
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        return true
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
     func cleanPostView(shouldPop shouldPop:Bool){
         contentTextView.text = nil
         validContent = false
@@ -136,7 +128,28 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate, UITextFie
         print("viewDidLoad - QAComposeAnswerViewController ")
         contentTextView.delegate = self
         
+        //initUI()
         initAnswerContent()
+    }
+    
+    func initUI() {
+        registerForKeyboardNotifications()
+        contentTextView.keyboardDismissMode = .OnDrag
+    }
+    
+    // MARK: - Keyboard
+    func registerForKeyboardNotifications ()-> Void   {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QAComposeAnswerController.keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        let info : NSDictionary = notification.userInfo!
+        let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
+        var y = scrollToY - (UIScreen.mainScreen().bounds.height - keyboardRect.height)
+        if y < 0 {
+            y = 0
+        }
+        self.contentTextView.setContentOffset(CGPointMake(0, y), animated: true)
     }
     
     func initAnswerContent() {

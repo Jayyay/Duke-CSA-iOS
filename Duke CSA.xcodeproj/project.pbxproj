@@ -1402,7 +1402,7 @@
 				INFOPLIST_FILE = CSA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.jayzw.Duke-CSA";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.billyu.Duke-CSA";
 				PRODUCT_NAME = "Duke CSA";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CSA/CSA-Bridging-Header.h";
@@ -1427,7 +1427,7 @@
 				INFOPLIST_FILE = CSA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.jayzw.Duke-CSA";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.billyu.Duke-CSA";
 				PRODUCT_NAME = "Duke CSA";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CSA/CSA-Bridging-Header.h";
