@@ -151,7 +151,7 @@ struct AppTools {
     static func getLastName(name: String) -> String {
         let index = name.rangeOfString(" ", options: .BackwardsSearch)?.endIndex
         if let index = index {
-            return name.substringWithRange(Range<String.Index>(start: index, end: name.endIndex))
+            return name.substringWithRange(Range<String.Index>(index..<name.endIndex))
         }
         else {
             return ""
@@ -161,7 +161,7 @@ struct AppTools {
     static func getNamePivot(name: String) -> String {
         let lastName = getLastName(name)
         if lastName != "" {
-            return lastName.substringWithRange(Range<String.Index>(start: lastName.startIndex, end: lastName.startIndex.advancedBy(1)))
+            return lastName.substringWithRange(Range<String.Index>(lastName.startIndex..<lastName.startIndex.advancedBy(1)))
         }
         else {
             return "-"
