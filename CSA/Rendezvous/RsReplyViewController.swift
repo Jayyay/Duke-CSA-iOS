@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RsReplyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, ENSideMenuDelegate {
+class RsReplyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, UIScrollViewDelegate, ENSideMenuDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     let SegueID_Post = "rsPostSegue"
@@ -39,7 +39,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         scrollToY = scrollTo
         if let r = replyTo {
             replyToUser = r
-        }else {
+        } else {
             replyToUser = nil
         }
         kbInput.txtview.becomeFirstResponder() //this leads to keyboardWillShow getting called
@@ -228,7 +228,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         kbInput.frame.origin.y = keyboardRect.origin.y - kbInput.bounds.height - 64
         print(kbInput.frame)
         let y = scrollToY - (UIScreen.mainScreen().bounds.height - keyboardRect.height - kbInput.frame.height - 64)
-        if y > -tableRefresher.frame.height {
+        if y > 0 {
             self.tableView.setContentOffset(CGPointMake(0, y), animated: true)
         }
     }
@@ -366,6 +366,14 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
             }else { //author is current user, delete
                 onDelete(cell.childReply)
             }
+        }
+    }
+    
+    // MARK: scroll view delegate
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if let ttView = kbInput {
+            ttView.resignFirstResponder()
+            ttView.endEditing(true)
         }
     }
     

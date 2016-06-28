@@ -3024,7 +3024,13 @@ Z290IHRvIHVwZGF0ZQ
                             <constraint firstItem="mEx-0k-yhq" firstAttribute="top" secondItem="j4A-ls-akY" secondAttribute="bottom" id="ce3-vK-R17"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Answer" id="wcH-Xq-ptP"/>
+                    <navigationItem key="navigationItem" title="Answer" id="wcH-Xq-ptP">
+                        <barButtonItem key="rightBarButtonItem" title="Comment" id="aaP-ox-C4z">
+                            <connections>
+                                <action selector="comment:" destination="idi-mx-Knc" id="ZFe-sd-sfG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="j4A-ls-akY" id="mW8-wT-uTI"/>

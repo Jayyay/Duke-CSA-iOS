@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QAAnswerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
+class QAAnswerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIScrollViewDelegate {
     
     let ReuseID_QAAnswer = "QAAnswerCell"
     let ReuseID_ReplyCell = "QAReplyCell"
@@ -80,7 +80,12 @@ class QAAnswerViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     // MARK: - Post & Delete
-    func replyPressed(scrollTo scrollTo:CGFloat, replyTo:PFUser?){
+    
+    @IBAction func comment(sender: AnyObject) {
+        replyPressed(scrollTo: 0, replyTo: nil)
+    }
+    
+    func replyPressed(scrollTo scrollTo: CGFloat, replyTo:PFUser?){
         scrollToY = scrollTo
         if let r = replyTo {
             replyToUser = r
@@ -298,9 +303,8 @@ class QAAnswerViewController: UIViewController, UITableViewDelegate, UITableView
         let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
         kbInput.hidden = false
         kbInput.frame.origin.y = keyboardRect.origin.y - kbInput.bounds.height - 64
-        print(kbInput.frame)
         let y = scrollToY - (UIScreen.mainScreen().bounds.height - keyboardRect.height - kbInput.frame.height - 64)
-        if y > -tableRefresher.frame.height {
+        if y > 0 {
             self.tableView.setContentOffset(CGPointMake(0, y), animated: true)
         }
     }
@@ -349,6 +353,14 @@ class QAAnswerViewController: UIViewController, UITableViewDelegate, UITableView
             return false
         }
         return true
+    }
+    
+    // MARK: scroll view delegate
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if let ttView = kbInput {
+            ttView.resignFirstResponder()
+            ttView.endEditing(true)
+        }
     }
     
     //MARK: Init and Life Cycle
