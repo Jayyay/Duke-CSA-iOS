@@ -20,6 +20,7 @@ class QAPost: NSObject {
     var answers: [PFObject] = [] // answers to this post
     var question: AnyObject = NSNull()
     var postTime: NSDate!
+    var replies: [PFObject] = []
     
     init? (parseObject: PFObject) {
         PFInstance = parseObject
@@ -65,6 +66,9 @@ class QAPost: NSObject {
         if let question = parseObject[PFKey.QA.TOQUESTION] as? PFObject {
             self.question = question
         }
+        if let reps = parseObject[PFKey.QA.REPLIES] as? [PFObject] {
+            self.replies = reps
+        }
     }
     
     init (type: String!) {
@@ -83,6 +87,7 @@ class QAPost: NSObject {
         PFInstance[PFKey.QA.DOWNVOTES] = downvotes;
         PFInstance[PFKey.QA.VOTE] = vote;
         PFInstance[PFKey.QA.TOQUESTION] = question;
+        PFInstance[PFKey.QA.REPLIES] = replies;
         PFInstance.saveInBackgroundWithBlock { (success: Bool, error: NSError?) in
             block(success, error)
         }

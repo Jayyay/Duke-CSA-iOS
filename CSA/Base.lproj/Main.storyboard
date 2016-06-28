@@ -2963,6 +2963,57 @@ Z290IHRvIHVwZGF0ZQ
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j4A-ls-akY">
                                 <rect key="frame" x="-4" y="64" width="328" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="QAReplyCell" rowHeight="48" id="Qh8-7e-thv" userLabel="Reply Cell" customClass="QAReplyCell" customModule="Duke_CSA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="328" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qh8-7e-thv" id="rnQ-au-GOm">
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="47"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWc-wI-8jy" userLabel="reply" customClass="UserLabel" customModule="Duke_CSA" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="8" width="304" height="16"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Jay @ Joe: HAHA">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" contentMode="left" ambiguous="YES" misplaced="YES" text="22:22 08/28 1995 Thurs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttX-4Y-CZV" userLabel="time">
+                                                    <rect key="frame" x="174" y="26" width="138" height="14"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="SWc-wI-8jy" firstAttribute="leading" secondItem="rnQ-au-GOm" secondAttribute="leadingMargin" id="4n9-xj-i0g"/>
+                                                <constraint firstItem="SWc-wI-8jy" firstAttribute="top" secondItem="rnQ-au-GOm" secondAttribute="topMargin" id="LiZ-nF-Esx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ttX-4Y-CZV" secondAttribute="trailing" id="SYA-Yg-pb1"/>
+                                                <constraint firstItem="ttX-4Y-CZV" firstAttribute="bottom" secondItem="rnQ-au-GOm" secondAttribute="bottomMargin" id="XsU-Od-vrJ"/>
+                                                <constraint firstItem="ttX-4Y-CZV" firstAttribute="top" secondItem="SWc-wI-8jy" secondAttribute="bottom" constant="2" id="ccj-hU-akg"/>
+                                                <constraint firstItem="SWc-wI-8jy" firstAttribute="trailing" secondItem="rnQ-au-GOm" secondAttribute="trailingMargin" id="fZ7-Dp-LKv"/>
+                                                <constraint firstItem="SWc-wI-8jy" firstAttribute="bottom" secondItem="rnQ-au-GOm" secondAttribute="bottomMargin" id="mgt-8A-bEw"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="mgt-8A-bEw"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblPostTime" destination="ttX-4Y-CZV" id="Be0-6E-ST2"/>
+                                            <outlet property="lblReply" destination="SWc-wI-8jy" id="VMx-yA-jia"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
