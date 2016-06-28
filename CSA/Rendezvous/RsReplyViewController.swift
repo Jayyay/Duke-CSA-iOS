@@ -222,7 +222,6 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        
         let info : NSDictionary = notification.userInfo!
         let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
         kbInput.hidden = false

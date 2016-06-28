@@ -75,6 +75,8 @@ class QAAnswerViewController: UIViewController, UITableViewDelegate, UITableView
         //tableRefresher.attributedTitle = NSAttributedString(string: "Refreshing")
         tableRefresher.addTarget(self, action: #selector(QAAnswerViewController.replyRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(tableRefresher)
+        
+        registerForKeyboardNotifications()
     }
     
     // MARK: - Post & Delete
