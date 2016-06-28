@@ -15,6 +15,7 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
     let ReuseID_NoAnswer = "NoAnswerCell"
     let ReuseID_ComposeAnswer = "ComposeAnswerCell"
     let ReuseID_EditAnswerSegue = "QAEditAnswerSegue"
+    let ReuseID_AnswerSegue = "QAAnswerSegue"
     
     var tableRefresher: UIRefreshControl!
     var QACellMaxY: CGFloat = 0
@@ -43,14 +44,13 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        question = AppData.QAData.selectedQAPost
+        question = AppData.QAData.selectedQAQuestion
         posts.append(question)
         answers = question.answers
         
         queryPredicate = NSPredicate(format: "question = %@", self.question.PFInstance)
         
         initUI();
-        // Do any additional setup after loading the view.
     }
     
     func initUI() {
@@ -235,6 +235,7 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
         // display "no answer yet" when there is no answer
         if (indexPath.row == 2 && noAnswer) {
             let noCell = tableView.dequeueReusableCellWithIdentifier(ReuseID_NoAnswer, forIndexPath: indexPath)
+            noCell.selectionStyle = .None
             return noCell
         }
         let postIndex = indexPath.row > 0 ? indexPath.row - 1 : 0
@@ -244,6 +245,7 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
         // the question cannot be clicked anymore
         if (indexPath.row == 0) {
             cell.accessoryType = .None
+            cell.selectionStyle = .None
         }
         return cell
     }
@@ -253,26 +255,29 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch (indexPath.row) {
-        // ignore selection on question
-        case 0:
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            break
-        // edit answer cell, if the user already answered, pull up the answer
-            // if not, compose new answer
-        case 1:
-            AppData.QAData.selectedQAPost = self.question
-            AppData.QAData.myAnswer = self.myAnswer
-            self.performSegueWithIdentifier(ReuseID_EditAnswerSegue, sender: self)
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        // ignore selection on no answer cell
-        case 2:
-            if (noAnswer) {
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            }
-            break
-        default: break
+        // selection on an answer
+        if !noAnswer && indexPath.row > 1 {
+            selectAnswer(indexPath.row - 1) //offset of 1 since 0 is for the question
         }
+        // selection on compose answer cell
+        else if indexPath.row == 1 {
+            composeAnswer()
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    // MARK: selection on rows of tableview
+    func selectAnswer(postIndex: Int) {
+        AppData.QAData.selectedQAAnswer = self.posts[postIndex]
+        self.performSegueWithIdentifier(ReuseID_AnswerSegue, sender: self)
+    }
+    
+    // if the user already answered, pull up the answer
+    // if not, compose new answer
+    func composeAnswer() {
+        AppData.QAData.selectedQAQuestion = self.question
+        AppData.QAData.myAnswer = self.myAnswer
+        self.performSegueWithIdentifier(ReuseID_EditAnswerSegue, sender: self)
     }
     
     //// MARK: - Pull to load more

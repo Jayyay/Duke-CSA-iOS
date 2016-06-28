@@ -202,7 +202,7 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! QAPostCell
-        AppData.QAData.selectedQAPost = cell.childQA
+        AppData.QAData.selectedQAQuestion = cell.childQA
         cameBackFromIndexPath = indexPath
         self.performSegueWithIdentifier(QADetailSegueID, sender: self)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

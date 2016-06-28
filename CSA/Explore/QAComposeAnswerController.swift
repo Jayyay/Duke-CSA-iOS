@@ -36,7 +36,7 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
         }
         
         newPost.content = contentTextView.text
-        newPost.question = AppData.QAData.selectedQAPost.PFInstance
+        newPost.question = AppData.QAData.selectedQAQuestion.PFInstance
         
         //change app status
         postConnectSuccess = false
@@ -64,10 +64,10 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
             }
         }
         
-        if (!AppData.QAData.selectedQAPost.answers.contains(newPost.PFInstance)) {
-            AppData.QAData.selectedQAPost.answers.append(newPost.PFInstance)
+        if (!AppData.QAData.selectedQAQuestion.answers.contains(newPost.PFInstance)) {
+            AppData.QAData.selectedQAQuestion.answers.append(newPost.PFInstance)
         }
-        AppData.QAData.selectedQAPost.saveWithBlock { (sucess: Bool, error: NSError?) in
+        AppData.QAData.selectedQAQuestion.saveWithBlock { (sucess: Bool, error: NSError?) in
             if let error = error {
                 print("error saving answer to question: \(error)")
             }
