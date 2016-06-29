@@ -30,6 +30,9 @@ class QAPost: NSObject {
     var postTime: NSDate!
     var replies: [PFObject] = []
     
+    var voteSuccess: Bool!
+    let TIME_OUT_IN_SEC = 2.0
+    
     init? (parseObject: PFObject) {
         PFInstance = parseObject
         super.init()
@@ -120,11 +123,15 @@ class QAPost: NSObject {
             self.vote += 1
             action = .UpHighlight
         }
+        
+        voteSuccess = false
+        
         self.saveWithBlock { (success: Bool, error: NSError?) in
             if let error = error {
                 print("Saving vote info error: \(error)")
             }
             else {
+                self.voteSuccess = true
                 voteLabel.text = String(self.vote)
                 switch action {
                 case .UpPlain:
@@ -159,11 +166,15 @@ class QAPost: NSObject {
             self.vote -= 1
             action = .DownHighlight
         }
+        
+        voteSuccess = false
+        
         self.saveWithBlock { (success: Bool, error: NSError?) in
             if let error = error {
                 print("Saving vote info error: \(error)")
             }
             else {
+                self.voteSuccess = true
                 voteLabel.text = String(self.vote)
                 switch action {
                 case .DownPlain:

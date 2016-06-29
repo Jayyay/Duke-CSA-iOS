@@ -20,6 +20,8 @@ class QAAnswerCell: UITableViewCell {
     
     weak var parentVC: UIViewController!
     var childQA: QAPost!
+    
+    let TIME_OUT_IN_SEC = 2.0
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -60,10 +62,19 @@ class QAAnswerCell: UITableViewCell {
     }
 
     @IBAction func upvote(sender: AnyObject) {
+        NSTimer.scheduledTimerWithTimeInterval(TIME_OUT_IN_SEC, target: self, selector: #selector(voteTimeOut), userInfo: nil, repeats: false)
         self.childQA.upvote(voteLabel, upvoteButton: upvoteButton, downvoteButton: downVoteButton, cell: self)
     }
     
     @IBAction func downvote(sender: AnyObject) {
+        NSTimer.scheduledTimerWithTimeInterval(TIME_OUT_IN_SEC, target: self, selector: #selector(voteTimeOut), userInfo: nil, repeats: false)
         self.childQA.downvote(voteLabel, upvoteButton: upvoteButton, downvoteButton: downVoteButton, cell: self)
+    }
+    
+    func voteTimeOut() {
+        if (!self.childQA.voteSuccess) {
+            parentVC.view.hideToastActivity()
+            parentVC.view.makeToast(message: "Connecting timed out, your vote FAILED.", duration: 1.0, position: HRToastPositionCenterAbove)
+        }
     }
 }
