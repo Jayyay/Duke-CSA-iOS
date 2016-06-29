@@ -61,28 +61,24 @@ class QAPostCell: UITableViewCell {
             upvoteButton.hidden = true
             downVoteButton.hidden = true
         }
-//        if let ww = post.whenWhere {
-//            ctRsWhenHeight.constant = 22
-//            ctRsWhenTop.constant = 2
-//            lblRsWhenWhere.hidden = false
-//            lblRsWhenWhere.text = ww
-//        }else{
-//            ctRsWhenHeight.constant = 0
-//            ctRsWhenTop.constant = 0
-//            lblRsWhenWhere.hidden = true
-//        }
+        
+        // init vote buttons
+        let id = PFUser.currentUser()!.objectId!
+        if post.upvotes.contains(id) {
+            upvoteButton.setImage(AppConstants.Vote.UPVOTE_HIGHLIGHT, forState: .Normal)
+        }
+        if post.downvotes.contains(id) {
+            downVoteButton.setImage(AppConstants.Vote.DOWNVOTE_HIGHLIGHT, forState: .Normal)
+        }
         
         layoutIfNeeded()
     }
     
     @IBAction func upvote(sender: AnyObject) {
         self.childQA.upvote(voteLabel, upvoteButton: upvoteButton, downvoteButton: downVoteButton, cell: self)
-        print(upvoteButton.imageView?.image)
-        self.setNeedsLayout()
     }
     
     @IBAction func downvote(sender: AnyObject) {
         self.childQA.downvote(voteLabel, upvoteButton: upvoteButton, downvoteButton: downVoteButton, cell: self)
-        self.setNeedsLayout()
     }
 }

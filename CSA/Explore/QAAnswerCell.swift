@@ -46,15 +46,24 @@ class QAAnswerCell: UITableViewCell {
         timeLabel.text = AppTools.formatDateUserFriendly(post.postTime)
         mainPostLabel.text = post.content
         voteLabel.text = String(post.vote)
+        
+        // init vote buttons
+        let id = PFUser.currentUser()!.objectId!
+        if post.upvotes.contains(id) {
+            upvoteButton.setImage(AppConstants.Vote.UPVOTE_HIGHLIGHT, forState: .Normal)
+        }
+        if post.downvotes.contains(id) {
+            downVoteButton.setImage(AppConstants.Vote.DOWNVOTE_HIGHLIGHT, forState: .Normal)
+        }
+        
+        layoutIfNeeded()
     }
 
     @IBAction func upvote(sender: AnyObject) {
         self.childQA.upvote(voteLabel, upvoteButton: upvoteButton, downvoteButton: downVoteButton, cell: self)
-        self.setNeedsLayout()
     }
     
     @IBAction func downvote(sender: AnyObject) {
         self.childQA.downvote(voteLabel, upvoteButton: upvoteButton, downvoteButton: downVoteButton, cell: self)
-        self.setNeedsLayout()
     }
 }
