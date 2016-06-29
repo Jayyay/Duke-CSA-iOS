@@ -71,16 +71,6 @@ class QAAnswerViewController: ReplyController, UITableViewDataSource {
         replyPressed(scrollTo: 0, replyTo: nil)
     }
     
-    func replyPressed(scrollTo scrollTo: CGFloat, replyTo:PFUser?){
-        scrollToY = scrollTo
-        if let r = replyTo {
-            replyToUser = r
-        }else {
-            replyToUser = nil
-        }
-        kbInput.txtview.becomeFirstResponder() //this leads to keyboardWillShow getting called
-    }
-    
     override func onSend(txt:String) { //called by pressing return key of textview.
         if !AppTools.stringIsValid(txt) {return}
         

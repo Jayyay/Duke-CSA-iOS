@@ -136,6 +136,16 @@ class ReplyController: UIViewController, UITextViewDelegate, UITableViewDelegate
         
     }
     
+    func replyPressed(scrollTo scrollTo:CGFloat, replyTo:PFUser?){
+        scrollToY = scrollTo
+        if let r = replyTo {
+            replyToUser = r
+        } else {
+            replyToUser = nil
+        }
+        kbInput.txtview.becomeFirstResponder() //this leads to keyboardWillShow getting called
+    }
+    
     func postTimeOut() {
         if !postConnectSuccess{
             print("Post time out")
