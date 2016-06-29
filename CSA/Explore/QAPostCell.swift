@@ -76,10 +76,13 @@ class QAPostCell: UITableViewCell {
     }
     
     @IBAction func upvote(sender: AnyObject) {
-        self.childQA.upvote(voteLabel)
+        self.childQA.upvote(voteLabel, upvoteButton: upvoteButton, downvoteButton: downVoteButton, cell: self)
+        print(upvoteButton.imageView?.image)
+        self.setNeedsLayout()
     }
     
     @IBAction func downvote(sender: AnyObject) {
-        self.childQA.downvote(voteLabel)
+        self.childQA.downvote(voteLabel, upvoteButton: upvoteButton, downvoteButton: downVoteButton, cell: self)
+        self.setNeedsLayout()
     }
 }

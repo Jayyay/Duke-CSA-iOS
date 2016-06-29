@@ -17,14 +17,14 @@
             <rect key="frame" x="0.0" y="0.0" width="518" height="178"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ExX-qB-KX9" id="mMI-hQ-W09">
-                <rect key="frame" x="0.0" y="0.0" width="518" height="177"/>
+                <rect key="frame" x="0.0" y="0.0" width="518" height="178"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rv7-9G-e1Z">
                         <rect key="frame" x="8" y="8" width="504" height="166"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eH-Ac-Zhn">
-                                <rect key="frame" x="15" y="61" width="29" height="21"/>
+                                <rect key="frame" x="15" y="52" width="29" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -42,24 +42,30 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="门前大桥下，游过一群鸭，快来快来数一数，二四六七八" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8o-gX-OdO">
-                                <rect key="frame" x="58" y="72" width="438" height="72"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门前大桥下，游过一群鸭，快来快来数一数，二四六七八" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8o-gX-OdO">
+                                <rect key="frame" x="58" y="72" width="436" height="68"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.42352941179999998" green="0.35686274509999999" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkZ-Xu-lR9">
-                                <rect key="frame" x="14" y="20" width="30" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="＋"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkZ-Xu-lR9">
+                                <rect key="frame" x="15" y="20" width="30" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="yjf-O4-LHd"/>
+                                    <constraint firstAttribute="width" constant="30" id="zVF-tz-r64"/>
+                                </constraints>
+                                <state key="normal" title="＋" image="upvote-plain.png"/>
                                 <connections>
                                     <action selector="upvote:" destination="ExX-qB-KX9" eventType="touchUpInside" id="JmD-2f-2Qa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bt-KX-bpM">
-                                <rect key="frame" x="14" y="90" width="30" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="－"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bt-KX-bpM">
+                                <rect key="frame" x="15" y="85" width="30" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Sk0-i6-KQM"/>
+                                    <constraint firstAttribute="width" constant="30" id="k9f-ef-oJ3"/>
+                                </constraints>
+                                <state key="normal" title="－" image="downvote-plain.png"/>
                                 <connections>
                                     <action selector="downvote:" destination="ExX-qB-KX9" eventType="touchUpInside" id="RyA-nA-cyn"/>
                                 </connections>
@@ -83,13 +89,13 @@
                             <constraint firstItem="mfC-GR-ofM" firstAttribute="top" secondItem="Rv7-9G-e1Z" secondAttribute="top" constant="8" id="BkD-jX-4Wj"/>
                             <constraint firstItem="rxo-Ti-LEe" firstAttribute="top" secondItem="mfC-GR-ofM" secondAttribute="top" id="FV8-lm-FN0"/>
                             <constraint firstItem="V53-K5-1h5" firstAttribute="leading" secondItem="rxo-Ti-LEe" secondAttribute="trailing" constant="8" id="IwV-Y2-xo1"/>
-                            <constraint firstItem="2Bt-KX-bpM" firstAttribute="top" secondItem="2eH-Ac-Zhn" secondAttribute="bottom" constant="8" id="PcY-18-bLT"/>
+                            <constraint firstItem="2Bt-KX-bpM" firstAttribute="top" secondItem="2eH-Ac-Zhn" secondAttribute="bottom" constant="12" id="PcY-18-bLT"/>
                             <constraint firstItem="nkZ-Xu-lR9" firstAttribute="centerX" secondItem="2eH-Ac-Zhn" secondAttribute="centerX" id="Q8F-28-Tn9"/>
                             <constraint firstItem="rxo-Ti-LEe" firstAttribute="baseline" secondItem="V53-K5-1h5" secondAttribute="baseline" id="Rjw-Tk-mB1"/>
                             <constraint firstItem="U8o-gX-OdO" firstAttribute="leading" secondItem="Rv7-9G-e1Z" secondAttribute="leading" constant="58" id="Wd2-J7-SKq"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="ZRo-Gl-4Yv"/>
                             <constraint firstAttribute="trailing" secondItem="U8o-gX-OdO" secondAttribute="trailing" constant="8" id="avw-07-gDF"/>
-                            <constraint firstItem="2eH-Ac-Zhn" firstAttribute="top" secondItem="nkZ-Xu-lR9" secondAttribute="bottom" constant="8" id="e2b-vD-gpx"/>
+                            <constraint firstItem="2eH-Ac-Zhn" firstAttribute="top" secondItem="nkZ-Xu-lR9" secondAttribute="bottom" constant="12" id="e2b-vD-gpx"/>
                             <constraint firstItem="nkZ-Xu-lR9" firstAttribute="top" secondItem="Rv7-9G-e1Z" secondAttribute="top" constant="20" id="g11-bF-Ug0"/>
                             <constraint firstAttribute="bottom" secondItem="U8o-gX-OdO" secondAttribute="bottom" constant="22" id="glf-UX-WhF"/>
                             <constraint firstItem="2Bt-KX-bpM" firstAttribute="centerX" secondItem="2eH-Ac-Zhn" secondAttribute="centerX" id="hYV-Vk-D3N"/>
@@ -128,6 +134,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="downvote-plain.png" width="446" height="192"/>
         <image name="placeholder-user.png" width="600" height="600"/>
+        <image name="upvote-plain.png" width="445" height="191"/>
     </resources>
 </document>

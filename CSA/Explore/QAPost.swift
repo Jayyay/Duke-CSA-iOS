@@ -93,21 +93,25 @@ class QAPost: NSObject {
         }
     }
     
-    func upvote(voteLabel: UILabel!) {
+    func upvote(voteLabel: UILabel!, upvoteButton: UIButton!, downvoteButton: UIButton!, cell: UITableViewCell) {
         let id = PFUser.currentUser()!.objectId!
         print(self.upvotes)
         if (self.upvotes.contains(id)) {
             self.upvotes.removeAtIndex(self.upvotes.indexOf(id)!)
             self.vote -= 1
+            upvoteButton.setImage(AppConstants.Vote.UPVOTE_PLAIN, forState: .Normal)
         }
         else if (self.downvotes.contains(id)) {
             self.downvotes.removeAtIndex(self.downvotes.indexOf(id)!)
             self.vote += 1
+            upvoteButton.setImage(AppConstants.Vote.UPVOTE_HIGHLIGHT, forState: .Normal)
         }
         else {
             self.upvotes.append(id)
             self.vote += 1
+            downvoteButton.setImage(AppConstants.Vote.DOWNVOTE_PLAIN, forState: .Normal)
         }
+        cell.setNeedsLayout()
         self.saveWithBlock { (success: Bool, error: NSError?) in
             if let error = error {
                 print("Saving vote info error: \(error)")
@@ -118,20 +122,24 @@ class QAPost: NSObject {
         }
     }
     
-    func downvote(voteLabel: UILabel!) {
+    func downvote(voteLabel: UILabel!, upvoteButton: UIButton!, downvoteButton: UIButton!, cell: UITableViewCell) {
         let id = PFUser.currentUser()!.objectId!
         if (self.downvotes.contains(id)) {
             self.downvotes.removeAtIndex(self.downvotes.indexOf(id)!)
             self.vote += 1
+            downvoteButton.setImage(AppConstants.Vote.DOWNVOTE_PLAIN, forState: .Normal)
         }
         else if (self.upvotes.contains(id)) {
             self.upvotes.removeAtIndex(self.upvotes.indexOf(id)!)
             self.vote -= 1
+            downvoteButton.setImage(AppConstants.Vote.DOWNVOTE_HIGHLIGHT, forState: .Normal)
         }
         else {
             self.downvotes.append(id)
             self.vote -= 1
+            upvoteButton.setImage(AppConstants.Vote.UPVOTE_PLAIN, forState: .Normal)
         }
+        cell.setNeedsLayout()
         self.saveWithBlock { (success: Bool, error: NSError?) in
             if let error = error {
                 print("Saving vote info error: \(error)")

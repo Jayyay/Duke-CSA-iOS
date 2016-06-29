@@ -31,4 +31,10 @@ struct AppConstants {
         static let REFRESH_FAILED = "Refresh failed. Please check your internet connection."
         static let ERROR = "Error. Please check your internet connection."
     }
+    struct Vote {
+        static let DOWNVOTE_HIGHLIGHT = UIImage(named:"downvote-highlight.png")
+        static let DOWNVOTE_PLAIN = UIImage(named:"downvote-plain.png")
+        static let UPVOTE_HIGHLIGHT = UIImage(named:"upvote-highlight.png")
+        static let UPVOTE_PLAIN = UIImage(named:"upvote-plain.png")
+    }
 }

@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="520" height="183"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ira-sx-PTj" id="JsF-jG-My1">
-                <rect key="frame" x="0.0" y="0.0" width="487" height="182"/>
+                <rect key="frame" x="0.0" y="0.0" width="487" height="183"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nf0-qp-cVg">
@@ -59,24 +59,30 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门前大桥下，游过一群鸭，快来快来数一数，二四六七八" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWC-FH-xZ6">
                                 <rect key="frame" x="58" y="34" width="405" height="110"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.42352941179999998" green="0.35686274509999999" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAm-OZ-D3r">
-                                <rect key="frame" x="14" y="31" width="30" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="＋"/>
-                                <connections>
-                                    <action selector="upvote:" destination="ira-sx-PTj" eventType="touchUpInside" id="jTe-ZZ-Qx4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXS-Xn-i4h">
-                                <rect key="frame" x="14" y="101" width="30" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="－"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXS-Xn-i4h">
+                                <rect key="frame" x="14" y="105" width="30" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="FPO-Pm-KRD"/>
+                                    <constraint firstAttribute="width" constant="30" id="JXe-Bp-uyr"/>
+                                </constraints>
+                                <state key="normal" title="－" image="downvote-plain.png"/>
                                 <connections>
                                     <action selector="downvote:" destination="ira-sx-PTj" eventType="touchUpInside" id="5Dc-lj-YdC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAm-OZ-D3r">
+                                <rect key="frame" x="14" y="40" width="30" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ZFM-vK-97d"/>
+                                    <constraint firstAttribute="width" constant="30" id="pxI-GF-V4Z"/>
+                                </constraints>
+                                <state key="normal" title="＋" image="upvote-plain.png"/>
+                                <connections>
+                                    <action selector="upvote:" destination="ira-sx-PTj" eventType="touchUpInside" id="jTe-ZZ-Qx4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -89,9 +95,9 @@
                             <constraint firstItem="J9z-Xz-Zd6" firstAttribute="leading" secondItem="nf0-qp-cVg" secondAttribute="leading" constant="58" id="HO3-0Q-9yo"/>
                             <constraint firstAttribute="trailing" secondItem="J9z-Xz-Zd6" secondAttribute="trailing" constant="10" id="K3V-lw-gcg"/>
                             <constraint firstAttribute="trailing" secondItem="gWC-FH-xZ6" secondAttribute="trailing" constant="8" id="MNL-V6-Kmw"/>
-                            <constraint firstItem="TXS-Xn-i4h" firstAttribute="top" secondItem="d1n-Ey-hfp" secondAttribute="bottom" constant="8" id="Rn0-RP-Z3v"/>
+                            <constraint firstItem="TXS-Xn-i4h" firstAttribute="top" secondItem="d1n-Ey-hfp" secondAttribute="bottom" constant="12" id="Rn0-RP-Z3v"/>
                             <constraint firstItem="TXS-Xn-i4h" firstAttribute="centerX" secondItem="d1n-Ey-hfp" secondAttribute="centerX" id="VJN-3J-FVS"/>
-                            <constraint firstItem="d1n-Ey-hfp" firstAttribute="top" secondItem="eAm-OZ-D3r" secondAttribute="bottom" constant="8" id="ab6-lU-gxR"/>
+                            <constraint firstItem="d1n-Ey-hfp" firstAttribute="top" secondItem="eAm-OZ-D3r" secondAttribute="bottom" constant="12" id="ab6-lU-gxR"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="bV3-G7-vXg"/>
                             <constraint firstItem="PEh-3S-7ff" firstAttribute="leading" secondItem="rY7-1D-5Dn" secondAttribute="trailing" constant="8" id="eil-UE-547"/>
                             <constraint firstItem="rY7-1D-5Dn" firstAttribute="baseline" secondItem="PEh-3S-7ff" secondAttribute="baseline" id="pM2-WD-nPr"/>
@@ -130,4 +136,8 @@
             <point key="canvasLocation" x="-660" y="613.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="downvote-plain.png" width="446" height="192"/>
+        <image name="upvote-plain.png" width="445" height="191"/>
+    </resources>
 </document>
