@@ -12,6 +12,7 @@
 		001FCEFE1D2352CB0025412B /* upvote-plain.png in Resources */ = {isa = PBXBuildFile; fileRef = 001FCEFC1D2352CB0025412B /* upvote-plain.png */; };
 		001FCF011D2359BE0025412B /* downvote-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 001FCEFF1D2359BE0025412B /* downvote-highlight.png */; };
 		001FCF021D2359BE0025412B /* upvote-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 001FCF001D2359BE0025412B /* upvote-highlight.png */; };
+		003DD1A91D2617F60086F6A0 /* QAOrderControlNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003DD1A81D2617F60086F6A0 /* QAOrderControlNib.xib */; };
 		0048E1EB1D21FDC300CC7C80 /* QAReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0048E1EA1D21FDC300CC7C80 /* QAReply.swift */; };
 		0048E1ED1D21FE4600CC7C80 /* QAReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0048E1EC1D21FE4600CC7C80 /* QAReplyCell.swift */; };
 		005FED0E1D1D905900538715 /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005FED0D1D1D905900538715 /* QAViewController.swift */; };
@@ -229,6 +230,7 @@
 		001FCEFC1D2352CB0025412B /* upvote-plain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upvote-plain.png"; sourceTree = "<group>"; };
 		001FCEFF1D2359BE0025412B /* downvote-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downvote-highlight.png"; sourceTree = "<group>"; };
 		001FCF001D2359BE0025412B /* upvote-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upvote-highlight.png"; sourceTree = "<group>"; };
+		003DD1A81D2617F60086F6A0 /* QAOrderControlNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QAOrderControlNib.xib; sourceTree = "<group>"; };
 		0048E1EA1D21FDC300CC7C80 /* QAReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAReply.swift; sourceTree = "<group>"; };
 		0048E1EC1D21FE4600CC7C80 /* QAReplyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAReplyCell.swift; sourceTree = "<group>"; };
 		005FED0D1D1D905900538715 /* QAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
@@ -485,7 +487,7 @@
 			children = (
 				0048E1E91D21FDAD00CC7C80 /* Reply */,
 				00980B111D21C08A00BF1CD0 /* cellControllers */,
-				00DE44D91D1F82F400D6D351 /* cellnibs */,
+				00DE44D91D1F82F400D6D351 /* nibs */,
 				0086CFDB1D1CD69400DE0A9F /* QAPost.swift */,
 				005FED0D1D1D905900538715 /* QAViewController.swift */,
 				00B07A981D1E1EA1005F73DF /* QAComposeQuestionController.swift */,
@@ -505,15 +507,16 @@
 			name = cellControllers;
 			sourceTree = "<group>";
 		};
-		00DE44D91D1F82F400D6D351 /* cellnibs */ = {
+		00DE44D91D1F82F400D6D351 /* nibs */ = {
 			isa = PBXGroup;
 			children = (
 				005FED0F1D1D990700538715 /* QAPostCellNib.xib */,
 				00980B0D1D21BE6F00BF1CD0 /* QAAnswerCellNib.xib */,
 				00B07A9E1D1EF026005F73DF /* NoAnswerCellNib.xib */,
 				00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */,
+				003DD1A81D2617F60086F6A0 /* QAOrderControlNib.xib */,
 			);
-			name = cellnibs;
+			name = nibs;
 			sourceTree = "<group>";
 		};
 		69058F5C1ACFFCA3003DFB3C /* UI */ = {
@@ -1142,6 +1145,7 @@
 				69791EC71ADF8C7300123267 /* AlbumTriangleB.png in Resources */,
 				69703B401B6192080072B5F1 /* contactsAndroid.png in Resources */,
 				694600801C13ECEF0080E3DE /* expcontacts.png in Resources */,
+				003DD1A91D2617F60086F6A0 /* QAOrderControlNib.xib in Resources */,
 				692BAE461ADF5B850008F29B /* bone.png in Resources */,
 				692BAE3E1ADF58E00008F29B /* cat.png in Resources */,
 				6946007E1C13ECEF0080E3DE /* expspotlight.png in Resources */,
