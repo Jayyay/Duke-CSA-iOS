@@ -27,7 +27,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="3yc-Bd-dTs"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="150" id="3yc-Bd-dTs"/>
                             <constraint firstItem="K5k-4O-4Lz" firstAttribute="centerX" secondItem="a1x-zB-9cG" secondAttribute="centerX" id="Gzu-C5-dNp"/>
                             <constraint firstItem="K5k-4O-4Lz" firstAttribute="centerY" secondItem="a1x-zB-9cG" secondAttribute="centerY" id="vgg-pA-EEj"/>
                         </constraints>

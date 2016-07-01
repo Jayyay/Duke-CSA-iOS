@@ -19,6 +19,7 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblTag: UILabel!
     @IBOutlet weak var ctTagHeight: NSLayoutConstraint!
+    @IBOutlet weak var ctProfileBottom: NSLayoutConstraint!
     @IBOutlet weak var ctProfileHeight: NSLayoutConstraint!
 
     var childEvent:Event!
@@ -45,7 +46,7 @@ class EventCell: UITableViewCell {
                 lblTag.hidden = false
                 ctTagHeight.constant = 15
             }
-        }else {
+        } else {
             lblWhen.text = "Time: N/A"
         }
         
@@ -59,12 +60,14 @@ class EventCell: UITableViewCell {
         lblPostTime.text = "Post time: \(AppTools.formatDateUserFriendly(childEvent.createdAt))"
         
         if let p = evt.propic {
-            imgProfile.hidden = false 
+            imgProfile.hidden = false
             ctProfileHeight.constant = 185
+            ctProfileHeight.priority = 999
             AppFunc.downloadPictureFile(file: p, saveToImgView: imgProfile, inTableView: tableView, forIndexPath: indexPath)
-        }else {
+        } else {
             imgProfile.hidden = true
             ctProfileHeight.constant = 0
+            ctProfileHeight.priority = 999
         }
         
         layoutIfNeeded()
