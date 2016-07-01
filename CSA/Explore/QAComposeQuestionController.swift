@@ -139,6 +139,35 @@ class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextF
         
         titleTextField.delegate = self
         contentTextView.delegate = self
+        
+        initUI()
+    }
+    
+    func initUI() {
+        registerForKeyboardNotifications()
+        contentTextView.textContainerInset = UIEdgeInsetsMake(0,20,10,20);
+    }
+    
+    // MARK: - Keyboard
+    func dismissKeyboard() {
+        contentTextView.endEditing(true)
+    }
+    
+    func registerForKeyboardNotifications ()-> Void   {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QAComposeQuestionController.keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QAComposeQuestionController.keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        let info : NSDictionary = notification.userInfo!
+        let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
+        contentTextView.textContainerInset = UIEdgeInsetsMake(10,20,keyboardRect.height - 24,20)
+        contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardRect.height - 44, 0)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        contentTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 10, 20)
+        contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
     deinit{

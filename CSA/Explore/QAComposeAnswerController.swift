@@ -128,28 +128,36 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
         print("viewDidLoad - QAComposeAnswerViewController ")
         contentTextView.delegate = self
         
-        //initUI()
+        initUI()
         initAnswerContent()
     }
     
     func initUI() {
         registerForKeyboardNotifications()
-        contentTextView.keyboardDismissMode = .OnDrag
+        contentTextView.textContainerInset = UIEdgeInsetsMake(10,20,10,20);
     }
     
     // MARK: - Keyboard
+    func dismissKeyboard() {
+        contentTextView.endEditing(true)
+    }
+
+    // MARK: - Keyboard
     func registerForKeyboardNotifications ()-> Void   {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QAComposeAnswerController.keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QAComposeAnswerController.keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func keyboardWillShow(notification: NSNotification) {
         let info : NSDictionary = notification.userInfo!
         let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
-        var y = scrollToY - (UIScreen.mainScreen().bounds.height - keyboardRect.height)
-        if y < 0 {
-            y = 0
-        }
-        self.contentTextView.setContentOffset(CGPointMake(0, y), animated: true)
+        contentTextView.textContainerInset = UIEdgeInsetsMake(10,20,keyboardRect.height - 64,20)
+        contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardRect.height - 44, 0)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        contentTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 10, 20)
+        contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
     func initAnswerContent() {

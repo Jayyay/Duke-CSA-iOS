@@ -2856,48 +2856,36 @@ Z290IHRvIHVwZGF0ZQ
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7x-ei-AmU">
-                                <rect key="frame" x="-4" y="64" width="328" height="455"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What do you want to know?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HTo-Lj-B2w">
-                                        <rect key="frame" x="20" y="10" width="288" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="288" id="ecS-Yc-LAt"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="ecS-Yc-LAt"/>
-                                            </mask>
-                                        </variation>
-                                    </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Further descriptions about your question." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MTP-ib-Y0w">
-                                        <rect key="frame" x="20" y="39" width="288" height="408"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="textColor" red="0.73333333329999995" green="0.72941176470000002" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What do you want to know?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HTo-Lj-B2w">
+                                <rect key="frame" x="16" y="72" width="288" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="HTo-Lj-B2w" secondAttribute="trailing" constant="20" id="B1v-zV-90v"/>
-                                    <constraint firstItem="MTP-ib-Y0w" firstAttribute="leading" secondItem="w7x-ei-AmU" secondAttribute="leading" constant="20" id="bcB-98-5V0"/>
-                                    <constraint firstItem="MTP-ib-Y0w" firstAttribute="top" secondItem="HTo-Lj-B2w" secondAttribute="bottom" constant="8" id="fRB-5C-xSg"/>
-                                    <constraint firstAttribute="trailing" secondItem="MTP-ib-Y0w" secondAttribute="trailing" constant="20" id="gTI-sf-wJZ"/>
-                                    <constraint firstItem="HTo-Lj-B2w" firstAttribute="leading" secondItem="w7x-ei-AmU" secondAttribute="leading" constant="20" id="oTf-s6-hhj"/>
-                                    <constraint firstAttribute="bottom" secondItem="MTP-ib-Y0w" secondAttribute="bottom" constant="8" id="pIb-Ax-lYm"/>
-                                    <constraint firstItem="HTo-Lj-B2w" firstAttribute="top" secondItem="w7x-ei-AmU" secondAttribute="top" constant="10" id="zU7-Rk-Psq"/>
+                                    <constraint firstAttribute="width" constant="288" id="ecS-Yc-LAt"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ecS-Yc-LAt"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Further descriptions about your question." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MTP-ib-Y0w">
+                                <rect key="frame" x="-4" y="101" width="328" height="418"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.73333333329999995" green="0.72941176470000002" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="w7x-ei-AmU" firstAttribute="leading" secondItem="qs0-zA-2BW" secondAttribute="leadingMargin" constant="-20" id="IB1-Xt-YyS"/>
-                            <constraint firstItem="K1u-wg-Kcg" firstAttribute="top" secondItem="w7x-ei-AmU" secondAttribute="bottom" id="gvu-Hz-McQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="w7x-ei-AmU" secondAttribute="trailing" constant="-20" id="hy2-cy-Qkf"/>
-                            <constraint firstItem="w7x-ei-AmU" firstAttribute="top" secondItem="Oed-oQ-2jR" secondAttribute="bottom" id="iJH-oD-pS3"/>
+                            <constraint firstItem="MTP-ib-Y0w" firstAttribute="leading" secondItem="qs0-zA-2BW" secondAttribute="leadingMargin" constant="-20" id="LOu-nz-W0t"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HTo-Lj-B2w" secondAttribute="trailing" id="Xnu-RG-aSf"/>
+                            <constraint firstItem="HTo-Lj-B2w" firstAttribute="top" secondItem="Oed-oQ-2jR" secondAttribute="bottom" constant="8" id="c8A-JA-PpM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MTP-ib-Y0w" secondAttribute="trailing" constant="-20" id="q5X-Fw-i5w"/>
+                            <constraint firstItem="HTo-Lj-B2w" firstAttribute="leading" secondItem="qs0-zA-2BW" secondAttribute="leadingMargin" id="tx2-6F-1s0"/>
+                            <constraint firstItem="K1u-wg-Kcg" firstAttribute="top" secondItem="MTP-ib-Y0w" secondAttribute="bottom" id="udS-mr-tSX"/>
+                            <constraint firstItem="MTP-ib-Y0w" firstAttribute="top" secondItem="HTo-Lj-B2w" secondAttribute="bottom" constant="8" id="wVk-6t-9vc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Question" id="gyr-og-qUq">
@@ -3054,7 +3042,7 @@ Z290IHRvIHVwZGF0ZQ
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Let me tell you..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yB0-he-Fwr">
-                                <rect key="frame" x="16" y="64" width="288" height="455"/>
+                                <rect key="frame" x="-4" y="64" width="328" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.73333333329999995" green="0.72941176470000002" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -3064,8 +3052,8 @@ Z290IHRvIHVwZGF0ZQ
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vHW-9B-89V" firstAttribute="top" secondItem="yB0-he-Fwr" secondAttribute="bottom" id="bwk-3w-1B6"/>
-                            <constraint firstItem="yB0-he-Fwr" firstAttribute="leading" secondItem="pP7-yx-4BH" secondAttribute="leadingMargin" id="iX8-oP-NhP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yB0-he-Fwr" secondAttribute="trailing" id="ld7-sz-8KC"/>
+                            <constraint firstItem="yB0-he-Fwr" firstAttribute="leading" secondItem="pP7-yx-4BH" secondAttribute="leadingMargin" constant="-20" id="iX8-oP-NhP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yB0-he-Fwr" secondAttribute="trailing" constant="-20" id="ld7-sz-8KC"/>
                             <constraint firstItem="yB0-he-Fwr" firstAttribute="top" secondItem="IHk-ea-wIb" secondAttribute="bottom" id="wne-8w-lpM"/>
                         </constraints>
                     </view>
