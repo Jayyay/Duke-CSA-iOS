@@ -137,7 +137,6 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
     }
     
     func initUI() {
-        registerForKeyboardNotifications()
         contentTextView.textContainerInset = UIEdgeInsetsMake(10,20,10,20);
     }
     
@@ -146,20 +145,6 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
             kbDelegate.keyboardInputViewInit()
             firstTimeLayingOut = false
         }
-    }
-
-    // MARK: - Keyboard
-    func registerForKeyboardNotifications ()-> Void   {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QAComposeAnswerController.keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QAComposeAnswerController.keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
-    }
-    
-    func keyboardWillShow(notification: NSNotification) {
-        kbDelegate.keyboardWillShow(notification)
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        kbDelegate.keyboardWillHide(notification)
     }
     
     func initAnswerContent() {

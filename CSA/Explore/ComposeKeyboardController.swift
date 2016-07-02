@@ -10,6 +10,7 @@ import Foundation
 
 protocol QAComposeDelegate {
     func keyboardInputViewInit()
+    func registerForKeyboardNotifications()
     func keyboardWillShow(notification: NSNotification)
     func keyboardWillHide(notification: NSNotification)
 }
@@ -22,6 +23,12 @@ class ComposeKeyboardController: QAComposeDelegate {
     init(childViewController: UIViewController, contentTextView: UITextView) {
         self.childViewController = childViewController
         self.contentTextView = contentTextView
+        self.registerForKeyboardNotifications()
+    }
+    
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeKeyboardController.keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeKeyboardController.keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func keyboardInputViewInit(){
@@ -34,7 +41,7 @@ class ComposeKeyboardController: QAComposeDelegate {
         composeInput.hidden = true
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         let info : NSDictionary = notification.userInfo!
         let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
         composeInput.hidden = false
@@ -43,7 +50,7 @@ class ComposeKeyboardController: QAComposeDelegate {
         contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardRect.height - 44 + composeInput.bounds.height, 0)
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         composeInput.hidden = true
         composeInput.frame.origin.y = self.childViewController.view.frame.height
         contentTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 10, 20)
