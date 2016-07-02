@@ -165,6 +165,7 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
             newPost = ans
             contentTextView.text = ans.content
             contentTextView.textColor = UIColor.blackColor()
+            AppData.QAData.myAnswer = nil
         } else {
             newPost = QAPost(type: PFKey.QA.TYPE.ANSWER)
             contentTextView.text = PLACEHOLDER_ANSWER_CONTENT

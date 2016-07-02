@@ -39,4 +39,10 @@ struct AppConstants {
         static let UPVOTE_HIGHLIGHT = UIImage(named:"upvote-highlight.png")
         static let UPVOTE_PLAIN = UIImage(named:"upvote-plain.png")
     }
+    struct QATypeLabelText {
+        static let NOTE = "📔"
+        static let NOTANSWERED = "❓"
+        static let ANSWERED = "🤔"
+        static let TOP = "⬆️"
+    }
 }

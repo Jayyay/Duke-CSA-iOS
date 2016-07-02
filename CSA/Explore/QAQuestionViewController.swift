@@ -11,11 +11,14 @@ import UIKit
 class QAQuestionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, LoadMoreTableFooterViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    
     let ReuseID_QACell = "QAPostCell"
     let ReuseID_NoAnswer = "NoAnswerCell"
     let ReuseID_ComposeAnswer = "ComposeAnswerCell"
     let ReuseID_EditAnswerSegue = "QAEditAnswerSegue"
     let ReuseID_AnswerSegue = "QAAnswerSegue"
+    let ReuseID_EditQuestionSegue = "QAEditQuestionSegue"
     
     var tableRefresher: UIRefreshControl!
     var QACellMaxY: CGFloat = 0
@@ -76,6 +79,15 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
         loadMoreFooterView.delegate = self
         loadMoreFooterView.backgroundColor = UIColor.clearColor()
         tableView.addSubview(loadMoreFooterView)
+        
+        if question.author.objectId! != PFUser.currentUser()!.objectId! {
+            editButton.enabled = false
+            editButton.tintColor = UIColor.clearColor()
+        }
+        else {
+            editButton.enabled = true
+            editButton.tintColor = nil
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -315,8 +327,9 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == ReuseID_EditQuestionSegue) {
+            AppData.QAData.myQuestion = question
+        }
     }
 }

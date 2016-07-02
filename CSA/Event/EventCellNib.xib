@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,54 +12,47 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="329"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mAf-e9-A4u" id="Owt-wf-N4d">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
+                <frame key="frameInset" width="320" height="328"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfE-Aa-lIp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVI-Rc-NMQ">
-                                <rect key="frame" x="16" y="62" width="36" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                <color key="textColor" red="0.42352941176470588" green="0.35686274509803922" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.42352941176470588" green="0.35686274509803922" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Location:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HmJ-ao-e8C">
-                                <rect key="frame" x="16" y="83" width="288" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                <color key="textColor" red="0.42352941176470588" green="0.35686274509803922" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.42352941176470588" green="0.35686274509803922" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Event Name Event Name " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDN-yg-MXK" userLabel="lblTitle">
-                                <rect key="frame" x="16" y="16" width="288" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.42352941176470588" green="0.35686274509803922" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.42352941176470588" green="0.35686274509803922" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-event.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="tQY-Mn-s2w">
-                                <rect key="frame" x="16" y="116" width="288" height="185"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="185" id="81V-zZ-G3B"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post time: July 24, 2015 6:00 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUI-Tq-4fn" userLabel="time">
-                                <rect key="frame" x="152" y="308" width="160" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="0.42352941176470588" green="0.35686274509803922" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.42352941176470588" green="0.35686274509803922" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Upcoming" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bA-6j-KlJ" userLabel="tag1">
-                                <rect key="frame" x="16" y="44" width="54" height="14"/>
-                                <color key="backgroundColor" red="0.42352941176470588" green="0.35686274509803922" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.3467700183391571" green="0.2790369987487793" blue="0.40650218725204468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13.5" id="S6j-Xg-oeK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="RVI-Rc-NMQ" firstAttribute="leading" secondItem="PfE-Aa-lIp" secondAttribute="leading" constant="16" id="0er-py-MME"/>
                             <constraint firstAttribute="trailing" secondItem="SDN-yg-MXK" secondAttribute="trailing" constant="16" id="203-Mq-UIh"/>
@@ -79,7 +73,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="PfE-Aa-lIp" firstAttribute="top" secondItem="Owt-wf-N4d" secondAttribute="top" id="1xh-Rf-jBg"/>
                     <constraint firstItem="PfE-Aa-lIp" firstAttribute="leading" secondItem="Owt-wf-N4d" secondAttribute="leading" id="PQe-mS-Jey"/>

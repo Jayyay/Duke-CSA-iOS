@@ -23,6 +23,8 @@ class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextF
     
     let TIME_OUT_IN_SEC: NSTimeInterval = 5.0
     
+    var newPost = QAPost(type: PFKey.QA.TYPE.QUESTION)
+    
     @IBAction func onPost(sender: AnyObject) {
         if !postAllowed{
             return
@@ -33,7 +35,6 @@ class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextF
             return
         }
         
-        let newPost = QAPost(type: PFKey.QA.TYPE.QUESTION)
         newPost.title = titleTextField.text
         newPost.content = contentTextView.text
         
@@ -58,7 +59,7 @@ class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextF
             if success{
                 AppStatus.QAStatus.tableShouldRefresh = true
                 self.cleanPostView(shouldPop: true)
-            }else{
+            } else {
                 self.view.makeToast(message: "Failed to post. Please check your internet connection.", duration: 1.5, position: HRToastPositionCenterAbove)
             }
         }
@@ -134,18 +135,33 @@ class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextF
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad - RsPostViewController ")
+        print("viewDidLoad - QAComposeQuestionViewController ")
         AppData.QAData.postVC = self
         
         titleTextField.delegate = self
         contentTextView.delegate = self
         
+        initContent()
         initUI()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        AppData.QAData.myQuestion = nil
+    }
+    
+    func initContent() {
+        if let question = AppData.QAData.myQuestion {
+            newPost = question
+            self.navigationController?.navigationItem.title = "Edit Question"
+            titleTextField.text = newPost.title
+            contentTextView.text = newPost.content
+            contentTextView.textColor = UIColor.blackColor()
+        }
     }
     
     func initUI() {
         registerForKeyboardNotifications()
-        contentTextView.textContainerInset = UIEdgeInsetsMake(0,20,10,20);
+        contentTextView.textContainerInset = UIEdgeInsetsMake(10,20,10,20);
     }
     
     // MARK: - Keyboard

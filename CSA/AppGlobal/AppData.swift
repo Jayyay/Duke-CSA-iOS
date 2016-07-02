@@ -58,6 +58,7 @@ struct AppData {
         static var selectedQAAnswer: QAPost!
         static var postVC:QAComposeQuestionController!
         static var myAnswer: QAPost?
+        static var myQuestion: QAPost?
         static func wipeSelectedRsData() {
             selectedQAQuestion = nil
             selectedQAAnswer = nil
