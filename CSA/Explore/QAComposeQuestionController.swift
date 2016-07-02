@@ -17,11 +17,13 @@ class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextF
     
     var validTitle = false
     var validContent = false
-    
     var postConnectSuccess = false
     var postAllowed = true
     
     let TIME_OUT_IN_SEC: NSTimeInterval = 5.0
+    
+    var firstTimeLayingOut = true
+    var composeInput: ComposeKeyboardView!
     
     var newPost = QAPost(type: PFKey.QA.TYPE.QUESTION)
     
@@ -149,6 +151,13 @@ class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextF
         AppData.QAData.myQuestion = nil
     }
     
+    override func viewWillLayoutSubviews() {
+        if (firstTimeLayingOut) {
+            keyboardInputViewInit()
+            firstTimeLayingOut = false
+        }
+    }
+    
     func initContent() {
         if let question = AppData.QAData.myQuestion {
             newPost = question
@@ -177,13 +186,28 @@ class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextF
     func keyboardWillShow(notification: NSNotification) {
         let info : NSDictionary = notification.userInfo!
         let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
-        contentTextView.textContainerInset = UIEdgeInsetsMake(10,20,keyboardRect.height - 24,20)
-        contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardRect.height - 44, 0)
+        composeInput.hidden = false
+        composeInput.frame.origin.y = keyboardRect.origin.y - composeInput.bounds.height - 64
+        contentTextView.textContainerInset = UIEdgeInsetsMake(10,20,keyboardRect.height - 24 + composeInput.bounds.height,20)
+        contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardRect.height - 44 + composeInput.bounds.height, 0)
     }
     
     func keyboardWillHide(notification: NSNotification) {
+        composeInput.hidden = true
+        composeInput.frame.origin.y = self.view.frame.height
         contentTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 10, 20)
         contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+    
+    //MARK: Init and Life Cycle
+    func keyboardInputViewInit(){
+        let nib = UINib(nibName: "ComposeKeyboardView", bundle: nil)
+        composeInput = nib.instantiateWithOwner(self, options: nil)[0] as! ComposeKeyboardView
+        composeInput.parentTextView = self.contentTextView
+        composeInput.frame = CGRectMake(0, self.view.bounds.height, self.view.bounds.width, 35)
+        composeInput.translatesAutoresizingMaskIntoConstraints = true
+        self.view.addSubview(composeInput)
+        composeInput.hidden = true
     }
     
     deinit{

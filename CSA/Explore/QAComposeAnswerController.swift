@@ -21,6 +21,9 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
     
     let TIME_OUT_IN_SEC: NSTimeInterval = 5.0
     
+    var firstTimeLayingOut = true
+    var composeInput: ComposeKeyboardView!
+    
     var newPost: QAPost!
     
     var scrollToY:CGFloat = 0
@@ -58,7 +61,7 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
             //case handle
             if success{
                 AppStatus.QAStatus.tableShouldRefresh = true
-                self.cleanPostView(shouldPop: true)
+                self.cleanPostView(true)
             } else {
                 self.view.makeToast(message: "Failed to post. Please check your internet connection.", duration: 1.5, position: HRToastPositionCenterAbove)
             }
@@ -110,7 +113,7 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
         }
     }
     
-    func cleanPostView(shouldPop shouldPop:Bool){
+    func cleanPostView(shouldPop:Bool){
         contentTextView.text = nil
         validContent = false
         
@@ -132,6 +135,13 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
         initAnswerContent()
     }
     
+    override func viewWillLayoutSubviews() {
+        if (firstTimeLayingOut) {
+            keyboardInputViewInit()
+            firstTimeLayingOut = false
+        }
+    }
+    
     func initUI() {
         registerForKeyboardNotifications()
         contentTextView.textContainerInset = UIEdgeInsetsMake(10,20,10,20);
@@ -148,14 +158,29 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QAComposeAnswerController.keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
     }
     
+    //MARK: Init and Life Cycle
+    func keyboardInputViewInit(){
+        let nib = UINib(nibName: "ComposeKeyboardView", bundle: nil)
+        composeInput = nib.instantiateWithOwner(self, options: nil)[0] as! ComposeKeyboardView
+        composeInput.parentTextView = self.contentTextView
+        composeInput.frame = CGRectMake(0, self.view.bounds.height, self.view.bounds.width, 35)
+        composeInput.translatesAutoresizingMaskIntoConstraints = true
+        self.view.addSubview(composeInput)
+        composeInput.hidden = true
+    }
+    
     func keyboardWillShow(notification: NSNotification) {
         let info : NSDictionary = notification.userInfo!
         let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
-        contentTextView.textContainerInset = UIEdgeInsetsMake(10,20,keyboardRect.height - 64,20)
-        contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardRect.height - 44, 0)
+        composeInput.hidden = false
+        composeInput.frame.origin.y = keyboardRect.origin.y - composeInput.bounds.height - 64
+        contentTextView.textContainerInset = UIEdgeInsetsMake(10,20,keyboardRect.height - 64 + composeInput.bounds.height,20)
+        contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardRect.height - 44 + composeInput.bounds.height, 0)
     }
     
     func keyboardWillHide(notification: NSNotification) {
+        composeInput.hidden = true
+        composeInput.frame.origin.y = self.view.frame.height
         contentTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 10, 20)
         contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0)
     }
