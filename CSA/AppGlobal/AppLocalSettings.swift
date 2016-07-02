@@ -8,15 +8,4 @@
 
 import Foundation
 struct AppLocalSettings {
-    /*
-    struct Rs {
-        static var breakOutToRefresh:Bool {
-            get{
-                return NSUserDefaults.standardUserDefaults().boolForKey("breakOutToRefresh")
-            }
-            set{
-                NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "breakOutToRefresh")
-            }
-        }
-    }*/
 }

@@ -174,20 +174,20 @@ struct AppTools {
         let time1 = p1.postTime
         let time2 = p2.postTime
         
-        if (vote1 > vote2) {
-            return true
-        }
-        else if (vote1 < vote2) {
-            return false
-        }
-        else {
-            let compare = time1.compare(time2).rawValue
-            if (compare > 0) {
+        if (AppStatus.QAStatus.order == .Vote) {
+            if (vote1 > vote2) {
                 return true
             }
-            else {
+            else if (vote1 < vote2) {
                 return false
             }
+        }
+        let compare = time1.compare(time2).rawValue
+        if (compare > 0) {
+            return true
+        }
+        else {
+            return false
         }
     }
     

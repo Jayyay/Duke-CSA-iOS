@@ -9,7 +9,7 @@
 import UIKit
 
 class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoadMoreTableFooterViewDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!
     let ReuseID_QACell = "QAPostCell"
     let QADetailSegueID = "QADetailSegue"
@@ -44,6 +44,9 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func initUI() {
+        slider.center.x = voteOrderButton.center.x
+        slider.bounds.size.width = voteOrderButton.bounds.size.width * 2
+        
         tableView.delegate = self;
         tableView.dataSource = self;
         
@@ -242,9 +245,46 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             loadMoreFooterView.loadMoreScrollViewDidEndDragging(scrollView)
         }
     }
+    
+    @IBOutlet weak var voteOrderButton: UIButton!
+    @IBOutlet weak var newOrderButton: UIButton!
+    @IBOutlet weak var slider: UIView!
+    @IBOutlet weak var sliderWrapper: UIView!
+    
+    @IBOutlet weak var sliderWidthToVote: NSLayoutConstraint!
+    @IBOutlet weak var sliderCenterToVote: NSLayoutConstraint!
+    
+    @IBAction func orderByVote(sender: AnyObject) {
+        UIView.animateWithDuration(0.8, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [],
+                                   animations: {
+                                    self.voteOrderButton.setTitleColor(AppConstants.Color.orderButton, forState: .Normal)
+                                    self.newOrderButton.setTitleColor(AppConstants.Color.orderButtonNot, forState: .Normal)
+                                    self.slider.center.x = self.voteOrderButton.center.x
+                                    self.slider.bounds.size.width = self.voteOrderButton.bounds.size.width * 2
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+            },
+                                   completion: { _ in
+                                    if (AppStatus.QAStatus.order == .New) {
+                                        AppStatus.QAStatus.order = .Vote
+                                        self.QATableAutoRefresh()
+                                    }
+        })
     }
+    
+    @IBAction func orderByTime(sender: AnyObject) {
+        UIView.animateWithDuration(0.8, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [],
+                                   animations: {
+                                    self.newOrderButton.setTitleColor(AppConstants.Color.orderButton, forState: .Normal)
+                                    self.voteOrderButton.setTitleColor(AppConstants.Color.orderButtonNot, forState: .Normal)
+                                    self.slider.center.x = self.newOrderButton.center.x
+                                    self.slider.bounds.size.width = self.newOrderButton.bounds.size.width * 2
+            },
+                                   completion: { _ in
+                                    if (AppStatus.QAStatus.order == .Vote) {
+                                        AppStatus.QAStatus.order = .New
+                                        self.QATableAutoRefresh()
+                                    }
+        })
+    }
+    
 }

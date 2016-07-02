@@ -42,8 +42,13 @@ struct AppStatus {
         static var lastRefreshTime:NSDate?
         static var tableShouldRefresh = true
         static var currentlyDisplayedView: ViewName = ViewName.Reply
+        static var order: QAPostOrder = .Vote
         enum ViewName:Int{
             case Reply = 0, Going = 1, Like = 2
+        }
+        enum QAPostOrder {
+            case Vote
+            case New
         }
     }
     

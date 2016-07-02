@@ -2772,19 +2772,65 @@ Z290IHRvIHVwZGF0ZQ
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aKp-Et-9IA">
-                                <rect key="frame" x="-4" y="64" width="328" height="455"/>
+                                <rect key="frame" x="-4" y="104" width="328" height="415"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="0gE-nz-HbI" id="Z26-0a-Tvk"/>
                                     <outlet property="delegate" destination="0gE-nz-HbI" id="zr0-Ks-PBX"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B01-XR-iyR">
+                                <rect key="frame" x="-4" y="64" width="328" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a6H-6C-fOI">
+                                        <rect key="frame" x="78" y="37" width="64" height="3"/>
+                                        <color key="backgroundColor" red="0.42352941179999998" green="0.35686274509999999" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="3" id="fGe-t7-ZzG"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTI-ao-Ihp">
+                                        <rect key="frame" x="93" y="4" width="34" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Vote">
+                                            <color key="titleColor" red="0.3147846041911127" green="0.26444321698771656" blue="0.35847746771515154" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="orderByVote:" destination="0gE-nz-HbI" eventType="touchUpInside" id="Tej-um-p0J"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4y8-Of-VYo">
+                                        <rect key="frame" x="203" y="4" width="33" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="New">
+                                            <color key="titleColor" red="0.60492829946403626" green="0.60125748747365126" blue="0.62030182338282824" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="orderByTime:" destination="0gE-nz-HbI" eventType="touchUpInside" id="aXv-XP-NFx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="a6H-6C-fOI" firstAttribute="centerX" secondItem="xTI-ao-Ihp" secondAttribute="centerX" id="51M-TB-jrd"/>
+                                    <constraint firstItem="4y8-Of-VYo" firstAttribute="centerX" secondItem="B01-XR-iyR" secondAttribute="centerX" multiplier="4:3" id="6eI-yF-ptz"/>
+                                    <constraint firstItem="a6H-6C-fOI" firstAttribute="width" secondItem="xTI-ao-Ihp" secondAttribute="width" multiplier="2:1" id="JzG-zT-PC3"/>
+                                    <constraint firstItem="4y8-Of-VYo" firstAttribute="centerY" secondItem="B01-XR-iyR" secondAttribute="centerY" id="R6j-At-pCW"/>
+                                    <constraint firstAttribute="height" constant="40" id="XCK-ap-dje"/>
+                                    <constraint firstItem="xTI-ao-Ihp" firstAttribute="centerY" secondItem="B01-XR-iyR" secondAttribute="centerY" id="ZP5-Y7-tTR"/>
+                                    <constraint firstItem="xTI-ao-Ihp" firstAttribute="centerX" secondItem="B01-XR-iyR" secondAttribute="centerX" multiplier="2:3" id="eab-8s-wdJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="a6H-6C-fOI" secondAttribute="bottom" id="odn-4Y-yq4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="aKp-Et-9IA" secondAttribute="trailing" constant="-20" id="0mx-dP-Ghy"/>
+                            <constraint firstItem="B01-XR-iyR" firstAttribute="leading" secondItem="d7S-hx-nSQ" secondAttribute="leadingMargin" constant="-20" id="1uR-Uc-TCh"/>
+                            <constraint firstItem="B01-XR-iyR" firstAttribute="top" secondItem="IJ5-ob-1Jp" secondAttribute="bottom" id="76v-u1-6tL"/>
                             <constraint firstItem="bhh-6z-yr4" firstAttribute="top" secondItem="aKp-Et-9IA" secondAttribute="bottom" id="EjV-qN-Opf"/>
-                            <constraint firstItem="aKp-Et-9IA" firstAttribute="top" secondItem="IJ5-ob-1Jp" secondAttribute="bottom" id="bHv-iM-Vik"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="B01-XR-iyR" secondAttribute="trailing" constant="-20" id="HYb-C6-ieA"/>
+                            <constraint firstItem="aKp-Et-9IA" firstAttribute="top" secondItem="B01-XR-iyR" secondAttribute="bottom" id="WKe-bB-eUg"/>
                             <constraint firstItem="aKp-Et-9IA" firstAttribute="leading" secondItem="d7S-hx-nSQ" secondAttribute="leadingMargin" constant="-20" id="d3H-Lt-2QD"/>
                         </constraints>
                     </view>
@@ -2797,7 +2843,13 @@ Z290IHRvIHVwZGF0ZQ
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="newOrderButton" destination="4y8-Of-VYo" id="GhN-hz-LcD"/>
+                        <outlet property="slider" destination="a6H-6C-fOI" id="yGS-s6-vG7"/>
+                        <outlet property="sliderCenterToVote" destination="51M-TB-jrd" id="ata-Ta-eEY"/>
+                        <outlet property="sliderWidthToVote" destination="JzG-zT-PC3" id="lNI-4O-WTR"/>
+                        <outlet property="sliderWrapper" destination="B01-XR-iyR" id="zfl-b1-EPF"/>
                         <outlet property="tableView" destination="aKp-Et-9IA" id="XOq-Wf-hkW"/>
+                        <outlet property="voteOrderButton" destination="xTI-ao-Ihp" id="LYD-1Y-PwW"/>
                         <segue destination="NFS-GJ-Xay" kind="show" identifier="QADetailSegue" id="qhC-Ka-FG8"/>
                     </connections>
                 </viewController>
