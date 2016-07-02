@@ -34,6 +34,7 @@
 		00C6E0101D1ADB50008F8B9F /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */; };
 		00C6E0111D1ADB50008F8B9F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00C1D1ADB50008F8B9F /* Bolts.framework */; };
 		00C6E0121D1ADB50008F8B9F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C6E00D1D1ADB50008F8B9F /* Parse.framework */; };
+		00CBEECE1D28653200EF5B71 /* ComposeKeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CBEECD1D28653200EF5B71 /* ComposeKeyboardController.swift */; };
 		00DE44D61D1F792600D6D351 /* compose.png in Resources */ = {isa = PBXBuildFile; fileRef = 00DE44D51D1F792600D6D351 /* compose.png */; };
 		00DE44D81D1F794C00D6D351 /* ComposeAnswerCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */; };
 		00DE44DB1D1F893F00D6D351 /* QAComposeAnswerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE44DA1D1F893F00D6D351 /* QAComposeAnswerController.swift */; };
@@ -254,6 +255,7 @@
 		00C6E00B1D1ADB50008F8B9F /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		00C6E00C1D1ADB50008F8B9F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		00C6E00D1D1ADB50008F8B9F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		00CBEECD1D28653200EF5B71 /* ComposeKeyboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeKeyboardController.swift; sourceTree = "<group>"; };
 		00DE44D51D1F792600D6D351 /* compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose.png; sourceTree = "<group>"; };
 		00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeAnswerCellNib.xib; sourceTree = "<group>"; };
 		00DE44DA1D1F893F00D6D351 /* QAComposeAnswerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAComposeAnswerController.swift; sourceTree = "<group>"; };
@@ -481,6 +483,9 @@
 			isa = PBXGroup;
 			children = (
 				005255C31D28596E00AFC0A8 /* ComposeKeyboardView.swift */,
+				0048E1EC1D21FE4600CC7C80 /* QAReplyCell.swift */,
+				00980B0F1D21BEBD00BF1CD0 /* QAAnswerCell.swift */,
+				005FED111D1D993000538715 /* QAPostCell.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -490,25 +495,23 @@
 			children = (
 				005255C21D28595600AFC0A8 /* view */,
 				00B7AA641D274CB500BEE2A3 /* model */,
-				00980B111D21C08A00BF1CD0 /* cellControllers */,
+				00980B111D21C08A00BF1CD0 /* controller */,
 				00DE44D91D1F82F400D6D351 /* nibs */,
+			);
+			name = QA;
+			sourceTree = "<group>";
+		};
+		00980B111D21C08A00BF1CD0 /* controller */ = {
+			isa = PBXGroup;
+			children = (
 				005FED0D1D1D905900538715 /* QAViewController.swift */,
 				00B07A981D1E1EA1005F73DF /* QAComposeQuestionController.swift */,
 				00B07A9A1D1EDD18005F73DF /* QAQuestionViewController.swift */,
 				00980B121D21C18100BF1CD0 /* QAAnswerViewController.swift */,
 				00DE44DA1D1F893F00D6D351 /* QAComposeAnswerController.swift */,
+				00CBEECD1D28653200EF5B71 /* ComposeKeyboardController.swift */,
 			);
-			name = QA;
-			sourceTree = "<group>";
-		};
-		00980B111D21C08A00BF1CD0 /* cellControllers */ = {
-			isa = PBXGroup;
-			children = (
-				0048E1EC1D21FE4600CC7C80 /* QAReplyCell.swift */,
-				00980B0F1D21BEBD00BF1CD0 /* QAAnswerCell.swift */,
-				005FED111D1D993000538715 /* QAPostCell.swift */,
-			);
-			name = cellControllers;
+			name = controller;
 			sourceTree = "<group>";
 		};
 		00B7AA641D274CB500BEE2A3 /* model */ = {
@@ -1312,6 +1315,7 @@
 				69AC5C3B1B9A9F38002C2CFA /* AppConstants.swift in Sources */,
 				696533D51B57BDE700AD9953 /* EventLikeCell.swift in Sources */,
 				69EC09F01ADBFD2D00DF4849 /* EBMainViewController.swift in Sources */,
+				00CBEECE1D28653200EF5B71 /* ComposeKeyboardController.swift in Sources */,
 				692F125C1AD983E1000A67A0 /* MeTableViewController.swift in Sources */,
 				69C5A3BF1B942E5F0007AFBE /* ExSpotlightUserCell.swift in Sources */,
 				6902101F1AE9E91200789A67 /* RsTag.swift in Sources */,

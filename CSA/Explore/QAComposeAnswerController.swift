@@ -21,8 +21,8 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
     
     let TIME_OUT_IN_SEC: NSTimeInterval = 5.0
     
+    var kbDelegate: QAComposeDelegate!
     var firstTimeLayingOut = true
-    var composeInput: ComposeKeyboardView!
     
     var newPost: QAPost!
     
@@ -96,7 +96,7 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
         }
     }
     
-    //// MARK: - text delegate
+    //// MARK: - text kbDelegate
     //textview
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
         if textView.text == PLACEHOLDER_ANSWER_CONTENT {
@@ -130,16 +130,10 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         print("viewDidLoad - QAComposeAnswerViewController ")
         contentTextView.delegate = self
+        kbDelegate = ComposeKeyboardController(childViewController: self, contentTextView: self.contentTextView)
         
         initUI()
         initAnswerContent()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        if (firstTimeLayingOut) {
-            keyboardInputViewInit()
-            firstTimeLayingOut = false
-        }
     }
     
     func initUI() {
@@ -147,9 +141,11 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
         contentTextView.textContainerInset = UIEdgeInsetsMake(10,20,10,20);
     }
     
-    // MARK: - Keyboard
-    func dismissKeyboard() {
-        contentTextView.endEditing(true)
+    override func viewWillLayoutSubviews() {
+        if (firstTimeLayingOut) {
+            kbDelegate.keyboardInputViewInit()
+            firstTimeLayingOut = false
+        }
     }
 
     // MARK: - Keyboard
@@ -158,31 +154,12 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QAComposeAnswerController.keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    //MARK: Init and Life Cycle
-    func keyboardInputViewInit(){
-        let nib = UINib(nibName: "ComposeKeyboardView", bundle: nil)
-        composeInput = nib.instantiateWithOwner(self, options: nil)[0] as! ComposeKeyboardView
-        composeInput.parentTextView = self.contentTextView
-        composeInput.frame = CGRectMake(0, self.view.bounds.height, self.view.bounds.width, 35)
-        composeInput.translatesAutoresizingMaskIntoConstraints = true
-        self.view.addSubview(composeInput)
-        composeInput.hidden = true
-    }
-    
     func keyboardWillShow(notification: NSNotification) {
-        let info : NSDictionary = notification.userInfo!
-        let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
-        composeInput.hidden = false
-        composeInput.frame.origin.y = keyboardRect.origin.y - composeInput.bounds.height - 64
-        contentTextView.textContainerInset = UIEdgeInsetsMake(10,20,keyboardRect.height - 64 + composeInput.bounds.height,20)
-        contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardRect.height - 44 + composeInput.bounds.height, 0)
+        kbDelegate.keyboardWillShow(notification)
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        composeInput.hidden = true
-        composeInput.frame.origin.y = self.view.frame.height
-        contentTextView.textContainerInset = UIEdgeInsetsMake(10, 20, 10, 20)
-        contentTextView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        kbDelegate.keyboardWillHide(notification)
     }
     
     func initAnswerContent() {
