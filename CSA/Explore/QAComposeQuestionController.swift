@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreText
 
 class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
@@ -38,7 +39,7 @@ class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextF
         }
         
         newPost.title = titleTextField.text
-        newPost.content = contentTextView.text
+        newPost.content = NSMutableAttributedString(attributedString: contentTextView.attributedText)
         
         //change app status
         postConnectSuccess = false
@@ -164,7 +165,7 @@ class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextF
             newPost = question
             self.navigationController?.navigationItem.title = "Edit Question"
             titleTextField.text = newPost.title
-            contentTextView.text = newPost.content
+            contentTextView.attributedText = newPost.content
             contentTextView.textColor = UIColor.blackColor()
         }
     }

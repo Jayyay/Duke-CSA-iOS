@@ -206,6 +206,9 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
                 if let newPost = QAPost(parseObject: re) {
                     noAnswer = false
                     posts.append(newPost)
+                    newPost.saveWithBlock({ (fuck, dick) in
+                        
+                    })
                     if (newPost.author.objectId == PFUser.currentUser()!.objectId) {
                         didAnswer = true
                         myAnswer = newPost
@@ -263,6 +266,9 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (indexPath.row > 1) {
+            return 150
+        }
         return UITableViewAutomaticDimension
     }
     

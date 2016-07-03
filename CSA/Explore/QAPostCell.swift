@@ -46,7 +46,7 @@ class QAPostCell: UITableViewCell {
             postTitle.text = ttl
         }
         
-        mainPostLabel.text = post.content
+        mainPostLabel.attributedText = post.content
         voteLabel.text = String(post.vote)
         
         //optional

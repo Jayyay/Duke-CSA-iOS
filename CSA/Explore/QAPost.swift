@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreText
 
 enum ChangeVoteButton {
     case UpPlain
@@ -15,13 +16,13 @@ enum ChangeVoteButton {
     case DownHighlight
     case None
 }
+let systemFont = UIFont.systemFontOfSize(15.0)
 
 class QAPost: NSObject {
     var PFInstance: PFObject
     var type: String!
     var author: PFUser!
     var title: String! = ""
-    var content: String! = ""
     var vote = 0
     var upvotes: [String] = []
     var downvotes: [String] = []
@@ -32,6 +33,8 @@ class QAPost: NSObject {
     
     var voteSuccess: Bool!
     let TIME_OUT_IN_SEC = 2.0
+    
+    var content = NSMutableAttributedString(string: "", attributes: [NSFontAttributeName: systemFont])
     
     init? (parseObject: PFObject) {
         PFInstance = parseObject
@@ -51,7 +54,14 @@ class QAPost: NSObject {
             return nil
         }
         if let m = parseObject[PFKey.QA.CONTENT] as? String {
-            content = m
+            let data = m.dataUsingEncoding(NSUTF8StringEncoding)!
+            let tryContent = try? NSMutableAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSRTFTextDocumentType], documentAttributes: nil)
+            if let success = tryContent {
+                content = success
+            }
+            else {
+                print("Error: QAPost content is not encoded in RTF format. Did anyone insert plain text data?")
+            }
         } else {
             return nil
         }
@@ -92,7 +102,12 @@ class QAPost: NSObject {
     func saveWithBlock(block: (Bool, NSError?) -> Void) {
         PFInstance[PFKey.QA.KIND] = type;
         PFInstance[PFKey.QA.AUTHOR] = author;
-        PFInstance[PFKey.QA.CONTENT] = content;
+        
+        content.setAttributes([NSFontAttributeName: systemFont], range: NSRange(location: 0, length: content.length))
+        let contentData = try! content.dataFromRange(NSRange(location: 0, length: content.length), documentAttributes: [NSDocumentTypeDocumentAttribute: NSRTFTextDocumentType])
+        let rtfContent = NSString(data: contentData, encoding: NSUTF8StringEncoding)!
+        PFInstance[PFKey.QA.CONTENT] = rtfContent;
+        
         PFInstance[PFKey.QA.TITLE] = title;
         PFInstance[PFKey.QA.UPVOTES] = upvotes;
         PFInstance[PFKey.QA.DOWNVOTES] = downvotes;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreText
 
 class QAComposeAnswerController: UIViewController, UITextViewDelegate {
     
@@ -38,7 +39,7 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
             return
         }
         
-        newPost.content = contentTextView.text
+        newPost.content = NSMutableAttributedString(attributedString: contentTextView.attributedText)
         newPost.question = AppData.QAData.selectedQAQuestion.PFInstance
         
         //change app status
@@ -150,7 +151,7 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
     func initAnswerContent() {
         if let ans = AppData.QAData.myAnswer {
             newPost = ans
-            contentTextView.text = ans.content
+            contentTextView.attributedText = ans.content
             contentTextView.textColor = UIColor.blackColor()
             AppData.QAData.myAnswer = nil
         } else {

@@ -174,6 +174,9 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             for re in result {
                 if let newPost = QAPost(parseObject: re) {
                     posts.append(newPost)
+                    newPost.saveWithBlock({ (fuck, dick) in
+                        
+                    })
                 }
             }
             posts.sortInPlace({AppTools.compareQAPostIsOrderedBefore(p1: $0, p2: $1)})
