@@ -109,7 +109,7 @@
                     <constraint firstItem="Rv7-9G-e1Z" firstAttribute="leading" secondItem="mMI-hQ-W09" secondAttribute="leadingMargin" id="E1m-2Z-tfb"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Rv7-9G-e1Z" secondAttribute="trailing" id="LkB-0z-N12"/>
                     <constraint firstItem="Rv7-9G-e1Z" firstAttribute="top" secondItem="mMI-hQ-W09" secondAttribute="topMargin" id="OCZ-pr-bVz"/>
-                    <constraint firstItem="2eH-Ac-Zhn" firstAttribute="leading" secondItem="mMI-hQ-W09" secondAttribute="leadingMargin" constant="15" id="UnC-7z-O7X"/>
+                    <constraint firstItem="2eH-Ac-Zhn" firstAttribute="leading" secondItem="mMI-hQ-W09" secondAttribute="leadingMargin" constant="8" id="UnC-7z-O7X"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Rv7-9G-e1Z" secondAttribute="bottom" id="fkv-S7-Zfa"/>
                 </constraints>
             </tableViewCellContentView>

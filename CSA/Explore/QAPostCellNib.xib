@@ -94,7 +94,7 @@
                             <constraint firstItem="TXS-Xn-i4h" firstAttribute="centerX" secondItem="d1n-Ey-hfp" secondAttribute="centerX" id="VJN-3J-FVS"/>
                             <constraint firstItem="d1n-Ey-hfp" firstAttribute="top" secondItem="eAm-OZ-D3r" secondAttribute="bottom" constant="12" id="ab6-lU-gxR"/>
                             <constraint firstItem="PEh-3S-7ff" firstAttribute="leading" secondItem="rY7-1D-5Dn" secondAttribute="trailing" constant="8" id="eil-UE-547"/>
-                            <constraint firstItem="eAm-OZ-D3r" firstAttribute="top" secondItem="nf0-qp-cVg" secondAttribute="top" constant="41" id="mDX-F4-Oqu"/>
+                            <constraint firstItem="eAm-OZ-D3r" firstAttribute="top" secondItem="nf0-qp-cVg" secondAttribute="top" constant="20" id="mDX-F4-Oqu"/>
                             <constraint firstItem="rY7-1D-5Dn" firstAttribute="baseline" secondItem="PEh-3S-7ff" secondAttribute="baseline" id="pM2-WD-nPr"/>
                             <constraint firstItem="J9z-Xz-Zd6" firstAttribute="leading" secondItem="d1n-Ey-hfp" secondAttribute="trailing" constant="8" id="swo-fK-UcS"/>
                             <constraint firstItem="gWC-FH-xZ6" firstAttribute="trailing" secondItem="PEh-3S-7ff" secondAttribute="trailing" id="tvH-XR-3nr"/>
@@ -128,7 +128,7 @@
                 <outlet property="upvoteButton" destination="eAm-OZ-D3r" id="yp0-Bn-fuL"/>
                 <outlet property="voteLabel" destination="d1n-Ey-hfp" id="wmE-yu-KZ2"/>
             </connections>
-            <point key="canvasLocation" x="-518" y="489"/>
+            <point key="canvasLocation" x="-400" y="347"/>
         </tableViewCell>
     </objects>
     <resources>
