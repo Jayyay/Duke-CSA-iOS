@@ -17,6 +17,7 @@ class LoadClasses: LoadClassesResourceDelegate {
     var json: [AnyObject]!
     var courses: [[Course]] = []
     var courseIndexList: [String] = []
+    var courseList: [Course] = []
     
     func loadCoursesWithBlock(completion: () -> ()) {
         let query = PFQuery(className: PFKey.Class.CLASSKEY)
@@ -64,10 +65,11 @@ class LoadClasses: LoadClassesResourceDelegate {
                     currentPivot = pivot
                 }
                 courses[currentSection].append(courseObject)
+                courseList.append(courseObject)
             }
         }
         AppData.ClassData.courses = courses
         AppData.ClassData.courseIndexList = courseIndexList
-        print(courses.count)
+        AppData.ClassData.courseList = courseList
     }
 }
