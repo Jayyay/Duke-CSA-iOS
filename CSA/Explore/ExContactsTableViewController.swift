@@ -157,8 +157,9 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.scopeButtonTitles = ["All", "Freshman", "Sophomore", "Junior", "Senior"]
         searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
         tableView.tableHeaderView = searchController.searchBar
-        searchController.definesPresentationContext = true
+        self.definesPresentationContext = true
         
         let nib = UINib(nibName: "TextUserCellNib", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_UserCell)
