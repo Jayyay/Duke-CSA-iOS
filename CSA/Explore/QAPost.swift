@@ -16,7 +16,7 @@ enum ChangeVoteButton {
     case DownHighlight
     case None
 }
-let systemFont = UIFont.systemFontOfSize(15.0)
+let systemFont = UIFont.systemFontOfSize(14.0)
 
 class QAPost: NSObject {
     var PFInstance: PFObject

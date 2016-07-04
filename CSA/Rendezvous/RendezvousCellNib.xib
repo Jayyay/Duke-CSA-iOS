@@ -301,8 +301,8 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="UrL-oe-xzA"/>
-                        <exclude reference="rco-xN-IcK"/>
                         <exclude reference="uyl-JG-oUp"/>
+                        <exclude reference="rco-xN-IcK"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
