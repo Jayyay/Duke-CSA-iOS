@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="88" id="CIE-c6-RMH" customClass="CourseCell" customModule="Duke_CSA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CIE-c6-RMH" id="2ZV-Um-65x">
+                <frame key="frameInset" width="375" height="91"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqQ-Zq-NA4">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="Xnq-We-xRb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.31478460419999998" green="0.26444321700000001" blue="0.3584774677" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Semester" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOA-o5-QKB">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="27l-xU-Qlz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.60492829950000004" green="0.60125748749999997" blue="0.62030182339999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cz0-NS-xyj">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="leadingMargin" secondItem="gqQ-Zq-NA4" secondAttribute="leading" id="4Ca-DB-QX4"/>
+                    <constraint firstItem="cz0-NS-xyj" firstAttribute="top" secondItem="gqQ-Zq-NA4" secondAttribute="bottom" id="7ww-aW-Pba"/>
+                    <constraint firstAttribute="topMargin" secondItem="gqQ-Zq-NA4" secondAttribute="top" id="AFu-nc-KNa"/>
+                    <constraint firstItem="GOA-o5-QKB" firstAttribute="top" secondItem="cz0-NS-xyj" secondAttribute="bottom" id="NXE-Pm-qaa"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="cz0-NS-xyj" secondAttribute="leading" id="RVN-o0-43G"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="gqQ-Zq-NA4" secondAttribute="trailing" id="WMk-dI-Rms"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="cz0-NS-xyj" secondAttribute="trailing" id="mXi-vh-21V"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="GOA-o5-QKB" secondAttribute="bottom" id="w5e-6W-sEI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="GOA-o5-QKB" secondAttribute="trailing" id="zBF-tD-V5k"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="commentsLabel" destination="cz0-NS-xyj" id="el8-zW-4Vh"/>
+                <outlet property="infoLabel" destination="gqQ-Zq-NA4" id="lXh-we-JXH"/>
+                <outlet property="semesterLabel" destination="GOA-o5-QKB" id="eQ6-xk-Srf"/>
+            </connections>
+            <point key="canvasLocation" x="-123.5" y="26"/>
+        </tableViewCell>
+    </objects>
+</document>

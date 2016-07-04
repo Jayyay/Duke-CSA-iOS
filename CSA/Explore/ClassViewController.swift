@@ -12,10 +12,19 @@ class ClassViewController: UITableViewController {
     
     var delegate: LoadClassesResourceDelegate!
     var courses: [Course] = []
+    
+    let ReuseID_CourseCell = "CourseCell"
+    let ReuseID_LoadingCell = "LoadingCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        var nib = UINib(nibName: "CourseCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_CourseCell)
+        nib = UINib(nibName: "LoadingCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_LoadingCell)
+        
+        // load json data
         delegate = LoadClasses()
         delegate.loadCoursesWithBlock {
             if let courses = AppData.ClassData.courses {
@@ -38,13 +47,23 @@ class ClassViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return courses.count
+        return courses.count > 0 ? courses.count : 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ClassCell")!
-        cell.textLabel?.text = courses[indexPath.row].comments
+        if (courses.count == 0) {
+            let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_LoadingCell) as! LoadingCell
+            return cell
+        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_CourseCell) as! CourseCell
+        cell.initWithCourse(courses[indexPath.row])
         return cell
+    }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 88
     }
 
     /*
