@@ -25,6 +25,8 @@ class QAPostCell: UITableViewCell {
     
     let TIME_OUT_IN_SEC = 2.0
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -50,7 +52,7 @@ class QAPostCell: UITableViewCell {
         voteLabel.text = String(post.vote)
         
         //optional
-        if let _ = post.title {
+        if post.title != "" {
             mainPostTop.constant = 34
             postTitle.hidden = false
         } else {
@@ -73,7 +75,7 @@ class QAPostCell: UITableViewCell {
             downVoteButton.setImage(AppConstants.Vote.DOWNVOTE_HIGHLIGHT, forState: .Normal)
         }
         
-        layoutIfNeeded()
+        setNeedsLayout()
     }
     
     @IBAction func upvote(sender: AnyObject) {
