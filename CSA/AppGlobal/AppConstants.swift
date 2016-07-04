@@ -45,4 +45,7 @@ struct AppConstants {
         static let ANSWERED = "🤔"
         static let TOP = "⬆️"
     }
+    struct Class {
+        static let jsonSource = "ClassDatabase.json"
+    }
 }

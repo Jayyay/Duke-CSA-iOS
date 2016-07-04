@@ -220,7 +220,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PSu-iQ-tjl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4415" y="-1317"/>
+            <point key="canvasLocation" x="6058" y="-1317"/>
         </scene>
         <!--Event Navigation Controller-->
         <scene sceneID="GaI-PO-RL8">
@@ -906,7 +906,7 @@ Z290IHRvIHVwZGF0ZQ
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3W-iO-0LE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3636" y="-1317"/>
+            <point key="canvasLocation" x="5281" y="-1317"/>
         </scene>
         <!--Rendezvous Navigation-->
         <scene sceneID="yL9-xo-ToZ">
@@ -1703,8 +1703,7 @@ Z290IHRvIHVwZGF0ZQ
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ph-1n-4Td">
-                                                    <frame key="frameInset" minX="116" minY="194" width="144" height="42"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ph-1n-4Td">
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1739,8 +1738,7 @@ Z290IHRvIHVwZGF0ZQ
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expcrush.png" translatesAutoresizingMaskIntoConstraints="NO" id="M8x-6r-Geh"/>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Find Love" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fF-T6-Cvc">
-                                                    <frame key="frameInset" minX="145" minY="240" width="86" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Love" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fF-T6-Cvc">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1820,13 +1818,7 @@ Z290IHRvIHVwZGF0ZQ
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expmore.png" translatesAutoresizingMaskIntoConstraints="NO" id="VPV-EC-tkV"/>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwf-7D-1B6">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="More's" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLY-BD-hH6">
-                                                    <frame key="frameInset" minX="135" minY="194" width="106" height="42"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLY-BD-hH6">
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1835,13 +1827,11 @@ Z290IHRvIHVwZGF0ZQ
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="VPV-EC-tkV" secondAttribute="trailing" id="1D8-Rj-5oE"/>
                                                 <constraint firstItem="VPV-EC-tkV" firstAttribute="top" secondItem="W6y-Z9-AwP" secondAttribute="top" id="5LZ-Uh-zzF"/>
+                                                <constraint firstItem="MLY-BD-hH6" firstAttribute="top" secondItem="VPV-EC-tkV" secondAttribute="bottom" constant="-86" id="8WB-hR-vwf"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="MLY-BD-hH6" secondAttribute="bottom" constant="20" id="9aS-gx-N53"/>
                                                 <constraint firstItem="VPV-EC-tkV" firstAttribute="leading" secondItem="W6y-Z9-AwP" secondAttribute="leading" id="FrD-U4-hdL"/>
                                                 <constraint firstAttribute="bottom" secondItem="VPV-EC-tkV" secondAttribute="bottom" id="JQh-9j-nTB"/>
-                                                <constraint firstItem="gwf-7D-1B6" firstAttribute="top" secondItem="MLY-BD-hH6" secondAttribute="bottom" constant="4" id="LrF-DN-E89"/>
                                                 <constraint firstItem="MLY-BD-hH6" firstAttribute="centerX" secondItem="W6y-Z9-AwP" secondAttribute="centerX" id="YRR-YI-eIV"/>
-                                                <constraint firstAttribute="bottom" secondItem="gwf-7D-1B6" secondAttribute="bottom" constant="16" id="gsC-oa-wra"/>
-                                                <constraint firstItem="gwf-7D-1B6" firstAttribute="centerX" secondItem="W6y-Z9-AwP" secondAttribute="centerX" id="yX3-i4-nbA"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -1851,6 +1841,39 @@ Z290IHRvIHVwZGF0ZQ
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="0gE-nz-HbI" kind="show" id="ZiL-np-2G6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IDCell4" id="GDL-P9-Xea">
+                                        <frame key="frameInset" minY="1142" width="375" height="280"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GDL-P9-Xea" id="5Yc-XV-QlV">
+                                            <frame key="frameInset" width="375" height="280"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expmore.png" translatesAutoresizingMaskIntoConstraints="NO" id="Wb3-Wc-u7d"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igV-wm-Tcv">
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Wb3-Wc-u7d" firstAttribute="leading" secondItem="5Yc-XV-QlV" secondAttribute="leading" id="6Km-wQ-YOs"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wb3-Wc-u7d" secondAttribute="trailing" id="6d5-S8-kHu"/>
+                                                <constraint firstAttribute="bottom" secondItem="Wb3-Wc-u7d" secondAttribute="bottom" id="Ak5-PI-3vI"/>
+                                                <constraint firstItem="Wb3-Wc-u7d" firstAttribute="top" secondItem="5Yc-XV-QlV" secondAttribute="top" id="HJC-ap-kFF"/>
+                                                <constraint firstItem="igV-wm-Tcv" firstAttribute="top" secondItem="Wb3-Wc-u7d" secondAttribute="bottom" constant="-61" id="RDS-cj-wVW"/>
+                                                <constraint firstItem="igV-wm-Tcv" firstAttribute="centerX" secondItem="5Yc-XV-QlV" secondAttribute="centerX" id="RPL-jV-YuY"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="igV-wm-Tcv" secondAttribute="bottom" constant="20" id="jzy-Li-KjE"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="jzy-Li-KjE"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="l50-IB-sFr" kind="show" id="ZF3-RV-08s"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2369,8 +2392,7 @@ Z290IHRvIHVwZGF0ZQ
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-Gw-jUP" userLabel="score view">
-                                                                    <frame key="frameInset" minX="261" minY="8" width="50" height="60"/>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-Gw-jUP" userLabel="score view">
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hits:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaU-Om-D2v">
                                                                             <constraints>
@@ -2693,6 +2715,35 @@ Z290IHRvIHVwZGF0ZQ
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubp-kR-Z3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2749" y="-612"/>
+        </scene>
+        <!--Class-->
+        <scene sceneID="5vC-7x-3cL">
+            <objects>
+                <tableViewController id="l50-IB-sFr" customClass="ClassViewController" customModule="Duke_CSA" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0b8-7h-OXz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClassCell" id="GDg-nQ-1Ac">
+                                <frame key="frameInset" minY="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GDg-nQ-1Ac" id="mKl-8B-i6D">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="l50-IB-sFr" id="d2p-ng-zac"/>
+                            <outlet property="delegate" destination="l50-IB-sFr" id="HqC-za-OyQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Class" id="ucr-to-Uy4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qcs-WT-nQz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3538" y="-612"/>
         </scene>
         <!--New Question-->
         <scene sceneID="vEC-l8-5eb">
@@ -3669,8 +3720,8 @@ Z290IHRvIHVwZGF0ZQ
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="QeI-oT-2tN"/>
                                                     <exclude reference="xsX-bJ-nSe"/>
+                                                    <exclude reference="QeI-oT-2tN"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -3782,8 +3833,8 @@ Z290IHRvIHVwZGF0ZQ
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="NRw-48-i1R"/>
                                                     <exclude reference="5yP-q9-Fxj"/>
+                                                    <exclude reference="NRw-48-i1R"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -3821,8 +3872,8 @@ Z290IHRvIHVwZGF0ZQ
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="epM-AM-MtM"/>
                                                     <exclude reference="7u2-WW-Tsy"/>
+                                                    <exclude reference="epM-AM-MtM"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -3860,8 +3911,8 @@ Z290IHRvIHVwZGF0ZQ
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="mue-F3-ZUc"/>
                                                     <exclude reference="UYz-L0-q4R"/>
+                                                    <exclude reference="mue-F3-ZUc"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -3899,8 +3950,8 @@ Z290IHRvIHVwZGF0ZQ
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="DwZ-Gp-EvB"/>
                                                     <exclude reference="ABE-Qm-fMy"/>
+                                                    <exclude reference="DwZ-Gp-EvB"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -3981,8 +4032,8 @@ Z290IHRvIHVwZGF0ZQ
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="3vr-ZI-WWT"/>
                                                     <exclude reference="WVt-zJ-3ND"/>
+                                                    <exclude reference="3vr-ZI-WWT"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -4177,8 +4228,7 @@ Z290IHRvIHVwZGF0ZQ
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Where: Unknown Location" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhI-P3-8pT">
-                                                    <frame key="frameInset" minX="8" minY="64" width="359" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where: Unknown Location" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhI-P3-8pT">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="l4G-ba-yXZ"/>
                                                     </constraints>
@@ -4743,7 +4793,7 @@ Z290IHRvIHVwZGF0ZQ
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBw-SK-edT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3636" y="-612"/>
+            <point key="canvasLocation" x="5281" y="-612"/>
         </scene>
         <!--Edit My Profile-->
         <scene sceneID="5qp-q9-9db">
@@ -4828,9 +4878,9 @@ Z290IHRvIHVwZGF0ZQ
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="kdg-Rm-p3U"/>
                                                     <exclude reference="s4N-ia-GNb"/>
                                                     <exclude reference="dkp-12-LT4"/>
+                                                    <exclude reference="kdg-Rm-p3U"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -5243,7 +5293,7 @@ Z290IHRvIHVwZGF0ZQ
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pEv-nY-Zb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3636" y="99"/>
+            <point key="canvasLocation" x="5279" y="98"/>
         </scene>
         <!--About Duke CSA-->
         <scene sceneID="kWG-e4-XGJ">
@@ -5352,7 +5402,7 @@ Z290IHRvIHVwZGF0ZQ
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxD-9w-FuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6098" y="-612"/>
+            <point key="canvasLocation" x="7742" y="-612"/>
         </scene>
         <!--My Notification-->
         <scene sceneID="AP3-qf-9q6">
@@ -5436,7 +5486,7 @@ Z290IHRvIHVwZGF0ZQ
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqB-74-7Yw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5255" y="-612"/>
+            <point key="canvasLocation" x="6898" y="-612"/>
         </scene>
         <!--Report a bug-->
         <scene sceneID="8lw-fT-TUE">
@@ -5504,7 +5554,7 @@ Z290IHRvIHVwZGF0ZQ
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHl-iY-AcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4415" y="-612"/>
+            <point key="canvasLocation" x="6058" y="-612"/>
         </scene>
     </scenes>
     <resources>
@@ -5545,6 +5595,6 @@ Z290IHRvIHVwZGF0ZQ
         <image name="spotlight_blue.png" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rVB-SQ-ZcT"/>
+        <segue reference="DCd-bU-MTx"/>
     </inferredMetricsTieBreakers>
 </document>

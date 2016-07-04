@@ -138,6 +138,19 @@ struct PFKey {
         }
     }
     
+    struct Class {
+        static let CLASSKEY = "Class"
+        static let SOURCE = "source"
+        struct Column {
+            static let NUMBER = "Number"
+            static let NAME = "Name"
+            static let PROFESSOR = "Professor"
+            static let SEMESTER = "Semester"
+            static let COMMENTS = "Comments"
+            static let MAJOR = "Major"
+        }
+    }
+    
     struct CRUSH {
         static let CLASSKEY = "ExpCrush"
         static let CRUSHER = "crusher"

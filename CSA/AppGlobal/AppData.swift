@@ -65,6 +65,11 @@ struct AppData {
         }
     }
     
+    struct ClassData {
+        static var json: [AnyObject]? = nil
+        static var courses: [Course]? = nil
+    }
+    
     struct CrushData {
         static var myCrusherArray:[ExCrush] = []
         static var myCrusherDict:[String:Bool] = [:]

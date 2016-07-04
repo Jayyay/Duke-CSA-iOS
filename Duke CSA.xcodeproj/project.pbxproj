@@ -38,6 +38,9 @@
 		00DE44D61D1F792600D6D351 /* compose.png in Resources */ = {isa = PBXBuildFile; fileRef = 00DE44D51D1F792600D6D351 /* compose.png */; };
 		00DE44D81D1F794C00D6D351 /* ComposeAnswerCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */; };
 		00DE44DB1D1F893F00D6D351 /* QAComposeAnswerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE44DA1D1F893F00D6D351 /* QAComposeAnswerController.swift */; };
+		00F928EA1D2AD06100FB0E6D /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F928E91D2AD06100FB0E6D /* Course.swift */; };
+		00F928EC1D2AD1DE00FB0E6D /* LoadClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F928EB1D2AD1DE00FB0E6D /* LoadClasses.swift */; };
+		00F928EE1D2ADA0A00FB0E6D /* ClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F928ED1D2ADA0A00FB0E6D /* ClassViewController.swift */; };
 		6902101F1AE9E91200789A67 /* RsTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6902101E1AE9E91200789A67 /* RsTag.swift */; };
 		6904E02E1AE896C9009F018D /* Rendezvous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6904E02D1AE896C9009F018D /* Rendezvous.swift */; };
 		6904E0341AE89DB0009F018D /* RsReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6904E0331AE89DB0009F018D /* RsReply.swift */; };
@@ -259,6 +262,9 @@
 		00DE44D51D1F792600D6D351 /* compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose.png; sourceTree = "<group>"; };
 		00DE44D71D1F794C00D6D351 /* ComposeAnswerCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeAnswerCellNib.xib; sourceTree = "<group>"; };
 		00DE44DA1D1F893F00D6D351 /* QAComposeAnswerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAComposeAnswerController.swift; sourceTree = "<group>"; };
+		00F928E91D2AD06100FB0E6D /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		00F928EB1D2AD1DE00FB0E6D /* LoadClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadClasses.swift; sourceTree = "<group>"; };
+		00F928ED1D2ADA0A00FB0E6D /* ClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassViewController.swift; sourceTree = "<group>"; };
 		6902101E1AE9E91200789A67 /* RsTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsTag.swift; sourceTree = "<group>"; };
 		6904E02D1AE896C9009F018D /* Rendezvous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rendezvous.swift; sourceTree = "<group>"; };
 		6904E0331AE89DB0009F018D /* RsReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsReply.swift; sourceTree = "<group>"; };
@@ -533,6 +539,40 @@
 				005255BC1D2855E100AFC0A8 /* ComposeKeyboardView.xib */,
 			);
 			name = nibs;
+			sourceTree = "<group>";
+		};
+		00F928E51D2AD03800FB0E6D /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				00F928E81D2AD04B00FB0E6D /* controller */,
+				00F928E71D2AD04800FB0E6D /* view */,
+				00F928E61D2AD04200FB0E6D /* model */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
+		00F928E61D2AD04200FB0E6D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				00F928E91D2AD06100FB0E6D /* Course.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		00F928E71D2AD04800FB0E6D /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		00F928E81D2AD04B00FB0E6D /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				00F928ED1D2ADA0A00FB0E6D /* ClassViewController.swift */,
+				00F928EB1D2AD1DE00FB0E6D /* LoadClasses.swift */,
+			);
+			name = controller;
 			sourceTree = "<group>";
 		};
 		69058F5C1ACFFCA3003DFB3C /* UI */ = {
@@ -1007,6 +1047,7 @@
 		69F195341B02FBDB00872B19 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				00F928E51D2AD03800FB0E6D /* Class */,
 				0086CFD91D1CD63200DE0A9F /* QA */,
 				69DDBF7D1BF2D40D00ABE83C /* Main */,
 				69A091701B90B7490077C8A4 /* Spotlight */,
@@ -1254,6 +1295,7 @@
 				692195F81B6A955800F9A501 /* BasicPost.swift in Sources */,
 				6904E0341AE89DB0009F018D /* RsReply.swift in Sources */,
 				69F195381B02FC0B00872B19 /* ExContactsTableViewController.swift in Sources */,
+				00F928EC1D2AD1DE00FB0E6D /* LoadClasses.swift in Sources */,
 				697C3D7C1AF712FD00154ED6 /* PPLabel.m in Sources */,
 				69C5A3B61B940B560007AFBE /* ExRankTableViewCell.swift in Sources */,
 				692F12681AD98433000A67A0 /* TabBarController.swift in Sources */,
@@ -1266,6 +1308,7 @@
 				69D43AF61AD98214001DD44B /* EventMenuTableViewController.swift in Sources */,
 				6904E02E1AE896C9009F018D /* Rendezvous.swift in Sources */,
 				69D27C811B9CD7B200C1A000 /* ExSpConstants.swift in Sources */,
+				00F928EE1D2ADA0A00FB0E6D /* ClassViewController.swift in Sources */,
 				69C5A3BA1B9417630007AFBE /* ExSpotlightViewController.swift in Sources */,
 				69FF45711ADCB8CF00C56788 /* BulletinCell.swift in Sources */,
 				0086CFDC1D1CD69400DE0A9F /* QAPost.swift in Sources */,
@@ -1312,6 +1355,7 @@
 				6971CE511BEAA48700384723 /* EventDetailMainCell.swift in Sources */,
 				69F195321B02F95300872B19 /* TextUserCell.swift in Sources */,
 				696533D71B57C19B00AD9953 /* LikesLabel.swift in Sources */,
+				00F928EA1D2AD06100FB0E6D /* Course.swift in Sources */,
 				69AC5C3B1B9A9F38002C2CFA /* AppConstants.swift in Sources */,
 				696533D51B57BDE700AD9953 /* EventLikeCell.swift in Sources */,
 				69EC09F01ADBFD2D00DF4849 /* EBMainViewController.swift in Sources */,
