@@ -67,7 +67,8 @@ struct AppData {
     
     struct ClassData {
         static var json: [AnyObject]? = nil
-        static var courses: [Course]? = nil
+        static var courses: [[Course]] = []
+        static var courseIndexList: [String] = []
     }
     
     struct CrushData {
