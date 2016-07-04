@@ -46,7 +46,11 @@ class QAAnswerCell: UITableViewCell {
         //required
         authorLabel.initLabel(author: post.author, fontSize: 17, fromVC: parentVC)
         timeLabel.text = AppTools.formatDateUserFriendly(post.postTime)
-        mainPostLabel.attributedText = post.content
+        
+        let mainPostString = NSMutableAttributedString(attributedString: post.content)
+        mainPostString.setAttributes([NSFontAttributeName: systemFontLarge], range: NSRange(location: 0, length: mainPostString.length))
+        mainPostLabel.attributedText = (mainPostString as NSAttributedString)
+        
         voteLabel.text = String(post.vote)
         
         // init vote buttons

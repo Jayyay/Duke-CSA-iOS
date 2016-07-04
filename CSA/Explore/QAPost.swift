@@ -16,7 +16,9 @@ enum ChangeVoteButton {
     case DownHighlight
     case None
 }
-let systemFont = UIFont.systemFontOfSize(14.0)
+
+let systemFontLarge = UIFont.systemFontOfSize(15.0)
+let systemFontSmall = UIFont.systemFontOfSize(14.0)
 
 class QAPost: NSObject {
     var PFInstance: PFObject
@@ -34,7 +36,7 @@ class QAPost: NSObject {
     var voteSuccess: Bool!
     let TIME_OUT_IN_SEC = 2.0
     
-    var content = NSMutableAttributedString(string: "", attributes: [NSFontAttributeName: systemFont])
+    var content = NSMutableAttributedString(string: "", attributes: [NSFontAttributeName: systemFontSmall])
     
     init? (parseObject: PFObject) {
         PFInstance = parseObject
@@ -103,7 +105,7 @@ class QAPost: NSObject {
         PFInstance[PFKey.QA.KIND] = type;
         PFInstance[PFKey.QA.AUTHOR] = author;
         
-        content.setAttributes([NSFontAttributeName: systemFont], range: NSRange(location: 0, length: content.length))
+        content.setAttributes([NSFontAttributeName: systemFontSmall], range: NSRange(location: 0, length: content.length))
         let contentData = try! content.dataFromRange(NSRange(location: 0, length: content.length), documentAttributes: [NSDocumentTypeDocumentAttribute: NSRTFTextDocumentType])
         let rtfContent = NSString(data: contentData, encoding: NSUTF8StringEncoding)!
         PFInstance[PFKey.QA.CONTENT] = rtfContent;

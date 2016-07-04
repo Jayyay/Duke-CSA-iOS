@@ -48,8 +48,18 @@ class QAPostCell: UITableViewCell {
             postTitle.text = ttl
         }
         
-        mainPostLabel.attributedText = post.content
-        print(mainPostLabel.attributedText)
+        if let _ = self.parentVC as? QAViewController {
+            mainPostLabel.attributedText = post.content
+        }
+        else if post.type == PFKey.QA.TYPE.QUESTION {
+            let mainPostString = NSMutableAttributedString(attributedString: post.content)
+            mainPostString.setAttributes([NSFontAttributeName: systemFontLarge], range: NSRange(location: 0, length: mainPostString.length))
+            mainPostLabel.attributedText = (mainPostString as NSAttributedString)
+        }
+        else {
+            mainPostLabel.attributedText = post.content
+        }
+            
         voteLabel.text = String(post.vote)
         
         //optional
