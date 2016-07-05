@@ -20,6 +20,7 @@
 		005EAEDD1D2B1FA200E6E714 /* CourseDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005EAEDC1D2B1FA200E6E714 /* CourseDetailCell.xib */; };
 		005EAEDF1D2B222A00E6E714 /* CourseDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005EAEDE1D2B222A00E6E714 /* CourseDetailCell.swift */; };
 		005EAEE11D2B22D100E6E714 /* ClassDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005EAEE01D2B22D100E6E714 /* ClassDetailController.swift */; };
+		005EAEE31D2B3B6D00E6E714 /* NoResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005EAEE21D2B3B6D00E6E714 /* NoResultCell.xib */; };
 		005FED0E1D1D905900538715 /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005FED0D1D1D905900538715 /* QAViewController.swift */; };
 		005FED101D1D990700538715 /* QAPostCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005FED0F1D1D990700538715 /* QAPostCellNib.xib */; };
 		005FED121D1D993000538715 /* QAPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005FED111D1D993000538715 /* QAPostCell.swift */; };
@@ -251,6 +252,7 @@
 		005EAEDC1D2B1FA200E6E714 /* CourseDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseDetailCell.xib; sourceTree = "<group>"; };
 		005EAEDE1D2B222A00E6E714 /* CourseDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailCell.swift; sourceTree = "<group>"; };
 		005EAEE01D2B22D100E6E714 /* ClassDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailController.swift; sourceTree = "<group>"; };
+		005EAEE21D2B3B6D00E6E714 /* NoResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoResultCell.xib; sourceTree = "<group>"; };
 		005FED0D1D1D905900538715 /* QAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
 		005FED0F1D1D990700538715 /* QAPostCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QAPostCellNib.xib; sourceTree = "<group>"; };
 		005FED111D1D993000538715 /* QAPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAPostCell.swift; sourceTree = "<group>"; };
@@ -600,6 +602,7 @@
 				00F928F01D2AE5B300FB0E6D /* CourseCell.xib */,
 				00F928F41D2AFC6200FB0E6D /* LoadingCell.xib */,
 				005EAEDC1D2B1FA200E6E714 /* CourseDetailCell.xib */,
+				005EAEE21D2B3B6D00E6E714 /* NoResultCell.xib */,
 			);
 			name = nib;
 			sourceTree = "<group>";
@@ -1220,6 +1223,7 @@
 				6992EC511AD03AF9009F7197 /* calendar.png in Resources */,
 				692BAE471ADF5B850008F29B /* ghost.png in Resources */,
 				69AC5C591B9AC7AD002C2CFA /* blue_fish_dis.png in Resources */,
+				005EAEE31D2B3B6D00E6E714 /* NoResultCell.xib in Resources */,
 				69339C231B6516C200EC8D99 /* flake1.png in Resources */,
 				6971CE6C1BEAEB4900384723 /* icon_snail.png in Resources */,
 				692BAE481ADF5B850008F29B /* planet.png in Resources */,

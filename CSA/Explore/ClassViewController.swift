@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClassViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
+class ClassViewController: UITableViewController, UISearchControllerDelegate {
     
     var delegate: LoadClassesResourceDelegate!
     var courses: [[Course]] = [] // 2D array with section
@@ -20,6 +20,12 @@ class ClassViewController: UITableViewController, UISearchControllerDelegate, UI
     let ReuseID_CourseCell = "CourseCell"
     let ReuseID_LoadingCell = "LoadingCell"
     let ReuseID_CourseDetailSegue = "CourseDetailSegue"
+    let ReuseID_NoResultCell = "NoResultCell"
+    
+    let Scope_All = "All"
+    let Scope_Number = "Number"
+    let Scope_Name = "Name"
+    let Scope_Professor = "Professor"
     
     let searchController = UISearchController(searchResultsController: nil)
 
@@ -30,11 +36,15 @@ class ClassViewController: UITableViewController, UISearchControllerDelegate, UI
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_CourseCell)
         nib = UINib(nibName: "LoadingCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_LoadingCell)
+        nib = UINib(nibName: "NoResultCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_NoResultCell)
         
         // search controller
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.delegate = self
+        searchController.searchBar.scopeButtonTitles = [Scope_All, Scope_Number, Scope_Name, Scope_Professor]
+        searchController.searchBar.placeholder = "COMPSCI 330 / Algorithms / Salman Azhar..."
         searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
         definesPresentationContext = true
@@ -66,7 +76,11 @@ class ClassViewController: UITableViewController, UISearchControllerDelegate, UI
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.active && searchController.searchBar.text != "" {
-            return filteredCourses.count
+            if filteredCourses.count == 0 {
+                return 1
+            } else {
+                return filteredCourses.count
+            }
         }
         if (courses.count == 0) {
             return 1 // loading
@@ -92,16 +106,23 @@ class ClassViewController: UITableViewController, UISearchControllerDelegate, UI
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // no course data yet
         if (courses.count == 0) {
             let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_LoadingCell) as! LoadingCell
             return cell
         }
+        // no search result
+        if (searchController.active && searchController.searchBar.text != "" && filteredCourses.count == 0) {
+            let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_NoResultCell)!
+            return cell
+        }
         let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_CourseCell) as! CourseCell
         var course: Course!
+        // search result
         if searchController.active && searchController.searchBar.text != "" {
             course = filteredCourses[indexPath.row]
         }
-        else {
+        else { // list courses
             course = courses[indexPath.section][indexPath.row]
         }
         cell.initWithCourse(course)
@@ -127,12 +148,24 @@ class ClassViewController: UITableViewController, UISearchControllerDelegate, UI
     
     // MARK: - Search functions
     
-    func filterCourseForSearchText(searchText: String, scope: String = "All") {
+    func filterCourseForSearchText(searchText: String, scope: String) {
         filteredCourses = courseList.filter { course in
             let lowerCase = searchText.lowercaseString
             let containsNumber = course.number.lowercaseString.containsString(lowerCase)
             let containsName = course.name.lowercaseString.containsString(lowerCase)
-            return containsName || containsNumber
+            let containsProfessor = course.professor.lowercaseString.containsString(lowerCase)
+            switch (scope) {
+            case Scope_All:
+                return containsName || containsNumber || containsProfessor
+            case Scope_Number:
+                return containsNumber
+            case Scope_Name:
+                return containsName
+            case Scope_Professor:
+                return containsProfessor
+            default:
+                return false
+            }
         }
         tableView.reloadData()
     }
@@ -148,6 +181,14 @@ class ClassViewController: UITableViewController, UISearchControllerDelegate, UI
 
 extension ClassViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        filterCourseForSearchText(searchController.searchBar.text!)
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterCourseForSearchText(searchController.searchBar.text!, scope: scope)
+    }
+}
+
+extension ClassViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterCourseForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
     }
 }
