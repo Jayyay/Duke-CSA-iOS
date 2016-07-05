@@ -167,6 +167,9 @@ class ClassViewController: UITableViewController, UISearchControllerDelegate {
                 return false
             }
         }
+        if scope == Scope_All {
+            filteredCourses.sortInPlace({AppTools.compareCourseIsSearchedBefore($0, c2: $1)})
+        }
         tableView.reloadData()
     }
     
@@ -183,6 +186,7 @@ extension ClassViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         let searchBar = searchController.searchBar
         let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        AppData.ClassData.searchText = searchController.searchBar.text!
         filterCourseForSearchText(searchController.searchBar.text!, scope: scope)
     }
 }

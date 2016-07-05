@@ -70,6 +70,7 @@ struct AppData {
         static var courses: [[Course]] = []
         static var courseIndexList: [String] = []
         static var courseList: [Course] = []
+        static var searchText = ""
     }
     
     struct CrushData {

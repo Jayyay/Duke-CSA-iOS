@@ -191,4 +191,24 @@ struct AppTools {
         }
     }
     
+    static func compareCourseIsSearchedBefore(c1: Course, c2: Course) -> Bool{
+        let searchText = AppData.ClassData.searchText
+        let lowerCase = searchText.lowercaseString
+        let containsNumber1 = c1.number.lowercaseString.containsString(lowerCase)
+        let containsName1 = c1.name.lowercaseString.containsString(lowerCase)
+        let containsNumber2 = c2.number.lowercaseString.containsString(lowerCase)
+        let containsName2 = c2.name.lowercaseString.containsString(lowerCase)
+        if (containsNumber1 && !containsNumber2) {
+            return true
+        } else if (containsNumber2 && !containsNumber1) {
+            return false
+        } else if (containsNumber1 && containsNumber2) {
+            return c1.number.lowercaseString < c2.number.lowercaseString
+        } else if (containsName1 && !containsName2) {
+            return true
+        } else if (containsName2 && !containsName1) {
+            return false
+        }
+        return true
+    }
 }
