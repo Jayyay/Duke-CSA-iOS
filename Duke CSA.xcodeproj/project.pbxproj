@@ -17,6 +17,9 @@
 		005255BD1D2855E100AFC0A8 /* ComposeKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005255BC1D2855E100AFC0A8 /* ComposeKeyboardView.xib */; };
 		005255C11D2858C200AFC0A8 /* hideKeyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 005255C01D2858C200AFC0A8 /* hideKeyboard.png */; };
 		005255C41D28596E00AFC0A8 /* ComposeKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005255C31D28596E00AFC0A8 /* ComposeKeyboardView.swift */; };
+		005EAEDD1D2B1FA200E6E714 /* CourseDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005EAEDC1D2B1FA200E6E714 /* CourseDetailCell.xib */; };
+		005EAEDF1D2B222A00E6E714 /* CourseDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005EAEDE1D2B222A00E6E714 /* CourseDetailCell.swift */; };
+		005EAEE11D2B22D100E6E714 /* ClassDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005EAEE01D2B22D100E6E714 /* ClassDetailController.swift */; };
 		005FED0E1D1D905900538715 /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005FED0D1D1D905900538715 /* QAViewController.swift */; };
 		005FED101D1D990700538715 /* QAPostCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005FED0F1D1D990700538715 /* QAPostCellNib.xib */; };
 		005FED121D1D993000538715 /* QAPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005FED111D1D993000538715 /* QAPostCell.swift */; };
@@ -245,6 +248,9 @@
 		005255BC1D2855E100AFC0A8 /* ComposeKeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeKeyboardView.xib; sourceTree = "<group>"; };
 		005255C01D2858C200AFC0A8 /* hideKeyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hideKeyboard.png; sourceTree = "<group>"; };
 		005255C31D28596E00AFC0A8 /* ComposeKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeKeyboardView.swift; sourceTree = "<group>"; };
+		005EAEDC1D2B1FA200E6E714 /* CourseDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseDetailCell.xib; sourceTree = "<group>"; };
+		005EAEDE1D2B222A00E6E714 /* CourseDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailCell.swift; sourceTree = "<group>"; };
+		005EAEE01D2B22D100E6E714 /* ClassDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailController.swift; sourceTree = "<group>"; };
 		005FED0D1D1D905900538715 /* QAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
 		005FED0F1D1D990700538715 /* QAPostCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QAPostCellNib.xib; sourceTree = "<group>"; };
 		005FED111D1D993000538715 /* QAPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAPostCell.swift; sourceTree = "<group>"; };
@@ -573,6 +579,7 @@
 			children = (
 				00F928F21D2AE85A00FB0E6D /* CourseCell.swift */,
 				00F928F61D2AFE9400FB0E6D /* LoadingCell.swift */,
+				005EAEDE1D2B222A00E6E714 /* CourseDetailCell.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -582,6 +589,7 @@
 			children = (
 				00F928ED1D2ADA0A00FB0E6D /* ClassViewController.swift */,
 				00F928EB1D2AD1DE00FB0E6D /* LoadClasses.swift */,
+				005EAEE01D2B22D100E6E714 /* ClassDetailController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -591,6 +599,7 @@
 			children = (
 				00F928F01D2AE5B300FB0E6D /* CourseCell.xib */,
 				00F928F41D2AFC6200FB0E6D /* LoadingCell.xib */,
+				005EAEDC1D2B1FA200E6E714 /* CourseDetailCell.xib */,
 			);
 			name = nib;
 			sourceTree = "<group>";
@@ -1218,6 +1227,7 @@
 				69510D541AD3BC9800F7ADE2 /* placeholder-user.png in Resources */,
 				693F2F811AE0F89D0015A85A /* pig.png in Resources */,
 				69175B9C1AE154B60026DACB /* replyBubble@2x.png in Resources */,
+				005EAEDD1D2B1FA200E6E714 /* CourseDetailCell.xib in Resources */,
 				69791ECB1ADF8D1900123267 /* commentBubble1.png in Resources */,
 				69CD64B01B97E80C00A232AD /* contacts.png in Resources */,
 				69AC5C471B9AB723002C2CFA /* spotlight_blue.png in Resources */,
@@ -1313,6 +1323,7 @@
 				69D27C7D1B9CB9CD00C1A000 /* ExSpDetailTableViewController.swift in Sources */,
 				692F12651AD98433000A67A0 /* Gadgets.swift in Sources */,
 				69EC09F41ADC150C00DF4849 /* Bulletin.swift in Sources */,
+				005EAEDF1D2B222A00E6E714 /* CourseDetailCell.swift in Sources */,
 				69CAB40D1AD8CF3100A266F0 /* ENSideMenuNavigationController.swift in Sources */,
 				692195F81B6A955800F9A501 /* BasicPost.swift in Sources */,
 				6904E0341AE89DB0009F018D /* RsReply.swift in Sources */,
@@ -1359,6 +1370,7 @@
 				00980B101D21BEBD00BF1CD0 /* QAAnswerCell.swift in Sources */,
 				692195F11B6A8B0A00F9A501 /* MeReportBugTableViewController.swift in Sources */,
 				69D420791AFD20600072FCD7 /* BreakOutToRefreshView.swift in Sources */,
+				005EAEE11D2B22D100E6E714 /* ClassDetailController.swift in Sources */,
 				69926AF71ACF94C60080E51E /* AppDelegate.swift in Sources */,
 				69D0FE571C483A2F00064A94 /* ExCrushCountCell.swift in Sources */,
 				00980B131D21C18100BF1CD0 /* QAAnswerViewController.swift in Sources */,

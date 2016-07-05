@@ -11,13 +11,15 @@ import UIKit
 class ClassViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     var delegate: LoadClassesResourceDelegate!
-    var courses: [[Course]] = []
-    var courseList: [Course] = []
-    var courseIndexList: [String] = []
-    var filteredCourses: [Course] = []
+    var courses: [[Course]] = [] // 2D array with section
+    var courseList: [Course] = [] // array of all courses
+    var courseIndexList: [String] = [] // index list: [A, B, C...]
+    var filteredCourses: [Course] = [] // used by search controller
+    var selectedCourse: Course! // passed to ClassDetailController
     
     let ReuseID_CourseCell = "CourseCell"
     let ReuseID_LoadingCell = "LoadingCell"
+    let ReuseID_CourseDetailSegue = "CourseDetailSegue"
     
     let searchController = UISearchController(searchResultsController: nil)
 
@@ -112,6 +114,17 @@ class ClassViewController: UITableViewController, UISearchControllerDelegate, UI
         return 88
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if (searchController.active && searchController.searchBar.text != "") {
+            selectedCourse = filteredCourses[indexPath.row]
+        }
+        else {
+            selectedCourse = courses[indexPath.section][indexPath.row]
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.performSegueWithIdentifier(ReuseID_CourseDetailSegue, sender: self)
+    }
+    
     // MARK: - Search functions
     
     func filterCourseForSearchText(searchText: String, scope: String = "All") {
@@ -122,6 +135,14 @@ class ClassViewController: UITableViewController, UISearchControllerDelegate, UI
             return containsName || containsNumber
         }
         tableView.reloadData()
+    }
+    
+    // MARK: - Segue to ClassDetailController
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destination = segue.destinationViewController as! ClassDetailController
+        destination.selectedCourse = self.selectedCourse
+        destination.navigationItem.title = self.selectedCourse.number
     }
 }
 

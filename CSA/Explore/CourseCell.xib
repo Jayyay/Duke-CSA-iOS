@@ -20,7 +20,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="Xnq-We-xRb"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                         <color key="textColor" red="0.31478460419999998" green="0.26444321700000001" blue="0.3584774677" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -29,7 +29,7 @@
                             <constraint firstAttribute="height" constant="15" id="27l-xU-Qlz"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.60492829950000004" green="0.60125748749999997" blue="0.62030182339999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cz0-NS-xyj">
@@ -39,11 +39,11 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="leadingMargin" secondItem="gqQ-Zq-NA4" secondAttribute="leading" id="4Ca-DB-QX4"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="gqQ-Zq-NA4" secondAttribute="leading" constant="-5" id="4Ca-DB-QX4"/>
                     <constraint firstItem="cz0-NS-xyj" firstAttribute="top" secondItem="gqQ-Zq-NA4" secondAttribute="bottom" id="7ww-aW-Pba"/>
                     <constraint firstAttribute="topMargin" secondItem="gqQ-Zq-NA4" secondAttribute="top" id="AFu-nc-KNa"/>
                     <constraint firstItem="GOA-o5-QKB" firstAttribute="top" secondItem="cz0-NS-xyj" secondAttribute="bottom" id="NXE-Pm-qaa"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="cz0-NS-xyj" secondAttribute="leading" id="RVN-o0-43G"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="cz0-NS-xyj" secondAttribute="leading" constant="-5" id="RVN-o0-43G"/>
                     <constraint firstAttribute="trailingMargin" secondItem="gqQ-Zq-NA4" secondAttribute="trailing" id="WMk-dI-Rms"/>
                     <constraint firstAttribute="trailingMargin" secondItem="cz0-NS-xyj" secondAttribute="trailing" id="mXi-vh-21V"/>
                     <constraint firstAttribute="bottomMargin" secondItem="GOA-o5-QKB" secondAttribute="bottom" id="w5e-6W-sEI"/>
