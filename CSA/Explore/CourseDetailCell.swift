@@ -21,6 +21,7 @@ class CourseDetailCell: UITableViewCell {
         
         nameLabel.preferredMaxLayoutWidth = 200
         commentsLabel.preferredMaxLayoutWidth = 300
+        majorLabel.preferredMaxLayoutWidth = 200
     }
     
     func initWithCourse(course: Course!) {
@@ -28,7 +29,14 @@ class CourseDetailCell: UITableViewCell {
         nameLabel.text = course.name
         semesterLabel.text = course.semester
         commentsLabel.text = course.comments
-        majorLabel.text = course.major == "" ? "Secret" : course.major
+        
+        let majorText = NSMutableAttributedString()
+        let majorHeader = NSAttributedString(string: "Commenter's Major: ", attributes: [NSForegroundColorAttributeName: AppConstants.Color.orderButton])
+        let major = course.major == "" ? "Secret" : course.major
+        let majorReal = NSAttributedString(string: major, attributes: [NSForegroundColorAttributeName: UIColor.blackColor()])
+        majorText.appendAttributedString(majorHeader)
+        majorText.appendAttributedString(majorReal)
+        majorLabel.attributedText = majorText
     }
 
 }

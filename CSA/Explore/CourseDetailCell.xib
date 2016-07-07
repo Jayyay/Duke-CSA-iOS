@@ -37,19 +37,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lup-oR-d02">
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Semester" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iV-on-NnJ">
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commenter's Major: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWS-hW-38d">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commenter's Major: Major" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWS-hW-38d">
                         <constraints>
-                            <constraint firstAttribute="height" constant="18" id="ZM8-2X-XXG"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="ZM8-2X-XXG"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.31478460419999998" green="0.26444321700000001" blue="0.3584774677" alpha="1" colorSpace="calibratedRGB"/>
@@ -57,11 +52,9 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Lup-oR-d02" firstAttribute="leading" secondItem="hWS-hW-38d" secondAttribute="trailing" id="5Df-na-KCc"/>
                     <constraint firstAttribute="trailingMargin" secondItem="08o-1P-Ftn" secondAttribute="trailing" constant="8" id="CNT-mq-ZUn"/>
                     <constraint firstAttribute="leadingMargin" secondItem="1iV-on-NnJ" secondAttribute="leading" constant="-8" id="J62-Kx-Mbd"/>
                     <constraint firstAttribute="leadingMargin" secondItem="hWS-hW-38d" secondAttribute="leading" constant="-8" id="JGr-jx-rOW"/>
-                    <constraint firstItem="Lup-oR-d02" firstAttribute="centerY" secondItem="hWS-hW-38d" secondAttribute="centerY" id="Tbz-YJ-Qt1"/>
                     <constraint firstAttribute="leadingMargin" secondItem="lcG-rR-ab1" secondAttribute="leading" constant="-8" id="UyI-dH-pQT"/>
                     <constraint firstItem="1iV-on-NnJ" firstAttribute="top" secondItem="08o-1P-Ftn" secondAttribute="bottom" constant="8" id="XrZ-Ka-bK1"/>
                     <constraint firstItem="08o-1P-Ftn" firstAttribute="top" secondItem="HwX-mh-Oau" secondAttribute="bottom" constant="8" id="Yn7-3R-rP8"/>
@@ -78,7 +71,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="commentsLabel" destination="lcG-rR-ab1" id="Iy6-Oe-v4g"/>
-                <outlet property="majorLabel" destination="Lup-oR-d02" id="4Uc-X4-14S"/>
+                <outlet property="majorLabel" destination="hWS-hW-38d" id="nQh-VZ-saw"/>
                 <outlet property="nameLabel" destination="08o-1P-Ftn" id="bBg-EM-hGl"/>
                 <outlet property="numberLabel" destination="HwX-mh-Oau" id="esO-sI-Ujg"/>
                 <outlet property="semesterLabel" destination="1iV-on-NnJ" id="B2m-2o-dlH"/>
