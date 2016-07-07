@@ -44,11 +44,14 @@ class ClassViewController: UITableViewController, UISearchControllerDelegate {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.delegate = self
         searchController.searchBar.scopeButtonTitles = [Scope_All, Scope_Number, Scope_Name, Scope_Professor]
-        searchController.searchBar.placeholder = "COMPSCI 330 / Algorithms / Salman Azhar..."
+        searchController.searchBar.placeholder = "COMPSCI 330 / Algorithms / Ahar"
         searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
-        definesPresentationContext = true
+        self.definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
+        
+        // prevent the index list from covering the searchbar
+        tableView.sectionIndexBackgroundColor = UIColor.clearColor()
         
         // load json data
         delegate = LoadClasses()
@@ -56,6 +59,7 @@ class ClassViewController: UITableViewController, UISearchControllerDelegate {
             self.courses = AppData.ClassData.courses
             self.courseIndexList = AppData.ClassData.courseIndexList
             self.courseList = AppData.ClassData.courseList
+            self.navigationItem.title = String(self.courseList.count) + " Comments"
             self.tableView.reloadData()
         }
     }

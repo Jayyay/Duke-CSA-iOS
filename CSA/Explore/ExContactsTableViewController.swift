@@ -164,6 +164,8 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
         let nib = UINib(nibName: "TextUserCellNib", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_UserCell)
         
+        // prevent the index list from covering the searchbar
+        tableView.sectionIndexBackgroundColor = UIColor.clearColor()
     }
     
     override func viewDidLoad() {
