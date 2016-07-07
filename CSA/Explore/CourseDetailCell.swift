@@ -18,7 +18,9 @@ class CourseDetailCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        nameLabel.preferredMaxLayoutWidth = 200
+        commentsLabel.preferredMaxLayoutWidth = 300
     }
     
     func initWithCourse(course: Course!) {
