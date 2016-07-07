@@ -40,7 +40,7 @@ class Notification:NSObject {
 }
 struct AppNotif {
     static let KEY = "message"
-     struct NotifType {
+    struct NotifType {
         static let KEY = "notifType"
         static let NEW_EVENT = "newEvent"
         static let NEW_BULLETIN = "newBulletin"
@@ -59,19 +59,17 @@ struct AppNotif {
         static let KEY = "channels"
         static let ALL = "all"
     }
+    
     static func pushNotificationToAll(message message:String,withSoundName:String) {
-        //let push = PFPush()
-        // Be sure to use the plural 'setChannels'.
-        /*
-        push.setMessage("The Giants won against the Mets 2-3.")
-        push.sendPushInBackground()*/
+        let data = [
+            "badge": "Increment",
+            "message": message,
+            "sound": withSoundName
+        ]
+        PFCloud.callFunctionInBackground("push", withParameters: ["channels": ["all"], "data": data])
     }
+    
     static func pushNotification(forType forType:String, withMessage:String, toUser:PFUser, withSoundName:String) {
-        // Create our Installation query
-        let pushQuery = PFInstallation.query()!
-        pushQuery.whereKey(PFKey.INSTALL.BINDED_USER, equalTo: toUser)
-        // Send push notification to query
-        let push = PFPush()
         let data = [
             "alert" : withMessage,
             "badge" : "Increment",
@@ -79,14 +77,8 @@ struct AppNotif {
             KEY : withMessage,
             NotifType.KEY : forType
         ]
-        push.setQuery(pushQuery) // Set our Installation query
-        push.setData(data)
-        push.sendPushInBackgroundWithBlock { (success: Bool, error: NSError?) in
-            print("\n*************Push Notification Result: ", success)
-            if let err = error {
-                print("error", err)
-            }
-        }
+        PFCloud.callFunctionInBackground("push", withParameters: ["toUser": toUser.objectId!, "data": data])
+        
         //add notification to database
         let newNotif = PFObject(className: PFKey.NOTIFICATION.CLASSKEY)
         newNotif[PFKey.IS_VALID] = true
