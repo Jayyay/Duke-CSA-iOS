@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A201w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="HelveticaNeue.ttc">
+        <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
-            <string>HelveticaNeue</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -55,7 +54,7 @@
                                     <constraint firstAttribute="width" constant="30" id="zVF-tz-r64"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="＋" image="upvote-plain.png">
+                                <state key="normal" image="upvote-plain.png">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -68,7 +67,7 @@
                                     <constraint firstAttribute="height" constant="20" id="Sk0-i6-KQM"/>
                                     <constraint firstAttribute="width" constant="30" id="k9f-ef-oJ3"/>
                                 </constraints>
-                                <state key="normal" title="－" image="downvote-plain.png"/>
+                                <state key="normal" image="downvote-plain.png"/>
                                 <connections>
                                     <action selector="downvote:" destination="ExX-qB-KX9" eventType="touchUpInside" id="RyA-nA-cyn"/>
                                 </connections>
@@ -122,7 +121,7 @@
                 <outlet property="upvoteButton" destination="nkZ-Xu-lR9" id="ae4-Nv-YPp"/>
                 <outlet property="voteLabel" destination="2eH-Ac-Zhn" id="DHq-1C-QdS"/>
             </connections>
-            <point key="canvasLocation" x="-449" y="284"/>
+            <point key="canvasLocation" x="-103" y="331"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -81,7 +81,12 @@ struct AppNotif {
         ]
         push.setQuery(pushQuery) // Set our Installation query
         push.setData(data)
-        push.sendPushInBackground()
+        push.sendPushInBackgroundWithBlock { (success: Bool, error: NSError?) in
+            print("\n*************Push Notification Result: ", success)
+            if let err = error {
+                print("error", err)
+            }
+        }
         //add notification to database
         let newNotif = PFObject(className: PFKey.NOTIFICATION.CLASSKEY)
         newNotif[PFKey.IS_VALID] = true
