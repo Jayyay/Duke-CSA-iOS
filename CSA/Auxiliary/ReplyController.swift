@@ -123,13 +123,13 @@ class ReplyController: UIViewController, UITextViewDelegate, UITableViewDelegate
         return true
     }
     
-    // MARK: scroll view delegate
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        if let ttView = kbInput {
-            ttView.resignFirstResponder()
-            ttView.endEditing(true)
-        }
-    }
+//    // MARK: scroll view delegate
+//    func scrollViewDidScroll(scrollView: UIScrollView) {
+//        if let ttView = kbInput {
+//            ttView.resignFirstResponder()
+//            ttView.endEditing(true)
+//        }
+//    }
     
     // function to be overriden
     func onSend(text:String!) {
