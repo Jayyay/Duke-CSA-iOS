@@ -86,7 +86,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication,  didReceiveRemoteNotification userInfo: [NSObject : AnyObject],  fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         print(userInfo[AppNotif.KEY])
-        AppNotif.goToVCWithNotification(userInfo)
+        let state = application.applicationState
+        if state == UIApplicationState.Active {
+            if let currentVC = window?.visibleViewController() {
+                print(currentVC)
+                AppFunc.alertNotificationWithActions(currentVC, notification: userInfo)
+            }
+        }
+        else {
+            AppNotif.goToVCWithNotification(userInfo)
+        }
     }
     
     

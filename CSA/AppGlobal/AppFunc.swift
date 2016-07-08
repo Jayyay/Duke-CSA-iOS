@@ -82,10 +82,23 @@ struct AppFunc{
             }
         }
     }
+    
     static func displayAlertViewFromViewController(parentVC:UIViewController, message:String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         let defaultAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Cancel, handler: nil)
         alert.addAction(defaultAction)
+        parentVC.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    static func alertNotificationWithActions(parentVC: UIViewController, notification: [NSObject: AnyObject]) {
+        let message = notification[AppNotif.KEY] as! String
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let lookAction = UIAlertAction(title: "Go", style: UIAlertActionStyle.Default, handler: { _ in
+            AppNotif.goToVCWithNotification(notification)
+        })
+        let cancelAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(cancelAction)
+        alert.addAction(lookAction)
         parentVC.presentViewController(alert, animated: true, completion: nil)
     }
 }

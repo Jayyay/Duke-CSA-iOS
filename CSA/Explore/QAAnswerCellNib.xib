@@ -105,10 +105,10 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="nkZ-Xu-lR9" firstAttribute="leading" secondItem="mMI-hQ-W09" secondAttribute="leadingMargin" constant="8" id="2DD-6k-MQ4"/>
                     <constraint firstItem="Rv7-9G-e1Z" firstAttribute="leading" secondItem="mMI-hQ-W09" secondAttribute="leadingMargin" id="E1m-2Z-tfb"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Rv7-9G-e1Z" secondAttribute="trailing" id="LkB-0z-N12"/>
                     <constraint firstItem="Rv7-9G-e1Z" firstAttribute="top" secondItem="mMI-hQ-W09" secondAttribute="topMargin" id="OCZ-pr-bVz"/>
-                    <constraint firstItem="2eH-Ac-Zhn" firstAttribute="leading" secondItem="mMI-hQ-W09" secondAttribute="leadingMargin" constant="8" id="UnC-7z-O7X"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Rv7-9G-e1Z" secondAttribute="bottom" id="fkv-S7-Zfa"/>
                 </constraints>
             </tableViewCellContentView>
@@ -121,7 +121,7 @@
                 <outlet property="upvoteButton" destination="nkZ-Xu-lR9" id="ae4-Nv-YPp"/>
                 <outlet property="voteLabel" destination="2eH-Ac-Zhn" id="DHq-1C-QdS"/>
             </connections>
-            <point key="canvasLocation" x="-103" y="331"/>
+            <point key="canvasLocation" x="-103" y="330.5"/>
         </tableViewCell>
     </objects>
     <resources>

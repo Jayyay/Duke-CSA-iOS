@@ -12,6 +12,7 @@
 		001FCEFE1D2352CB0025412B /* upvote-plain.png in Resources */ = {isa = PBXBuildFile; fileRef = 001FCEFC1D2352CB0025412B /* upvote-plain.png */; };
 		001FCF011D2359BE0025412B /* downvote-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 001FCEFF1D2359BE0025412B /* downvote-highlight.png */; };
 		001FCF021D2359BE0025412B /* upvote-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 001FCF001D2359BE0025412B /* upvote-highlight.png */; };
+		0020C88E1D2F5F43005905CC /* UIWindow+currentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0020C88D1D2F5F43005905CC /* UIWindow+currentController.swift */; };
 		0048E1EB1D21FDC300CC7C80 /* QAReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0048E1EA1D21FDC300CC7C80 /* QAReply.swift */; };
 		0048E1ED1D21FE4600CC7C80 /* QAReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0048E1EC1D21FE4600CC7C80 /* QAReplyCell.swift */; };
 		005255BD1D2855E100AFC0A8 /* ComposeKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005255BC1D2855E100AFC0A8 /* ComposeKeyboardView.xib */; };
@@ -245,6 +246,7 @@
 		001FCEFC1D2352CB0025412B /* upvote-plain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upvote-plain.png"; sourceTree = "<group>"; };
 		001FCEFF1D2359BE0025412B /* downvote-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downvote-highlight.png"; sourceTree = "<group>"; };
 		001FCF001D2359BE0025412B /* upvote-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upvote-highlight.png"; sourceTree = "<group>"; };
+		0020C88D1D2F5F43005905CC /* UIWindow+currentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+currentController.swift"; sourceTree = "<group>"; };
 		0048E1EA1D21FDC300CC7C80 /* QAReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAReply.swift; sourceTree = "<group>"; };
 		0048E1EC1D21FE4600CC7C80 /* QAReplyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAReplyCell.swift; sourceTree = "<group>"; };
 		005255BC1D2855E100AFC0A8 /* ComposeKeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeKeyboardView.xib; sourceTree = "<group>"; };
@@ -771,6 +773,7 @@
 				692232681AF8A3D6009A7E64 /* UserLabel.swift */,
 				69F1F2FE1AF087F100F6EA63 /* KeyboardInputViewNib.xib */,
 				69EF3BD51AF088830065D449 /* KeyboardInputView.swift */,
+				0020C88D1D2F5F43005905CC /* UIWindow+currentController.swift */,
 			);
 			path = Auxiliary;
 			sourceTree = "<group>";
@@ -1349,6 +1352,7 @@
 				00DE44DB1D1F893F00D6D351 /* QAComposeAnswerController.swift in Sources */,
 				6987BECE1AFA23E600612F18 /* UserConstants.swift in Sources */,
 				69D43AF61AD98214001DD44B /* EventMenuTableViewController.swift in Sources */,
+				0020C88E1D2F5F43005905CC /* UIWindow+currentController.swift in Sources */,
 				6904E02E1AE896C9009F018D /* Rendezvous.swift in Sources */,
 				69D27C811B9CD7B200C1A000 /* ExSpConstants.swift in Sources */,
 				00F928EE1D2ADA0A00FB0E6D /* ClassViewController.swift in Sources */,
