@@ -70,7 +70,7 @@ class EventDiscussCell: UITableViewCell, UITextViewDelegate{
             childDis.PFInstance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
                 if success {
                     //push notif
-                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_LIKE, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1)
+                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_LIKE, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childDis.parent.objectId!)
                 }
             })
             childDis.likes.append(PFUser.currentUser()!)
@@ -161,7 +161,7 @@ class EventDiscussCell: UITableViewCell, UITextViewDelegate{
                 self.childDis.replies.append(newRep)
                 self.parentVC.view.makeToast(message: "Succeeded.", duration: 0.5, position: HRToastPositionCenterAbove)
                 self.parentVC.tableView.reloadData()
-                AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_EDIS_REPLY, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1)
+                AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_EDIS_REPLY, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childDis.parent.objectId!)
             }else{
                 self.parentVC.view.makeToast(message: "Failed to comment. Please check your internet connection.", duration: 1.5, position: HRToastPositionCenterAbove)
             }

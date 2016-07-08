@@ -40,6 +40,7 @@ class Notification:NSObject {
 }
 struct AppNotif {
     static let KEY = "message"
+    static let INSTANCE_ID = "PFInstanceID"
     struct NotifType {
         static let KEY = "notifType"
         static let NEW_EVENT = "newEvent"
@@ -52,6 +53,11 @@ struct AppNotif {
         static let NEW_RS_GOING = "newRsGoing"
         static let NEW_EDIS_REPLY = "newEvDisRe"
         static let NEW_EDISRE_REPLY = "newEvReRe"
+        static let NEW_QA_ANSWER = "newQAAnswer"
+        static let NEW_QA_REPLY = "newQAReply"
+        static let NEW_QA_REPLY_RE = "newQAReplyRe"
+        static let NEW_QA_VOTE_QUESTION = "newQAVoteQuestion"
+        static let NEW_QA_VOTE_ANSWER = "newQAVoteAnswer"
         static let ADMIN_DIRECT = "admin"
     }
     
@@ -69,13 +75,14 @@ struct AppNotif {
         PFCloud.callFunctionInBackground("push", withParameters: ["channels": ["all"], "data": data])
     }
     
-    static func pushNotification(forType forType:String, withMessage:String, toUser:PFUser, withSoundName:String) {
+    static func pushNotification(forType forType:String, withMessage:String, toUser:PFUser, withSoundName:String, PFInstanceID: String) {
         let data = [
             "alert" : withMessage,
             "badge" : "Increment",
             "sound" : withSoundName,
             KEY : withMessage,
-            NotifType.KEY : forType
+            NotifType.KEY : forType,
+            INSTANCE_ID: PFInstanceID
         ]
         PFCloud.callFunctionInBackground("push", withParameters: ["toUser": toUser.objectId!, "data": data])
         
@@ -86,5 +93,50 @@ struct AppNotif {
         newNotif[PFKey.NOTIFICATION.TYPE] = forType
         newNotif[PFKey.NOTIFICATION.MESSAGE] = withMessage
         newNotif.saveInBackground()
+    }
+    
+    static var rootVC: TabBarController!
+    
+    static func goToVCWithNotification(notification: [NSObject : AnyObject]) {
+        rootVC = UIApplication.sharedApplication().keyWindow!.rootViewController! as! TabBarController
+        if let type = notification[NotifType.KEY] as? String {
+            switch (type) {
+            case NotifType.NEW_QA_ANSWER:
+                presentQAQuestionWithNotification(notification)
+                break
+            default:
+                print("not implemented yet")
+            }
+        }
+        else {
+            print("no notification type found.")
+        }
+    }
+    
+    static func presentQAQuestionWithNotification(notification: [NSObject: AnyObject]) {
+        rootVC.selectedIndex = 2
+        let ExploreNavController = rootVC.selectedViewController! as! UINavigationController
+        let QAVC = ExploreNavController.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.MAIN)
+        ExploreNavController.pushViewController(QAVC, animated: false)
+        let query = PFQuery(className: PFKey.QA.CLASSKEY)
+        let pfid = notification[INSTANCE_ID] as! String
+        query.whereKey(PFKey.OBJECT_ID, equalTo: pfid)
+        query.includeKey(PFKey.QA.AUTHOR)
+        query.cachePolicy = PFCachePolicy.NetworkOnly
+        AppFunc.pauseApp()
+        query.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+            if let re = result {
+                let question = re[0]
+                AppData.QAData.selectedQAQuestion = QAPost(parseObject: question)
+                let questionVC = QAVC.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.QUESTION)
+                print(QAVC.navigationController)
+                QAVC.navigationController!.pushViewController(questionVC, animated: false)
+                AppFunc.resumeApp()
+            }
+            if let error = error {
+                print("Error getting to Question View: ", error)
+                AppFunc.resumeApp()
+            }
+        }
     }
 }

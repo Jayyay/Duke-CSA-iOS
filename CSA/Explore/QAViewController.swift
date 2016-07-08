@@ -8,11 +8,12 @@
 
 import UIKit
 
+let QADetailSegueID = "QADetailSegue"
+
 class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoadMoreTableFooterViewDelegate {
+    let ReuseID_QACell = "QAPostCell"
     
     @IBOutlet weak var tableView: UITableView!
-    let ReuseID_QACell = "QAPostCell"
-    let QADetailSegueID = "QADetailSegue"
     
     var tableRefresher:UIRefreshControl!
     var QACellMaxY:CGFloat = 0

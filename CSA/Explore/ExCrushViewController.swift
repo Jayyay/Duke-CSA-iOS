@@ -341,7 +341,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
     func handleMutualCrush(lover:PFUser) {
         //push notification for the other one.
         let messageForLover = "Breaking news. \(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) has a crush on you as well."
-        AppNotif.pushNotification(forType: AppNotif.NotifType.MUTUAL_CRUSH, withMessage: messageForLover, toUser: lover, withSoundName: AppConstants.SoundFile.NOTIF_1)
+        AppNotif.pushNotification(forType: AppNotif.NotifType.MUTUAL_CRUSH, withMessage: messageForLover, toUser: lover, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: "")
         //display an alertview for userself
         let messageForSelf = "Breaking news. \(lover[PFKey.USER.DISPLAY_NAME] as! String) has a crush on you as well."
         let alert = UIAlertController(title: nil, message: messageForSelf, preferredStyle: UIAlertControllerStyle.Alert)

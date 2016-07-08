@@ -77,7 +77,7 @@ class RendezvousCell: UITableViewCell {
             childRs.PFInstance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
                 if success {
                     //push notif
-                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_GOING, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1)
+                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_GOING, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childRs.PFInstance.objectId!)
                 }
             })
             
@@ -108,7 +108,7 @@ class RendezvousCell: UITableViewCell {
                 let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) likes your rendezvous."
                 childRs.PFInstance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
                     if success {
-                        AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_LIKE, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1)
+                        AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_LIKE, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childRs.PFInstance.objectId!)
                     }
                 })
             }

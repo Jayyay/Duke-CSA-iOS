@@ -122,10 +122,11 @@ class QAAnswerViewController: ReplyController, UITableViewDataSource {
                 self.kbInput.txtview.text = ""
                 self.replies.append(QAReply(parseObject: newReply, parentQA: self.selectedQA)!)
                 self.tableView.reloadData()
-                AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_REPLY, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1)
+                AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_QA_REPLY, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.selectedQA.PFInstance.objectId!)
                 if FLAG_REPLY_TO {
-                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_REPLY_RE, withMessage: message2, toUser: sendToUser2, withSoundName: AppConstants.SoundFile.NOTIF_1)                }
-            }else{
+                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_QA_REPLY_RE, withMessage: message2, toUser: sendToUser2, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.selectedQA.PFInstance.objectId!)
+                }
+            } else {
                 self.view.makeToast(message: "Failed to reply. Please check your internet connection.", duration: 1.5, position: HRToastPositionCenterAbove)
             }
         }

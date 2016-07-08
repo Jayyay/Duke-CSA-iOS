@@ -63,6 +63,7 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
             if success{
                 AppStatus.QAStatus.tableShouldRefresh = true
                 self.cleanPostView(true)
+                self.notifyQuestionAuthor()
             } else {
                 self.view.makeToast(message: "Failed to post. Please check your internet connection.", duration: 1.5, position: HRToastPositionCenterAbove)
             }
@@ -158,6 +159,14 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
             newPost = QAPost(type: PFKey.QA.TYPE.ANSWER)
             contentTextView.text = PLACEHOLDER_ANSWER_CONTENT
         }
+    }
+    
+    // notify the owner of the question
+    func notifyQuestionAuthor() {
+        let currentName = PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String
+        let question = AppData.QAData.selectedQAQuestion
+        let message = "\(currentName) answered your question: \(question.title)"
+        AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_QA_ANSWER, withMessage: message, toUser: question.author, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: question.PFInstance.objectId!)
     }
     
     deinit{

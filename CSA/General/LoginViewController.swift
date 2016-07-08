@@ -279,6 +279,7 @@ class LoginViewController: UIViewController {
         AppStatus.BulletinStatus.tableShouldRefresh = true
         AppStatus.RendezvousStatus.tableShouldRefresh = true
         AppStatus.MeTableStatus.tableShouldRefreshLocally = true
+        AppStatus.QAStatus.tableShouldRefresh = true
     }
     
     func readyForLogin(){
