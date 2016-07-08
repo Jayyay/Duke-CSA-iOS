@@ -107,6 +107,9 @@ struct AppNotif {
             case NotifType.NEW_QA_REPLY, NotifType.NEW_QA_REPLY_RE:
                 presentQAAnswerWithNotification(notification)
                 break
+            case NotifType.NEW_RS_LIKE, NotifType.NEW_RS_GOING, NotifType.NEW_RS_REPLY, NotifType.NEW_RS_REPLY_RE:
+                presentRsWithNotification(notification)
+                break
             default:
                 print("not implemented yet")
             }
@@ -180,6 +183,28 @@ struct AppNotif {
             }
             if let error = error {
                 print("Error getting to Question View: ", error)
+            }
+        }
+    }
+    
+    static func presentRsWithNotification(notification: [NSObject: AnyObject]) {
+        rootVC.selectedIndex = 1
+        let RsNavController = rootVC.selectedViewController! as! UINavigationController
+        
+        let query = PFQuery(className: PFKey.RENDEZVOUS.CLASSKEY)
+        let pfid = notification[INSTANCE_ID] as! String
+        query.whereKey(PFKey.OBJECT_ID, equalTo: pfid)
+        query.includeKey(PFKey.RENDEZVOUS.AUTHOR)
+        query.cachePolicy = PFCachePolicy.NetworkOnly
+        query.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+            if let re = result {
+                let rs = re[0]
+                AppData.RendezvousData.selectedRendezvous = Rendezvous(parseObject: rs)
+                let RsCommentVC = RsNavController.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.RENDEZVOUS.COMMENT)
+                RsNavController.pushViewController(RsCommentVC, animated: false)
+            }
+            if let error = error {
+                print("Error getting to Rendezvous Comment View: ", error)
             }
         }
     }

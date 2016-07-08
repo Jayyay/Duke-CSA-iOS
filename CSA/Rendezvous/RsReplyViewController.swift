@@ -51,13 +51,13 @@ class RsReplyViewController: ReplyController, UITableViewDataSource, ENSideMenuD
         NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: #selector(RsReplyViewController.postTimeOut), userInfo: nil, repeats: false)
         
         //notif message
-        let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) replied to your rendezvous."
+        let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) replied to your rendezvous: \(selectedRs.mainPost.truncate(20))."
         let sendToUser = selectedRs.author
         
         var message2:String!
         var sendToUser2:PFUser!
         if FLAG_REPLY_TO {
-            message2 = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) mentioned you in a comment about a rendezvous"
+            message2 = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) replied to your comment under \(selectedRs.author[PFKey.USER.DISPLAY_NAME])'s rendezvous."
             sendToUser2 = replyToUser!
         }
         

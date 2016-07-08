@@ -72,7 +72,7 @@ class RendezvousCell: UITableViewCell {
             didGo = true
             childRs.PFInstance[PFKey.RENDEZVOUS.GOINGS]!.addObject(PFUser.currentUser()!)
             
-            let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) will rendezvous with you."
+            let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) will go to your rendezvous: \(childRs.mainPost.truncate(20))."
             let sendToUser = childRs.author
             childRs.PFInstance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
                 if success {
@@ -105,8 +105,11 @@ class RendezvousCell: UITableViewCell {
             //push notif
             let sendToUser = childRs.author
             if sendToUser.objectId != PFUser.currentUser()?.objectId {
-                let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) likes your rendezvous."
+                let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) likes your rendezvous: \(childRs.mainPost.truncate(20))."
                 childRs.PFInstance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+                    if let error = error {
+                        print("Error liking rendezvou: ", error)
+                    }
                     if success {
                         AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_LIKE, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childRs.PFInstance.objectId!)
                     }
