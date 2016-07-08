@@ -89,7 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let state = application.applicationState
         if state == UIApplicationState.Active {
             if let currentVC = window?.visibleViewController() {
-                print(currentVC)
                 AppFunc.alertNotificationWithActions(currentVC, notification: userInfo)
             }
         }

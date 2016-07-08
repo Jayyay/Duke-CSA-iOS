@@ -13,6 +13,7 @@
 		001FCF011D2359BE0025412B /* downvote-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 001FCEFF1D2359BE0025412B /* downvote-highlight.png */; };
 		001FCF021D2359BE0025412B /* upvote-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 001FCF001D2359BE0025412B /* upvote-highlight.png */; };
 		0020C88E1D2F5F43005905CC /* UIWindow+currentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0020C88D1D2F5F43005905CC /* UIWindow+currentController.swift */; };
+		0020C8901D2F6F07005905CC /* String+truncate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0020C88F1D2F6F07005905CC /* String+truncate.swift */; };
 		0048E1EB1D21FDC300CC7C80 /* QAReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0048E1EA1D21FDC300CC7C80 /* QAReply.swift */; };
 		0048E1ED1D21FE4600CC7C80 /* QAReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0048E1EC1D21FE4600CC7C80 /* QAReplyCell.swift */; };
 		005255BD1D2855E100AFC0A8 /* ComposeKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005255BC1D2855E100AFC0A8 /* ComposeKeyboardView.xib */; };
@@ -247,6 +248,7 @@
 		001FCEFF1D2359BE0025412B /* downvote-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downvote-highlight.png"; sourceTree = "<group>"; };
 		001FCF001D2359BE0025412B /* upvote-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upvote-highlight.png"; sourceTree = "<group>"; };
 		0020C88D1D2F5F43005905CC /* UIWindow+currentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+currentController.swift"; sourceTree = "<group>"; };
+		0020C88F1D2F6F07005905CC /* String+truncate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+truncate.swift"; sourceTree = "<group>"; };
 		0048E1EA1D21FDC300CC7C80 /* QAReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAReply.swift; sourceTree = "<group>"; };
 		0048E1EC1D21FE4600CC7C80 /* QAReplyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAReplyCell.swift; sourceTree = "<group>"; };
 		005255BC1D2855E100AFC0A8 /* ComposeKeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeKeyboardView.xib; sourceTree = "<group>"; };
@@ -774,6 +776,7 @@
 				69F1F2FE1AF087F100F6EA63 /* KeyboardInputViewNib.xib */,
 				69EF3BD51AF088830065D449 /* KeyboardInputView.swift */,
 				0020C88D1D2F5F43005905CC /* UIWindow+currentController.swift */,
+				0020C88F1D2F6F07005905CC /* String+truncate.swift */,
 			);
 			path = Auxiliary;
 			sourceTree = "<group>";
@@ -1326,6 +1329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0020C8901D2F6F07005905CC /* String+truncate.swift in Sources */,
 				69CD64BC1B97FD5D00A232AD /* ExRankingPlaceholderCell.swift in Sources */,
 				69CAB40C1AD8CF3100A266F0 /* ENSideMenu.swift in Sources */,
 				001FCEFA1D2347180025412B /* ReplyController.swift in Sources */,

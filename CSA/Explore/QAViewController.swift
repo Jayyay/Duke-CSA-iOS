@@ -70,7 +70,7 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        AppData.QAData.wipeSelectedRsData()
+        AppData.QAData.wipeSelectedQAData()
         tableRefresher.endRefreshing()
     }
     

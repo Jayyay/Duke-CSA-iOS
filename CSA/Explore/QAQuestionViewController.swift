@@ -92,7 +92,6 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        AppData.QAData.wipeSelectedRsData()
         tableRefresher.endRefreshing()
     }
     

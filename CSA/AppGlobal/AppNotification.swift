@@ -104,6 +104,9 @@ struct AppNotif {
             case NotifType.NEW_QA_ANSWER:
                 presentQAQuestionWithNotification(notification)
                 break
+            case NotifType.NEW_QA_REPLY:
+                presentQAAnswerWithNotification(notification)
+                break
             default:
                 print("not implemented yet")
             }
@@ -123,7 +126,6 @@ struct AppNotif {
         query.whereKey(PFKey.OBJECT_ID, equalTo: pfid)
         query.includeKey(PFKey.QA.AUTHOR)
         query.cachePolicy = PFCachePolicy.NetworkOnly
-        AppFunc.pauseApp()
         query.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
             if let re = result {
                 let question = re[0]
@@ -131,11 +133,54 @@ struct AppNotif {
                 let questionVC = QAVC.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.QUESTION)
                 print(QAVC.navigationController)
                 QAVC.navigationController!.pushViewController(questionVC, animated: false)
-                AppFunc.resumeApp()
             }
             if let error = error {
                 print("Error getting to Question View: ", error)
-                AppFunc.resumeApp()
+            }
+        }
+    }
+    
+    static func presentQAAnswerWithNotification(notification: [NSObject: AnyObject]) {
+        rootVC.selectedIndex = 2
+        let ExploreNavController = rootVC.selectedViewController! as! UINavigationController
+        let QAVC = ExploreNavController.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.MAIN)
+        ExploreNavController.pushViewController(QAVC, animated: false)
+        let query = PFQuery(className: PFKey.QA.CLASSKEY)
+        
+        // get question and answer id
+        let pfid = notification[INSTANCE_ID] as! String
+        let colonRange = pfid.rangeOfString(":")!
+        let questionId = pfid.substringWithRange(pfid.startIndex..<colonRange.startIndex)
+        let answerId = pfid.substringWithRange(colonRange.endIndex..<pfid.endIndex)
+        
+        query.whereKey(PFKey.OBJECT_ID, equalTo: questionId)
+        query.includeKey(PFKey.QA.AUTHOR)
+        query.cachePolicy = PFCachePolicy.NetworkOnly
+        query.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+            if let re = result {
+                let question = re[0]
+                AppData.QAData.selectedQAQuestion = QAPost(parseObject: question)
+                let questionVC = QAVC.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.QUESTION)
+                QAVC.navigationController!.pushViewController(questionVC, animated: false)
+                
+                let queryAnswer = PFQuery(className: PFKey.QA.CLASSKEY)
+                queryAnswer.whereKey(PFKey.OBJECT_ID, equalTo: answerId)
+                queryAnswer.includeKey(PFKey.QA.AUTHOR)
+                queryAnswer.cachePolicy = PFCachePolicy.NetworkOnly
+                queryAnswer.findObjectsInBackgroundWithBlock({ (result: [PFObject]?, error: NSError?) in
+                    if let re = result {
+                        let answer = re[0]
+                        AppData.QAData.selectedQAAnswer = QAPost(parseObject: answer)
+                        let answerVC = questionVC.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.ANSWER)
+                        questionVC.navigationController!.pushViewController(answerVC, animated: false)
+                    }
+                    if let error = error {
+                        print("Error getting to Answer View: ", error)
+                    }
+                })
+            }
+            if let error = error {
+                print("Error getting to Question View: ", error)
             }
         }
     }
