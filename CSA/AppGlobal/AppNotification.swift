@@ -104,7 +104,7 @@ struct AppNotif {
             case NotifType.NEW_QA_ANSWER:
                 presentQAQuestionWithNotification(notification)
                 break
-            case NotifType.NEW_QA_REPLY:
+            case NotifType.NEW_QA_REPLY, NotifType.NEW_QA_REPLY_RE:
                 presentQAAnswerWithNotification(notification)
                 break
             default:
@@ -131,7 +131,6 @@ struct AppNotif {
                 let question = re[0]
                 AppData.QAData.selectedQAQuestion = QAPost(parseObject: question)
                 let questionVC = QAVC.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.QUESTION)
-                print(QAVC.navigationController)
                 QAVC.navigationController!.pushViewController(questionVC, animated: false)
             }
             if let error = error {

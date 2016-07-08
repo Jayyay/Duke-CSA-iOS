@@ -24,7 +24,6 @@ class QAAnswerViewController: ReplyController, UITableViewDataSource {
         super.viewDidLoad()
         
         selectedQA = AppData.QAData.selectedQAAnswer
-        print(AppData.QAData.selectedQAQuestion)
         
         initUI()
     }
@@ -99,13 +98,13 @@ class QAAnswerViewController: ReplyController, UITableViewDataSource {
         NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: #selector(QAAnswerViewController.postTimeOut), userInfo: nil, repeats: false)
         
         //notif message
-        let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) replied to your answer: \(selectedQA.content.string.truncate(20))"
+        let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) replied to your answer: \"\(selectedQA.content.string.truncate(20))\""
         let sendToUser = selectedQA.author
         
         var message2:String!
         var sendToUser2:PFUser!
         if FLAG_REPLY_TO {
-            message2 = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) mentioned you in a comment about a QA"
+            message2 = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) replied to your comment under \(selectedQA.author[PFKey.USER.DISPLAY_NAME])'s answer."
             sendToUser2 = replyToUser!
         }
         
@@ -124,9 +123,9 @@ class QAAnswerViewController: ReplyController, UITableViewDataSource {
                 self.replies.append(QAReply(parseObject: newReply, parentQA: self.selectedQA)!)
                 self.tableView.reloadData()
                 AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_QA_REPLY, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID:  AppData.QAData.selectedQAQuestion.PFInstance.objectId! + ":" + self.selectedQA.PFInstance.objectId!)
-                print(AppData.QAData.selectedQAQuestion.PFInstance.objectId! + ":" + self.selectedQA.PFInstance.objectId!)
                 if FLAG_REPLY_TO {
-                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_QA_REPLY_RE, withMessage: message2, toUser: sendToUser2, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: AppData.QAData.selectedQAQuestion.PFInstance.objectId! + ":" + self.selectedQA.PFInstance.objectId!)
+                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_QA_REPLY_RE, withMessage: message2, toUser: sendToUser2, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.selectedQA.question.objectId! + ":" + self.selectedQA.PFInstance.objectId!)
+                    print(self.selectedQA.question.objectId! + ":" + self.selectedQA.PFInstance.objectId!)
                 }
             } else {
                 self.view.makeToast(message: "Failed to reply. Please check your internet connection.", duration: 1.5, position: HRToastPositionCenterAbove)

@@ -29,7 +29,7 @@ class QAPost: NSObject {
     var upvotes: [String] = []
     var downvotes: [String] = []
     var answers: [PFObject] = [] // answers to this post
-    var question: AnyObject = NSNull()
+    var question: PFObject!
     var postTime: NSDate!
     var replies: [PFObject] = []
     

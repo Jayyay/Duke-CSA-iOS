@@ -165,7 +165,7 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
     func notifyQuestionAuthor() {
         let currentName = PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String
         let question = AppData.QAData.selectedQAQuestion
-        let message = "\(currentName) answered your question: \(question.title)"
+        let message = "\(currentName) answered your question: \"\(question.title.truncate(20))\""
         AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_QA_ANSWER, withMessage: message, toUser: question.author, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: question.PFInstance.objectId!)
     }
     
