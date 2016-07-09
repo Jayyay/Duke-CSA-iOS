@@ -29,7 +29,7 @@ class QAPost: NSObject {
     var upvotes: [String] = []
     var downvotes: [String] = []
     var answers: [PFObject] = [] // answers to this post
-    var question: PFObject!
+    var question: AnyObject = NSNull()
     var postTime: NSDate!
     var replies: [PFObject] = []
     
@@ -222,7 +222,7 @@ class QAPost: NSObject {
             message = "\(currentUserName) upvoted your question: \(title.truncate(20))"
         }
         else if (type == PFKey.QA.TYPE.ANSWER) {
-            pushID = question.objectId! + ":" + PFInstance.objectId!
+            pushID = question.objectId!! + ":" + PFInstance.objectId!
             pushType = AppNotif.NotifType.NEW_QA_VOTE_ANSWER
             message = "\(currentUserName) upvoted your answer: \(content.string.truncate(20))"
         }

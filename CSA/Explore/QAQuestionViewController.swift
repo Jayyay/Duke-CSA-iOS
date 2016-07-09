@@ -270,6 +270,7 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // selection on an answer
+        print("did select row")
         if !noAnswer && indexPath.row > 1 {
             selectAnswer(indexPath.row - 1) //offset of 1 since 0 is for the question
         }

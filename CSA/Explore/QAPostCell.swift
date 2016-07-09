@@ -19,6 +19,7 @@ class QAPostCell: UITableViewCell {
     
     @IBOutlet weak var upvoteButton: UIButton!
     @IBOutlet weak var downVoteButton: UIButton!
+    @IBOutlet weak var voteBackground: UIView!
     
     weak var parentVC: UIViewController!
     var childQA: QAPost!
@@ -29,6 +30,9 @@ class QAPostCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapOnBackground))
+        voteBackground.addGestureRecognizer(tap)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -104,5 +108,9 @@ class QAPostCell: UITableViewCell {
             parentVC.view.hideToastActivity()
             parentVC.view.makeToast(message: "Connecting timed out, your vote FAILED.", duration: 1.0, position: HRToastPositionCenterAbove)
         }
+    }
+    
+    func tapOnBackground() {
+        print("tapping on background")
     }
 }
