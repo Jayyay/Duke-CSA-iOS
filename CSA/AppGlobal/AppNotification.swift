@@ -101,10 +101,10 @@ struct AppNotif {
         rootVC = UIApplication.sharedApplication().keyWindow!.rootViewController! as! TabBarController
         if let type = notification[NotifType.KEY] as? String {
             switch (type) {
-            case NotifType.NEW_QA_ANSWER:
+            case NotifType.NEW_QA_ANSWER, NotifType.NEW_QA_VOTE_QUESTION:
                 presentQAQuestionWithNotification(notification)
                 break
-            case NotifType.NEW_QA_REPLY, NotifType.NEW_QA_REPLY_RE:
+            case NotifType.NEW_QA_REPLY, NotifType.NEW_QA_REPLY_RE, NotifType.NEW_QA_VOTE_ANSWER:
                 presentQAAnswerWithNotification(notification)
                 break
             case NotifType.NEW_RS_LIKE, NotifType.NEW_RS_GOING, NotifType.NEW_RS_REPLY, NotifType.NEW_RS_REPLY_RE:

@@ -121,7 +121,10 @@ class QAPost: NSObject {
         }
     }
     
+    var upvote_flag = false
+    
     func upvote(voteLabel: UILabel!, upvoteButton: UIButton!, downvoteButton: UIButton!, cell: UITableViewCell) {
+        upvote_flag = false
         let id = PFUser.currentUser()!.objectId!
         print(self.upvotes)
         var action: ChangeVoteButton = .None
@@ -139,6 +142,7 @@ class QAPost: NSObject {
             self.upvotes.append(id)
             self.vote += 1
             action = .UpHighlight
+            upvote_flag = true
         }
         
         voteSuccess = false
@@ -160,6 +164,7 @@ class QAPost: NSObject {
                 default:
                     break
                 }
+                if (self.upvote_flag) {self.notifyAuthorUpvote()}
                 cell.setNeedsLayout()
             }
         }
@@ -206,5 +211,21 @@ class QAPost: NSObject {
                 cell.setNeedsLayout()
             }
         }
+    }
+    
+    func notifyAuthorUpvote() {
+        var pushID = "", pushType = "", message = ""
+        let currentUserName = PFUser.currentUser()![PFKey.USER.DISPLAY_NAME]
+        if (type == PFKey.QA.TYPE.QUESTION) {
+            pushID = PFInstance.objectId!
+            pushType = AppNotif.NotifType.NEW_QA_VOTE_QUESTION
+            message = "\(currentUserName) upvoted your question: \(title.truncate(20))"
+        }
+        else if (type == PFKey.QA.TYPE.ANSWER) {
+            pushID = question.objectId! + ":" + PFInstance.objectId!
+            pushType = AppNotif.NotifType.NEW_QA_VOTE_ANSWER
+            message = "\(currentUserName) upvoted your answer: \(content.string.truncate(20))"
+        }
+        AppNotif.pushNotification(forType: pushType, withMessage: message, toUser: author, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: pushID)
     }
 }
