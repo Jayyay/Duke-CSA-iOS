@@ -26,13 +26,12 @@ class QAPostCell: UITableViewCell {
     
     let TIME_OUT_IN_SEC = 2.0
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapOnBackground))
         voteBackground.addGestureRecognizer(tap)
+        voteBackground.backgroundColor = UIColor.clearColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
