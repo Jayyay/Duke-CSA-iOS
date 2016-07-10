@@ -24,6 +24,8 @@ class Rendezvous:NSObject {
     //derived info
     var IdidGo = false
     var IdidLike = false
+    var goings: [PFUser] = []
+    var likes: [PFUser] = []
     var countGoings = 0
     var countLikes = 0
     var countReplies = 0
@@ -71,11 +73,12 @@ class Rendezvous:NSObject {
         }
         
         //goings
-        if let goArr = parseObject[PFKey.RENDEZVOUS.GOINGS] as? [PFObject] {
-            countGoings = goArr.count
+        if let goArr = parseObject[PFKey.RENDEZVOUS.GOINGS] as? [PFUser] {
+            goings = goArr
+            countGoings = goings.count
             IdidGo = false
             for go in goArr {
-                if go.objectId == PFUser.currentUser()!.objectId {
+                if go.objectId! == PFUser.currentUser()!.objectId! {
                     IdidGo = true
                     break
                 }
@@ -83,11 +86,12 @@ class Rendezvous:NSObject {
         }
         
         //likes
-        if let likeArr = parseObject[PFKey.RENDEZVOUS.LIKES] as? [PFObject] {
-            countLikes = likeArr.count
+        if let likeArr = parseObject[PFKey.RENDEZVOUS.LIKES] as? [PFUser] {
+            likes = likeArr
+            countLikes = likes.count
             IdidLike = false
             for like in likeArr {
-                if like.objectId == PFUser.currentUser()!.objectId {
+                if like.objectId! == PFUser.currentUser()!.objectId! {
                     IdidLike = true
                 }
             }
@@ -99,4 +103,11 @@ class Rendezvous:NSObject {
         }
     }
     
+    func saveWithBlock(block: (Bool, NSError?) -> Void) {
+        PFInstance[PFKey.RENDEZVOUS.LIKES] = likes
+        PFInstance[PFKey.RENDEZVOUS.GOINGS] = goings
+        PFInstance.saveInBackgroundWithBlock { (success: Bool, error: NSError?) in
+            block(success, error)
+        }
+    }
 }

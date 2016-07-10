@@ -60,15 +60,15 @@ class RsLikeTableViewController: UITableViewController, ENSideMenuDelegate {
                 self.tableView.contentOffset.y = -self.refreshControl!.frame.height
                 }, completion: nil)
         }*/
-        rsLikeRefreshSelectorCacheFirst()
+        rsLikeRefreshSelector()
     }
     
     func rsLikeRefreshSelectorCacheFirst() {
         print("RsLike Begin Refreshing Cache First")
         let query = PFQuery(className: PFKey.RENDEZVOUS.CLASSKEY)
         query.orderByDescending(PFKey.CREATED_AT)
-        query.includeKey(PFKey.RENDEZVOUS.LIKES)
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
+        query.includeKey(PFKey.RENDEZVOUS.LIKES)
         self.queryCompletionCounter = 0
         query.getObjectInBackgroundWithId(selectedRs.PFInstance.objectId!, block: {(result:PFObject?, error:NSError?) -> Void in
             self.queryCompletionCounter += 1
@@ -81,8 +81,8 @@ class RsLikeTableViewController: UITableViewController, ENSideMenuDelegate {
         print("RsLike Begin Refreshing")
         let query = PFQuery(className: PFKey.RENDEZVOUS.CLASSKEY)
         query.orderByDescending(PFKey.CREATED_AT)
-        query.includeKey(PFKey.RENDEZVOUS.LIKES)
         query.cachePolicy = PFCachePolicy.NetworkOnly
+        query.includeKey(PFKey.RENDEZVOUS.LIKES)
         self.queryCompletionCounter = 2
         query.getObjectInBackgroundWithId(selectedRs.PFInstance.objectId!, block: {(result:PFObject?, error:NSError?) -> Void in
             self.queryCompletionDataHandler(result: result,error: error)

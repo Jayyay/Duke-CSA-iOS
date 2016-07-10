@@ -68,66 +68,64 @@ class RendezvousCell: UITableViewCell {
     
     @IBAction func onGoing(sender: AnyObject) {
         if didGo == false { //change to 'going'
-            childRs.countGoings += 1
-            didGo = true
-            childRs.PFInstance[PFKey.RENDEZVOUS.GOINGS]!.addObject(PFUser.currentUser()!)
-            
+            childRs.goings.append(PFUser.currentUser()!)
             let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) will go to your rendezvous: \(childRs.mainPost.truncate(20))."
             let sendToUser = childRs.author
-            childRs.PFInstance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+            childRs.saveWithBlock({ (success:Bool, error:NSError?) -> Void in
                 if success {
+                    self.childRs.countGoings += 1
+                    self.didGo = true
                     //push notif
                     AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_GOING, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childRs.PFInstance.objectId!)
                 }
             })
             
         }else{//change to 'not going'
-            childRs.countGoings -= 1
-            didGo = false
-            let goArr = childRs.PFInstance[PFKey.RENDEZVOUS.GOINGS] as! [PFUser]
+            let goArr = childRs.goings
             for go in goArr {
-                if go.objectId == PFUser.currentUser()!.objectId {
-                    childRs.PFInstance.removeObject(go, forKey: PFKey.RENDEZVOUS.GOINGS)
+                if go.objectId! == PFUser.currentUser()!.objectId! {
+                    childRs.goings.removeAtIndex(goArr.indexOf(go)!)
                     break
                 }
             }
-            childRs.PFInstance.saveInBackground()
+            childRs.saveWithBlock({ (success: Bool, error: NSError?) in
+                self.childRs.countGoings -= 1
+                self.didGo = false
+            })
         }
         //childRs.refreshGoingsNeeded = true
     }
     
     @IBAction func onLike(sender: AnyObject) {
         if didLike == false { //change to 'like'
-            childRs.countLikes += 1
-            didLike = true
-            childRs.PFInstance[PFKey.RENDEZVOUS.LIKES]!.addObject(PFUser.currentUser()!)
             
+            childRs.likes.append(PFUser.currentUser()!)
             //push notif
             let sendToUser = childRs.author
-            if sendToUser.objectId != PFUser.currentUser()?.objectId {
-                let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) likes your rendezvous: \(childRs.mainPost.truncate(20))."
-                childRs.PFInstance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
-                    if let error = error {
-                        print("Error liking rendezvou: ", error)
-                    }
-                    if success {
-                        AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_LIKE, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childRs.PFInstance.objectId!)
-                    }
-                })
-            }
-        }else {//change to 'not like'
-            childRs.countLikes -= 1
-            didLike = false
-            let likeArr = childRs.PFInstance[PFKey.RENDEZVOUS.LIKES] as! [PFObject]
+            let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) likes your rendezvous: \(childRs.mainPost.truncate(20))."
+            childRs.saveWithBlock({ (success:Bool, error:NSError?) -> Void in
+                if let error = error {
+                    print("Error liking rendezvou: ", error)
+                }
+                if success {
+                    self.childRs.countLikes += 1
+                    self.didLike = true
+                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_LIKE, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childRs.PFInstance.objectId!)
+                }
+            })
+        } else {//change to 'not like'
+            let likeArr = childRs.likes
             for like in likeArr {
-                if like.objectId == PFUser.currentUser()!.objectId {
-                    childRs.PFInstance.removeObject(like, forKey: PFKey.RENDEZVOUS.LIKES)
+                if like.objectId! == PFUser.currentUser()!.objectId! {
+                    childRs.likes.removeAtIndex(likeArr.indexOf(like)!)
                     break;
                 }
             }
-            childRs.PFInstance.saveInBackground()
+            childRs.saveWithBlock({ (success: Bool, error: NSError?) in
+                self.childRs.countLikes -= 1
+                self.didLike = false
+            })
         }
-        //childRs.refreshLikesNeeded = true
     }
     
     @IBAction func onDelete(sender: AnyObject) {
@@ -151,8 +149,8 @@ class RendezvousCell: UITableViewCell {
     }
     
     /*note the button in rendezvous table is disabled,
-    so this action can and must only be called in comment view
-    */
+     so this action can and must only be called in comment view
+     */
     @IBAction func onReply(sender: AnyObject) {
         if let replyVC = parentVC as? RsReplyViewController {
             replyVC.replyPressed(scrollTo:self.frame.maxY, replyTo: nil)

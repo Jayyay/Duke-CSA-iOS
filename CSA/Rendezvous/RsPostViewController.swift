@@ -304,23 +304,6 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         print("Release - RsPostViewController")
     }
     
-    /*
-    func simulatePost() {
-        var newPost = PFObject(className: PFKey.RENDEZVOUS.CLASSKEY)
-        newPost[PFKey.IS_VALID] = true
-        newPost[PFKey.RENDEZVOUS.AUTHOR] = PFUser.currentUser()
-        
-        newPost[PFKey.RENDEZVOUS.TITLE] = "打球"
-        //newPost[PFKey.RENDEZVOUS.WHEN] = "Tonight at 9:00"
-        //newPost[PFKey.RENDEZVOUS.WHERE] = "Wilson"
-        newPost[PFKey.RENDEZVOUS.MAIN_POST] = "Just come"
-        newPost[PFKey.RENDEZVOUS.TAGS] = [RsTag.sport]
-        newPost[PFKey.RENDEZVOUS.GOINGS] = [PFUser.currentUser()]
-        newPost[PFKey.RENDEZVOUS.LIKES] = [PFUser.currentUser()]
-        newPost[PFKey.RENDEZVOUS.REPLIES] = []
-        newPost.saveInBackgroundWithBlock { _ in
-        }
-    }*/
     func sideMenuShouldOpenSideMenu() -> Bool {
         return false
     }
