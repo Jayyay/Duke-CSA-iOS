@@ -74,7 +74,10 @@ class ProfileTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        if (indexPath.section == 0 && indexPath.row == 0) {
+            return UITableViewAutomaticDimension
+        }
+        return 44
     }
     
     
