@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0008ED7D1D3570860049F22E /* NotifInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0008ED7C1D3570860049F22E /* NotifInfo.swift */; };
 		001FCEFA1D2347180025412B /* ReplyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001FCEF91D2347180025412B /* ReplyController.swift */; };
 		001FCEFD1D2352CB0025412B /* downvote-plain.png in Resources */ = {isa = PBXBuildFile; fileRef = 001FCEFB1D2352CB0025412B /* downvote-plain.png */; };
 		001FCEFE1D2352CB0025412B /* upvote-plain.png in Resources */ = {isa = PBXBuildFile; fileRef = 001FCEFC1D2352CB0025412B /* upvote-plain.png */; };
@@ -242,6 +243,7 @@
 
 /* Begin PBXFileReference section */
 		000430931D2D99F700BF6937 /* Duke CSA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Duke CSA.entitlements"; sourceTree = "<group>"; };
+		0008ED7C1D3570860049F22E /* NotifInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifInfo.swift; sourceTree = "<group>"; };
 		001FCEF91D2347180025412B /* ReplyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyController.swift; sourceTree = "<group>"; };
 		001FCEFB1D2352CB0025412B /* downvote-plain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downvote-plain.png"; sourceTree = "<group>"; };
 		001FCEFC1D2352CB0025412B /* upvote-plain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upvote-plain.png"; sourceTree = "<group>"; };
@@ -777,6 +779,7 @@
 				69EF3BD51AF088830065D449 /* KeyboardInputView.swift */,
 				0020C88D1D2F5F43005905CC /* UIWindow+currentController.swift */,
 				0020C88F1D2F6F07005905CC /* String+truncate.swift */,
+				0008ED7C1D3570860049F22E /* NotifInfo.swift */,
 			);
 			path = Auxiliary;
 			sourceTree = "<group>";
@@ -1405,6 +1408,7 @@
 				6971CE541BEAA8C700384723 /* EventTitleCell.swift in Sources */,
 				694600841C13F7600080E3DE /* BulletinDetailMainCell.swift in Sources */,
 				69D1B8061B6A53F200D6B2FF /* MeAboutDukeCSAViewController.swift in Sources */,
+				0008ED7D1D3570860049F22E /* NotifInfo.swift in Sources */,
 				6971CE511BEAA48700384723 /* EventDetailMainCell.swift in Sources */,
 				69F195321B02F95300872B19 /* TextUserCell.swift in Sources */,
 				696533D71B57C19B00AD9953 /* LikesLabel.swift in Sources */,

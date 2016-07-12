@@ -106,6 +106,10 @@ struct AppData {
         }
     }
     
+    struct NotifData {
+        static var notifInfo: NotifInfo?
+    }
+    
     struct SpotlightData {
         static var mySpotlightPFInstance:PFObject!
     }

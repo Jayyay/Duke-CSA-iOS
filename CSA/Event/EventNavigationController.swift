@@ -22,10 +22,10 @@ class EventNavigationController: ENSideMenuNavigationController, ENSideMenuDeleg
         sideMenu?.bouncingEnabled = false
         view.bringSubviewToFront(navigationBar) // make navigation bar showing over side menu
         
-        /*navigation style
-        self.navigationBar.barStyle = UIBarStyle.BlackTranslucent
-        self.navigationBar.tintColor = UIColor.whiteColor()
-       */
+        if let info = AppData.NotifData.notifInfo {
+            print(info.events)
+            self.tabBarItem.badgeValue = info.events.count == 0 ? nil : String(info.events.count)
+        }
     }
     
     // MARK: - ENSideMenu Delegate

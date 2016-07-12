@@ -121,7 +121,7 @@ class EventReplyCell: UITableViewCell, UITextViewDelegate {
                 self.childReply.parent.replies.append(newRep)
                 self.parentVC.view.makeToast(message: "Succeeded.", duration: 0.5, position: HRToastPositionCenterAbove)
                 self.parentVC.tableView.reloadData()
-                AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_EDISRE_REPLY, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childReply.parent.parent.objectId!)
+                AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_EVENT_REPLY, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childReply.parent.parent.objectId!)
             }else{
                 self.parentVC.view.makeToast(message: "Failed to reply. Please check your internet connection.", duration: 1.5, position: HRToastPositionCenterAbove)
             }

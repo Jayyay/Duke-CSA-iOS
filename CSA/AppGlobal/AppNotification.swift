@@ -44,6 +44,8 @@ struct AppNotif {
     struct NotifType {
         static let KEY = "notifType"
         static let NEW_EVENT = "newEvent"
+        static let NEW_EVENT_REPLY = "newEvDisRe"
+        static let NEW_EVENT_LIKE = "newEvLike"
         static let NEW_BULLETIN = "newBulletin"
         static let NEW_RENDEZVOUS = "newRs"
         static let MUTUAL_CRUSH = "mutualCrush"
@@ -51,8 +53,6 @@ struct AppNotif {
         static let NEW_RS_REPLY_RE = "newRsReplyRe"
         static let NEW_RS_LIKE = "newRsLike"
         static let NEW_RS_GOING = "newRsGoing"
-        static let NEW_EDIS_REPLY = "newEvDisRe"
-        static let NEW_EDISRE_REPLY = "newEvReRe"
         static let NEW_QA_ANSWER = "newQAAnswer"
         static let NEW_QA_REPLY = "newQAReply"
         static let NEW_QA_REPLY_RE = "newQAReplyRe"
@@ -110,6 +110,8 @@ struct AppNotif {
             case NotifType.NEW_RS_LIKE, NotifType.NEW_RS_GOING, NotifType.NEW_RS_REPLY, NotifType.NEW_RS_REPLY_RE:
                 presentRsWithNotification(notification)
                 break
+            case NotifType.NEW_EVENT_LIKE, NotifType.NEW_EVENT_REPLY:
+                presentEventDisWithNotification(notification)
             default:
                 print("not implemented yet")
             }
@@ -205,6 +207,73 @@ struct AppNotif {
             }
             if let error = error {
                 print("Error getting to Rendezvous Comment View: ", error)
+            }
+        }
+    }
+    
+    static func presentEventDisWithNotification(notification: [NSObject: AnyObject]) {
+        rootVC.selectedIndex = 0
+        let EventNavController = rootVC.selectedViewController! as! UINavigationController
+        
+        let query = PFQuery(className: PFKey.EVENT.CLASSKEY)
+        let pfid = notification[INSTANCE_ID] as! String
+        query.whereKey(PFKey.OBJECT_ID, equalTo: pfid)
+        query.cachePolicy = PFCachePolicy.NetworkOnly
+        query.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+            if let re = result {
+                let ev = re[0]
+                AppData.EventData.selectedEvent = Event(parseObject: ev)
+                let DiscussVC = EventNavController.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.EVENT.DISCUSSION)
+                EventNavController.pushViewController(DiscussVC, animated: false)
+            }
+            if let error = error {
+                print("Error getting to Event Comment View: ", error)
+            }
+        }
+    }
+    
+    static func handleBadgeNotif(notification: [NSObject: AnyObject]) {
+        let notifInfo = NSKeyedUnarchiver.unarchiveObjectWithFile(NotifInfo.ArchiveURL!.path!) as? NotifInfo
+        if let info = notifInfo {
+            AppData.NotifData.notifInfo = info
+            if let type = notification[NotifType.KEY] as? String {
+                switch (type) {
+                case NotifType.NEW_QA_ANSWER, NotifType.NEW_QA_VOTE_QUESTION:
+                    let questionID = notification[INSTANCE_ID] as! String
+                    let questions = AppData.NotifData.notifInfo!.questions
+                    if (!questions.contains(questionID)) {
+                        AppData.NotifData.notifInfo!.questions.append(questionID)
+                        AppData.NotifData.notifInfo!.save()
+                    }
+                    break
+                case NotifType.NEW_QA_REPLY, NotifType.NEW_QA_REPLY_RE, NotifType.NEW_QA_VOTE_ANSWER:
+                    let pfid = notification[INSTANCE_ID] as! String
+                    let colonRange = pfid.rangeOfString(":")!
+                    let answerID = pfid.substringWithRange(colonRange.endIndex..<pfid.endIndex)
+                    let answers = AppData.NotifData.notifInfo!.answers
+                    if (!answers.contains(answerID)) {
+                        AppData.NotifData.notifInfo!.answers.append(answerID)
+                        AppData.NotifData.notifInfo!.save()
+                    }
+                    break
+                case NotifType.NEW_RS_LIKE, NotifType.NEW_RS_GOING, NotifType.NEW_RS_REPLY, NotifType.NEW_RS_REPLY_RE:
+                    let rsid = notification[INSTANCE_ID] as! String
+                    let rendezvous = AppData.NotifData.notifInfo!.rendezvous
+                    if (!rendezvous.contains((rsid))) {
+                        AppData.NotifData.notifInfo!.rendezvous.append(rsid)
+                        AppData.NotifData.notifInfo!.save()
+                    }
+                    break
+                case NotifType.NEW_EVENT_REPLY, NotifType.NEW_EVENT_LIKE:
+                    let eventID = notification[INSTANCE_ID] as! String
+                    let events = AppData.NotifData.notifInfo!.events
+                    if (!events.contains(eventID)) {
+                        AppData.NotifData.notifInfo!.events.append(eventID)
+                        AppData.NotifData.notifInfo!.save()
+                    }
+                default:
+                    print("not implemented yet")
+                }
             }
         }
     }

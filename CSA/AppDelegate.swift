@@ -43,6 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().translucent = true
         UITabBar.appearance().tintColor = UIColor.whiteColor()
         
+        // notification storage
+        let notifInfo = NSKeyedUnarchiver.unarchiveObjectWithFile(NotifInfo.ArchiveURL!.path!) as? NotifInfo
+        if let info = notifInfo {
+            AppData.NotifData.notifInfo = info
+        }
+        
         return true
     }
     
@@ -52,10 +58,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         installation.addUniqueObject(AppNotif.Channels.ALL, forKey: AppNotif.Channels.KEY)
         if let user = PFUser.currentUser() {
             installation[PFKey.INSTALL.BINDED_USER] = user
-        }else{
+        } else {
             installation[PFKey.INSTALL.BINDED_USER] = NSNull()
         }
         installation.saveInBackground()
+        let notifInfo = NotifInfo(events: [], rendezvous: [], questions: [], answers: [])
+        notifInfo!.save()
         print("succeedtoregisterRemoteNote")
     }
     
@@ -76,16 +84,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         FBSDKAppEvents.activateApp()
-        let installation = PFInstallation.currentInstallation()
-        if installation.badge != 0{
-            installation.badge = 0
-            installation.saveEventually()
-        }
+        //let installation = PFInstallation.currentInstallation()
+//        if installation.badge != 0{
+//            installation.badge = 0
+//            installation.saveEventually()
+//        }
         AppFunc.refreshCheck()
     }
     
     func application(application: UIApplication,  didReceiveRemoteNotification userInfo: [NSObject : AnyObject],  fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         let state = application.applicationState
+        AppNotif.handleBadgeNotif(userInfo)
         if state == UIApplicationState.Active {
             if let currentVC = window?.visibleViewController() {
                 AppFunc.alertNotificationWithActions(currentVC, notification: userInfo)

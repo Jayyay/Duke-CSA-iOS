@@ -9,6 +9,7 @@
 import Foundation
 struct StoryboardID {
     struct EVENT{
+        static let DETAIL = "eventDetailVC"
         static let SIGN_UP = "eventSignUpVC"
         static let DISCUSSION = "eventDiscussVC"
     }
