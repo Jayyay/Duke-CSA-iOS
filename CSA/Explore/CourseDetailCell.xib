@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A201w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="165" id="4IT-TP-kmf" customClass="CourseDetailCell" customModule="Duke_CSA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4IT-TP-kmf" id="oOF-sq-rMN">
+                <frame key="frameInset" width="375" height="164"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwX-mh-Oau">
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <color key="textColor" red="0.31478460419999998" green="0.26444321700000001" blue="0.3584774677" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08o-1P-Ftn">
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="88Z-jE-lyz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.31478460419999998" green="0.26444321700000001" blue="0.3584774677" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcG-rR-ab1">
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="V1u-7i-8Dg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Semester" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iV-on-NnJ">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commenter's Major: Major" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWS-hW-38d">
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="ZM8-2X-XXG"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.31478460419999998" green="0.26444321700000001" blue="0.3584774677" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="08o-1P-Ftn" secondAttribute="trailing" constant="8" id="CNT-mq-ZUn"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="1iV-on-NnJ" secondAttribute="leading" constant="-8" id="J62-Kx-Mbd"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="hWS-hW-38d" secondAttribute="leading" constant="-8" id="JGr-jx-rOW"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="lcG-rR-ab1" secondAttribute="leading" constant="-8" id="UyI-dH-pQT"/>
+                    <constraint firstItem="1iV-on-NnJ" firstAttribute="top" secondItem="08o-1P-Ftn" secondAttribute="bottom" constant="8" id="XrZ-Ka-bK1"/>
+                    <constraint firstItem="08o-1P-Ftn" firstAttribute="top" secondItem="HwX-mh-Oau" secondAttribute="bottom" constant="8" id="Yn7-3R-rP8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="lcG-rR-ab1" secondAttribute="trailing" constant="8" id="bKE-2b-ALU"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="hWS-hW-38d" secondAttribute="bottom" priority="250" constant="8" id="bcE-i5-gzD"/>
+                    <constraint firstAttribute="topMargin" secondItem="HwX-mh-Oau" secondAttribute="top" constant="-10" id="cpj-6X-XAh"/>
+                    <constraint firstItem="hWS-hW-38d" firstAttribute="top" secondItem="lcG-rR-ab1" secondAttribute="bottom" constant="8" id="gfN-eQ-xqY"/>
+                    <constraint firstItem="lcG-rR-ab1" firstAttribute="top" secondItem="1iV-on-NnJ" secondAttribute="bottom" constant="8" id="hFD-6O-7Vr"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="1iV-on-NnJ" secondAttribute="trailing" constant="8" id="ohD-nE-Pbt"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="08o-1P-Ftn" secondAttribute="leading" constant="-8" id="vsq-3H-CFG"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="HwX-mh-Oau" secondAttribute="leading" constant="-8" id="xWw-w7-XAq"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="HwX-mh-Oau" secondAttribute="trailing" constant="8" id="y3h-PQ-RMM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="commentsLabel" destination="lcG-rR-ab1" id="Iy6-Oe-v4g"/>
+                <outlet property="majorLabel" destination="hWS-hW-38d" id="nQh-VZ-saw"/>
+                <outlet property="nameLabel" destination="08o-1P-Ftn" id="bBg-EM-hGl"/>
+                <outlet property="numberLabel" destination="HwX-mh-Oau" id="esO-sI-Ujg"/>
+                <outlet property="semesterLabel" destination="1iV-on-NnJ" id="B2m-2o-dlH"/>
+            </connections>
+            <point key="canvasLocation" x="93.5" y="-61.5"/>
+        </tableViewCell>
+    </objects>
+</document>

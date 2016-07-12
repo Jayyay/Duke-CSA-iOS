@@ -101,7 +101,7 @@ class EventReplyCell: UITableViewCell, UITextViewDelegate {
         AppFunc.pauseApp()
         
         //set time out timer
-        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: Selector("postTimeOut"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: #selector(EventReplyCell.postTimeOut), userInfo: nil, repeats: false)
         
         
         let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) mentioned you in a reply about the event '\(childReply.parent.parent[PFKey.EVENT.TITLE] as! String)'."
@@ -121,7 +121,7 @@ class EventReplyCell: UITableViewCell, UITextViewDelegate {
                 self.childReply.parent.replies.append(newRep)
                 self.parentVC.view.makeToast(message: "Succeeded.", duration: 0.5, position: HRToastPositionCenterAbove)
                 self.parentVC.tableView.reloadData()
-                AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_EDISRE_REPLY, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1)
+                AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_EDISRE_REPLY, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childReply.parent.parent.objectId!)
             }else{
                 self.parentVC.view.makeToast(message: "Failed to reply. Please check your internet connection.", duration: 1.5, position: HRToastPositionCenterAbove)
             }

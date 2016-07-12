@@ -15,7 +15,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     let REUSEID_SECOND = "IDCell1"
     let REUSEID_THIRD = "IDCell2"
     let REUSEID_FOURTH = "IDCell3"
-    
+    let REUSEID_FIFTH = "IDCell4"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -46,8 +46,10 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
             id = REUSEID_SECOND
         case 2:
             id = REUSEID_THIRD
-        default:
+        case 3:
             id = REUSEID_FOURTH
+        default:
+            id = REUSEID_FIFTH
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(id, forIndexPath: indexPath)
         return cell

@@ -80,7 +80,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         
         //tags
         var finalTags:[String] = []
-        for var i = 0; i < tagIsOn.count; i++ {
+        for i in 0..<tagIsOn.count {
             if tagIsOn[i] {
                 print(RsTag.tagIndexToName[i])
                 finalTags.append(RsTag.tagIndexToName[i])
@@ -100,7 +100,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         AppFunc.pauseApp()
         
         //set time out
-        NSTimer.scheduledTimerWithTimeInterval(TIME_OUT_IN_SEC, target: self, selector: Selector("postTimeOut"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(TIME_OUT_IN_SEC, target: self, selector: #selector(postTimeOut), userInfo: nil, repeats: false)
 
         //post
         newPost.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
@@ -136,7 +136,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         if tagIsOn[index]{//unchoose
             tagIsOn[index] = false
             tagChosen.backgroundColor = UIColor.whiteColor()
-            validTag--
+            validTag -= 1
             if validTag <= 0 {
                 imgTagCheck.hidden = true
             }
@@ -145,7 +145,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             let tagStr = RsTag.tagIndexToName[index]
             let (R, G, B) = RsTag.colorDict[tagStr]!
             tagChosen.backgroundColor = UIColor(red: R/255, green: G/255, blue: B/255, alpha: 1.0)
-            validTag++
+            validTag += 1
             imgTagCheck.hidden = false
         }
     }
@@ -225,7 +225,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             check.hidden = true
         }
         
-        for var i = 0; i < tagIsOn.count; i++ {
+        for i in 0 ..< tagIsOn.count {
             tagIsOn[i] = false
         }
         for t in tagArr {
@@ -249,7 +249,7 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     
     // MARK: - Keyboard
     func registerForKeyboardNotifications ()-> Void   {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RsPostViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
@@ -295,8 +295,8 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             check.hidden = true
         }
         
-        tfTitle.addTarget(self, action: Selector("tfTitleDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
-        tfWhenWhere.addTarget(self, action: Selector("tfWhenDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
+        tfTitle.addTarget(self, action: #selector(RsPostViewController.tfTitleDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        tfWhenWhere.addTarget(self, action: #selector(RsPostViewController.tfWhenDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         registerForKeyboardNotifications()
     }
     
@@ -304,23 +304,6 @@ class RsPostViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         print("Release - RsPostViewController")
     }
     
-    /*
-    func simulatePost() {
-        var newPost = PFObject(className: PFKey.RENDEZVOUS.CLASSKEY)
-        newPost[PFKey.IS_VALID] = true
-        newPost[PFKey.RENDEZVOUS.AUTHOR] = PFUser.currentUser()
-        
-        newPost[PFKey.RENDEZVOUS.TITLE] = "打球"
-        //newPost[PFKey.RENDEZVOUS.WHEN] = "Tonight at 9:00"
-        //newPost[PFKey.RENDEZVOUS.WHERE] = "Wilson"
-        newPost[PFKey.RENDEZVOUS.MAIN_POST] = "Just come"
-        newPost[PFKey.RENDEZVOUS.TAGS] = [RsTag.sport]
-        newPost[PFKey.RENDEZVOUS.GOINGS] = [PFUser.currentUser()]
-        newPost[PFKey.RENDEZVOUS.LIKES] = [PFUser.currentUser()]
-        newPost[PFKey.RENDEZVOUS.REPLIES] = []
-        newPost.saveInBackgroundWithBlock { _ in
-        }
-    }*/
     func sideMenuShouldOpenSideMenu() -> Bool {
         return false
     }

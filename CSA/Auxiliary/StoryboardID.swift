@@ -15,6 +15,12 @@ struct StoryboardID {
     struct RENDEZVOUS{
         static let GOING = "rsGoingVC"
         static let LIKE = "rsLikeVC"
+        static let COMMENT = "RendezvousCommentVC"
+    }
+    struct QA {
+        static let MAIN = "QAVC"
+        static let QUESTION = "QAQuestionVC"
+        static let ANSWER = "QAAnswerVC"
     }
     static let LOGIN = "loginVC"
     static let USER_INFO = "userProfileVC"

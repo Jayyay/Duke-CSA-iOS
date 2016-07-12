@@ -43,7 +43,8 @@ struct AppTools {
         formatter.dateFormat = "MM-dd, E, h:mm a"
         return formatter.stringFromDate(date)
     }
-    static func capitalizeFirstLetter (var str:String) -> String {
+    static func capitalizeFirstLetter (s:String) -> String {
+        var str = s
         str.replaceRange(str.startIndex...str.startIndex, with: String(str[str.startIndex]).capitalizedString)
         return str
     }
@@ -128,7 +129,7 @@ struct AppTools {
             let newImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             return newImage
-        }else{
+        } else {
             return nil
         }
     }
@@ -150,7 +151,7 @@ struct AppTools {
     static func getLastName(name: String) -> String {
         let index = name.rangeOfString(" ", options: .BackwardsSearch)?.endIndex
         if let index = index {
-            return name.substringWithRange(Range<String.Index>(start: index, end: name.endIndex))
+            return name.substringWithRange(Range<String.Index>(index..<name.endIndex))
         }
         else {
             return ""
@@ -160,11 +161,54 @@ struct AppTools {
     static func getNamePivot(name: String) -> String {
         let lastName = getLastName(name)
         if lastName != "" {
-            return lastName.substringWithRange(Range<String.Index>(start: lastName.startIndex, end: lastName.startIndex.advancedBy(1)))
+            return lastName.substringWithRange(Range<String.Index>(lastName.startIndex..<lastName.startIndex.advancedBy(1)))
         }
         else {
             return "-"
         }
     }
     
+    static func compareQAPostIsOrderedBefore(p1 p1: QAPost, p2: QAPost) -> Bool{
+        let vote1 = p1.vote
+        let vote2 = p2.vote
+        let time1 = p1.postTime
+        let time2 = p2.postTime
+        
+        if (AppStatus.QAStatus.order == .Vote) {
+            if (vote1 > vote2) {
+                return true
+            }
+            else if (vote1 < vote2) {
+                return false
+            }
+        }
+        let compare = time1.compare(time2).rawValue
+        if (compare > 0) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    static func compareCourseIsSearchedBefore(c1: Course, c2: Course) -> Bool{
+        let searchText = AppData.ClassData.searchText
+        let lowerCase = searchText.lowercaseString
+        let containsNumber1 = c1.number.lowercaseString.containsString(lowerCase)
+        let containsName1 = c1.name.lowercaseString.containsString(lowerCase)
+        let containsNumber2 = c2.number.lowercaseString.containsString(lowerCase)
+        let containsName2 = c2.name.lowercaseString.containsString(lowerCase)
+        if (containsNumber1 && !containsNumber2) {
+            return true
+        } else if (containsNumber2 && !containsNumber1) {
+            return false
+        } else if (containsNumber1 && containsNumber2) {
+            return c1.number.lowercaseString < c2.number.lowercaseString
+        } else if (containsName1 && !containsName2) {
+            return true
+        } else if (containsName2 && !containsName1) {
+            return false
+        }
+        return true
+    }
 }

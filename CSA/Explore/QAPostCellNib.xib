@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A201w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="QAPostCell" id="ira-sx-PTj" userLabel="Main Post Cell" customClass="QAPostCell" customModule="Duke_CSA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="520" height="183"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ira-sx-PTj" id="JsF-jG-My1">
+                <frame key="frameInset" width="487" height="182"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nf0-qp-cVg">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" text="Yesterday 19:20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEh-3S-7ff" userLabel="PostTime">
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rY7-1D-5Dn" userLabel="Author" customClass="UserLabel" customModule="Duke_CSA" customModuleProvider="target">
+                                <attributedString key="attributedText">
+                                    <fragment content="Barry Allen">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门前大桥下，游过一群鸭，快来快来数一数，二四六七八" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWC-FH-xZ6">
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="110" id="LBq-uY-Dc7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.42352941179999998" green="0.35686274509999999" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" text="QAPost Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9z-Xz-Zd6">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="OcN-1q-E0s"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="textColor" red="0.42352941179999998" green="0.35686274509999999" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="icw-4L-Xfi">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1n-Ey-hfp">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAm-OZ-D3r">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="ZFM-vK-97d"/>
+                                            <constraint firstAttribute="width" constant="30" id="pxI-GF-V4Z"/>
+                                        </constraints>
+                                        <state key="normal" image="upvote-plain.png"/>
+                                        <connections>
+                                            <action selector="upvote:" destination="ira-sx-PTj" eventType="touchUpInside" id="jTe-ZZ-Qx4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXS-Xn-i4h">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="FPO-Pm-KRD"/>
+                                            <constraint firstAttribute="width" constant="30" id="JXe-Bp-uyr"/>
+                                        </constraints>
+                                        <state key="normal" image="downvote-plain.png"/>
+                                        <connections>
+                                            <action selector="downvote:" destination="ira-sx-PTj" eventType="touchUpInside" id="5Dc-lj-YdC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="eAm-OZ-D3r" firstAttribute="top" secondItem="icw-4L-Xfi" secondAttribute="top" constant="20" id="7ag-DG-utn"/>
+                                    <constraint firstItem="d1n-Ey-hfp" firstAttribute="centerX" secondItem="eAm-OZ-D3r" secondAttribute="centerX" id="MRu-wv-Ind"/>
+                                    <constraint firstItem="TXS-Xn-i4h" firstAttribute="top" secondItem="d1n-Ey-hfp" secondAttribute="bottom" constant="12" id="Tub-le-Wwa"/>
+                                    <constraint firstItem="eAm-OZ-D3r" firstAttribute="leading" secondItem="icw-4L-Xfi" secondAttribute="leading" constant="8" id="YAX-Jz-tZn"/>
+                                    <constraint firstItem="d1n-Ey-hfp" firstAttribute="top" secondItem="eAm-OZ-D3r" secondAttribute="bottom" constant="12" id="b4s-N1-AWX"/>
+                                    <constraint firstItem="TXS-Xn-i4h" firstAttribute="centerX" secondItem="d1n-Ey-hfp" secondAttribute="centerX" id="vaO-oB-3in"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="icw-4L-Xfi" secondAttribute="bottom" id="2Ql-mT-pM2"/>
+                            <constraint firstItem="gWC-FH-xZ6" firstAttribute="leading" secondItem="nf0-qp-cVg" secondAttribute="leading" constant="58" id="8xF-fk-rqA"/>
+                            <constraint firstItem="icw-4L-Xfi" firstAttribute="top" secondItem="nf0-qp-cVg" secondAttribute="top" id="A89-eL-TA4"/>
+                            <constraint firstAttribute="bottom" secondItem="gWC-FH-xZ6" secondAttribute="bottom" constant="22" id="Gou-h8-fdT"/>
+                            <constraint firstItem="icw-4L-Xfi" firstAttribute="leading" secondItem="nf0-qp-cVg" secondAttribute="leading" id="GxU-zA-hsg"/>
+                            <constraint firstItem="J9z-Xz-Zd6" firstAttribute="leading" secondItem="nf0-qp-cVg" secondAttribute="leading" constant="58" id="HO3-0Q-9yo"/>
+                            <constraint firstAttribute="trailing" secondItem="J9z-Xz-Zd6" secondAttribute="trailing" constant="10" id="K3V-lw-gcg"/>
+                            <constraint firstAttribute="trailing" secondItem="gWC-FH-xZ6" secondAttribute="trailing" constant="8" id="MNL-V6-Kmw"/>
+                            <constraint firstItem="J9z-Xz-Zd6" firstAttribute="leading" secondItem="icw-4L-Xfi" secondAttribute="trailing" id="NFA-eb-g6O"/>
+                            <constraint firstItem="PEh-3S-7ff" firstAttribute="leading" secondItem="rY7-1D-5Dn" secondAttribute="trailing" constant="8" id="eil-UE-547"/>
+                            <constraint firstItem="rY7-1D-5Dn" firstAttribute="baseline" secondItem="PEh-3S-7ff" secondAttribute="baseline" id="pM2-WD-nPr"/>
+                            <constraint firstItem="gWC-FH-xZ6" firstAttribute="trailing" secondItem="PEh-3S-7ff" secondAttribute="trailing" id="tvH-XR-3nr"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="K3V-lw-gcg"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="topMargin" secondItem="J9z-Xz-Zd6" secondAttribute="top" id="5C4-gv-HOF"/>
+                    <constraint firstItem="nf0-qp-cVg" firstAttribute="leading" secondItem="JsF-jG-My1" secondAttribute="leadingMargin" id="8rF-AA-hEl"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="J9z-Xz-Zd6" secondAttribute="trailing" constant="10" id="A4T-gg-Y94"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="nf0-qp-cVg" secondAttribute="trailing" id="CEw-yf-nVu"/>
+                    <constraint firstItem="gWC-FH-xZ6" firstAttribute="top" secondItem="JsF-jG-My1" secondAttribute="topMargin" constant="34" id="Ow3-YJ-MJM"/>
+                    <constraint firstItem="nf0-qp-cVg" firstAttribute="top" secondItem="JsF-jG-My1" secondAttribute="topMargin" id="R4D-do-Twz"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="PEh-3S-7ff" secondAttribute="bottom" id="a9F-i6-aFH"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="nf0-qp-cVg" secondAttribute="bottom" id="w4u-Aj-x4K"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="authorLabel" destination="rY7-1D-5Dn" id="xcN-1Q-RsG"/>
+                <outlet property="downVoteButton" destination="TXS-Xn-i4h" id="blD-ie-nxA"/>
+                <outlet property="mainPostLabel" destination="gWC-FH-xZ6" id="s4a-Fy-x6G"/>
+                <outlet property="mainPostTop" destination="Ow3-YJ-MJM" id="kEa-xr-k9T"/>
+                <outlet property="postTitle" destination="J9z-Xz-Zd6" id="FgW-he-414"/>
+                <outlet property="timeLabel" destination="PEh-3S-7ff" id="3JT-TY-cTU"/>
+                <outlet property="upvoteButton" destination="eAm-OZ-D3r" id="yp0-Bn-fuL"/>
+                <outlet property="voteBackground" destination="icw-4L-Xfi" id="DM2-oR-WI7"/>
+                <outlet property="voteLabel" destination="d1n-Ey-hfp" id="wmE-yu-KZ2"/>
+            </connections>
+            <point key="canvasLocation" x="-400" y="346.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="downvote-plain.png" width="446" height="192"/>
+        <image name="upvote-plain.png" width="445" height="191"/>
+    </resources>
+</document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RsReplyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, ENSideMenuDelegate {
+class RsReplyViewController: ReplyController, UITableViewDataSource, ENSideMenuDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     let SegueID_Post = "rsPostSegue"
@@ -16,35 +16,15 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
     let ReuseID_ReplyCell = "IDRsReplyCell"
     
     var selectedRs:Rendezvous!
-    var kbInput:KeyboardInputView!
-    var scrollToY:CGFloat = 0
-    var replyToUser:PFUser?
     var replies:[RsReply] = []
     var tableRefresher:UIRefreshControl!
     var queryCompletionCounter:Int = 0
     
-    var postConnectSuccess = false
-    var postAllowed = true
-    let timeoutInSec:NSTimeInterval = 5.0
-    
-    var lineOfText = 0
-    var lastHeight = CGFloat(0)
-    
     @IBAction func onClickMore(sender: AnyObject) {
         self.sideMenuController()?.sideMenu?.toggleMenu()
     }
-    // MARK: - Post & Delete
-    func replyPressed(scrollTo scrollTo:CGFloat, replyTo:PFUser?){
-        scrollToY = scrollTo
-        if let r = replyTo {
-            replyToUser = r
-        }else {
-            replyToUser = nil
-        }
-        kbInput.txtview.becomeFirstResponder() //this leads to keyboardWillShow getting called
-    }
     
-    func onSend(txt:String) { //called by pressing return key of textview.
+    override func onSend(txt:String) { //called by pressing return key of textview.
         if !AppTools.stringIsValid(txt) {return}
         
         var FLAG_REPLY_TO = false
@@ -68,16 +48,16 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         AppFunc.pauseApp()
         
         //set time out
-        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: Selector("postTimeOut"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: #selector(RsReplyViewController.postTimeOut), userInfo: nil, repeats: false)
         
         //notif message
-        let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) replied to your rendezvous."
+        let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) replied to your rendezvous: \(selectedRs.mainPost.truncate(20))."
         let sendToUser = selectedRs.author
         
         var message2:String!
         var sendToUser2:PFUser!
         if FLAG_REPLY_TO {
-            message2 = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) mentioned you in a comment about a rendezvous"
+            message2 = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) replied to your comment under \(selectedRs.author[PFKey.USER.DISPLAY_NAME])'s rendezvous."
             sendToUser2 = replyToUser!
         }
         
@@ -93,24 +73,16 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
             
             if success{
                 self.kbInput.txtview.text = ""
-                self.selectedRs.countReplies++
+                self.selectedRs.countReplies += 1
                 self.replies.append(RsReply(parseObject: newReply, parentRs: self.selectedRs)!)
                 self.tableView.reloadData()
-                AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_REPLY, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1)
+                AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_REPLY, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.selectedRs.PFInstance.objectId!)
                 if FLAG_REPLY_TO {
-                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_REPLY_RE, withMessage: message2, toUser: sendToUser2, withSoundName: AppConstants.SoundFile.NOTIF_1)                }
-            }else{
+                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_REPLY_RE, withMessage: message2, toUser: sendToUser2, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.selectedRs.PFInstance.objectId!)
+                }
+            } else {
                 self.view.makeToast(message: "Failed to reply. Please check your internet connection.", duration: 1.5, position: HRToastPositionCenterAbove)
             }
-        }
-    }
-    
-    func postTimeOut() {
-        if !postConnectSuccess{
-            print("Post time out")
-            AppFunc.resumeApp()
-            self.view.hideToastActivity()
-            self.view.makeToast(message: "Connecting time out, job sended into background. Please wait.", duration: 1.5, position: HRToastPositionCenterAbove)
         }
     }
     
@@ -176,7 +148,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         queryCompletionCounter = 0
         query.getObjectInBackgroundWithId(selectedRs.PFInstance.objectId!, block: { (result:PFObject?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         })
@@ -212,87 +184,9 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    
-    // MARK: - Keyboard
-    func registerForKeyboardNotifications ()-> Void   {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    override func initUI() {
+        super.tblView = tableView
         
-    }
-    
-    func keyboardWillShow(notification: NSNotification) {
-        
-        let info : NSDictionary = notification.userInfo!
-        let keyboardRect = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue
-        kbInput.hidden = false
-        kbInput.frame.origin.y = keyboardRect.origin.y - kbInput.bounds.height - 64
-        print(kbInput.frame)
-        let y = scrollToY - (UIScreen.mainScreen().bounds.height - keyboardRect.height - kbInput.frame.height - 64)
-        if y > -tableRefresher.frame.height {
-            self.tableView.setContentOffset(CGPointMake(0, y), animated: true)
-        }
-    }
-    
-    // resize the textview height according to user input
-    // credit to Han Yu, huge thanks.
-    func textViewDidChange(textView: UITextView) {
-        print("did change ", kbInput.frame)
-        let fixedWidth = textView.frame.size.width
-        //textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-        if (newSize.height == lastHeight) || (newSize.height > lastHeight && lineOfText >= 4) {
-            // no need to resize frame
-            return
-        }
-        lineOfText += newSize.height > lastHeight ? 1 : -1
-        lastHeight = newSize.height
-        if lineOfText >= 4 {
-            textView.scrollEnabled = true
-        }else {
-            textView.scrollEnabled = false
-        }
-        
-        var newFrame = textView.frame
-        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-        newFrame.origin.y = newFrame.origin.y - newSize.height + textView.frame.height
-        
-        var boxFrame = kbInput.frame
-        boxFrame.origin.y = boxFrame.origin.y - newSize.height + textView.frame.height
-        boxFrame.size = CGSize(width: boxFrame.width, height: newSize.height + 16)
-        
-        textView.frame = newFrame;
-        kbInput.frame = boxFrame
-        
-    }
-    
-    func keyboardWillHide (notification:NSNotification) {
-        kbInput.frame.origin.y = self.view.frame.height
-        kbInput.hidden = true
-    }
-    
-    //called everytime text is changed. Used here to detect return (send) pressed.
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            onSend(textView.text)
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
-    
-    //MARK: Init and Life Cycle
-    func keyboardInputViewInit(){
-        let nib = UINib(nibName: "KeyboardInputViewNib", bundle: nil)
-        kbInput = nib.instantiateWithOwner(self, options: nil)[0] as! KeyboardInputView
-        kbInput.frame = CGRectMake(0, self.view.bounds.height, self.view.bounds.width, 49)
-        kbInput.txtview.delegate = self
-        kbInput.translatesAutoresizingMaskIntoConstraints = true
-        self.view.addSubview(kbInput)
-        kbInput.hidden = true
-        print("fffff\(kbInput.frame)")
-    }
-    
-    func initUI() {
         //tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
@@ -301,14 +195,14 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_MainCell)
         
         tableRefresher = UIRefreshControl()
-        tableRefresher.addTarget(self, action: Selector("replyRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        tableRefresher.addTarget(self, action: #selector(RsReplyViewController.replyRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(tableRefresher)
         
         
         registerForKeyboardNotifications()
+        
+        super.initUI()
     }
-    
-    var firstTimeLayingOut: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -323,10 +217,7 @@ class RsReplyViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     override func viewWillLayoutSubviews() {
-        if firstTimeLayingOut {
-            keyboardInputViewInit()
-            firstTimeLayingOut = false
-        }
+        super.viewWillLayoutSubviews()
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

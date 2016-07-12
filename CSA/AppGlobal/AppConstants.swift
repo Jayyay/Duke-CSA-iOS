@@ -16,6 +16,8 @@ struct AppConstants {
         static let placeholder = UIColor(red: 187/255, green: 186/255, blue: 193/255, alpha: 1.0)
         static let tintDefault = UIColor(red:0.0, green:122.0/255.0, blue:1.0, alpha:1.0)
         static let color0 = UIColor(red: 216, green: 0, blue: 0, alpha: 1.0)
+        static let orderButton = UIColor(red: 80/255, green: 67/255, blue: 91/255, alpha: 1.0)
+        static let orderButtonNot = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0)
     }
     struct ColorSet0 {
         static let c0 = UIColor(red: 248/255, green: 177/255, blue: 149/255, alpha: 1) //rgb(248, 177, 149)
@@ -30,5 +32,20 @@ struct AppConstants {
     struct Prompt {
         static let REFRESH_FAILED = "Refresh failed. Please check your internet connection."
         static let ERROR = "Error. Please check your internet connection."
+    }
+    struct Vote {
+        static let DOWNVOTE_HIGHLIGHT = UIImage(named:"downvote-highlight.png")
+        static let DOWNVOTE_PLAIN = UIImage(named:"downvote-plain.png")
+        static let UPVOTE_HIGHLIGHT = UIImage(named:"upvote-highlight.png")
+        static let UPVOTE_PLAIN = UIImage(named:"upvote-plain.png")
+    }
+    struct QATypeLabelText {
+        static let NOTE = "📔"
+        static let NOTANSWERED = "❓"
+        static let ANSWERED = "🤔"
+        static let TOP = "⬆️"
+    }
+    struct Class {
+        static let jsonSource = "ClassDatabase.json"
     }
 }

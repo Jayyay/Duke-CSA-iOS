@@ -97,7 +97,7 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
         
         tableRefresher = UIRefreshControl()
         //tableRefresher.attributedTitle = NSAttributedString(string: "Refreshing")
-        tableRefresher.addTarget(self, action: Selector("rsRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        tableRefresher.addTarget(self, action: #selector(RendezvousViewController.rsRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(tableRefresher)
         
         loadMoreFooterView = LoadMoreTableFooterView(frame: CGRectMake(0, tableView.contentSize.height, tableView.frame.size.width, tableView.frame.size.height))
@@ -155,7 +155,7 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
         query.cachePolicy = PFCachePolicy.NetworkOnly
         query.limit = SINGLE_LOAD_AMOUNT
         queryCompletionCounter = 2
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
             self.queryCompletionDataHandler(result: result,error: error, removeAll: true)
             self.queryCompletionUIHandler(error: error)
             self.allowLoadingMore = true
@@ -173,8 +173,8 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
         query.limit = SINGLE_LOAD_AMOUNT
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.queryCompletionCounter = 0
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error, removeAll: true)
             self.queryCompletionUIHandler(error: error)
             if self.queryCompletionCounter >= 2 {
@@ -191,7 +191,7 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
         query.includeKey(PFKey.RENDEZVOUS.AUTHOR)
         query.limit = SINGLE_LOAD_AMOUNT
         query.skip = skipAmount
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
             self.queryCompletionDataHandler(result: result,error: error, removeAll: false)
             self.doneLoadingMoreTableViewData()
         }
@@ -215,7 +215,7 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    func queryCompletionDataHandler(result result:[AnyObject]!, error:NSError!, removeAll:Bool) {
+    func queryCompletionDataHandler(result result:[PFObject]!, error:NSError!, removeAll:Bool) {
         print("Rendezvous query completed for the \(self.queryCompletionCounter) time with: ", terminator: "")
         if error == nil && result != nil{
             print("success!")
@@ -226,7 +226,7 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
             couldLoadMore = result.count >= SINGLE_LOAD_AMOUNT
             skipAmount += result.count
             print("Find \(result.count) results.")
-            for re in result as! [PFObject]{
+            for re in result {
                 if let newRs = Rendezvous(parseObject: re) {
                     rdzvs.append(newRs)
                 }

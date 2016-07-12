@@ -23,7 +23,7 @@ class RsLikeTableViewController: UITableViewController, ENSideMenuDelegate {
         tableView.estimatedRowHeight = 66
         refreshControl = UIRefreshControl()
         //refreshControl!.attributedTitle = NSAttributedString(string: "Refreshing")
-        refreshControl!.addTarget(self, action: Selector("rsLikeRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl!.addTarget(self, action: #selector(RsLikeTableViewController.rsLikeRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         
         let nib = UINib(nibName: "BasicUserCellNib", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_BasicUserCell)
@@ -60,18 +60,18 @@ class RsLikeTableViewController: UITableViewController, ENSideMenuDelegate {
                 self.tableView.contentOffset.y = -self.refreshControl!.frame.height
                 }, completion: nil)
         }*/
-        rsLikeRefreshSelectorCacheFirst()
+        rsLikeRefreshSelector()
     }
     
     func rsLikeRefreshSelectorCacheFirst() {
         print("RsLike Begin Refreshing Cache First")
         let query = PFQuery(className: PFKey.RENDEZVOUS.CLASSKEY)
         query.orderByDescending(PFKey.CREATED_AT)
-        query.includeKey(PFKey.RENDEZVOUS.LIKES)
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
+        query.includeKey(PFKey.RENDEZVOUS.LIKES)
         self.queryCompletionCounter = 0
         query.getObjectInBackgroundWithId(selectedRs.PFInstance.objectId!, block: {(result:PFObject?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         })
@@ -81,8 +81,8 @@ class RsLikeTableViewController: UITableViewController, ENSideMenuDelegate {
         print("RsLike Begin Refreshing")
         let query = PFQuery(className: PFKey.RENDEZVOUS.CLASSKEY)
         query.orderByDescending(PFKey.CREATED_AT)
-        query.includeKey(PFKey.RENDEZVOUS.LIKES)
         query.cachePolicy = PFCachePolicy.NetworkOnly
+        query.includeKey(PFKey.RENDEZVOUS.LIKES)
         self.queryCompletionCounter = 2
         query.getObjectInBackgroundWithId(selectedRs.PFInstance.objectId!, block: {(result:PFObject?, error:NSError?) -> Void in
             self.queryCompletionDataHandler(result: result,error: error)

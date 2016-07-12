@@ -53,6 +53,26 @@ struct AppData {
         }
     }
     
+    struct QAData {
+        static var selectedQAQuestion:QAPost!
+        static var selectedQAAnswer: QAPost!
+        static var postVC:QAComposeQuestionController!
+        static var myAnswer: QAPost?
+        static var myQuestion: QAPost?
+        static func wipeSelectedQAData() {
+            selectedQAQuestion = nil
+            selectedQAAnswer = nil
+        }
+    }
+    
+    struct ClassData {
+        static var json: [AnyObject]? = nil
+        static var courses: [[Course]] = []
+        static var courseIndexList: [String] = []
+        static var courseList: [Course] = []
+        static var searchText = ""
+    }
+    
     struct CrushData {
         static var myCrusherArray:[ExCrush] = []
         static var myCrusherDict:[String:Bool] = [:]

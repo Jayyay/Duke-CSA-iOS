@@ -35,7 +35,7 @@ class LikesLabel: PPLabel, PPLabelDelegate {
         var location = likeSymbol.characters.count //starting point
         nameRanges = []
         let seperator = ", "
-        for var i = 0; i < users.count; i++ {
+        for i in 0 ..< users.count {
             if let name = (users[i])[PFKey.USER.DISPLAY_NAME] as? String {
                 let range = NSMakeRange(location, name.characters.count)
                 nameRanges += [(range, users[i])]
@@ -100,7 +100,7 @@ class LikesLabel: PPLabel, PPLabelDelegate {
             let attrStr = self.attributedText!.mutableCopy() as! NSMutableAttributedString
             attrStr.addAttribute(NSBackgroundColorAttributeName, value: UIColor.lightGrayColor(), range: highLightedRange)
             self.attributedText = attrStr
-            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "displayUserInfo:", userInfo: userSelected, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(LikesLabel.displayUserInfo(_:)), userInfo: userSelected, repeats: false)
         }
         return preventPropagateTouchToSuperView
     }

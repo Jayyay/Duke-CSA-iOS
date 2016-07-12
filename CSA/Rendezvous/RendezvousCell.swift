@@ -48,7 +48,7 @@ class RendezvousCell: UITableViewCell {
             childRs.IdidGo = newValue
             if newValue == false { //not going.
                 lblGoing.text = "  Going (\(childRs.countGoings))"
-            }else{//Is Going
+            } else {//Is Going
                 lblGoing.text = "✓ Going (\(childRs.countGoings))"
             }
         }
@@ -68,63 +68,64 @@ class RendezvousCell: UITableViewCell {
     
     @IBAction func onGoing(sender: AnyObject) {
         if didGo == false { //change to 'going'
-            childRs.countGoings++
-            didGo = true
-            childRs.PFInstance[PFKey.RENDEZVOUS.GOINGS]!.addObject(PFUser.currentUser()!)
-            
-            let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) will rendezvous with you."
+            childRs.goings.append(PFUser.currentUser()!)
+            let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) will go to your rendezvous: \(childRs.mainPost.truncate(20))."
             let sendToUser = childRs.author
-            childRs.PFInstance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+            childRs.saveWithBlock({ (success:Bool, error:NSError?) -> Void in
                 if success {
+                    self.childRs.countGoings += 1
+                    self.didGo = true
                     //push notif
-                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_GOING, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1)
+                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_GOING, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childRs.PFInstance.objectId!)
                 }
             })
             
         }else{//change to 'not going'
-            childRs.countGoings--
-            didGo = false
-            let goArr = childRs.PFInstance[PFKey.RENDEZVOUS.GOINGS] as! [PFUser]
+            let goArr = childRs.goings
             for go in goArr {
-                if go.objectId == PFUser.currentUser()!.objectId {
-                    childRs.PFInstance.removeObject(go, forKey: PFKey.RENDEZVOUS.GOINGS)
+                if go.objectId! == PFUser.currentUser()!.objectId! {
+                    childRs.goings.removeAtIndex(goArr.indexOf(go)!)
                     break
                 }
             }
-            childRs.PFInstance.saveInBackground()
+            childRs.saveWithBlock({ (success: Bool, error: NSError?) in
+                self.childRs.countGoings -= 1
+                self.didGo = false
+            })
         }
         //childRs.refreshGoingsNeeded = true
     }
     
     @IBAction func onLike(sender: AnyObject) {
         if didLike == false { //change to 'like'
-            childRs.countLikes++
-            didLike = true
-            childRs.PFInstance[PFKey.RENDEZVOUS.LIKES]!.addObject(PFUser.currentUser()!)
             
+            childRs.likes.append(PFUser.currentUser()!)
             //push notif
             let sendToUser = childRs.author
-            if sendToUser.objectId != PFUser.currentUser()?.objectId {
-                let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) likes your rendezvous."
-                childRs.PFInstance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
-                    if success {
-                        AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_LIKE, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1)
-                    }
-                })
-            }
-        }else {//change to 'not like'
-            childRs.countLikes--
-            didLike = false
-            let likeArr = childRs.PFInstance[PFKey.RENDEZVOUS.LIKES] as! [PFObject]
+            let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) likes your rendezvous: \(childRs.mainPost.truncate(20))."
+            childRs.saveWithBlock({ (success:Bool, error:NSError?) -> Void in
+                if let error = error {
+                    print("Error liking rendezvou: ", error)
+                }
+                if success {
+                    self.childRs.countLikes += 1
+                    self.didLike = true
+                    AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_LIKE, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childRs.PFInstance.objectId!)
+                }
+            })
+        } else {//change to 'not like'
+            let likeArr = childRs.likes
             for like in likeArr {
-                if like.objectId == PFUser.currentUser()!.objectId {
-                    childRs.PFInstance.removeObject(like, forKey: PFKey.RENDEZVOUS.LIKES)
+                if like.objectId! == PFUser.currentUser()!.objectId! {
+                    childRs.likes.removeAtIndex(likeArr.indexOf(like)!)
                     break;
                 }
             }
-            childRs.PFInstance.saveInBackground()
+            childRs.saveWithBlock({ (success: Bool, error: NSError?) in
+                self.childRs.countLikes -= 1
+                self.didLike = false
+            })
         }
-        //childRs.refreshLikesNeeded = true
     }
     
     @IBAction func onDelete(sender: AnyObject) {
@@ -148,8 +149,8 @@ class RendezvousCell: UITableViewCell {
     }
     
     /*note the button in rendezvous table is disabled,
-    so this action can and must only be called in comment view
-    */
+     so this action can and must only be called in comment view
+     */
     @IBAction func onReply(sender: AnyObject) {
         if let replyVC = parentVC as? RsReplyViewController {
             replyVC.replyPressed(scrollTo:self.frame.maxY, replyTo: nil)
@@ -204,15 +205,14 @@ class RendezvousCell: UITableViewCell {
         }
         
         //tags
-        var i = 0
-        for ; i < childRs.tags.count; i++ {
+        for i in 0..<childRs.tags.count {
             let tagStr = childRs.tags[i]
             lblTagsArr[i].text = tagStr
             let (R, G, B) = RsTag.colorDict[tagStr]!
             lblTagsArr[i].backgroundColor = UIColor(red: R/255, green: G/255, blue: B/255, alpha: 1.0)
             lblTagsArr[i].hidden = false
         }
-        for ; i < lblTagsArr.count; i++ {
+        for i in 0..<lblTagsArr.count {
             lblTagsArr[i].hidden = true
         }
         

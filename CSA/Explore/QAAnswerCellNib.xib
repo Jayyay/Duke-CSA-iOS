@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A201w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="QAAnswerCell" id="ExX-qB-KX9" userLabel="Main Post Cell" customClass="QAAnswerCell" customModule="Duke_CSA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="518" height="179"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ExX-qB-KX9" id="mMI-hQ-W09">
+                <frame key="frameInset" width="518" height="178"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rv7-9G-e1Z">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eH-Ac-Zhn">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxo-Ti-LEe" userLabel="Author" customClass="UserLabel" customModule="Duke_CSA" customModuleProvider="target">
+                                <attributedString key="attributedText">
+                                    <fragment content="Barry Allen">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门前大桥下，游过一群鸭，快来快来数一数，二四六七八" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8o-gX-OdO">
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="68" id="jak-Qs-sMr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.42352941179999998" green="0.35686274509999999" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkZ-Xu-lR9">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="yjf-O4-LHd"/>
+                                    <constraint firstAttribute="width" constant="30" id="zVF-tz-r64"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" image="upvote-plain.png">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="upvote:" destination="ExX-qB-KX9" eventType="touchUpInside" id="JmD-2f-2Qa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bt-KX-bpM">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Sk0-i6-KQM"/>
+                                    <constraint firstAttribute="width" constant="30" id="k9f-ef-oJ3"/>
+                                </constraints>
+                                <state key="normal" image="downvote-plain.png"/>
+                                <connections>
+                                    <action selector="downvote:" destination="ExX-qB-KX9" eventType="touchUpInside" id="RyA-nA-cyn"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" image="placeholder-user.png" translatesAutoresizingMaskIntoConstraints="NO" id="mfC-GR-ofM" userLabel="propic">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="4Od-kb-mnV"/>
+                                    <constraint firstAttribute="height" constant="50" id="dBq-bV-fbt"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" text="Yesterday 19:20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V53-K5-1h5" userLabel="PostTime">
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="U8o-gX-OdO" firstAttribute="top" secondItem="mfC-GR-ofM" secondAttribute="bottom" constant="14" id="1yw-gb-Bn7"/>
+                            <constraint firstItem="mfC-GR-ofM" firstAttribute="top" secondItem="Rv7-9G-e1Z" secondAttribute="top" constant="8" id="BkD-jX-4Wj"/>
+                            <constraint firstItem="rxo-Ti-LEe" firstAttribute="top" secondItem="mfC-GR-ofM" secondAttribute="top" id="FV8-lm-FN0"/>
+                            <constraint firstItem="2Bt-KX-bpM" firstAttribute="top" secondItem="2eH-Ac-Zhn" secondAttribute="bottom" constant="12" id="PcY-18-bLT"/>
+                            <constraint firstItem="nkZ-Xu-lR9" firstAttribute="centerX" secondItem="2eH-Ac-Zhn" secondAttribute="centerX" id="Q8F-28-Tn9"/>
+                            <constraint firstItem="U8o-gX-OdO" firstAttribute="leading" secondItem="Rv7-9G-e1Z" secondAttribute="leading" constant="58" id="Wd2-J7-SKq"/>
+                            <constraint firstAttribute="trailing" secondItem="U8o-gX-OdO" secondAttribute="trailing" constant="8" id="avw-07-gDF"/>
+                            <constraint firstItem="2eH-Ac-Zhn" firstAttribute="top" secondItem="nkZ-Xu-lR9" secondAttribute="bottom" constant="12" id="e2b-vD-gpx"/>
+                            <constraint firstItem="nkZ-Xu-lR9" firstAttribute="top" secondItem="Rv7-9G-e1Z" secondAttribute="top" constant="20" id="g11-bF-Ug0"/>
+                            <constraint firstAttribute="bottom" secondItem="U8o-gX-OdO" secondAttribute="bottom" constant="22" id="glf-UX-WhF"/>
+                            <constraint firstItem="2Bt-KX-bpM" firstAttribute="centerX" secondItem="2eH-Ac-Zhn" secondAttribute="centerX" id="hYV-Vk-D3N"/>
+                            <constraint firstItem="mfC-GR-ofM" firstAttribute="leading" secondItem="Rv7-9G-e1Z" secondAttribute="leading" constant="58" id="kcX-Ho-lgj"/>
+                            <constraint firstItem="rxo-Ti-LEe" firstAttribute="leading" secondItem="mfC-GR-ofM" secondAttribute="trailing" constant="8" id="kwa-3K-mOc"/>
+                            <constraint firstItem="V53-K5-1h5" firstAttribute="leading" secondItem="mfC-GR-ofM" secondAttribute="trailing" constant="8" id="l6R-gR-XDZ"/>
+                            <constraint firstItem="V53-K5-1h5" firstAttribute="top" secondItem="rxo-Ti-LEe" secondAttribute="bottom" constant="8" id="qHz-Wu-gJZ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="nkZ-Xu-lR9" firstAttribute="leading" secondItem="mMI-hQ-W09" secondAttribute="leadingMargin" constant="8" id="2DD-6k-MQ4"/>
+                    <constraint firstItem="Rv7-9G-e1Z" firstAttribute="leading" secondItem="mMI-hQ-W09" secondAttribute="leadingMargin" id="E1m-2Z-tfb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Rv7-9G-e1Z" secondAttribute="trailing" id="LkB-0z-N12"/>
+                    <constraint firstItem="Rv7-9G-e1Z" firstAttribute="top" secondItem="mMI-hQ-W09" secondAttribute="topMargin" id="OCZ-pr-bVz"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Rv7-9G-e1Z" secondAttribute="bottom" id="fkv-S7-Zfa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="authorLabel" destination="rxo-Ti-LEe" id="IJ0-iX-YET"/>
+                <outlet property="downVoteButton" destination="2Bt-KX-bpM" id="dnI-dF-cNN"/>
+                <outlet property="mainPostLabel" destination="U8o-gX-OdO" id="oWB-qr-s4m"/>
+                <outlet property="propicImageView" destination="mfC-GR-ofM" id="ne1-gF-PQv"/>
+                <outlet property="timeLabel" destination="V53-K5-1h5" id="yaT-VH-qag"/>
+                <outlet property="upvoteButton" destination="nkZ-Xu-lR9" id="ae4-Nv-YPp"/>
+                <outlet property="voteLabel" destination="2eH-Ac-Zhn" id="DHq-1C-QdS"/>
+            </connections>
+            <point key="canvasLocation" x="-103" y="330.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="downvote-plain.png" width="446" height="192"/>
+        <image name="placeholder-user.png" width="600" height="600"/>
+        <image name="upvote-plain.png" width="445" height="191"/>
+    </resources>
+</document>

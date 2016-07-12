@@ -78,17 +78,21 @@ class ExContact: NSObject {
         var letterStart:String.Index! = nil, letterEnd:String.Index! = nil
         var numberStart:String.Index! = nil, numberEnd:String.Index! = nil
         //letter part
-        for var index = nid.startIndex; index != nid.endIndex; index = index.successor(){
+        var index = nid.startIndex
+        while index != nid.endIndex {
             if "a"<=nid[index] && nid[index]<="z" {
                 letterStart = index
                 break
             }
+            index = index.successor()
         }
-        for var index = nid.endIndex.predecessor(); index != nid.startIndex; index = index.predecessor(){
+        index = nid.endIndex.predecessor()
+        while index != nid.startIndex {
             if "a"<=nid[index] && nid[index]<="z" {
                 letterEnd = index
                 break
             }
+            index = index.predecessor()
         }
         if letterEnd == nil{
             letterEnd = nid.startIndex
@@ -96,20 +100,24 @@ class ExContact: NSObject {
         letterStr = nid.substringWithRange(letterStart...letterEnd)
         
         //number part
-        for var index = nid.startIndex; index != nid.endIndex; index = index.successor(){
+        index = nid.startIndex
+        while index != nid.endIndex {
             if "0"<=nid[index] && nid[index]<="9" {
                 numberStart = index
                 break
             }
+            index = index.successor()
         }
         if numberStart == nil {//this netID has no number in it
             numberStr = ""
-        }else{
-            for var index = nid.endIndex.predecessor(); index != nid.startIndex; index = index.predecessor(){
+        } else {
+            index = nid.endIndex.predecessor()
+            while index != nid.startIndex {
                 if "0"<=nid[index] && nid[index]<="9" {
                     numberEnd = index
                     break
                 }
+                index = index.predecessor()
             }
             numberStr = nid.substringWithRange(numberStart...numberEnd)
         }

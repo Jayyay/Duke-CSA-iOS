@@ -11,7 +11,7 @@ import UIKit
 class RsGoingTableViewController: UITableViewController, ENSideMenuDelegate {
 
     @IBOutlet weak var lblGoingNumber: UILabel!
-    var goings:[PFUser] = []
+    var goings: [PFUser] = []
     var selectedRs:Rendezvous!
     var queryCompletionCounter = 0
     
@@ -22,7 +22,7 @@ class RsGoingTableViewController: UITableViewController, ENSideMenuDelegate {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 66
         refreshControl = UIRefreshControl()
-        refreshControl!.addTarget(self, action: Selector("rsGoingRefreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl!.addTarget(self, action: #selector(RsGoingTableViewController.rsGoingRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         
         let nib = UINib(nibName: "BasicUserCellNib", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_BasicUserCell)
@@ -53,24 +53,18 @@ class RsGoingTableViewController: UITableViewController, ENSideMenuDelegate {
     
     // MARK: - Data Query
     func rsGoingAutoRefresh(){
-        /*refreshControl!.beginRefreshing()
-        if tableView.contentOffset.y == 0 {
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.tableView.contentOffset.y = -self.refreshControl!.frame.height
-                }, completion: nil)
-        }*/
-        rsGoingRefreshSelectorCacheFirst()
+        rsGoingRefreshSelector()
     }
     
     func rsGoingRefreshSelectorCacheFirst() {
         print("RsGoing Begin Refreshing Cache First")
         let query = PFQuery(className: PFKey.RENDEZVOUS.CLASSKEY)
         query.orderByDescending(PFKey.CREATED_AT)
-        query.includeKey(PFKey.RENDEZVOUS.GOINGS)
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
+        query.includeKey(PFKey.RENDEZVOUS.GOINGS)
         self.queryCompletionCounter = 0
         query.getObjectInBackgroundWithId(selectedRs.PFInstance.objectId!, block: {(result:PFObject?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         })
@@ -80,8 +74,8 @@ class RsGoingTableViewController: UITableViewController, ENSideMenuDelegate {
         print("RsGoing Begin Refreshing")
         let query = PFQuery(className: PFKey.RENDEZVOUS.CLASSKEY)
         query.orderByDescending(PFKey.CREATED_AT)
-        query.includeKey(PFKey.RENDEZVOUS.GOINGS)
         query.cachePolicy = PFCachePolicy.NetworkOnly
+        query.includeKey(PFKey.RENDEZVOUS.GOINGS)
         self.queryCompletionCounter = 2
         query.getObjectInBackgroundWithId(selectedRs.PFInstance.objectId!, block: {(result:PFObject?, error:NSError?) -> Void in
             self.queryCompletionDataHandler(result: result, error: error)
@@ -104,8 +98,8 @@ class RsGoingTableViewController: UITableViewController, ENSideMenuDelegate {
         if error == nil && result != nil{
             print("success!")
             goings = result[PFKey.RENDEZVOUS.GOINGS] as! [PFUser]
-            lblGoingNumber.text = "\(goings.count) " + (goings.count < 2 ? "Going" : "Goings")
-            tableView.reloadData()
+            self.lblGoingNumber.text = "\(self.goings.count) " + (self.goings.count < 2 ? "Going" : "Goings")
+            self.tableView.reloadData()
         }else{
             print("query error: \(error) ", terminator: "")
         }

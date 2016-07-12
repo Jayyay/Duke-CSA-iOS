@@ -88,7 +88,7 @@ class ExSpotlightUserCell: UITableViewCell {
     func deductPoints(points:Int, completion:() -> ()) {
         parentVC?.view.makeToastActivity(position: HRToastPositionCenterAbove, message: "")
         AppFunc.pauseApp()
-        NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "resumeSelector", userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(ExSpotlightUserCell.resumeSelector), userInfo: nil, repeats: false)
         let spMe = AppData.SpotlightData.mySpotlightPFInstance!
         spMe.fetchInBackgroundWithBlock { (result:PFObject?, error:NSError?) -> Void in
             if error != nil {

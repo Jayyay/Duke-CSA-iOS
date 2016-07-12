@@ -109,6 +109,48 @@ struct PFKey {
         static let POINTS = "points"
         
     }
+    
+    struct QA {
+        static let CLASSKEY = "QAPost"
+        static let AUTHOR = "author"
+        static let TITLE = "title"
+        static let VOTE = "vote"
+        static let UPVOTES = "upvotes"
+        static let DOWNVOTES = "downvotes"
+        static let CONTENT = "content"
+        static let LIKES = "likes"
+        static let KIND = "type"
+        static let ANSWERS = "answers"
+        static let TOQUESTION = "question"
+        static let REPLIES = "replies"
+        struct TYPE {
+            static let QUESTION = "Question"
+            static let ANSWER = "Answer"
+            static let NOTE = "Note"
+        }
+        struct RE {
+            static let CLASSKEY = "QAReply"
+            static let PARENT = "parentQA"
+            static let MAIN_POST = "mainPost"
+            static let AUTHOR = "author"
+            static let IS_SUB = "isSubReply"
+            static let REPLY_TO = "replyTo"
+        }
+    }
+    
+    struct Class {
+        static let CLASSKEY = "Class"
+        static let SOURCE = "source"
+        struct Column {
+            static let NUMBER = "Number"
+            static let NAME = "Name"
+            static let PROFESSOR = "Professor"
+            static let SEMESTER = "Semester"
+            static let COMMENTS = "Comments"
+            static let MAJOR = "Major"
+        }
+    }
+    
     struct CRUSH {
         static let CLASSKEY = "ExpCrush"
         static let CRUSHER = "crusher"

@@ -39,8 +39,8 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
         query.limit = 1000
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.queryCompletionCounter = 0
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         }
@@ -59,7 +59,7 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
         self.navigationItem.title = "\(contactCount) \(contactStr)"
     }
     
-    func queryCompletionDataHandler(result result:[AnyObject]!, error:NSError!) {
+    func queryCompletionDataHandler(result result:[PFObject]!, error:NSError!) {
         print("Contacts query completed for the \(self.queryCompletionCounter) time with: ", terminator: "")
         if error == nil && result != nil{
             print("success!")
@@ -71,7 +71,7 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
                 }
             }
             //This code is a hack. If change title immediately there would a quick inconsistency in title which looks ugly. So delay the change in 0.1s
-            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "changeTitle", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(ExContactsTableViewController.changeTitle), userInfo: nil, repeats: false)
             allCt.sortInPlace({AppTools.compareUserIsOrderedBefore(u1: $0, u2: $1)})
             
             //configure contacts by seperating user by netID_pivot (last name)
@@ -85,7 +85,7 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
                     indexList.append(curIndexPivot)
                     //create new section for contacts
                     contacts.append([])
-                    curSection++
+                    curSection += 1
                 }
                 contacts[curSection].append(ct)
             }
@@ -148,7 +148,7 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
         
         refreshControl = UIRefreshControl()
         //refreshControl!.attributedTitle = NSAttributedString(string: "Refreshing")
-        refreshControl!.addTarget(self, action: Selector("refreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl!.addTarget(self, action: #selector(ExContactsTableViewController.refreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
@@ -157,12 +157,15 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.scopeButtonTitles = ["All", "Freshman", "Sophomore", "Junior", "Senior"]
         searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
         tableView.tableHeaderView = searchController.searchBar
-        searchController.definesPresentationContext = true
+        self.definesPresentationContext = true
         
         let nib = UINib(nibName: "TextUserCellNib", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_UserCell)
         
+        // prevent the index list from covering the searchbar
+        tableView.sectionIndexBackgroundColor = UIColor.clearColor()
     }
     
     override func viewDidLoad() {

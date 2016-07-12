@@ -108,7 +108,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         query.whereKey(PFKey.IS_VALID, equalTo: true)
         query.whereKey(PFKey.CRUSH.CRUSHER, equalTo: PFUser.currentUser()!)
         query.includeKey(PFKey.CRUSH.CRUSHEE)
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
             if error == nil {
                 self.crusheeQueryCompletionDataHandler(result: result,error: error)
                 self.allContactsRefreshSelector()
@@ -118,13 +118,13 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func crusheeQueryCompletionDataHandler(result result:[AnyObject]!, error:NSError!) {
+    func crusheeQueryCompletionDataHandler(result result:[PFObject]!, error:NSError!) {
         print("Crushees query completed in main view with ", terminator: "")
         if error == nil && result != nil{
             print("success!")
             print("Find \(result.count) crushees")
             AppData.CrushData.myCrusheeArray.removeAll(keepCapacity: true)
-            for c in result as! [PFObject] {
+            for c in result {
                 if let newCrush = ExCrush(parseObject: c) {
                     AppData.CrushData.myCrusheeArray.append(newCrush)
                 }
@@ -143,8 +143,8 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         query.limit = 1000
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.allContactsQueryCompletionCounter = 0
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
-            self.allContactsQueryCompletionCounter++
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
+            self.allContactsQueryCompletionCounter += 1
             self.allContactsQueryCompletionDataHandler(result: result, error: error)
             self.allContactsQueryCompletionUIHandler(error: error)
         }
@@ -157,7 +157,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func allContactsQueryCompletionDataHandler(result result:[AnyObject]!, error:NSError!) {
+    func allContactsQueryCompletionDataHandler(result result:[PFObject]!, error:NSError!) {
         print("Crush contacts query completed for the \(self.allContactsQueryCompletionCounter) time with: ", terminator: "")
         if error == nil && result != nil{
             print("success!")
@@ -199,7 +199,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
                 indexList.append(curIndexPivot)
                 //create new section for contacts
                 contacts.append([])
-                curSection++
+                curSection += 1
             }
             contacts[curSection].append(ct)
         }
@@ -257,7 +257,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         storedRightBarButtonItem = self.navigationItem.rightBarButtonItem!
         
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: Selector("refreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(ExCrushViewController.refreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(refreshControl)
         
         let nib = UINib(nibName: "BasicUserCellNib", bundle: nil)
@@ -341,7 +341,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
     func handleMutualCrush(lover:PFUser) {
         //push notification for the other one.
         let messageForLover = "Breaking news. \(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) has a crush on you as well."
-        AppNotif.pushNotification(forType: AppNotif.NotifType.MUTUAL_CRUSH, withMessage: messageForLover, toUser: lover, withSoundName: AppConstants.SoundFile.NOTIF_1)
+        AppNotif.pushNotification(forType: AppNotif.NotifType.MUTUAL_CRUSH, withMessage: messageForLover, toUser: lover, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: "")
         //display an alertview for userself
         let messageForSelf = "Breaking news. \(lover[PFKey.USER.DISPLAY_NAME] as! String) has a crush on you as well."
         let alert = UIAlertController(title: nil, message: messageForSelf, preferredStyle: UIAlertControllerStyle.Alert)

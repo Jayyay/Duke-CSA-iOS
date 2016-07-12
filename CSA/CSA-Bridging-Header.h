@@ -3,5 +3,5 @@
 //
 #import <Parse/Parse.h>
 #import <Bolts/Bolts.h>
-#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "PPLabel.h"

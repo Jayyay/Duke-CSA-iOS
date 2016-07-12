@@ -25,7 +25,7 @@ class MeReportBugTableViewController: UITableViewController {
     var postArr:[BasicPost] = []
         
     // MARK: - IBAction
-    @IBAction func onPost(sender: AnyObject) {
+    @IBAction func onPost(sender: PFObject) {
         if !postAllowed{
             return
         }
@@ -47,7 +47,7 @@ class MeReportBugTableViewController: UITableViewController {
         AppFunc.pauseApp()
         
         //set time out
-        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: Selector("postTimeOut"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: #selector(MeReportBugTableViewController.postTimeOut), userInfo: nil, repeats: false)
         newBug.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
             //change app status
             self.postConnectSuccess = true
@@ -94,7 +94,7 @@ class MeReportBugTableViewController: UITableViewController {
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_MainCell)
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl!.addTarget(self, action: Selector("refreshSelector"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl!.addTarget(self, action: #selector(MeReportBugTableViewController.refreshSelector), forControlEvents: UIControlEvents.ValueChanged)
     }
     
     override func viewDidLoad() {
@@ -122,8 +122,8 @@ class MeReportBugTableViewController: UITableViewController {
         query.includeKey(PFKey.ME.BUG_REPORT.AUTHOR)
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         self.queryCompletionCounter = 0
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         }
@@ -137,8 +137,8 @@ class MeReportBugTableViewController: UITableViewController {
         query.includeKey(PFKey.ME.BUG_REPORT.AUTHOR)
         query.cachePolicy = PFCachePolicy.NetworkOnly
         self.queryCompletionCounter = 2
-        query.findObjectsInBackgroundWithBlock { (result:[AnyObject]?, error:NSError?) -> Void in
-            self.queryCompletionCounter++
+        query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
+            self.queryCompletionCounter += 1
             self.queryCompletionDataHandler(result: result,error: error)
             self.queryCompletionUIHandler(error: error)
         }
@@ -156,12 +156,12 @@ class MeReportBugTableViewController: UITableViewController {
         }
     }
     
-    func queryCompletionDataHandler(result result:[AnyObject]!, error:NSError!) {
+    func queryCompletionDataHandler(result result:[PFObject]!, error:NSError!) {
         print("Bug query completed for the \(queryCompletionCounter) time with: ", terminator: "")
         if error == nil && result != nil{
             print("success!")
             print("Find \(result.count) results.")
-            if let arr = result as? [PFObject] {
+            if let arr = result {
                 postArr.removeAll(keepCapacity: true)
                 for b in arr {
                     if let newPost = BasicPost(parseObject: b) {

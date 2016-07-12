@@ -14,7 +14,6 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet weak var tvAboutMe: UITextView!
     @IBOutlet weak var tfDisplayName: UITextField!
     @IBOutlet weak var lblGender: UILabel!
-    @IBOutlet weak var lblBday: UILabel!
     
     @IBOutlet weak var lblYear: UILabel!
     @IBOutlet weak var tfMajors: UITextField!
@@ -24,6 +23,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
     
     @IBOutlet weak var tfCellPhone: UITextField!
     @IBOutlet weak var lblRelationship: UILabel!
+    @IBOutlet weak var lblBirthday: UILabel!
     
     @IBOutlet weak var imgCheckName: UIImageView!
     @IBOutlet weak var imgCheckMajors: UIImageView!
@@ -32,7 +32,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet weak var imgCheckEmail: UIImageView!
     @IBOutlet weak var imgCheckCell: UIImageView!
     @IBOutlet weak var imgCheckAboutMe: UIImageView!
-
+    
     var lblToPick:UILabel!
     var pickTitle = ""
     var pickType = 0
@@ -70,7 +70,6 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
     
     // picker view variables
     var pickerView = UIPickerView()
-    @IBOutlet weak var datePicker: UIDatePicker!
     var expand: NSIndexPath?
     var lastPickerView: UIPickerView?
     enum PickCategory: Int {
@@ -88,6 +87,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
             }
         }
     }
+    let datePicker = UIDatePicker()
     var toPick: PickCategory = .Gender
     let pickerViewTitles = [
         /*0*/[UserConstants.Gender.MALE, UserConstants.Gender.FEMALE, UserConstants.Gender.OTHER],
@@ -125,7 +125,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
         let u = PFUser.currentUser()!
         u[PFKey.USER.DISPLAY_NAME] = AppTools.getTrimmedString(tfDisplayName.text)
         u[PFKey.USER.GENDER] = lblGender.text
-        u[PFKey.USER.BIRTHDAY] = lblBday.text
+        u[PFKey.USER.BIRTHDAY] = lblBirthday.text
         u[PFKey.USER.WHICH_YEAR] = lblYear.text
         u[PFKey.USER.MAJOR] = tfMajors.text
         u[PFKey.USER.MINOR] = tfMinors.text
@@ -146,7 +146,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
         }else{
             timeoutInSec = 10.0
         }
-        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: Selector("saveTimeOut"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(timeoutInSec, target: self, selector: #selector(ProfileEditTableViewController.saveTimeOut), userInfo: nil, repeats: false)
         
         u.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
             //change app status
@@ -216,7 +216,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
         AppFunc.downloadPropicFromParse(user: u, saveToImgView: imgPropic, inTableView: tableView, forIndexPath: NSIndexPath(forRow: 0, inSection: 0))
         tfDisplayName.text = u[PFKey.USER.DISPLAY_NAME] as? String
         lblGender.text = u[PFKey.USER.GENDER] as? String
-        lblBday.text = u[PFKey.USER.BIRTHDAY] as? String
+        lblBirthday.text = u[PFKey.USER.BIRTHDAY] as? String
         tfNetID.text = u[PFKey.USER.NET_ID] as? String
         lblYear.text = u[PFKey.USER.WHICH_YEAR] as? String
         tfMajors.text = u[PFKey.USER.MAJOR] as? String
@@ -236,6 +236,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
     }
     
     func initUI(){
+        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         imgPropic.layer.cornerRadius = imgPropic.frame.height * 0.5
@@ -254,13 +255,15 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
         tfEmail.delegate = self
         tfCellPhone.delegate = self
         pickerView.delegate = self
+        datePicker.datePickerMode = .Date
         
-        tfDisplayName.addTarget(self, action: Selector("tfNameDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
-        tfMajors.addTarget(self, action: Selector("tfMajorDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
-        tfMinors.addTarget(self, action: Selector("tfMinorDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
-        tfNetID.addTarget(self, action: Selector("tfNetIDDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
-        tfEmail.addTarget(self, action: Selector("tfEmailDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
-        tfCellPhone.addTarget(self, action: Selector("tfCellDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
+        tfDisplayName.addTarget(self, action: #selector(ProfileEditTableViewController.tfNameDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        tfMajors.addTarget(self, action: #selector(ProfileEditTableViewController.tfMajorDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        tfMinors.addTarget(self, action: #selector(ProfileEditTableViewController.tfMinorDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        tfNetID.addTarget(self, action: #selector(ProfileEditTableViewController.tfNetIDDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        tfEmail.addTarget(self, action: #selector(ProfileEditTableViewController.tfEmailDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        tfCellPhone.addTarget(self, action: #selector(ProfileEditTableViewController.tfCellDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        datePicker.addTarget(self, action: #selector(ProfileEditTableViewController.dateDidChange(_:)), forControlEvents: UIControlEvents.ValueChanged)
     }
     
     
@@ -317,7 +320,7 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
         }
         else if indexPath == expand {
             if toPick == .Birthday {
-                return 250
+                return 300
             }
             return 200
         }
@@ -326,45 +329,28 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        datePicker.hidden = true
+        let cell = tableView.cellForRowAtIndexPath(indexPath)!
         switch (indexPath.section, indexPath.row) {
         case (0, 2):
             toPick = .Gender
-            if let last = lastPickerView {
-                last.removeFromSuperview()
-            }
-            pickerView.reloadAllComponents()
-            cell?.contentView.addSubview(pickerView)
-            lastPickerView = pickerView
         case (0, 3):
-            toPick = .Birthday
-            if let last = lastPickerView {
-                last.removeFromSuperview()
-            }
-            datePicker.hidden = false
+            lastPickerView?.removeFromSuperview()
+            cell.contentView.addSubview(datePicker)
             expand = indexPath
             tableView.reloadData()
             return
         case (1, 0):
             toPick = .Year
-            if let last = lastPickerView {
-                last.removeFromSuperview()
-            }
-            pickerView.reloadAllComponents()
-            cell?.contentView.addSubview(pickerView)
-            lastPickerView = pickerView
         case (2, 1):
             toPick = .Relationship
-            if let last = lastPickerView {
-                last.removeFromSuperview()
-            }
-            pickerView.reloadAllComponents()
-            cell?.contentView.addSubview(pickerView)
-            lastPickerView = pickerView
         default:
             return
         }
+        lastPickerView?.removeFromSuperview()
+        pickerView.reloadAllComponents()
+        cell.contentView.addSubview(pickerView)
+        lastPickerView = pickerView
+        datePicker.removeFromSuperview()
         expand = indexPath
         tableView.reloadData()
     }
@@ -395,11 +381,10 @@ class ProfileEditTableViewController: UITableViewController, UITextFieldDelegate
         }
     }
     
-    // date picker
-    @IBAction func dateSelectionDidChange(sender: AnyObject) {
+    // datePicker ValueChanged
+    func dateDidChange(sender: AnyObject) {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
-        lblBday.text = formatter.stringFromDate(datePicker.date)
+        lblBirthday.text = formatter.stringFromDate(datePicker.date)
     }
-    
 }
