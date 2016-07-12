@@ -84,11 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         FBSDKAppEvents.activateApp()
-        //let installation = PFInstallation.currentInstallation()
-//        if installation.badge != 0{
-//            installation.badge = 0
-//            installation.saveEventually()
-//        }
+        AppNotif.showBadgeOnTabbar()
         AppFunc.refreshCheck()
     }
     
@@ -97,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppNotif.handleBadgeNotif(userInfo)
         if state == UIApplicationState.Active {
             if let currentVC = window?.visibleViewController() {
+                AppNotif.showBadgeOnTabbar()
                 AppFunc.alertNotificationWithActions(currentVC, notification: userInfo)
             }
         }

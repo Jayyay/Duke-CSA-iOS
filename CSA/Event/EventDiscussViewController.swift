@@ -147,6 +147,14 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if let notif = AppData.NotifData.notifInfo {
+            if notif.events.contains(selectedEvent.PFInstance.objectId!) {
+                notif.events.removeAtIndex(notif.events.indexOf(selectedEvent.PFInstance.objectId!)!)
+                notif.save()
+                AppNotif.showBadgeOnTabbar()
+            }
+        }
     }
     deinit{
         print("Release - EventDiscussViewController")

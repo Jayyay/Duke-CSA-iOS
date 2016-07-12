@@ -40,6 +40,15 @@ class QAAnswerViewController: ReplyController, UITableViewDataSource {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         QAReplyAutoRefresh()
+        
+        // update badge
+        if let notif = AppData.NotifData.notifInfo {
+            if (notif.answers.contains(selectedQA.PFInstance.objectId!)) {
+                notif.answers.removeAtIndex(notif.answers.indexOf(selectedQA.PFInstance.objectId!)!)
+                notif.save()
+                AppNotif.showBadgeOnTabbar()
+            }
+        }
     }
     
     deinit{

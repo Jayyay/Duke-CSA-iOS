@@ -277,4 +277,26 @@ struct AppNotif {
             }
         }
     }
+    
+    static func showBadgeOnTabbar() {
+        if let notif = AppData.NotifData.notifInfo {
+            rootVC = UIApplication.sharedApplication().keyWindow!.rootViewController! as! TabBarController
+            
+            let eventVC = rootVC.viewControllers![0] as! EventNavigationController
+            let eventCount = notif.events.count
+            eventVC.tabBarItem.badgeValue = eventCount == 0 ? nil : String(eventCount)
+            
+            let rsVC = rootVC.viewControllers![1] as! RsNavigationController
+            let rsCount = notif.rendezvous.count
+            rsVC.tabBarItem.badgeValue = rsCount == 0 ? nil : String(rsCount)
+            
+            let ExploreVC = rootVC.viewControllers![2]
+            let qanda = notif.questions.count + notif.answers.count
+            ExploreVC.tabBarItem.badgeValue = qanda == 0 ? nil : String(qanda)
+            
+            let installation = PFInstallation.currentInstallation()
+            installation.badge = eventCount + rsCount + qanda
+            installation.saveEventually()
+        }
+    }
 }
