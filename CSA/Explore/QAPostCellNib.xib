@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A201w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A239j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
@@ -116,8 +116,23 @@
                             </mask>
                         </variation>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="No4-mU-HVa">
+                        <color key="backgroundColor" red="0.87753906250000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="K77-9t-77m"/>
+                            <constraint firstAttribute="width" constant="10" id="kzq-Gv-zqq"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="No4-mU-HVa" secondAttribute="trailing" constant="-20" id="2Lr-07-cP1"/>
+                    <constraint firstItem="No4-mU-HVa" firstAttribute="top" secondItem="JsF-jG-My1" secondAttribute="topMargin" id="3Xv-j1-veL"/>
                     <constraint firstAttribute="topMargin" secondItem="J9z-Xz-Zd6" secondAttribute="top" id="5C4-gv-HOF"/>
                     <constraint firstItem="nf0-qp-cVg" firstAttribute="leading" secondItem="JsF-jG-My1" secondAttribute="leadingMargin" id="8rF-AA-hEl"/>
                     <constraint firstAttribute="trailingMargin" secondItem="J9z-Xz-Zd6" secondAttribute="trailing" constant="10" id="A4T-gg-Y94"/>
@@ -130,6 +145,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="authorLabel" destination="rY7-1D-5Dn" id="xcN-1Q-RsG"/>
+                <outlet property="dot" destination="No4-mU-HVa" id="NcN-nD-IDo"/>
                 <outlet property="downVoteButton" destination="TXS-Xn-i4h" id="blD-ie-nxA"/>
                 <outlet property="mainPostLabel" destination="gWC-FH-xZ6" id="s4a-Fy-x6G"/>
                 <outlet property="mainPostTop" destination="Ow3-YJ-MJM" id="kEa-xr-k9T"/>
@@ -139,7 +155,7 @@
                 <outlet property="voteBackground" destination="icw-4L-Xfi" id="DM2-oR-WI7"/>
                 <outlet property="voteLabel" destination="d1n-Ey-hfp" id="wmE-yu-KZ2"/>
             </connections>
-            <point key="canvasLocation" x="-400" y="346.5"/>
+            <point key="canvasLocation" x="-112" y="107.5"/>
         </tableViewCell>
     </objects>
     <resources>
