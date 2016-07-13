@@ -10,30 +10,37 @@ import Foundation
 class Notification:NSObject {
     var PFInstance:PFObject
     var user:PFUser!
-    var type:String = ""
-    var message:String = ""
-    var createdAt:NSDate!
+    var type: String = ""
+    var message: String = ""
+    var createdAt: NSDate!
+    var instanceID: String = ""
+    
     init?(parseObject:PFObject) {
         PFInstance = parseObject
         super.init()
         if let u = parseObject[PFKey.NOTIFICATION.USER] as? PFUser {
             user = u
-        }else {
+        } else {
             return nil
         }
         if let t = parseObject[PFKey.NOTIFICATION.TYPE] as? String {
             type = t
-        }else {
+        } else {
             return nil
         }
         if let m = parseObject[PFKey.NOTIFICATION.MESSAGE] as? String {
             message = m
-        }else {
+        } else {
             return nil
         }
         if let c = parseObject.createdAt {
             createdAt = c
-        }else {
+        } else {
+            return nil
+        }
+        if let s = parseObject[AppNotif.INSTANCE_ID] as? String {
+            instanceID = s
+        } else {
             return nil
         }
     }
@@ -92,6 +99,7 @@ struct AppNotif {
         newNotif[PFKey.NOTIFICATION.USER] = toUser
         newNotif[PFKey.NOTIFICATION.TYPE] = forType
         newNotif[PFKey.NOTIFICATION.MESSAGE] = withMessage
+        newNotif[INSTANCE_ID] = PFInstanceID
         newNotif.saveInBackground()
     }
     
@@ -112,6 +120,8 @@ struct AppNotif {
                 break
             case NotifType.NEW_EVENT_LIKE, NotifType.NEW_EVENT_REPLY:
                 presentEventDisWithNotification(notification)
+            case NotifType.NEW_EVENT:
+                presentEventVC()
             default:
                 print("not implemented yet")
             }
@@ -209,6 +219,10 @@ struct AppNotif {
                 print("Error getting to Rendezvous Comment View: ", error)
             }
         }
+    }
+    
+    static func presentEventVC() {
+        rootVC.selectedIndex = 0
     }
     
     static func presentEventDisWithNotification(notification: [NSObject: AnyObject]) {

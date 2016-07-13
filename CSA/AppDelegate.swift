@@ -91,9 +91,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication,  didReceiveRemoteNotification userInfo: [NSObject : AnyObject],  fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         let state = application.applicationState
         AppNotif.handleBadgeNotif(userInfo)
+        AppNotif.showBadgeOnTabbar()
         if state == UIApplicationState.Active {
             if let currentVC = window?.visibleViewController() {
-                AppNotif.showBadgeOnTabbar()
                 AppFunc.alertNotificationWithActions(currentVC, notification: userInfo)
             }
         }

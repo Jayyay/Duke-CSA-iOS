@@ -111,5 +111,10 @@ class MeNotifTableViewController: UITableViewController {
         cell.initWithNotif(notifications[indexPath.row])
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MeNotifCell
+        cell.getSelected()
+    }
 
 }
