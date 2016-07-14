@@ -51,11 +51,25 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMd-1d-yHi">
+                                <color key="backgroundColor" red="0.87753906250000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="KcY-19-znn"/>
+                                    <constraint firstAttribute="width" constant="10" id="yWz-Sr-Evy"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="RVI-Rc-NMQ" firstAttribute="leading" secondItem="PfE-Aa-lIp" secondAttribute="leading" constant="16" id="0er-py-MME"/>
                             <constraint firstAttribute="trailing" secondItem="SDN-yg-MXK" secondAttribute="trailing" constant="16" id="203-Mq-UIh"/>
+                            <constraint firstAttribute="trailing" secondItem="lMd-1d-yHi" secondAttribute="trailing" constant="20" id="5Ds-wN-zPz"/>
                             <constraint firstItem="HmJ-ao-e8C" firstAttribute="leading" secondItem="PfE-Aa-lIp" secondAttribute="leading" constant="16" id="5ab-me-AQL"/>
                             <constraint firstItem="HmJ-ao-e8C" firstAttribute="top" secondItem="RVI-Rc-NMQ" secondAttribute="bottom" constant="4" id="5az-zW-Wt8"/>
                             <constraint firstItem="rUI-Tq-4fn" firstAttribute="top" secondItem="tQY-Mn-s2w" secondAttribute="bottom" constant="7" id="7pZ-8e-J1Q"/>
@@ -65,6 +79,7 @@
                             <constraint firstItem="RVI-Rc-NMQ" firstAttribute="top" secondItem="5bA-6j-KlJ" secondAttribute="bottom" constant="4" id="LJA-WT-x8S"/>
                             <constraint firstItem="tQY-Mn-s2w" firstAttribute="leading" secondItem="PfE-Aa-lIp" secondAttribute="leading" constant="16" id="O89-jP-NFY"/>
                             <constraint firstItem="tQY-Mn-s2w" firstAttribute="top" secondItem="HmJ-ao-e8C" secondAttribute="bottom" constant="16" id="VEV-ZT-9O6"/>
+                            <constraint firstItem="lMd-1d-yHi" firstAttribute="top" secondItem="PfE-Aa-lIp" secondAttribute="top" constant="8" id="VWg-fB-6nB"/>
                             <constraint firstItem="5bA-6j-KlJ" firstAttribute="leading" secondItem="PfE-Aa-lIp" secondAttribute="leading" constant="16" id="edd-Qk-31G"/>
                             <constraint firstAttribute="trailing" secondItem="tQY-Mn-s2w" secondAttribute="trailing" constant="16" id="fJ3-xl-y91"/>
                             <constraint firstAttribute="trailing" secondItem="HmJ-ao-e8C" secondAttribute="trailing" constant="16" id="obM-NB-2Cw"/>
@@ -84,6 +99,7 @@
             <connections>
                 <outlet property="ctProfileHeight" destination="81V-zZ-G3B" id="bJ0-lm-GQ8"/>
                 <outlet property="ctTagHeight" destination="S6j-Xg-oeK" id="IBd-Es-IHK"/>
+                <outlet property="dot" destination="lMd-1d-yHi" id="Ojb-Wf-of5"/>
                 <outlet property="imgProfile" destination="tQY-Mn-s2w" id="2Sp-W1-Ab7"/>
                 <outlet property="lblPostTime" destination="rUI-Tq-4fn" id="g9E-Ig-OBa"/>
                 <outlet property="lblTag" destination="5bA-6j-KlJ" id="YZV-UW-3k7"/>

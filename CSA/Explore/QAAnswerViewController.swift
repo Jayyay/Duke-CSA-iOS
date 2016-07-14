@@ -45,6 +45,7 @@ class QAAnswerViewController: ReplyController, UITableViewDataSource {
         if let notif = AppData.NotifData.notifInfo {
             if (notif.answers.contains(selectedQA.PFInstance.objectId!)) {
                 notif.answers.removeAtIndex(notif.answers.indexOf(selectedQA.PFInstance.objectId!)!)
+                notif.ansQuestions.removeAtIndex(notif.ansQuestions.indexOf(self.selectedQA.question.objectId!!)!)
                 notif.save()
                 AppNotif.showBadgeOnTabbar()
             }

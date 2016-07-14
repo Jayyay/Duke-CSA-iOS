@@ -47,6 +47,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notifInfo = NSKeyedUnarchiver.unarchiveObjectWithFile(NotifInfo.ArchiveURL!.path!) as? NotifInfo
         if let info = notifInfo {
             AppData.NotifData.notifInfo = info
+        } else {
+            let notif = NotifInfo(events: [], rendezvous: [], questions: [], answers: [], ansQuestions: [])
+            notif!.save()
+            AppData.NotifData.notifInfo = notif
         }
         
         return true
@@ -62,8 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             installation[PFKey.INSTALL.BINDED_USER] = NSNull()
         }
         installation.saveInBackground()
-        let notifInfo = NotifInfo(events: [], rendezvous: [], questions: [], answers: [])
-        notifInfo!.save()
         print("succeedtoregisterRemoteNote")
     }
     

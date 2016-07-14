@@ -15,6 +15,7 @@ class NotifInfo: NSObject, NSCoding {
         static let rendezvousKey = "rendezvous"
         static let questionsKey = "questions"
         static let answersKey = "answers"
+        static let ansQuestionsKey = "ansQuestions"
     }
     
     // objects that will get rid of notif badge
@@ -22,16 +23,18 @@ class NotifInfo: NSObject, NSCoding {
     var rendezvous: [String] = []
     var questions: [String] = []
     var answers: [String] = []
+    var ansQuestions: [String] = []
     
     // file path
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("NotifInfo")
     
-    init? (events: [String], rendezvous: [String], questions: [String], answers: [String]) {
+    init? (events: [String], rendezvous: [String], questions: [String], answers: [String], ansQuestions: [String]) {
         self.events = events
         self.questions = questions
         self.rendezvous = rendezvous
         self.answers = answers
+        self.ansQuestions = ansQuestions
         super.init()
     }
     
@@ -40,7 +43,8 @@ class NotifInfo: NSObject, NSCoding {
         let rendezvous = aDecoder.decodeObjectForKey(propertyKey.rendezvousKey) as! [String]
         let questions = aDecoder.decodeObjectForKey(propertyKey.questionsKey) as! [String]
         let answers = aDecoder.decodeObjectForKey(propertyKey.answersKey) as! [String]
-        self.init(events: events, rendezvous: rendezvous, questions: questions, answers: answers)
+        let ansQuestions = aDecoder.decodeObjectForKey(propertyKey.ansQuestionsKey) as! [String]
+        self.init(events: events, rendezvous: rendezvous, questions: questions, answers: answers, ansQuestions: ansQuestions)
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -48,6 +52,7 @@ class NotifInfo: NSObject, NSCoding {
         aCoder.encodeObject(rendezvous, forKey: propertyKey.rendezvousKey)
         aCoder.encodeObject(questions, forKey: propertyKey.questionsKey)
         aCoder.encodeObject(answers, forKey: propertyKey.answersKey)
+        aCoder.encodeObject(ansQuestions, forKey: propertyKey.ansQuestionsKey)
     }
     
     func save() -> Bool {

@@ -132,7 +132,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="No4-mU-HVa" secondAttribute="trailing" constant="-20" id="2Lr-07-cP1"/>
-                    <constraint firstItem="No4-mU-HVa" firstAttribute="top" secondItem="JsF-jG-My1" secondAttribute="topMargin" id="3Xv-j1-veL"/>
+                    <constraint firstItem="No4-mU-HVa" firstAttribute="top" secondItem="JsF-jG-My1" secondAttribute="topMargin" constant="8" id="3Xv-j1-veL"/>
                     <constraint firstAttribute="topMargin" secondItem="J9z-Xz-Zd6" secondAttribute="top" id="5C4-gv-HOF"/>
                     <constraint firstItem="nf0-qp-cVg" firstAttribute="leading" secondItem="JsF-jG-My1" secondAttribute="leadingMargin" id="8rF-AA-hEl"/>
                     <constraint firstAttribute="trailingMargin" secondItem="J9z-Xz-Zd6" secondAttribute="trailing" constant="10" id="A4T-gg-Y94"/>

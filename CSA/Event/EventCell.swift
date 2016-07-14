@@ -15,6 +15,7 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var lblWhen: UILabel!
     @IBOutlet weak var lblWhere: UILabel!
     @IBOutlet weak var lblPostTime: UILabel!
+    @IBOutlet weak var dot: UIView!
    // @IBOutlet weak var imgCheck: UIImageView!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblTag: UILabel!
@@ -68,6 +69,17 @@ class EventCell: UITableViewCell {
             imgProfile.hidden = true
             ctProfileHeight.constant = 0
             ctProfileHeight.priority = 999
+        }
+        
+        // red dot indicating notif
+        if let notif = AppData.NotifData.notifInfo {
+            if (notif.events.contains(evt.PFInstance.objectId!)) {
+                dot.backgroundColor = UIColor.redColor()
+                dot.hidden = false
+                print("dot")
+            } else {
+                dot.hidden = true
+            }
         }
         
         layoutIfNeeded()

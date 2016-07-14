@@ -292,8 +292,6 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
     
     // MARK: selection on rows of tableview
     func selectAnswer(postIndex: Int) {
-        let cell = tableView.dequeueReusableCellWithIdentifier(ReuseID_QACell) as! QAPostCell
-        cell.getSelected()
         AppData.QAData.selectedQAAnswer = self.posts[postIndex]
         self.performSegueWithIdentifier(ReuseID_AnswerSegue, sender: self)
     }

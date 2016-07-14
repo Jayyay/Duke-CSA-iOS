@@ -263,10 +263,12 @@ struct AppNotif {
                 case NotifType.NEW_QA_REPLY, NotifType.NEW_QA_REPLY_RE, NotifType.NEW_QA_VOTE_ANSWER:
                     let pfid = notification[INSTANCE_ID] as! String
                     let colonRange = pfid.rangeOfString(":")!
+                    let questionID = pfid.substringWithRange(pfid.startIndex..<colonRange.startIndex)
                     let answerID = pfid.substringWithRange(colonRange.endIndex..<pfid.endIndex)
                     let answers = AppData.NotifData.notifInfo!.answers
                     if (!answers.contains(answerID)) {
                         AppData.NotifData.notifInfo!.answers.append(answerID)
+                        AppData.NotifData.notifInfo!.ansQuestions.append(questionID)
                         AppData.NotifData.notifInfo!.save()
                     }
                     break

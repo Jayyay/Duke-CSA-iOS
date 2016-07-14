@@ -38,10 +38,6 @@ class QAPostCell: UITableViewCell {
         dot.hidden = true
     }
     
-    func getSelected() {
-        dot.hidden = true
-    }
-    
     func initWithPost(post: QAPost, fromVC: UIViewController, fromTableView tableView:UITableView, forIndexPath indexPath:NSIndexPath) {
         childQA = post
         self.parentVC = fromVC
@@ -91,10 +87,11 @@ class QAPostCell: UITableViewCell {
             downVoteButton.setImage(AppConstants.Vote.DOWNVOTE_HIGHLIGHT, forState: .Normal)
         }
         
-        
         // red dot indicating notif
         if let notif = AppData.NotifData.notifInfo {
-            if (notif.questions.contains(post.PFInstance.objectId!) || notif.answers.contains(post.PFInstance.objectId!)) {
+            if (notif.questions.contains(post.PFInstance.objectId!)
+                || notif.answers.contains(post.PFInstance.objectId!)
+                || notif.ansQuestions.contains(post.PFInstance.objectId!)) {
                 dot.backgroundColor = UIColor.redColor()
                 dot.hidden = false
                 print("dot")
