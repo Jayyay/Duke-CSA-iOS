@@ -132,10 +132,8 @@ struct AppNotif {
     }
     
     static func presentQAQuestionWithNotification(notification: [NSObject: AnyObject]) {
-        rootVC.selectedIndex = 2
-        let ExploreNavController = rootVC.selectedViewController! as! UINavigationController
-        let QAVC = ExploreNavController.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.MAIN)
-        ExploreNavController.pushViewController(QAVC, animated: false)
+        rootVC.selectedIndex = 3
+        let QANavController = rootVC.selectedViewController! as! UINavigationController
         let query = PFQuery(className: PFKey.QA.CLASSKEY)
         let pfid = notification[INSTANCE_ID] as! String
         query.whereKey(PFKey.OBJECT_ID, equalTo: pfid)
@@ -145,8 +143,8 @@ struct AppNotif {
             if let re = result {
                 let question = re[0]
                 AppData.QAData.selectedQAQuestion = QAPost(parseObject: question)
-                let questionVC = QAVC.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.QUESTION)
-                QAVC.navigationController!.pushViewController(questionVC, animated: false)
+                let questionVC = QANavController.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.QUESTION)
+                QANavController.pushViewController(questionVC, animated: false)
             }
             if let error = error {
                 print("Error getting to Question View: ", error)
@@ -155,10 +153,9 @@ struct AppNotif {
     }
     
     static func presentQAAnswerWithNotification(notification: [NSObject: AnyObject]) {
-        rootVC.selectedIndex = 2
-        let ExploreNavController = rootVC.selectedViewController! as! UINavigationController
-        let QAVC = ExploreNavController.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.MAIN)
-        ExploreNavController.pushViewController(QAVC, animated: false)
+        rootVC.selectedIndex = 3
+        let QANavController = rootVC.selectedViewController! as! UINavigationController
+        
         let query = PFQuery(className: PFKey.QA.CLASSKEY)
         
         // get question and answer id
@@ -174,8 +171,8 @@ struct AppNotif {
             if let re = result {
                 let question = re[0]
                 AppData.QAData.selectedQAQuestion = QAPost(parseObject: question)
-                let questionVC = QAVC.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.QUESTION)
-                QAVC.navigationController!.pushViewController(questionVC, animated: false)
+                let questionVC = QANavController.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.QA.QUESTION)
+                QANavController.pushViewController(questionVC, animated: false)
                 
                 let queryAnswer = PFQuery(className: PFKey.QA.CLASSKEY)
                 queryAnswer.whereKey(PFKey.OBJECT_ID, equalTo: answerId)
@@ -306,9 +303,9 @@ struct AppNotif {
             let rsCount = notif.rendezvous.count
             rsVC.tabBarItem.badgeValue = rsCount == 0 ? nil : String(rsCount)
             
-            let ExploreVC = rootVC.viewControllers![2]
+            let QAVC = rootVC.viewControllers![3]
             let qanda = notif.questions.count + notif.answers.count
-            ExploreVC.tabBarItem.badgeValue = qanda == 0 ? nil : String(qanda)
+            QAVC.tabBarItem.badgeValue = qanda == 0 ? nil : String(qanda)
             
             let installation = PFInstallation.currentInstallation()
             installation.badge = eventCount + rsCount + qanda
