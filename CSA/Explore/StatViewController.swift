@@ -40,11 +40,11 @@ class StatViewController: UIViewController {
                 let max = re[self.MAX] as! Int
                 self.query.getObjectInBackgroundWithId(id, block: { (result, error) in
                     if let user = result as? PFUser {
-                        dispatch_async(dispatch_get_main_queue(), { _ in
-                            self.mostCuriousUser.initLabel(author: user, fontSize: self.fontSize, fromVC: self)
+                        //dispatch_async(dispatch_get_main_queue(), { _ in
+                            self.mostCuriousUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
                             print(user[PFKey.USER.DISPLAY_NAME])
                             self.mostQLabel.text = String(max) + " Questions"
-                        })
+                        //})
                     } else if let error = error {
                         print("Error getting user", error)
                     }
@@ -57,11 +57,11 @@ class StatViewController: UIViewController {
                 let max = re[self.MAX] as! Int
                 self.query.getObjectInBackgroundWithId(id, block: { (result, error) in
                     if let user = result as? PFUser {
-                        dispatch_async(dispatch_get_main_queue(), { _ in
-                            self.mostWiseUser.initLabel(author: user, fontSize: self.fontSize, fromVC: self)
+                        //dispatch_async(dispatch_get_main_queue(), { _ in
+                            self.mostWiseUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
                             print(user[PFKey.USER.DISPLAY_NAME])
                             self.mostALabel.text = String(max) + " Answers"
-                        })
+                        //})
                     } else if let error = error {
                         print("Error getting user", error)
                     }
@@ -74,12 +74,12 @@ class StatViewController: UIViewController {
                 let max = re[self.MAX] as! Int
                 self.query.getObjectInBackgroundWithId(id, block: { (result, error) in
                     if let user = result as? PFUser {
-                        dispatch_async(dispatch_get_main_queue(), { _ in
+                        //dispatch_async(dispatch_get_main_queue(), { _ in
                             print("most vote")
-                            self.mostUpvotedQUser.initLabel(author: user, fontSize: self.fontSize, fromVC: self)
+                            self.mostUpvotedQUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
                             print(user[PFKey.USER.DISPLAY_NAME])
                             self.mostUpQLabel.text = String(max) + " votes"
-                        })
+                        //})
                     } else if let error = error {
                         print("Error getting user", error)
                     }
@@ -92,11 +92,11 @@ class StatViewController: UIViewController {
                 let max = re[self.MAX] as! Int
                 self.query.getObjectInBackgroundWithId(id, block: { (result, error) in
                     if let user = result as? PFUser {
-                        dispatch_async(dispatch_get_main_queue(), { _ in
-                            self.mostUpvotedAUser.initLabel(author: user, fontSize: self.fontSize, fromVC: self)
+                        //dispatch_async(dispatch_get_main_queue(), { _ in
+                            self.mostUpvotedAUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
                             print(user[PFKey.USER.DISPLAY_NAME])
                             self.mostUpALabel.text = String(max) + " votes"
-                        })
+                        //})
                     } else if let error = error {
                         print("Error getting user", error)
                     }
