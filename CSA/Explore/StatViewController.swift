@@ -39,7 +39,7 @@ class StatViewController: UIViewController {
             if let re = result as? [NSObject: AnyObject] {
                 let user = re[self.USER] as! PFUser
                 let max = re[self.MAX] as! Int
-                self.mostCuriousUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
+                self.mostCuriousUser.initLabel(author: user, fontSize: self.fontSize, fromVC: self)
                 print(user[PFKey.USER.DISPLAY_NAME])
                 self.mostQLabel.text = String(max) + " Questions"
             }
@@ -48,8 +48,7 @@ class StatViewController: UIViewController {
             if let re = result as? [NSObject: AnyObject] {
                 let user = re[self.USER] as! PFUser
                 let max = re[self.MAX] as! Int
-                self.mostWiseUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
-                print(user[PFKey.USER.DISPLAY_NAME])
+                self.mostWiseUser.initLabel(author: user, fontSize: self.fontSize, fromVC: self)
                 self.mostALabel.text = String(max) + " Answers"
             }
         }
@@ -57,7 +56,7 @@ class StatViewController: UIViewController {
             if let re = result as? [NSObject: AnyObject] {
                 let user = re[self.USER] as! PFUser
                 let max = re[self.MAX] as! Int
-                self.mostUpvotedQUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
+                self.mostUpvotedQUser.initLabel(author: user, fontSize: self.fontSize, fromVC: self)
                 print(user[PFKey.USER.DISPLAY_NAME])
                 self.mostUpQLabel.text = String(max) + " votes"
             }
@@ -66,7 +65,7 @@ class StatViewController: UIViewController {
             if let re = result as? [NSObject: AnyObject] {
                 let user = re[self.USER] as! PFUser
                 let max = re[self.MAX] as! Int
-                self.mostUpvotedAUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
+                self.mostUpvotedAUser.initLabel(author: user, fontSize: self.fontSize, fromVC: self)
                 print(user[PFKey.USER.DISPLAY_NAME])
                 self.mostUpALabel.text = String(max) + " votes"
             }
