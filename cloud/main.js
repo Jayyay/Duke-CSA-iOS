@@ -26,6 +26,7 @@ Parse.Cloud.define("push", function (request, response) {
     });
 });
 
+// request.params.type can be "Question" or "Answer"
 Parse.Cloud.define("mostPosts", function (request, response) {
     var posters = {};
     var type = request.params.type;
@@ -58,4 +59,38 @@ Parse.Cloud.define("mostPosts", function (request, response) {
             console.log("Error: " + error.code + " " + error.message);
         }
     });
+});
+
+// request.params.type can be "Question" or "Answer"
+Parse.Cloud.define("mostVote", function (request, response) {
+	var posters = [];
+	var type = request.params.type;
+	var query = new Parse.Query("QAPost");
+	query.find({
+		success: function(results) {
+			console.log("Successfully retrieved " + results.length + " posts.");
+			for (var i = 0; i < results.length; i++) {
+				var post = results[i];
+				if (post.get("type") != type) continue;
+				var authorID = post.get("author").id;
+				if (!posters[authorID]) posters[authorID] = 0;
+				posters[authorID] += post.get("vote");
+			}
+			var max = 0, most = "hwAxx0IwM7";
+			var people = Object.keys(posters);
+			for (var i = 0; i < people.length; i++) {
+				if (posters[people[i]] > max) {
+					max = posters[people[i]];
+					most = people[i];
+				}
+			}
+			console.log(Object.keys(posters));
+			console.log(most);
+			var result = {"userID": most, "max": max};
+			response.success(result);
+		},
+		error: function(error) {
+			console.log("Error: " + error.code + " " + error.message);
+		}
+	});
 });
