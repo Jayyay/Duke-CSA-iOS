@@ -38,11 +38,11 @@ Parse.Cloud.define("mostPosts", function (request, response) {
             for (var i = 0; i < results.length; i++) {
                 var post = results[i];
                 if (post.get("type") != type) continue;
-                var authorID = post.get("author").id;
-                if (!posters[authorID]) posters[authorID] = 0;
-                posters[authorID]++;
+                var author = post.get("author").id;
+                if (!posters[author]) posters[author] = 0;
+                posters[author]++;
             }
-            var max = 0, most = "hwAxx0IwM7";
+            var max = 0, most;
             var people = Object.keys(posters);
             for (var i = 0; i < people.length; i++) {
                 if (posters[people[i]] > max) {
@@ -52,8 +52,14 @@ Parse.Cloud.define("mostPosts", function (request, response) {
             }
             console.log(Object.keys(posters));
             console.log(most);
-            var result = {"userID": most, "max": max};
-            response.success(result);
+            var User = Parse.Object.extend("_User");
+            var qry = new Parse.Query(User);
+            qry.get(most, {
+                success: function (user) {
+                    var result = {"user": user, "max": max};
+                    response.success(result);
+                }
+            })
         },
         error: function(error) {
             console.log("Error: " + error.code + " " + error.message);
@@ -72,11 +78,11 @@ Parse.Cloud.define("mostVote", function (request, response) {
 			for (var i = 0; i < results.length; i++) {
 				var post = results[i];
 				if (post.get("type") != type) continue;
-				var authorID = post.get("author").id;
-				if (!posters[authorID]) posters[authorID] = 0;
-				posters[authorID] += post.get("vote");
+				var author = post.get("author").id;
+				if (!posters[author]) posters[author] = 0;
+				posters[author] += post.get("vote");
 			}
-			var max = 0, most = "hwAxx0IwM7";
+			var max = 0, most;
 			var people = Object.keys(posters);
 			for (var i = 0; i < people.length; i++) {
 				if (posters[people[i]] > max) {
@@ -86,8 +92,14 @@ Parse.Cloud.define("mostVote", function (request, response) {
 			}
 			console.log(Object.keys(posters));
 			console.log(most);
-			var result = {"userID": most, "max": max};
-			response.success(result);
+			var User = Parse.Object.extend("_User");
+            var qry = new Parse.Query(User);
+            qry.get(most, {
+                success: function (user) {
+                    var result = {"user": user, "max": max};
+                    response.success(result);
+                }
+            })
 		},
 		error: function(error) {
 			console.log("Error: " + error.code + " " + error.message);

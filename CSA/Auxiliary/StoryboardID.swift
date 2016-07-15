@@ -22,6 +22,7 @@ struct StoryboardID {
         static let MAIN = "QAVC"
         static let QUESTION = "QAQuestionVC"
         static let ANSWER = "QAAnswerVC"
+        static let STAT = "StatViewVC"
     }
     static let LOGIN = "loginVC"
     static let USER_INFO = "userProfileVC"

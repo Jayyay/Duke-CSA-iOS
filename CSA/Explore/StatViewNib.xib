@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A239j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatViewController" customModule="Duke_CSA" customModuleProvider="target">
+            <connections>
+                <outlet property="mostALabel" destination="Ctg-bY-2Zw" id="bgf-cp-Pur"/>
+                <outlet property="mostCuriousUser" destination="c0s-Bg-Nh1" id="A89-Eb-Qn7"/>
+                <outlet property="mostQLabel" destination="jvy-am-nnO" id="Wh5-X2-X4R"/>
+                <outlet property="mostUpALabel" destination="Pba-Uy-h2D" id="M7K-8J-9GK"/>
+                <outlet property="mostUpQLabel" destination="mWG-wK-xam" id="Dim-Hj-odY"/>
+                <outlet property="mostUpvotedAUser" destination="AUC-vF-MHE" id="GYB-eJ-0mR"/>
+                <outlet property="mostUpvotedQUser" destination="ROc-eA-n8J" id="RyB-CN-VeB"/>
+                <outlet property="mostWiseUser" destination="F9h-h8-rWf" id="1Dy-GM-aB3"/>
+                <outlet property="view" destination="nWY-FJ-cZg" id="KPV-ZF-7ZE"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="nWY-FJ-cZg">
+            <rect key="frame" x="0.0" y="0.0" width="317" height="292"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Questions:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcT-au-Sjp">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0s-Bg-Nh1" customClass="UserLabel" customModule="Duke_CSA" customModuleProvider="target">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Answers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ff-XB-owR">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 Questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvy-am-nnO">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9h-h8-rWf" customClass="UserLabel" customModule="Duke_CSA" customModuleProvider="target">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 Answers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctg-bY-2Zw">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Upvoted Questions:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMT-9y-B0g">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROc-eA-n8J" customClass="UserLabel" customModule="Duke_CSA" customModuleProvider="target">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 votes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWG-wK-xam">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Upvoted Answers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZ2-ZD-NCM">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-vF-MHE" customClass="UserLabel" customModule="Duke_CSA" customModuleProvider="target">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 votes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pba-Uy-h2D">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Statistics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4D-xY-H8f">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="0Ff-XB-owR" firstAttribute="leading" secondItem="pcT-au-Sjp" secondAttribute="leading" id="4NS-ub-upV"/>
+                <constraint firstItem="AUC-vF-MHE" firstAttribute="leading" secondItem="dZ2-ZD-NCM" secondAttribute="trailing" constant="8" id="4cl-Bk-izS"/>
+                <constraint firstItem="dZ2-ZD-NCM" firstAttribute="top" secondItem="FMT-9y-B0g" secondAttribute="bottom" constant="8" id="6k9-AL-azd"/>
+                <constraint firstItem="jvy-am-nnO" firstAttribute="leading" secondItem="c0s-Bg-Nh1" secondAttribute="trailing" constant="8" id="81M-zT-po4"/>
+                <constraint firstItem="pcT-au-Sjp" firstAttribute="top" secondItem="b4D-xY-H8f" secondAttribute="bottom" constant="12" id="EO7-KA-uSR"/>
+                <constraint firstAttribute="leadingMargin" secondItem="pcT-au-Sjp" secondAttribute="leading" id="EvY-9p-FCn"/>
+                <constraint firstItem="Ctg-bY-2Zw" firstAttribute="centerY" secondItem="0Ff-XB-owR" secondAttribute="centerY" id="KAp-L2-m4S"/>
+                <constraint firstItem="mWG-wK-xam" firstAttribute="centerY" secondItem="FMT-9y-B0g" secondAttribute="centerY" id="Ml0-IU-tAw"/>
+                <constraint firstItem="c0s-Bg-Nh1" firstAttribute="centerY" secondItem="pcT-au-Sjp" secondAttribute="centerY" id="OKi-55-553"/>
+                <constraint firstItem="b4D-xY-H8f" firstAttribute="top" secondItem="nWY-FJ-cZg" secondAttribute="top" constant="26" id="PWy-DX-jkH"/>
+                <constraint firstItem="AUC-vF-MHE" firstAttribute="centerY" secondItem="dZ2-ZD-NCM" secondAttribute="centerY" id="SCn-vN-S1c"/>
+                <constraint firstItem="Pba-Uy-h2D" firstAttribute="leading" secondItem="AUC-vF-MHE" secondAttribute="trailing" constant="8" id="V2x-BN-3XZ"/>
+                <constraint firstItem="ROc-eA-n8J" firstAttribute="leading" secondItem="FMT-9y-B0g" secondAttribute="trailing" constant="8" id="Voz-k2-RKj"/>
+                <constraint firstItem="c0s-Bg-Nh1" firstAttribute="leading" secondItem="pcT-au-Sjp" secondAttribute="trailing" constant="8" id="Vzq-Jh-1Cc"/>
+                <constraint firstItem="ROc-eA-n8J" firstAttribute="centerY" secondItem="FMT-9y-B0g" secondAttribute="centerY" id="YcO-PB-HXx"/>
+                <constraint firstItem="F9h-h8-rWf" firstAttribute="leading" secondItem="0Ff-XB-owR" secondAttribute="trailing" constant="8" id="Zka-26-Ubk"/>
+                <constraint firstItem="jvy-am-nnO" firstAttribute="centerY" secondItem="pcT-au-Sjp" secondAttribute="centerY" id="Zx7-p8-KRh"/>
+                <constraint firstItem="FMT-9y-B0g" firstAttribute="leading" secondItem="0Ff-XB-owR" secondAttribute="leading" id="gY4-5w-GA2"/>
+                <constraint firstItem="0Ff-XB-owR" firstAttribute="top" secondItem="pcT-au-Sjp" secondAttribute="bottom" constant="8" id="gch-cx-TI3"/>
+                <constraint firstItem="FMT-9y-B0g" firstAttribute="top" secondItem="0Ff-XB-owR" secondAttribute="bottom" constant="26" id="gdn-dd-vin"/>
+                <constraint firstItem="mWG-wK-xam" firstAttribute="leading" secondItem="ROc-eA-n8J" secondAttribute="trailing" constant="8" id="hKC-sM-un1"/>
+                <constraint firstItem="b4D-xY-H8f" firstAttribute="centerX" secondItem="nWY-FJ-cZg" secondAttribute="centerX" id="jBb-rY-3uG"/>
+                <constraint firstItem="F9h-h8-rWf" firstAttribute="centerY" secondItem="0Ff-XB-owR" secondAttribute="centerY" id="tLT-ev-hnV"/>
+                <constraint firstItem="Ctg-bY-2Zw" firstAttribute="leading" secondItem="F9h-h8-rWf" secondAttribute="trailing" constant="8" id="wGb-aF-iuZ"/>
+                <constraint firstItem="dZ2-ZD-NCM" firstAttribute="leading" secondItem="pcT-au-Sjp" secondAttribute="leading" id="wpE-dm-nr3"/>
+                <constraint firstItem="Pba-Uy-h2D" firstAttribute="centerY" secondItem="dZ2-ZD-NCM" secondAttribute="centerY" id="x0t-dn-HX2"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-162" y="-999"/>
+        </view>
+    </objects>
+</document>

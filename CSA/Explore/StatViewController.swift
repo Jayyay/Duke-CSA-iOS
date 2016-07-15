@@ -20,89 +20,57 @@ class StatViewController: UIViewController {
     @IBOutlet weak var mostUpALabel: UILabel!
     
     var query: PFQuery!
-    let USER_ID = "userID"
+    let USER = "user"
     let MAX = "max"
     let fontSize = CGFloat(15.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         query = PFQuery(className: PFKey.USER.CLASSKEY)
+        loadStat()
     }
     
     override func viewDidAppear(animated: Bool) {
-        loadStat()
+        super.viewDidAppear(animated)
     }
     
     func loadStat() {
         PFCloud.callFunctionInBackground("mostPosts", withParameters: ["type": "Question"]) { (result, error) in
             if let re = result as? [NSObject: AnyObject] {
-                let id = re[self.USER_ID] as! String
+                let user = re[self.USER] as! PFUser
                 let max = re[self.MAX] as! Int
-                self.query.getObjectInBackgroundWithId(id, block: { (result, error) in
-                    if let user = result as? PFUser {
-                        //dispatch_async(dispatch_get_main_queue(), { _ in
-                            self.mostCuriousUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
-                            print(user[PFKey.USER.DISPLAY_NAME])
-                            self.mostQLabel.text = String(max) + " Questions"
-                        //})
-                    } else if let error = error {
-                        print("Error getting user", error)
-                    }
-                })
+                self.mostCuriousUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
+                print(user[PFKey.USER.DISPLAY_NAME])
+                self.mostQLabel.text = String(max) + " Questions"
             }
         }
         PFCloud.callFunctionInBackground("mostPosts", withParameters: ["type": "Answer"]) { (result, error) in
             if let re = result as? [NSObject: AnyObject] {
-                let id = re[self.USER_ID] as! String
+                let user = re[self.USER] as! PFUser
                 let max = re[self.MAX] as! Int
-                self.query.getObjectInBackgroundWithId(id, block: { (result, error) in
-                    if let user = result as? PFUser {
-                        //dispatch_async(dispatch_get_main_queue(), { _ in
-                            self.mostWiseUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
-                            print(user[PFKey.USER.DISPLAY_NAME])
-                            self.mostALabel.text = String(max) + " Answers"
-                        //})
-                    } else if let error = error {
-                        print("Error getting user", error)
-                    }
-                })
+                self.mostWiseUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
+                print(user[PFKey.USER.DISPLAY_NAME])
+                self.mostALabel.text = String(max) + " Answers"
             }
         }
         PFCloud.callFunctionInBackground("mostVote", withParameters: ["type": "Question"]) { (result, error) in
             if let re = result as? [NSObject: AnyObject] {
-                let id = re[self.USER_ID] as! String
+                let user = re[self.USER] as! PFUser
                 let max = re[self.MAX] as! Int
-                self.query.getObjectInBackgroundWithId(id, block: { (result, error) in
-                    if let user = result as? PFUser {
-                        //dispatch_async(dispatch_get_main_queue(), { _ in
-                            print("most vote")
-                            self.mostUpvotedQUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
-                            print(user[PFKey.USER.DISPLAY_NAME])
-                            self.mostUpQLabel.text = String(max) + " votes"
-                        //})
-                    } else if let error = error {
-                        print("Error getting user", error)
-                    }
-                })
+                self.mostUpvotedQUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
+                print(user[PFKey.USER.DISPLAY_NAME])
+                self.mostUpQLabel.text = String(max) + " votes"
             }
         }
         PFCloud.callFunctionInBackground("mostVote", withParameters: ["type": "Answer"]) { (result, error) in
             if let re = result as? [NSObject: AnyObject] {
-                let id = re[self.USER_ID] as! String
+                let user = re[self.USER] as! PFUser
                 let max = re[self.MAX] as! Int
-                self.query.getObjectInBackgroundWithId(id, block: { (result, error) in
-                    if let user = result as? PFUser {
-                        //dispatch_async(dispatch_get_main_queue(), { _ in
-                            self.mostUpvotedAUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
-                            print(user[PFKey.USER.DISPLAY_NAME])
-                            self.mostUpALabel.text = String(max) + " votes"
-                        //})
-                    } else if let error = error {
-                        print("Error getting user", error)
-                    }
-                })
+                self.mostUpvotedAUser.text = (user[PFKey.USER.DISPLAY_NAME] as! String)
+                print(user[PFKey.USER.DISPLAY_NAME])
+                self.mostUpALabel.text = String(max) + " votes"
             }
         }
     }
-
+    
 }
