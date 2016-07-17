@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatViewController: UIViewController {
+class StatViewController: UITableViewController {
     
     @IBOutlet weak var mostCuriousUser: UserLabel!
     @IBOutlet weak var mostWiseUser: UserLabel!
