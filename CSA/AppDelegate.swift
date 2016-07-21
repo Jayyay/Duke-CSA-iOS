@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let info = notifInfo {
             AppData.NotifData.notifInfo = info
         } else {
-            let notif = NotifInfo(events: [], rendezvous: [], questions: [], answers: [], ansQuestions: [])
+            let notif = NotifInfo(newEvents: [], events: [], rendezvous: [], questions: [], answers: [], ansQuestions: [])
             notif!.save()
             AppData.NotifData.notifInfo = notif
         }

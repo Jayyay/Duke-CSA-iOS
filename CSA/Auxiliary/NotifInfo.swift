@@ -16,6 +16,7 @@ class NotifInfo: NSObject, NSCoding {
         static let questionsKey = "questions"
         static let answersKey = "answers"
         static let ansQuestionsKey = "ansQuestions"
+        static let newEventsKey = "newEvents"
     }
     
     // objects that will get rid of notif badge
@@ -24,12 +25,14 @@ class NotifInfo: NSObject, NSCoding {
     var questions: [String] = []
     var answers: [String] = []
     var ansQuestions: [String] = []
+    var newEvents: [String] = []
     
     // file path
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("NotifInfo")
     
-    init? (events: [String], rendezvous: [String], questions: [String], answers: [String], ansQuestions: [String]) {
+    init? (newEvents: [String], events: [String], rendezvous: [String], questions: [String], answers: [String], ansQuestions: [String]) {
+        self.newEvents = newEvents
         self.events = events
         self.questions = questions
         self.rendezvous = rendezvous
@@ -39,15 +42,17 @@ class NotifInfo: NSObject, NSCoding {
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
+        let newEvents = aDecoder.decodeObjectForKey(propertyKey.eventsKey) as! [String]
         let events = aDecoder.decodeObjectForKey(propertyKey.eventsKey) as! [String]
         let rendezvous = aDecoder.decodeObjectForKey(propertyKey.rendezvousKey) as! [String]
         let questions = aDecoder.decodeObjectForKey(propertyKey.questionsKey) as! [String]
         let answers = aDecoder.decodeObjectForKey(propertyKey.answersKey) as! [String]
         let ansQuestions = aDecoder.decodeObjectForKey(propertyKey.ansQuestionsKey) as! [String]
-        self.init(events: events, rendezvous: rendezvous, questions: questions, answers: answers, ansQuestions: ansQuestions)
+        self.init(newEvents: newEvents, events: events, rendezvous: rendezvous, questions: questions, answers: answers, ansQuestions: ansQuestions)
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(newEvents, forKey: propertyKey.newEventsKey)
         aCoder.encodeObject(events, forKey: propertyKey.eventsKey)
         aCoder.encodeObject(rendezvous, forKey: propertyKey.rendezvousKey)
         aCoder.encodeObject(questions, forKey: propertyKey.questionsKey)

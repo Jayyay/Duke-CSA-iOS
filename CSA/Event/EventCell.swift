@@ -73,7 +73,7 @@ class EventCell: UITableViewCell {
         
         // red dot indicating notif
         if let notif = AppData.NotifData.notifInfo {
-            if (notif.events.contains(evt.PFInstance.objectId!)) {
+            if (notif.events.contains(evt.PFInstance.objectId!) || notif.newEvents.contains(evt.PFInstance.objectId!)) {
                 dot.backgroundColor = UIColor.redColor()
                 dot.hidden = false
                 print("dot")

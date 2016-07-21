@@ -309,6 +309,14 @@ struct AppNotif {
                         AppData.NotifData.notifInfo!.save()
                     }
                     break
+                case NotifType.NEW_EVENT:
+                    let eventID = notification[INSTANCE_ID] as! String
+                    let newEvents = AppData.NotifData.notifInfo!.newEvents
+                    if (!newEvents.contains(eventID)) {
+                        AppData.NotifData.notifInfo!.newEvents.append(eventID)
+                        AppData.NotifData.notifInfo!.save()
+                    }
+                    break
                 default:
                     print("not implemented yet")
                 }
@@ -321,7 +329,10 @@ struct AppNotif {
             rootVC = UIApplication.sharedApplication().keyWindow!.rootViewController! as! TabBarController
             
             let eventVC = rootVC.viewControllers![0] as! EventNavigationController
-            let eventCount = notif.events.count
+            let eventCount = notif.events.count + notif.newEvents.count
+            if (notif.newEvents.count != 0) {
+                AppStatus.EventStatus.tableShouldRefresh = true
+            }
             eventVC.tabBarItem.badgeValue = eventCount == 0 ? nil : String(eventCount)
             
             let rsVC = rootVC.viewControllers![1] as! RsNavigationController
