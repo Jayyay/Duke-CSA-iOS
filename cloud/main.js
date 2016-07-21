@@ -20,48 +20,7 @@ Parse.Cloud.define("push", function (request, response) {
         useMasterKey: true,
         success: function () {
             if (targetUser) {
-                var NotifData = Parse.Object.extend("NotifData");
-                var qry = new Parse.Query(NotifData);
-                var type = request.params.data.notifType;
-                var instanceID = request.params.data.PFInstanceID;
-                qry.equalTo('UserID', targetUser.id);
-                qry.find({
-                    success: function (results) {
-                        console.log("found " + results.length + " notif data");
-                        var notifData;
-
-                        if (results.length == 0) {
-                            notifData = new NotifData();
-                            for (var i = 0; i < notifTypes.length; i++) {
-                                notifData.set(notifTypes[i], []);
-                            }
-                            notifData.set("UserID", targetUser.id);
-                        } else {
-                            notifData = results[0];
-                        }
-
-                        var notifOfType = notifData.get(type);
-                        console.log(notifOfType);
-                        if (!notifOfType.includes(instanceID)) {
-                            notifOfType.push(instanceID);
-                        }
-                        console.log(notifOfType);
-                        notifData.save(null, {
-                            success: function(user) {
-                                console.log("user notif data saved.");
-                                response.success("Successfully pushed notification to " + user.get("displayName") 
-                            + " with type " + type + " and id " + instanceID);
-                            },
-                            error: function(user, error) {
-                                console.log("saving user notif data error: " + error.message);
-                                response.error("saving user notif data error " + error.message);
-                            }
-                        });
-                    },
-                    error: function (error) {
-                        response.error("Error when finding notif data " + error.message);
-                    }
-                });
+                saveNotifDataForUser(targetUser, request, response);
             }
             else {
                 response.success("Successfully sent notifications to all");
@@ -72,6 +31,51 @@ Parse.Cloud.define("push", function (request, response) {
         }
     });
 });
+
+function saveNotifDataForUser (targetUser, request, response) {
+    var NotifData = Parse.Object.extend("NotifData");
+    var qry = new Parse.Query(NotifData);
+    var type = request.params.data.notifType;
+    var instanceID = request.params.data.PFInstanceID;
+    qry.equalTo('UserID', targetUser.id);
+    qry.find({
+        success: function (results) {
+            console.log("found " + results.length + " notif data");
+            var notifData;
+
+            if (results.length == 0) {
+                notifData = new NotifData();
+                for (var i = 0; i < notifTypes.length; i++) {
+                    notifData.set(notifTypes[i], []);
+                }
+                notifData.set("UserID", targetUser.id);
+            } else {
+                notifData = results[0];
+            }
+
+            var notifOfType = notifData.get(type);
+            console.log(notifOfType);
+            if (!notifOfType.includes(instanceID)) {
+                notifOfType.push(instanceID);
+            }
+            console.log(notifOfType);
+            notifData.save(null, {
+                success: function(user) {
+                    console.log("user notif data saved.");
+                    response.success("Successfully pushed notification to " + user.get("displayName") 
+                + " with type " + type + " and id " + instanceID);
+                },
+                error: function(user, error) {
+                    console.log("saving user notif data error: " + error.message);
+                    response.error("saving user notif data error " + error.message);
+                }
+            });
+        },
+        error: function (error) {
+            response.error("Error when finding notif data " + error.message);
+        }
+    });
+}
 
 // request.params.type can be "Question" or "Answer"
 Parse.Cloud.define("mostPosts", function (request, response) {
