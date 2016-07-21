@@ -87,6 +87,7 @@ struct AppNotif {
             "alert" : withMessage,
             "badge" : "Increment",
             "sound" : withSoundName,
+            "content-available" : 1,
             KEY : withMessage,
             NotifType.KEY : forType,
             INSTANCE_ID: PFInstanceID
@@ -106,6 +107,7 @@ struct AppNotif {
     static var rootVC: TabBarController!
     
     static func goToVCWithNotification(notification: [NSObject : AnyObject]) {
+        AppData.NotifData.notification = nil // prevent going through launching with notification again
         rootVC = UIApplication.sharedApplication().keyWindow!.rootViewController! as! TabBarController
         if let type = notification[NotifType.KEY] as? String {
             switch (type) {
@@ -120,8 +122,10 @@ struct AppNotif {
                 break
             case NotifType.NEW_EVENT_LIKE, NotifType.NEW_EVENT_REPLY:
                 presentEventDisWithNotification(notification)
+                break
             case NotifType.NEW_EVENT:
-                presentEventVC()
+                presentEventWithNotification(notification)
+                break
             default:
                 print("not implemented yet")
             }
@@ -218,8 +222,26 @@ struct AppNotif {
         }
     }
     
-    static func presentEventVC() {
+    static func presentEventWithNotification(notification: [NSObject: AnyObject]) {
         rootVC.selectedIndex = 0
+        let EventNavController = rootVC.selectedViewController! as! UINavigationController
+        
+        let query = PFQuery(className: PFKey.EVENT.CLASSKEY)
+        let pfid = notification[INSTANCE_ID] as! String
+        query.whereKey(PFKey.OBJECT_ID, equalTo: pfid)
+        query.cachePolicy = PFCachePolicy.NetworkOnly
+        query.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+            if let re = result {
+                let ev = re[0]
+                AppData.EventData.selectedEvent = Event(parseObject: ev)
+                let EventVC = EventNavController.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.EVENT.DETAIL)
+                EventNavController.pushViewController(EventVC, animated: false)
+                print("present detail")
+            }
+            if let error = error {
+                print("Error getting to Event View: ", error)
+            }
+        }
     }
     
     static func presentEventDisWithNotification(notification: [NSObject: AnyObject]) {
@@ -234,8 +256,10 @@ struct AppNotif {
             if let re = result {
                 let ev = re[0]
                 AppData.EventData.selectedEvent = Event(parseObject: ev)
-                let DiscussVC = EventNavController.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.EVENT.DISCUSSION)
-                EventNavController.pushViewController(DiscussVC, animated: false)
+                let EventVC = EventNavController.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.EVENT.DETAIL)
+                EventNavController.pushViewController(EventVC, animated: false)
+                let commentVC = EventVC.navigationController!.storyboard!.instantiateViewControllerWithIdentifier(StoryboardID.EVENT.DISCUSSION)
+                EventVC.navigationController?.pushViewController(commentVC, animated: false)
             }
             if let error = error {
                 print("Error getting to Event Comment View: ", error)
@@ -284,6 +308,7 @@ struct AppNotif {
                         AppData.NotifData.notifInfo!.events.append(eventID)
                         AppData.NotifData.notifInfo!.save()
                     }
+                    break
                 default:
                     print("not implemented yet")
                 }

@@ -91,15 +91,17 @@ struct AppFunc{
     }
     
     static func alertNotificationWithActions(currentVC: UIViewController, notification: [NSObject: AnyObject]) {
-        let message = notification[AppNotif.KEY] as! String
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        let lookAction = UIAlertAction(title: "Go", style: UIAlertActionStyle.Default, handler: { _ in
-            currentVC.navigationController?.popToRootViewControllerAnimated(false)
-            AppNotif.goToVCWithNotification(notification)
-        })
-        let cancelAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil)
-        alert.addAction(cancelAction)
-        alert.addAction(lookAction)
-        currentVC.presentViewController(alert, animated: true, completion: nil)
+        if let message = notification[AppNotif.KEY] as? String {
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            let lookAction = UIAlertAction(title: "Go", style: UIAlertActionStyle.Default, handler: { _ in
+                currentVC.navigationController?.popToRootViewControllerAnimated(false)
+                AppNotif.goToVCWithNotification(notification)
+            })
+            let cancelAction = UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil)
+            alert.addAction(cancelAction)
+            alert.addAction(lookAction)
+            currentVC.presentViewController(alert, animated: true, completion: nil)
+            print("showing notification alert")
+        }
     }
 }

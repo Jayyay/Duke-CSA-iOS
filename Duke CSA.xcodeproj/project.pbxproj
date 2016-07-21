@@ -1189,6 +1189,9 @@
 						DevelopmentTeam = 2B844QKHM6;
 						DevelopmentTeamName = "Han Yu";
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.InAppPurchase = {
 								enabled = 0;
 							};

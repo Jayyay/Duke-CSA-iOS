@@ -108,6 +108,7 @@ struct AppData {
     
     struct NotifData {
         static var notifInfo: NotifInfo?
+        static var notification: [NSObject: AnyObject]?
     }
     
     struct SpotlightData {
