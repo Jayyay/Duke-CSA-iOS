@@ -40,4 +40,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         previousVC = viewController
     }*/
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
 }
