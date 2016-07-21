@@ -24,9 +24,17 @@ Parse.Cloud.define("push", function (request, response) {
                 var type = request.params.data.notifType;
                 var instanceID = request.params.data.PFInstanceID;
                 qry.equalTo('UserID', targetUser.id);
+                console.log("query for notif data set up");
                 qry.find({
                     success: function (results) {
-                        var notifData = results[0];
+                        console.log("found " + results.length + " notif data");
+                        var notifData;
+                        if (results.length == 0) {
+                            notifData = new NotifData();
+                            notifData.set("UserID", targetUser.id);
+                        } else {
+                            notifData = results[0];
+                        }
                         var notifOfType = notifData.get(type);
                         console.log(notifOfType);
                         if (!notifOfType) {
@@ -40,28 +48,17 @@ Parse.Cloud.define("push", function (request, response) {
                         notifData.save(null, {
                             success: function(user) {
                                 console.log("user notif data saved.");
+                                response.success("Successfully pushed notification to " + user.get("displayName") 
+                            + " with type " + type + " and id " + instanceID);
                             },
                             error: function(user, error) {
                                 console.log("saving user notif data error: " + error.message);
+                                response.error("saving user notif data error " + error.message);
                             }
                         });
-                        response.success("Successfully pushed notification to " + user.get("displayName") 
-                            + " with type " + type + " and id " + instanceID);
                     },
                     error: function (error) {
-                        var notifData = new NotifData();
-                        notifData.set(type, [instanceID]);
-                        notifData.set("UserID", targetUser.id);
-                        notifData.save(null, {
-                            success: function(user) {
-                                console.log("user notif data saved.");
-                            },
-                            error: function(user, error) {
-                                console.log("saving user notif data error: " + error.message);
-                            }
-                        });
-                        response.success("Successfully pushed notification to " + user.get("displayName") 
-                            + " with type " + type + " and id " + instanceID);
+                        response.error("Error when finding notif data " + error.message);
                     }
                 });
             }
