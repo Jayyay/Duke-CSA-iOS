@@ -104,6 +104,20 @@ struct AppNotif {
         newNotif.saveInBackground()
     }
     
+    static func retrieveNotifications() {
+        if let user = PFUser.currentUser() {
+            PFCloud.callFunctionInBackground("getNotifData", withParameters: ["userID": user.objectId!], block: { (result, error) in
+                if let re = result as? [[NSObject:AnyObject]] {
+                    for notification in re {
+                        handleBadgeNotif(notification)
+                    }
+                    showBadgeOnTabbar()
+                    PFCloud.callFunctionInBackground("wipeNotifData", withParameters: ["userID": user.objectId!])
+                }
+            })
+        }
+    }
+    
     static var rootVC: TabBarController!
     
     static func goToVCWithNotification(notification: [NSObject : AnyObject]) {

@@ -1,19 +1,20 @@
+var notifTypes = ["newEvent","newEvDisRe","newEvLike","newBulletin","newRs","mutualCrush","newRsReply","newRsReplyRe","newRsLike","newRsGoing","newQAAnswer","newQAReply","newQAReplyRe","newQAVoteQuestion","newQAVoteAnswer"];
+
 Parse.Cloud.define("push", function (request, response) {
-    var query, targetUser;
+    var query = new Parse.Query(Parse.Installation);
+    var targetUser;
     var toUser = request.params.toUser; // this is the id of target user
     if (request.user && request.user.id == toUser) {
         return;
     }
     if (toUser) {
         targetUser = new Parse.User();
-        targetUser.id = toUser;
-        query = new Parse.Query(Parse.Installation)   
+        targetUser.id = toUser; 
         query.equalTo('user', targetUser);
     }
 
     Parse.Push.send({
         where: query,
-        channels: request.params.channels,
         data: request.params.data
     }, {
         useMasterKey: true,
@@ -24,23 +25,23 @@ Parse.Cloud.define("push", function (request, response) {
                 var type = request.params.data.notifType;
                 var instanceID = request.params.data.PFInstanceID;
                 qry.equalTo('UserID', targetUser.id);
-                console.log("query for notif data set up");
                 qry.find({
                     success: function (results) {
                         console.log("found " + results.length + " notif data");
                         var notifData;
+
                         if (results.length == 0) {
                             notifData = new NotifData();
+                            for (var i = 0; i < notifTypes.length; i++) {
+                                notifData.set(notifTypes[i], []);
+                            }
                             notifData.set("UserID", targetUser.id);
                         } else {
                             notifData = results[0];
                         }
+
                         var notifOfType = notifData.get(type);
                         console.log(notifOfType);
-                        if (!notifOfType) {
-                            notifData.set(type, []);
-                            notifOfType = notifData.get(type);
-                        }
                         if (!notifOfType.includes(instanceID)) {
                             notifOfType.push(instanceID);
                         }
@@ -61,6 +62,9 @@ Parse.Cloud.define("push", function (request, response) {
                         response.error("Error when finding notif data " + error.message);
                     }
                 });
+            }
+            else {
+                response.success("Successfully sent notifications to all");
             }
         },
         error: function (error) {
@@ -148,4 +152,62 @@ Parse.Cloud.define("mostVote", function (request, response) {
 			console.log("Error: " + error.code + " " + error.message);
 		}
 	});
+});
+
+Parse.Cloud.define("getNotifData", function (request, response) {
+    var userID = request.params.userID;
+    var NotifData = Parse.Object.extend("NotifData");
+    var query = new Parse.Query(NotifData);
+    query.equalTo("UserID", userID);
+    query.find({
+        success: function(results) {
+            if (results.length == 0) {
+                response.error("No notification data for this user found.");
+                return;
+            }
+            var notifData = results[0];
+            var result = [];
+            for (var i = 0; i < notifTypes.length; i++) {
+                var instances = notifData.get(notifTypes[i]);
+                for (var j = 0; j < instances.length; j++) {
+                    var notification = {"notifType": notifTypes[i], "PFInstanceID": instances[j]};
+                    result.push(notification);
+                }
+            }
+            response.success(result);
+        },
+        error: function(error) {
+            response.error("Error finding Notif Data with this UserID.");
+        }
+    });
+});
+
+Parse.Cloud.define("wipeNotifData", function (request, response) {
+    var userID = request.params.userID;
+    var NotifData = Parse.Object.extend("NotifData");
+    var query = new Parse.Query(NotifData);
+    query.equalTo("UserID", userID);
+    query.find({
+        success: function (results) {
+            if (results.length == 0) {
+                response.error("No notification data for this user found.");
+                return;
+            }
+            var notifData = results[0];
+            for (var i = 0; i < notifTypes.length; i++) {
+                notifData.set(notifTypes[i], []);
+            }
+            notifData.save(null, {
+                success: function (notifData) {
+                    response.success("Notification data wiped successfully.");
+                },
+                error: function (notifData, error) {
+                    response.error("Error wiping notification data: " + error.message);
+                }
+            });
+        },
+        error: function (error) {
+            response.error("Error finding Notif Data with this UserID.");
+        }
+    });
 });

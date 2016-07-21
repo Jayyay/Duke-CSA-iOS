@@ -55,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let notification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject:AnyObject] {
             AppData.NotifData.notification = notification
+        } else {
+            AppNotif.retrieveNotifications()
         }
         
         return true
