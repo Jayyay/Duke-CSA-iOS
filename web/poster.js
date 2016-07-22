@@ -4,6 +4,18 @@ var Event = Parse.Object.extend("Event");
 
 function pictureChanged(picture) {
 	if (!ValidateSingleInput(picture)) return;
+	readPicture(picture);
+}
+
+function readPicture(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			$('#chosenPic').attr('src', e.target.result);
+		}
+		reader.readAsDataURL(input.files[0]);
+		$('#chosenPic').show();
+	}
 }
 
 var _validFileExtensions = [".jpg", ".png"];    

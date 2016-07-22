@@ -148,3 +148,12 @@ input[type="date"],
 input[type="time"] {
 	width: 40%;
 }
+
+#chosenPic {
+	max-height: 300px;
+	width: auto;
+}
+
+textarea {
+	min-height: 80px;
+}
