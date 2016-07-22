@@ -23,7 +23,7 @@ Parse.Cloud.define("push", function (request, response) {
                 saveNotifDataForUser(targetUser, request, response);
             }
             else {
-                response.success("Successfully sent notifications to all");
+                saveNotifDataForAll(request, response);
             }
         },
         error: function (error) {
@@ -32,50 +32,112 @@ Parse.Cloud.define("push", function (request, response) {
     });
 });
 
+function saveNotifDataForAll (request, response) {
+    var User = Parse.Object.extend("_User");
+    var query = new Parse.Query(User);
+    var NotifData = Parse.Object.extend("NotifData");
+    var type = request.params.data.notifType;
+    var instanceID = request.params.data.PFInstanceID;
+
+    query.each(function (user) {
+        var qry = new Parse.Query(NotifData);
+        qry.equalTo("UserID", user.id);
+        return qry.find();
+    }).then( function (notifs) {
+        var notifData;
+        if (notifs.length == 0) {
+            notifData = new NotifData();
+            notifData.set("UserID", user.id);
+            for (var j = 0; j < notifTypes.length; j++) {
+                notifData.set(notifTypes[j], []);
+            }
+        } else {
+            notifData = notifs[0];
+        }
+        var notifType = notifData.get(type);
+        if (!notifType.includes(instanceID)) {
+            notifType.push(instanceID);
+        }
+        return notifData.save();
+    }).then(function (notifData) {
+        console.log("saved notif data" + notifData);
+        response.success("Saved notification data for all users.");
+    });
+}
+
 function saveNotifDataForUser (targetUser, request, response) {
     var NotifData = Parse.Object.extend("NotifData");
     var qry = new Parse.Query(NotifData);
     var type = request.params.data.notifType;
     var instanceID = request.params.data.PFInstanceID;
     qry.equalTo('UserID', targetUser.id);
-    qry.find({
-        success: function (results) {
-            console.log("found " + results.length + " notif data");
-            var notifData;
+    qry.find().then( function (results) {
+        var notifData;
 
-            if (results.length == 0) {
-                notifData = new NotifData();
-                for (var i = 0; i < notifTypes.length; i++) {
-                    notifData.set(notifTypes[i], []);
-                }
-                notifData.set("UserID", targetUser.id);
-            } else {
-                notifData = results[0];
+        if (results.length == 0) {
+            notifData = new NotifData();
+            for (var i = 0; i < notifTypes.length; i++) {
+                notifData.set(notifTypes[i], []);
             }
-
-            var notifOfType = notifData.get(type);
-            console.log(notifOfType);
-            if (!notifOfType.includes(instanceID)) {
-                notifOfType.push(instanceID);
-            }
-            console.log(notifOfType);
-            notifData.save(null, {
-                success: function(user) {
-                    console.log("user notif data saved.");
-                    response.success("Successfully pushed notification to " + user.get("displayName") 
-                + " with type " + type + " and id " + instanceID);
-                },
-                error: function(user, error) {
-                    console.log("saving user notif data error: " + error.message);
-                    response.error("saving user notif data error " + error.message);
-                }
-            });
-        },
-        error: function (error) {
-            response.error("Error when finding notif data " + error.message);
+            notifData.set("UserID", targetUser.id);
+        } else {
+            notifData = results[0];
         }
+
+        var notifOfType = notifData.get(type);
+        if (!notifOfType.includes(instanceID)) {
+            notifOfType.push(instanceID);
+        }
+        return notifData.save();
+    }).then( function (notifData) {
+        console.log("user notif data saved.");
+        response.success("Successfully pushed notification to " + targetUser.id
+            + " with type " + type + " and id " + instanceID);
     });
 }
+
+Parse.Cloud.define("getNotifData", function (request, response) {
+    var userID = request.params.userID;
+    var NotifData = Parse.Object.extend("NotifData");
+    var query = new Parse.Query(NotifData);
+    query.equalTo("UserID", userID);
+    query.find().then( function(results) {
+        if (results.length == 0) {
+            response.error("No notification data for this user found.");
+            return;
+        }
+        var notifData = results[0];
+        var result = [];
+        for (var i = 0; i < notifTypes.length; i++) {
+            var instances = notifData.get(notifTypes[i]);
+            for (var j = 0; j < instances.length; j++) {
+                var notification = {"notifType": notifTypes[i], "PFInstanceID": instances[j]};
+                result.push(notification);
+            }
+        }
+        response.success(result);
+    });
+});
+
+Parse.Cloud.define("wipeNotifData", function (request, response) {
+    var userID = request.params.userID;
+    var NotifData = Parse.Object.extend("NotifData");
+    var query = new Parse.Query(NotifData);
+    query.equalTo("UserID", userID);
+    query.find().then( function (results) {
+        if (results.length == 0) {
+            response.error("No notification data for this user found.");
+            return;
+        }
+        var notifData = results[0];
+        for (var i = 0; i < notifTypes.length; i++) {
+            notifData.set(notifTypes[i], []);
+        }
+        return notifData.save();
+    }).then( function (notifData) {
+        response.success("Notification data wiped successfully.");
+    });
+});
 
 // request.params.type can be "Question" or "Answer"
 Parse.Cloud.define("mostPosts", function (request, response) {
@@ -156,62 +218,4 @@ Parse.Cloud.define("mostVote", function (request, response) {
 			console.log("Error: " + error.code + " " + error.message);
 		}
 	});
-});
-
-Parse.Cloud.define("getNotifData", function (request, response) {
-    var userID = request.params.userID;
-    var NotifData = Parse.Object.extend("NotifData");
-    var query = new Parse.Query(NotifData);
-    query.equalTo("UserID", userID);
-    query.find({
-        success: function(results) {
-            if (results.length == 0) {
-                response.error("No notification data for this user found.");
-                return;
-            }
-            var notifData = results[0];
-            var result = [];
-            for (var i = 0; i < notifTypes.length; i++) {
-                var instances = notifData.get(notifTypes[i]);
-                for (var j = 0; j < instances.length; j++) {
-                    var notification = {"notifType": notifTypes[i], "PFInstanceID": instances[j]};
-                    result.push(notification);
-                }
-            }
-            response.success(result);
-        },
-        error: function(error) {
-            response.error("Error finding Notif Data with this UserID.");
-        }
-    });
-});
-
-Parse.Cloud.define("wipeNotifData", function (request, response) {
-    var userID = request.params.userID;
-    var NotifData = Parse.Object.extend("NotifData");
-    var query = new Parse.Query(NotifData);
-    query.equalTo("UserID", userID);
-    query.find({
-        success: function (results) {
-            if (results.length == 0) {
-                response.error("No notification data for this user found.");
-                return;
-            }
-            var notifData = results[0];
-            for (var i = 0; i < notifTypes.length; i++) {
-                notifData.set(notifTypes[i], []);
-            }
-            notifData.save(null, {
-                success: function (notifData) {
-                    response.success("Notification data wiped successfully.");
-                },
-                error: function (notifData, error) {
-                    response.error("Error wiping notification data: " + error.message);
-                }
-            });
-        },
-        error: function (error) {
-            response.error("Error finding Notif Data with this UserID.");
-        }
-    });
 });
