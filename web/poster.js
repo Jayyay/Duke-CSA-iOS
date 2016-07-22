@@ -41,11 +41,10 @@ function post() {
 
 	var dateInput = $("input[type='date']")[0];
 	var timeInput = $("input[type='time']")[0];
-	var date = new Date(dateInput.valueAsNumber + timeInput.valueAsNumber);
-	console.log(date);
+	var date = new Date();
+	var offset = date.getTimezoneOffset();
+	date = new Date(dateInput.valueAsNumber + timeInput.valueAsNumber + offset * 60000);
 	evt.set("when", date);
-	console.log(dateInput);
-	console.log(timeInput);
 	
 	var loaded = document.getElementById("picture");
 	var file = loaded.files[0];
@@ -69,7 +68,7 @@ function post() {
     	"data": {
         "alert": {
             "title": "New Event!",
-            "subtitle": "time",
+            "subtitle": date.toLocaleString(),
             "body": evt.get("title")
         },
         "badge": "Increment",
