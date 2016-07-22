@@ -73,6 +73,7 @@ function post() {
 	}
 	else {
 		evt.set("needToSignUp", false);
+		evt.set("openForSignUp", false);
 	}
 
 	evt.save().then( function (newEvent) {
