@@ -45,33 +45,35 @@ function saveNotifDataForAll (request, response) {
     query.each(function (user) {
         var qry = new Parse.Query(NotifData);
         qry.equalTo("UserID", user.id);
-        return qry.find();
-    }).then( function (notifs) {
-        var notifData;
-        console.log("in here");
-        console.log(notifs);
-        if (notifs.length == 0) {
-            console.log("notif data not found");
-            notifData = new NotifData();
-            notifData.set("UserID", user.id);
-            for (var j = 0; j < notifTypes.length; j++) {
-                notifData.set(notifTypes[j], []);
+        qry.find({
+            success: function (notifs) {
+                var notifData;
+                console.log("in here");
+                console.log(notifs);
+                if (notifs.length == 0) {
+                    console.log("notif data not found");
+                    notifData = new NotifData();
+                    notifData.set("UserID", user.id);
+                    for (var j = 0; j < notifTypes.length; j++) {
+                        notifData.set(notifTypes[j], []);
+                    }
+                } else {
+                    console.log("found notif data");
+                    notifData = notifs[0];
+                }
+                var notifType = notifData.get(type);
+                console.log(notifType);
+                if (!notifType.includes(instanceID)) {
+                    notifType.push(instanceID);
+                }
+                console.log(notifType);
+                notifData.save();
+            },
+            error: function (error) {
+                console.log("Error finding notif data with user: " + error.message);
             }
-        } else {
-            console.log("found notif data");
-            notifData = notifs[0];
-        }
-        var notifType = notifData.get(type);
-        console.log(notifType);
-        if (!notifType.includes(instanceID)) {
-            notifType.push(instanceID);
-        }
-        console.log(notifType);
-        return notifData.save();
-    }, function( error) {
-        console.log("Error: " + error.message);
-    }).then(function (notifData) {
-        console.log("saved notif data" + notifData);
+        });
+    }).then(function () {
         response.success("Saved notification data for all users.");
     });
 }
