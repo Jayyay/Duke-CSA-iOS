@@ -36,8 +36,11 @@ function saveNotifDataForAll (request, response) {
     var User = Parse.Object.extend("_User");
     var query = new Parse.Query(User);
     var NotifData = Parse.Object.extend("NotifData");
+
     var type = request.params.data.notifType;
     var instanceID = request.params.data.PFInstanceID;
+
+    console.log("in this function");
 
     query.each(function (user) {
         var qry = new Parse.Query(NotifData);
@@ -45,20 +48,28 @@ function saveNotifDataForAll (request, response) {
         return qry.find();
     }).then( function (notifs) {
         var notifData;
+        console.log("in here");
+        console.log(notifs);
         if (notifs.length == 0) {
+            console.log("notif data not found");
             notifData = new NotifData();
             notifData.set("UserID", user.id);
             for (var j = 0; j < notifTypes.length; j++) {
                 notifData.set(notifTypes[j], []);
             }
         } else {
+            console.log("found notif data");
             notifData = notifs[0];
         }
         var notifType = notifData.get(type);
+        console.log(notifType);
         if (!notifType.includes(instanceID)) {
             notifType.push(instanceID);
         }
+        console.log(notifType);
         return notifData.save();
+    }, function( error) {
+        console.log("Error: " + error.message);
     }).then(function (notifData) {
         console.log("saved notif data" + notifData);
         response.success("Saved notification data for all users.");

@@ -112,6 +112,7 @@ struct AppNotif {
                         handleBadgeNotif(notification)
                     }
                     showBadgeOnTabbar()
+                    print("after calling show badge");
                     PFCloud.callFunctionInBackground("wipeNotifData", withParameters: ["userID": user.objectId!])
                 }
             })
@@ -344,6 +345,7 @@ struct AppNotif {
             
             let eventVC = rootVC.viewControllers![0] as! EventNavigationController
             let eventCount = notif.events.count + notif.newEvents.count
+            print("eventCount: ", eventCount);
             if (notif.newEvents.count != 0) {
                 AppStatus.EventStatus.tableShouldRefresh = true
             }
