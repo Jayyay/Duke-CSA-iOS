@@ -345,7 +345,6 @@ struct AppNotif {
             
             let eventVC = rootVC.viewControllers![0] as! EventNavigationController
             let eventCount = notif.events.count + notif.newEvents.count
-            print("eventCount: ", eventCount);
             if (notif.newEvents.count != 0) {
                 AppStatus.EventStatus.tableShouldRefresh = true
             }
