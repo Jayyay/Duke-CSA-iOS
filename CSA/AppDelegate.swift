@@ -9,6 +9,9 @@
 import UIKit
 import FBSDKCoreKit
 import ParseFacebookUtilsV4
+import UserNotifications
+
+let userNotificationReceivedNotificationName = "com.billyu.Duke-CSA.userNotificationReceived"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -62,23 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        let installation = PFInstallation.currentInstallation()
-        installation.setDeviceTokenFromData(deviceToken)
-        installation.addUniqueObject(AppNotif.Channels.ALL, forKey: AppNotif.Channels.KEY)
-        if let user = PFUser.currentUser() {
-            installation[PFKey.INSTALL.BINDED_USER] = user
-        } else {
-            installation[PFKey.INSTALL.BINDED_USER] = NSNull()
-        }
-        installation.saveInBackground()
-        print("succeedtoregisterRemoteNote")
-    }
-    
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        print("failToRegisterNote")
-    }
-    
     func application(application: UIApplication,
                      openURL url: NSURL,
                              sourceApplication: String?,
@@ -110,25 +96,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         completionHandler(.NoData)
     }
-    
-    
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+}
+
+extension AppDelegate {
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let installation = PFInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.addUniqueObject(AppNotif.Channels.ALL, forKey: AppNotif.Channels.KEY)
+        if let user = PFUser.currentUser() {
+            installation[PFKey.INSTALL.BINDED_USER] = user
+        } else {
+            installation[PFKey.INSTALL.BINDED_USER] = NSNull()
+        }
+        installation.saveInBackground()
+        print("succeedtoregisterRemoteNote")
     }
     
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("failToRegisterNote")
+    }
+}
+
+@available(iOS 10.0, *)
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(center: UNUserNotificationCenter, willPresentNotification notification: UNNotification, withCompletionHandler completionHandler: (UNNotificationPresentationOptions) -> Void) {
+        NSNotificationCenter.defaultCenter().postNotificationName(userNotificationReceivedNotificationName, object: .None)
+        completionHandler(.Alert)
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    func userNotificationCenter(center: UNUserNotificationCenter, didReceiveNotificationResponse response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void) {
+        print("Response received for \(response.actionIdentifier)")
+        completionHandler()
     }
-    
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-    
-    
 }

@@ -141,7 +141,6 @@
 		69926AFE1ACF94C60080E51E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69926AFC1ACF94C60080E51E /* Main.storyboard */; };
 		69926B001ACF94C60080E51E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69926AFF1ACF94C60080E51E /* Images.xcassets */; };
 		69926B031ACF94C60080E51E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69926B011ACF94C60080E51E /* LaunchScreen.xib */; };
-		69926B0F1ACF94C60080E51E /* CSATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69926B0E1ACF94C60080E51E /* CSATests.swift */; };
 		69926B341ACF9BE50080E51E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69926B331ACF9BE50080E51E /* AudioToolbox.framework */; };
 		69926B361ACF9BEA0080E51E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69926B351ACF9BEA0080E51E /* CFNetwork.framework */; };
 		69926B381ACF9BEF0080E51E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69926B371ACF9BEF0080E51E /* CoreGraphics.framework */; };
@@ -408,8 +407,6 @@
 		69926AFF1ACF94C60080E51E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		69926B021ACF94C60080E51E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		69926B081ACF94C60080E51E /* Duke CSATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Duke CSATests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		69926B0D1ACF94C60080E51E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69926B0E1ACF94C60080E51E /* CSATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSATests.swift; sourceTree = "<group>"; };
 		69926B331ACF9BE50080E51E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		69926B351ACF9BEA0080E51E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		69926B371ACF9BEF0080E51E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -888,7 +885,6 @@
 				69058F5C1ACFFCA3003DFB3C /* UI */,
 				69D420741AFCB4CB0072FCD7 /* Sound Effects */,
 				69926AF31ACF94C60080E51E /* CSA */,
-				69926B0B1ACF94C60080E51E /* CSATests */,
 				0074D9061D426904007E42B6 /* ServiceExtension */,
 				69926AF21ACF94C60080E51E /* Products */,
 			);
@@ -930,23 +926,6 @@
 			isa = PBXGroup;
 			children = (
 				69926AF51ACF94C60080E51E /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		69926B0B1ACF94C60080E51E /* CSATests */ = {
-			isa = PBXGroup;
-			children = (
-				69926B0E1ACF94C60080E51E /* CSATests.swift */,
-				69926B0C1ACF94C60080E51E /* Supporting Files */,
-			);
-			path = CSATests;
-			sourceTree = "<group>";
-		};
-		69926B0C1ACF94C60080E51E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				69926B0D1ACF94C60080E51E /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1271,6 +1250,9 @@
 					};
 					69926B071ACF94C60080E51E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 2B844QKHM6;
+						DevelopmentTeamName = "Han Yu";
+						ProvisioningStyle = Automatic;
 						TestTargetID = 69926AF01ACF94C60080E51E;
 					};
 				};
@@ -1545,7 +1527,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69926B0F1ACF94C60080E51E /* CSATests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1769,6 +1750,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1781,6 +1763,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JayW.Duke-CSA";
 				PRODUCT_NAME = "Duke CSATests";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CSA.app/CSA";
 			};
 			name = Debug;
@@ -1789,6 +1772,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1797,6 +1781,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JayW.Duke-CSA";
 				PRODUCT_NAME = "Duke CSATests";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CSA.app/CSA";
 			};
 			name = Release;
@@ -1811,6 +1796,7 @@
 				0074D90E1D426904007E42B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		69926AEC1ACF94C60080E51E /* Build configuration list for PBXProject "Duke CSA" */ = {
 			isa = XCConfigurationList;
