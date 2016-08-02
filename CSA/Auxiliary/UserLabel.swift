@@ -37,7 +37,8 @@ class UserLabel: PPLabel, PPLabelDelegate {
         mainPost = withPost
         parentVC = fromVC
         
-        let attrPlain = [NSFontAttributeName:UIFont.systemFontOfSize(fontSize)]
+        let attrPlain = [NSFontAttributeName:UIFont.systemFontOfSize(fontSize),
+                         NSForegroundColorAttributeName: UIColor.blackColor()]
         let attrUsername = [NSFontAttributeName:UIFont.systemFontOfSize(fontSize),
             NSForegroundColorAttributeName:AppConstants.Color.usernameColor]
         let attrTxt = NSMutableAttributedString()
