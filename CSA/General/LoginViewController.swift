@@ -18,9 +18,8 @@ class LoginViewController: UIViewController {
     //@IBOutlet weak var viewStatus: UIImageView!
     @IBOutlet weak var viewButtonView: UIView!
     @IBOutlet weak var viewStatus: UIView!
+    @IBOutlet weak var lblStatus: UILabel!
     
-    
-    let lblStatus = UILabel()
     let statusMsg = ["Connecting ...", "Authorizing ...", "Retrieving profile ...", "Setting Up...", "Failed, try again", "Failed to retrieve", "Not authorized"]
     //var statusOriginalPosition = CGPointZero
     
@@ -41,11 +40,8 @@ class LoginViewController: UIViewController {
         spinner.alpha = 0.0
         btnLogin.addSubview(spinner)
         
-        //imgStatus.hidden = true
         viewStatus.alpha = 0.0
-        //statusOriginalPosition = viewStatus.center
-        
-        lblStatus.frame = CGRect(x: 0.0, y: 0.0, width: viewStatus.frame.size.width, height: viewStatus.frame.size.height)
+
         lblStatus.font = UIFont(name: "HelveticaNeue", size: 18.0)
         lblStatus.textColor = UIColor.whiteColor()
         lblStatus.textAlignment = .Center
