@@ -287,5 +287,4 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                                     }
         })
     }
-    
 }

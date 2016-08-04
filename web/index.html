@@ -1,0 +1,67 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Event Poster</title>
+  <meta name="description" content="My Parse App">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/custom.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+	<script type="text/javascript" src="./poster.js"></script>
+</head>
+
+<body>
+	<div class="container">
+	<h1>Duke CSA App Event Poster</h1>
+
+	<div id="description">
+		<p>Put in event information and hit "post". The event will be posted to the app and pushed to all users.</p>
+	</div>
+
+	<form name="form" action="" method="get">
+		<span>Title</span>
+		<input type="text" name="title"/>
+		<br>
+		<span>Time</span>
+		<br>
+		<input type="date" name="date"/>
+		<input type="time" name="time"/>
+		<br>
+		<span>Location</span>
+		<input type="text" name="location"/>
+		<br>
+		<span>Detail</span>
+		<textarea type="text" name="detail"></textarea>
+		<br>
+		<span>Picture</span>
+		<br>
+		<img style="display:none;" id="chosenPic" src="#" alt="Picture Preview"/>
+		<input id="picture" type="file" name="picture" onchange="pictureChanged(this);"/>
+		<br>
+
+		<span style="margin-right: 30px;">Need Sign Up</span>
+		<input type="radio" name="needSignUp" value="true" checked>
+		<span>Yes</span>
+		<input type="radio" name="needSignUp" value="false">
+		<span>No</span>
+		<br>
+
+		<div id="signupurl">
+			<span>Sign Up URL (Google Form)</span>
+			<input type="url" name="url"/>
+		</div>
+
+		<br>
+		<button type="button" id="post">Post</button>
+	</form>
+
+	<div id="bottom">
+		<p>Developer: Bill Yu</p>
+	</div>
+	</div>
+</body>
+
+</html>

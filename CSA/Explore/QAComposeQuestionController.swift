@@ -50,7 +50,7 @@ class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextF
         //set time out
         NSTimer.scheduledTimerWithTimeInterval(TIME_OUT_IN_SEC, target: self, selector: #selector(postTimeOut), userInfo: nil, repeats: false)
         
-        //post
+        // post
         newPost.saveWithBlock { (success:Bool, error:NSError?) -> Void in
             //change app status
             self.postConnectSuccess = true

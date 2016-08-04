@@ -12,7 +12,7 @@ struct PFKey {
     static let IS_VALID = "isValid"
     static let OBJECT_ID = "objectId"
     struct USER {
-        static let CLASSKEY = "User"
+        static let CLASSKEY = "_User"
         static let IS_ADMIN = "isAdmin"
         static let GENDER = "gender"
         static let REAL_NAME = "realName"

@@ -102,6 +102,15 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
             tableView.reloadRowsAtIndexPaths([i], withRowAnimation: UITableViewRowAnimation.None)
             cameBackFromIndexPath = nil
         }
+        
+        // update badge
+        if let notif = AppData.NotifData.notifInfo {
+            if (notif.questions.contains(question.PFInstance.objectId!)) {
+                notif.questions.removeAtIndex(notif.questions.indexOf(question.PFInstance.objectId!)!)
+                notif.save()
+                AppNotif.showBadgeOnTabbar()
+            }
+        }
     }
     
     // MARK: - Data Query

@@ -18,6 +18,7 @@ class RendezvousCell: UITableViewCell {
     @IBOutlet weak var lblRsTitle: UILabel!
     @IBOutlet weak var lblRsWhenWhere: UILabel!
     @IBOutlet weak var lblMainPost: UILabel!
+    @IBOutlet weak var dot: UIView!
     
     @IBOutlet weak var lblTag1: UILabel!
     @IBOutlet weak var lblTag2: UILabel!
@@ -228,6 +229,18 @@ class RendezvousCell: UITableViewCell {
         }else{
             self.btnDelete.hidden = false
         }
+        
+        // red dot indicating notif
+        if let notif = AppData.NotifData.notifInfo {
+            if (notif.rendezvous.contains(rs.PFInstance.objectId!)) {
+                dot.backgroundColor = UIColor.redColor()
+                dot.hidden = false
+                print("dot")
+            } else {
+                dot.hidden = true
+            }
+        }
+        
         layoutIfNeeded()
     }
     

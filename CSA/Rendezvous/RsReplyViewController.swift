@@ -222,6 +222,15 @@ class RsReplyViewController: ReplyController, UITableViewDataSource, ENSideMenuD
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         rsReplyAutoRefresh()
+        
+        // update badge
+        if let notif = AppData.NotifData.notifInfo {
+            if (notif.rendezvous.contains(selectedRs.PFInstance.objectId!)) {
+                notif.rendezvous.removeAtIndex(notif.rendezvous.indexOf(selectedRs.PFInstance.objectId!)!)
+                notif.save()
+                AppNotif.showBadgeOnTabbar()
+            }
+        }
     }
     deinit{
         print("Release - RsDetailViewController")

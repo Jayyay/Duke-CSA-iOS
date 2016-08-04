@@ -49,6 +49,18 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.sideMenuController()?.sideMenu?.resetMenuSelectionForRow(AppStatus.EventStatus.ViewName.Detail.rawValue)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if let notif = AppData.NotifData.notifInfo {
+            if notif.newEvents.contains(selectedEvent.PFInstance.objectId!) {
+                notif.newEvents.removeAtIndex(notif.newEvents.indexOf(selectedEvent.PFInstance.objectId!)!)
+                notif.save()
+                AppNotif.showBadgeOnTabbar()
+                AppStatus.EventStatus.tableShouldRefresh = true
+            }
+        }
+    }
+    
     deinit{
         AppData.EventData.signupVC = nil
         AppData.EventData.discussVC = nil

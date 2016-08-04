@@ -26,18 +26,16 @@ class QAPostCell: UITableViewCell {
     
     let TIME_OUT_IN_SEC = 2.0
     
+    @IBOutlet weak var dot: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapOnBackground))
         voteBackground.addGestureRecognizer(tap)
         voteBackground.backgroundColor = UIColor.clearColor()
-    }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        dot.hidden = true
     }
     
     func initWithPost(post: QAPost, fromVC: UIViewController, fromTableView tableView:UITableView, forIndexPath indexPath:NSIndexPath) {
@@ -87,6 +85,19 @@ class QAPostCell: UITableViewCell {
         }
         if post.downvotes.contains(id) {
             downVoteButton.setImage(AppConstants.Vote.DOWNVOTE_HIGHLIGHT, forState: .Normal)
+        }
+        
+        // red dot indicating notif
+        if let notif = AppData.NotifData.notifInfo {
+            if (notif.questions.contains(post.PFInstance.objectId!)
+                || notif.answers.contains(post.PFInstance.objectId!)
+                || notif.ansQuestions.contains(post.PFInstance.objectId!)) {
+                dot.backgroundColor = UIColor.redColor()
+                dot.hidden = false
+                print("dot")
+            } else {
+                dot.hidden = true
+            }
         }
         
         setNeedsLayout()

@@ -21,11 +21,6 @@ class EventNavigationController: ENSideMenuNavigationController, ENSideMenuDeleg
         sideMenu?.menuWidth = 250.0 // optional, default is 160
         sideMenu?.bouncingEnabled = false
         view.bringSubviewToFront(navigationBar) // make navigation bar showing over side menu
-        
-        /*navigation style
-        self.navigationBar.barStyle = UIBarStyle.BlackTranslucent
-        self.navigationBar.tintColor = UIColor.whiteColor()
-       */
     }
     
     // MARK: - ENSideMenu Delegate

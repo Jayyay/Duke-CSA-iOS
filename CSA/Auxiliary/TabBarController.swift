@@ -14,7 +14,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        
     }
     //tabbarcontroller
     
@@ -40,5 +39,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         previousVC = viewController
     }*/
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     
 }

@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A239j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="HelveticaNeue.ttc">
+        <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -273,6 +273,19 @@
                             <constraint firstItem="nqh-ae-P3s" firstAttribute="leading" secondItem="1g9-hA-HlF" secondAttribute="trailing" id="ums-Q7-p5F"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrY-tp-1gd">
+                        <color key="backgroundColor" red="0.87753906250000002" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="EJj-O9-yFB"/>
+                            <constraint firstAttribute="width" constant="10" id="ard-aE-HPQ"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Kl8-CL-sub" firstAttribute="top" secondItem="FPe-CE-hqG" secondAttribute="bottom" constant="2" id="5Gs-ZK-OGg"/>
@@ -282,12 +295,14 @@
                     <constraint firstAttribute="trailingMargin" secondItem="Kl8-CL-sub" secondAttribute="trailing" constant="8" id="BpI-JV-5f3"/>
                     <constraint firstAttribute="bottom" secondItem="aaO-sp-2wu" secondAttribute="bottom" id="G5c-Mr-KCj"/>
                     <constraint firstItem="FPe-CE-hqG" firstAttribute="top" secondItem="Iuj-Eg-g7m" secondAttribute="bottom" constant="8" id="I4V-Ri-PhY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="vrY-tp-1gd" secondAttribute="trailing" id="INE-wR-1id"/>
                     <constraint firstItem="FPe-CE-hqG" firstAttribute="leading" secondItem="eMc-as-qer" secondAttribute="leadingMargin" constant="8" id="P5f-zj-WgZ"/>
                     <constraint firstItem="Iuj-Eg-g7m" firstAttribute="leading" secondItem="eMc-as-qer" secondAttribute="leading" id="Qq0-u4-E9t"/>
                     <constraint firstItem="FPe-CE-hqG" firstAttribute="trailing" secondItem="eMc-as-qer" secondAttribute="trailingMargin" constant="-8" id="UrL-oe-xzA"/>
                     <constraint firstItem="aaO-sp-2wu" firstAttribute="leading" secondItem="eMc-as-qer" secondAttribute="leading" id="WkT-aS-bhX"/>
                     <constraint firstItem="4pA-KD-VVt" firstAttribute="leading" secondItem="eMc-as-qer" secondAttribute="leadingMargin" id="Wzc-tI-f14"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Gjl-A3-TNY" secondAttribute="trailing" constant="8" id="ZTq-7k-PwJ"/>
+                    <constraint firstAttribute="topMargin" secondItem="vrY-tp-1gd" secondAttribute="top" constant="-3" id="ZfY-9F-QM4"/>
                     <constraint firstItem="4pA-KD-VVt" firstAttribute="top" secondItem="Gjl-A3-TNY" secondAttribute="bottom" constant="8" id="gIf-qU-lpv"/>
                     <constraint firstAttribute="trailing" secondItem="Iuj-Eg-g7m" secondAttribute="trailing" id="qhR-Ge-O8h"/>
                     <constraint firstItem="Gjl-A3-TNY" firstAttribute="top" secondItem="Kl8-CL-sub" secondAttribute="bottom" constant="8" id="rYZ-9O-D12"/>
@@ -301,8 +316,8 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="UrL-oe-xzA"/>
-                        <exclude reference="uyl-JG-oUp"/>
                         <exclude reference="rco-xN-IcK"/>
+                        <exclude reference="uyl-JG-oUp"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -315,6 +330,7 @@
                 <outlet property="ctRsTitleTop" destination="I4V-Ri-PhY" id="tIO-6i-pr8"/>
                 <outlet property="ctRsWhenHeight" destination="eWD-5I-glw" id="kXO-HG-j6F"/>
                 <outlet property="ctRsWhenTop" destination="5Gs-ZK-OGg" id="hiw-qp-O8a"/>
+                <outlet property="dot" destination="vrY-tp-1gd" id="xtn-ze-ZeJ"/>
                 <outlet property="imgPropic" destination="TBn-Ye-RFd" id="aco-g8-5mQ"/>
                 <outlet property="lblAuthor" destination="H6M-Sk-pOo" id="Pen-cI-lwt"/>
                 <outlet property="lblGoing" destination="4KQ-bZ-PN4" id="Xkz-bG-966"/>
