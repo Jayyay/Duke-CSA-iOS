@@ -266,7 +266,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		000430931D2D99F700BF6937 /* Duke CSA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Duke CSA.entitlements"; sourceTree = "<group>"; };
+		0008DE0F1D58952C00EE1F6D /* Duke CSA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Duke CSA.entitlements"; sourceTree = "<group>"; };
 		0008ED7C1D3570860049F22E /* NotifInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifInfo.swift; sourceTree = "<group>"; };
 		001FCEF91D2347180025412B /* ReplyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyController.swift; sourceTree = "<group>"; };
 		001FCEFB1D2352CB0025412B /* downvote-plain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downvote-plain.png"; sourceTree = "<group>"; };
@@ -879,7 +879,7 @@
 		69926AE81ACF94C60080E51E = {
 			isa = PBXGroup;
 			children = (
-				000430931D2D99F700BF6937 /* Duke CSA.entitlements */,
+				0008DE0F1D58952C00EE1F6D /* Duke CSA.entitlements */,
 				69CAB3FE1AD8CF3100A266F0 /* External Resource */,
 				69926B1F1ACF96850080E51E /* Framework */,
 				69058F5C1ACFFCA3003DFB3C /* UI */,
