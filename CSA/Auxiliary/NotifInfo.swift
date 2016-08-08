@@ -61,6 +61,6 @@ class NotifInfo: NSObject, NSCoding {
     }
     
     func save() -> Bool {
-        return NSKeyedArchiver.archiveRootObject(self, toFile: NotifInfo.ArchiveURL!.path!)
+        return NSKeyedArchiver.archiveRootObject(self, toFile: NotifInfo.ArchiveURL.path!)
     }
 }

@@ -9,7 +9,6 @@
 import UIKit
 import FBSDKCoreKit
 import ParseFacebookUtilsV4
-import UserNotifications
 
 let userNotificationReceivedNotificationName = "com.billyu.Duke-CSA.userNotificationReceived"
 
@@ -47,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor.whiteColor()
         
         // notification storage
-        let notifInfo = NSKeyedUnarchiver.unarchiveObjectWithFile(NotifInfo.ArchiveURL!.path!) as? NotifInfo
+        let notifInfo = NSKeyedUnarchiver.unarchiveObjectWithFile(NotifInfo.ArchiveURL.path!) as? NotifInfo
         if let info = notifInfo {
             AppData.NotifData.notifInfo = info
         } else {
@@ -114,19 +113,5 @@ extension AppDelegate {
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print("failToRegisterNote")
-    }
-}
-
-@available(iOS 10.0, *)
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    
-    func userNotificationCenter(center: UNUserNotificationCenter, willPresentNotification notification: UNNotification, withCompletionHandler completionHandler: (UNNotificationPresentationOptions) -> Void) {
-        NSNotificationCenter.defaultCenter().postNotificationName(userNotificationReceivedNotificationName, object: .None)
-        completionHandler(.Alert)
-    }
-    
-    func userNotificationCenter(center: UNUserNotificationCenter, didReceiveNotificationResponse response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void) {
-        print("Response received for \(response.actionIdentifier)")
-        completionHandler()
     }
 }

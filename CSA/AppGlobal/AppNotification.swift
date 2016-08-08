@@ -283,7 +283,7 @@ struct AppNotif {
     }
     
     static func handleBadgeNotif(notification: [NSObject: AnyObject]) {
-        let notifInfo = NSKeyedUnarchiver.unarchiveObjectWithFile(NotifInfo.ArchiveURL!.path!) as? NotifInfo
+        let notifInfo = NSKeyedUnarchiver.unarchiveObjectWithFile(NotifInfo.ArchiveURL.path!) as? NotifInfo
         if let info = notifInfo {
             AppData.NotifData.notifInfo = info
             if let type = notification[NotifType.KEY] as? String {

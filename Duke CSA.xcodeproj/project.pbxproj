@@ -27,8 +27,6 @@
 		005FED0E1D1D905900538715 /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005FED0D1D1D905900538715 /* QAViewController.swift */; };
 		005FED101D1D990700538715 /* QAPostCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005FED0F1D1D990700538715 /* QAPostCellNib.xib */; };
 		005FED121D1D993000538715 /* QAPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005FED111D1D993000538715 /* QAPostCell.swift */; };
-		0074D9081D426904007E42B6 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0074D9071D426904007E42B6 /* NotificationService.swift */; };
-		0074D90C1D426904007E42B6 /* ServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0074D9051D426904007E42B6 /* ServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0086CFD51D1B01F400DE0A9F /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD11D1B01F400DE0A9F /* ParseFacebookUtilsV4.framework */; };
 		0086CFD61D1B01F400DE0A9F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD21D1B01F400DE0A9F /* FBSDKCoreKit.framework */; };
 		0086CFD71D1B01F400DE0A9F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0086CFD31D1B01F400DE0A9F /* FBSDKLoginKit.framework */; };
@@ -234,23 +232,6 @@
 		69FF45791ADCC0A200C56788 /* BulletinDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FF45781ADCC0A200C56788 /* BulletinDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		0074D90A1D426904007E42B6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 69926AE91ACF94C60080E51E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0074D9041D426904007E42B6;
-			remoteInfo = ServiceExtension;
-		};
-		69926B091ACF94C60080E51E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 69926AE91ACF94C60080E51E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 69926AF01ACF94C60080E51E;
-			remoteInfo = CSA;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		0074D9101D426904007E42B6 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -258,7 +239,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				0074D90C1D426904007E42B6 /* ServiceExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,8 +246,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		000430931D2D99F700BF6937 /* Duke CSA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Duke CSA.entitlements"; sourceTree = "<group>"; };
 		0008ED7C1D3570860049F22E /* NotifInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifInfo.swift; sourceTree = "<group>"; };
+		001868601D5855C300A29729 /* Duke CSA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Duke CSA.entitlements"; sourceTree = "<group>"; };
 		001FCEF91D2347180025412B /* ReplyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyController.swift; sourceTree = "<group>"; };
 		001FCEFB1D2352CB0025412B /* downvote-plain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downvote-plain.png"; sourceTree = "<group>"; };
 		001FCEFC1D2352CB0025412B /* upvote-plain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upvote-plain.png"; sourceTree = "<group>"; };
@@ -287,7 +267,6 @@
 		005FED0D1D1D905900538715 /* QAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
 		005FED0F1D1D990700538715 /* QAPostCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QAPostCellNib.xib; sourceTree = "<group>"; };
 		005FED111D1D993000538715 /* QAPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAPostCell.swift; sourceTree = "<group>"; };
-		0074D9051D426904007E42B6 /* ServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0074D9071D426904007E42B6 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		0074D9091D426904007E42B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0086CFD11D1B01F400DE0A9F /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
@@ -406,7 +385,6 @@
 		69926AFD1ACF94C60080E51E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		69926AFF1ACF94C60080E51E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		69926B021ACF94C60080E51E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		69926B081ACF94C60080E51E /* Duke CSATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Duke CSATests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69926B331ACF9BE50080E51E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		69926B351ACF9BEA0080E51E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		69926B371ACF9BEF0080E51E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -501,13 +479,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0074D9021D426904007E42B6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		69926AEE1ACF94C60080E51E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -529,13 +500,6 @@
 				69926B381ACF9BEF0080E51E /* CoreGraphics.framework in Frameworks */,
 				69926B361ACF9BEA0080E51E /* CFNetwork.framework in Frameworks */,
 				69926B341ACF9BE50080E51E /* AudioToolbox.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		69926B051ACF94C60080E51E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -879,7 +843,7 @@
 		69926AE81ACF94C60080E51E = {
 			isa = PBXGroup;
 			children = (
-				000430931D2D99F700BF6937 /* Duke CSA.entitlements */,
+				001868601D5855C300A29729 /* Duke CSA.entitlements */,
 				69CAB3FE1AD8CF3100A266F0 /* External Resource */,
 				69926B1F1ACF96850080E51E /* Framework */,
 				69058F5C1ACFFCA3003DFB3C /* UI */,
@@ -894,8 +858,6 @@
 			isa = PBXGroup;
 			children = (
 				69926AF11ACF94C60080E51E /* Duke CSA.app */,
-				69926B081ACF94C60080E51E /* Duke CSATests.xctest */,
-				0074D9051D426904007E42B6 /* ServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1161,23 +1123,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0074D9041D426904007E42B6 /* ServiceExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0074D90F1D426904007E42B6 /* Build configuration list for PBXNativeTarget "ServiceExtension" */;
-			buildPhases = (
-				0074D9011D426904007E42B6 /* Sources */,
-				0074D9021D426904007E42B6 /* Frameworks */,
-				0074D9031D426904007E42B6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ServiceExtension;
-			productName = ServiceExtension;
-			productReference = 0074D9051D426904007E42B6 /* ServiceExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		69926AF01ACF94C60080E51E /* Duke CSA */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69926B121ACF94C60080E51E /* Build configuration list for PBXNativeTarget "Duke CSA" */;
@@ -1190,30 +1135,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				0074D90B1D426904007E42B6 /* PBXTargetDependency */,
 			);
 			name = "Duke CSA";
 			productName = CSA;
 			productReference = 69926AF11ACF94C60080E51E /* Duke CSA.app */;
 			productType = "com.apple.product-type.application";
-		};
-		69926B071ACF94C60080E51E /* Duke CSATests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 69926B151ACF94C60080E51E /* Build configuration list for PBXNativeTarget "Duke CSATests" */;
-			buildPhases = (
-				69926B041ACF94C60080E51E /* Sources */,
-				69926B051ACF94C60080E51E /* Frameworks */,
-				69926B061ACF94C60080E51E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				69926B0A1ACF94C60080E51E /* PBXTargetDependency */,
-			);
-			name = "Duke CSATests";
-			productName = CSATests;
-			productReference = 69926B081ACF94C60080E51E /* Duke CSATests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -1226,16 +1152,11 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Zhe Wang";
 				TargetAttributes = {
-					0074D9041D426904007E42B6 = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 2B844QKHM6;
-						DevelopmentTeamName = "Han Yu";
-						ProvisioningStyle = Automatic;
-					};
 					69926AF01ACF94C60080E51E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 2B844QKHM6;
-						DevelopmentTeamName = "Han Yu";
+						DevelopmentTeam = B63DMH8A29;
+						DevelopmentTeamName = "Zhe Wang";
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1247,13 +1168,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					69926B071ACF94C60080E51E = {
-						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 2B844QKHM6;
-						DevelopmentTeamName = "Han Yu";
-						ProvisioningStyle = Automatic;
-						TestTargetID = 69926AF01ACF94C60080E51E;
 					};
 				};
 			};
@@ -1271,20 +1185,11 @@
 			projectRoot = "";
 			targets = (
 				69926AF01ACF94C60080E51E /* Duke CSA */,
-				69926B071ACF94C60080E51E /* Duke CSATests */,
-				0074D9041D426904007E42B6 /* ServiceExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0074D9031D426904007E42B6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		69926AEF1ACF94C60080E51E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1388,24 +1293,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69926B061ACF94C60080E51E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0074D9011D426904007E42B6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0074D9081D426904007E42B6 /* NotificationService.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		69926AED1ACF94C60080E51E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1523,27 +1413,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69926B041ACF94C60080E51E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0074D90B1D426904007E42B6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0074D9041D426904007E42B6 /* ServiceExtension */;
-			targetProxy = 0074D90A1D426904007E42B6 /* PBXContainerItemProxy */;
-		};
-		69926B0A1ACF94C60080E51E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 69926AF01ACF94C60080E51E /* Duke CSA */;
-			targetProxy = 69926B091ACF94C60080E51E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		69926AFC1ACF94C60080E51E /* Main.storyboard */ = {
@@ -1565,46 +1435,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		0074D90D1D426904007E42B6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = ServiceExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.billyu.Duke-CSA.ServiceExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 2.3;
-			};
-			name = Debug;
-		};
-		0074D90E1D426904007E42B6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = ServiceExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.billyu.Duke-CSA.ServiceExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 2.3;
-			};
-			name = Release;
-		};
 		69926B101ACF94C60080E51E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1622,8 +1452,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhe Wang (B63DMH8A29)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhe Wang (B63DMH8A29)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1645,7 +1475,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a9cbc3af-4521-4135-b4dc-93b8df5a5952";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1669,8 +1499,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhe Wang (B63DMH8A29)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhe Wang (B63DMH8A29)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1684,7 +1514,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a9cbc3af-4521-4135-b4dc-93b8df5a5952";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1709,9 +1539,10 @@
 				INFOPLIST_FILE = CSA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.billyu.Duke-CSA";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.jayzw.Duke-CSA";
 				PRODUCT_NAME = "Duke CSA";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a9cbc3af-4521-4135-b4dc-93b8df5a5952";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CSA/CSA-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
@@ -1737,67 +1568,19 @@
 				INFOPLIST_FILE = CSA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.billyu.Duke-CSA";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.jayzw.Duke-CSA";
 				PRODUCT_NAME = "Duke CSA";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a9cbc3af-4521-4135-b4dc-93b8df5a5952";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CSA/CSA-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
-		69926B161ACF94C60080E51E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CSATests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.JayW.Duke-CSA";
-				PRODUCT_NAME = "Duke CSATests";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CSA.app/CSA";
-			};
-			name = Debug;
-		};
-		69926B171ACF94C60080E51E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CSATests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.JayW.Duke-CSA";
-				PRODUCT_NAME = "Duke CSATests";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CSA.app/CSA";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0074D90F1D426904007E42B6 /* Build configuration list for PBXNativeTarget "ServiceExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0074D90D1D426904007E42B6 /* Debug */,
-				0074D90E1D426904007E42B6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		69926AEC1ACF94C60080E51E /* Build configuration list for PBXProject "Duke CSA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1812,15 +1595,6 @@
 			buildConfigurations = (
 				69926B131ACF94C60080E51E /* Debug */,
 				69926B141ACF94C60080E51E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		69926B151ACF94C60080E51E /* Build configuration list for PBXNativeTarget "Duke CSATests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				69926B161ACF94C60080E51E /* Debug */,
-				69926B171ACF94C60080E51E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
