@@ -72,12 +72,14 @@ class RendezvousCell: UITableViewCell {
             childRs.goings.append(PFUser.currentUser()!)
             let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) will go to your rendezvous: \(childRs.mainPost.truncate(20))."
             let sendToUser = childRs.author
+            self.didGo = true
             childRs.saveWithBlock({ (success:Bool, error:NSError?) -> Void in
                 if success {
                     self.childRs.countGoings += 1
-                    self.didGo = true
                     //push notif
                     AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_GOING, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childRs.PFInstance.objectId!)
+                } else {
+                    self.didGo = false
                 }
             })
             
@@ -89,9 +91,13 @@ class RendezvousCell: UITableViewCell {
                     break
                 }
             }
+            self.didGo = false
             childRs.saveWithBlock({ (success: Bool, error: NSError?) in
-                self.childRs.countGoings -= 1
-                self.didGo = false
+                if success {
+                    self.childRs.countGoings -= 1
+                } else {
+                    self.didGo = true
+                }
             })
         }
         //childRs.refreshGoingsNeeded = true
@@ -104,14 +110,16 @@ class RendezvousCell: UITableViewCell {
             //push notif
             let sendToUser = childRs.author
             let message = "\(PFUser.currentUser()![PFKey.USER.DISPLAY_NAME] as! String) likes your rendezvous: \(childRs.mainPost.truncate(20))."
+            self.didLike = true
             childRs.saveWithBlock({ (success:Bool, error:NSError?) -> Void in
                 if let error = error {
                     print("Error liking rendezvou: ", error)
                 }
                 if success {
                     self.childRs.countLikes += 1
-                    self.didLike = true
                     AppNotif.pushNotification(forType: AppNotif.NotifType.NEW_RS_LIKE, withMessage: message, toUser: sendToUser, withSoundName: AppConstants.SoundFile.NOTIF_1, PFInstanceID: self.childRs.PFInstance.objectId!)
+                } else {
+                    self.didLike = false
                 }
             })
         } else {//change to 'not like'
@@ -122,9 +130,13 @@ class RendezvousCell: UITableViewCell {
                     break;
                 }
             }
+            self.didLike = false
             childRs.saveWithBlock({ (success: Bool, error: NSError?) in
-                self.childRs.countLikes -= 1
-                self.didLike = false
+                if (success) {
+                    self.childRs.countLikes -= 1
+                } else {
+                    self.didLike = true
+                }
             })
         }
     }
