@@ -128,6 +128,12 @@ class QAPost: NSObject {
         let id = PFUser.currentUser()!.objectId!
         print(self.upvotes)
         var action: ChangeVoteButton = .None
+        let voteBefore = self.vote
+        let upvotesBefore = self.upvotes
+        let downvotesBefore = self.downvotes
+        let upvoteImageBefore = upvoteButton.imageView?.image
+        let downvoteImageBefore = downvoteButton.imageView?.image
+        
         if (self.upvotes.contains(id)) {
             self.upvotes.removeAtIndex(self.upvotes.indexOf(id)!)
             self.vote -= 1
@@ -144,28 +150,36 @@ class QAPost: NSObject {
             action = .UpHighlight
             upvote_flag = true
         }
+        voteLabel.text = String(self.vote)
+        
+        switch action {
+        case .UpPlain:
+            upvoteButton.setImage(AppConstants.Vote.UPVOTE_PLAIN, forState: .Normal)
+        case .DownPlain:
+            downvoteButton.setImage(AppConstants.Vote.DOWNVOTE_PLAIN, forState: .Normal)
+        case .UpHighlight:
+            upvoteButton.setImage(AppConstants.Vote.UPVOTE_HIGHLIGHT, forState: .Normal)
+        default:
+            break
+        }
+        
+        cell.setNeedsLayout()
         
         voteSuccess = false
         
         self.saveWithBlock { (success: Bool, error: NSError?) in
             if let error = error {
                 print("Saving vote info error: \(error)")
+                self.vote = voteBefore
+                voteLabel.text = String(self.vote)
+                self.upvotes = upvotesBefore
+                self.downvotes = downvotesBefore
+                upvoteButton.setImage(upvoteImageBefore, forState: .Normal)
+                downvoteButton.setImage(downvoteImageBefore, forState: .Normal)
             }
             else {
                 self.voteSuccess = true
-                voteLabel.text = String(self.vote)
-                switch action {
-                case .UpPlain:
-                    upvoteButton.setImage(AppConstants.Vote.UPVOTE_PLAIN, forState: .Normal)
-                case .DownPlain:
-                    downvoteButton.setImage(AppConstants.Vote.DOWNVOTE_PLAIN, forState: .Normal)
-                case .UpHighlight:
-                    upvoteButton.setImage(AppConstants.Vote.UPVOTE_HIGHLIGHT, forState: .Normal)
-                default:
-                    break
-                }
-                if (self.upvote_flag) {self.notifyAuthorUpvote()}
-                cell.setNeedsLayout()
+                if (self.upvote_flag) { self.notifyAuthorUpvote() }
             }
         }
     }
@@ -173,6 +187,12 @@ class QAPost: NSObject {
     func downvote(voteLabel: UILabel!, upvoteButton: UIButton!, downvoteButton: UIButton!, cell: UITableViewCell) {
         let id = PFUser.currentUser()!.objectId!
         var action: ChangeVoteButton = .None
+        let voteBefore = self.vote
+        let upvotesBefore = self.upvotes
+        let downvotesBefore = self.downvotes
+        let upvoteImageBefore = upvoteButton.imageView?.image
+        let downvoteImageBefore = downvoteButton.imageView?.image
+        
         if (self.downvotes.contains(id)) {
             self.downvotes.removeAtIndex(self.downvotes.indexOf(id)!)
             self.vote += 1
@@ -188,27 +208,35 @@ class QAPost: NSObject {
             self.vote -= 1
             action = .DownHighlight
         }
+        voteLabel.text = String(self.vote)
+        
+        switch action {
+        case .DownPlain:
+            downvoteButton.setImage(AppConstants.Vote.DOWNVOTE_PLAIN, forState: .Normal)
+        case .UpPlain:
+            upvoteButton.setImage(AppConstants.Vote.UPVOTE_PLAIN, forState: .Normal)
+        case .DownHighlight:
+            downvoteButton.setImage(AppConstants.Vote.DOWNVOTE_HIGHLIGHT, forState: .Normal)
+        default:
+            break
+        }
+        
+        cell.setNeedsLayout()
         
         voteSuccess = false
         
         self.saveWithBlock { (success: Bool, error: NSError?) in
             if let error = error {
                 print("Saving vote info error: \(error)")
+                self.vote = voteBefore
+                voteLabel.text = String(self.vote)
+                self.upvotes = upvotesBefore
+                self.downvotes = downvotesBefore
+                upvoteButton.setImage(upvoteImageBefore, forState: .Normal)
+                downvoteButton.setImage(downvoteImageBefore, forState: .Normal)
             }
             else {
                 self.voteSuccess = true
-                voteLabel.text = String(self.vote)
-                switch action {
-                case .DownPlain:
-                    downvoteButton.setImage(AppConstants.Vote.DOWNVOTE_PLAIN, forState: .Normal)
-                case .UpPlain:
-                    upvoteButton.setImage(AppConstants.Vote.UPVOTE_PLAIN, forState: .Normal)
-                case .DownHighlight:
-                    downvoteButton.setImage(AppConstants.Vote.DOWNVOTE_HIGHLIGHT, forState: .Normal)
-                default:
-                    break
-                }
-                cell.setNeedsLayout()
             }
         }
     }

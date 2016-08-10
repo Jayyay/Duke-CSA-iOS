@@ -21,7 +21,7 @@ class QAAnswerCell: UITableViewCell {
     weak var parentVC: UIViewController!
     var childQA: QAPost!
     
-    let TIME_OUT_IN_SEC = 2.0
+    let TIME_OUT_IN_SEC = 4.0
 
     override func awakeFromNib() {
         super.awakeFromNib()
