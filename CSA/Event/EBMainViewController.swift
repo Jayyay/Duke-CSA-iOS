@@ -116,6 +116,22 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
             self.presentViewController(vc, animated: true, completion: nil)
             return
         }
+        else {
+            let id = PFUser.currentUser()!.objectId!
+            let query = PFQuery(className: "_User")
+            query.getObjectInBackgroundWithId(id, block: { (user, error) in
+                if (user == nil) {
+                    let alertController = UIAlertController(title: "Error", message: "Due to a stupid developer's mistake, please log in again to fix your account issues.", preferredStyle: .Alert)
+                    let okAction = UIAlertAction(title: "OK", style: .Cancel, handler: { (action) in
+                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardID.LOGIN) as! LoginViewController
+                        self.presentViewController(vc, animated: true, completion: nil)
+                    })
+                    alertController.addAction(okAction)
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    return
+                }
+            })
+        }
         
         if needRefreshCurrentUser {
             PFUser.currentUser()!.fetchInBackgroundWithBlock({ (o:PFObject?, error:NSError?) -> Void in

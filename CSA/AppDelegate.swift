@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = "https://parseapi.back4app.com"
         }
         Parse.initializeWithConfiguration(configuration)
-        //Parse.setApplicationId("Gfb36k13JiVKIcDDZAwjOAYUT1m6p1Nl0CddTq03", clientKey: "nPSLgS4du3j0Zumn2e1dM3viPGTInELP9feF9yrq")
+        
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         let userNotificationTypes: UIUserNotificationType = ([UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]);
         let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
