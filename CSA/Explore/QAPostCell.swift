@@ -92,7 +92,6 @@ class QAPostCell: UITableViewCell {
                 || notif.ansQuestions.contains(post.PFInstance.objectId!)) {
                 dot.backgroundColor = UIColor.redColor()
                 dot.hidden = false
-                print("dot")
             } else {
                 dot.hidden = true
             }
@@ -113,8 +112,8 @@ class QAPostCell: UITableViewCell {
     
     func voteTimeOut() {
         if (!self.childQA.voteSuccess) {
-            parentVC.view.hideToastActivity()
-            parentVC.view.makeToast(message: "Connecting timed out, your vote FAILED.", duration: 1.0, position: HRToastPositionCenterAbove)
+            //parentVC.view.hideToastActivity()
+            //parentVC.view.makeToast(message: "Connecting timed out, your vote FAILED.", duration: 1.0, position: HRToastPositionCenterAbove)
         }
     }
     

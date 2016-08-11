@@ -105,6 +105,7 @@ struct AppNotif {
     }
     
     static func retrieveNotifications() {
+        print("retrieving notifications for once")
         if let user = PFUser.currentUser() {
             PFCloud.callFunctionInBackground("getNotifData", withParameters: ["userID": user.objectId!], block: { (result, error) in
                 if let re = result as? [[NSObject:AnyObject]] {

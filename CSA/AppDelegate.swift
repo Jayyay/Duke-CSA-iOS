@@ -56,10 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AppData.NotifData.notifInfo = notif
         }
         
+        AppNotif.retrieveNotifications()
         if let notification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject:AnyObject] {
             AppData.NotifData.notification = notification
-        } else {
-            AppNotif.retrieveNotifications()
         }
         
         return true
@@ -76,11 +75,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         FBSDKAppEvents.activateApp()
         if let notif = AppData.NotifData.notification {
-            AppNotif.handleBadgeNotif(notif)
-            AppNotif.showBadgeOnTabbar()
+            AppNotif.retrieveNotifications()
             print("did become active")
             AppNotif.goToVCWithNotification(notif)
         }
@@ -89,8 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication,  didReceiveRemoteNotification userInfo: [NSObject : AnyObject],  fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         let state = application.applicationState
-        AppNotif.handleBadgeNotif(userInfo)
-        AppNotif.showBadgeOnTabbar()
+        AppNotif.retrieveNotifications()
         if state != UIApplicationState.Active {
             AppData.NotifData.notification = userInfo
         }
