@@ -1228,14 +1228,14 @@
 				TargetAttributes = {
 					0074D9041D426904007E42B6 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 2B844QKHM6;
-						DevelopmentTeamName = "Han Yu";
+						DevelopmentTeam = B63DMH8A29;
+						DevelopmentTeamName = "Zhe Wang";
 						ProvisioningStyle = Automatic;
 					};
 					69926AF01ACF94C60080E51E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 2B844QKHM6;
-						DevelopmentTeamName = "Han Yu";
+						DevelopmentTeam = B63DMH8A29;
+						DevelopmentTeamName = "Zhe Wang";
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1577,7 +1577,7 @@
 				INFOPLIST_FILE = ServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.billyu.Duke-CSA.ServiceExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.jayzw.Duke-CSA.ServiceExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1597,7 +1597,7 @@
 				INFOPLIST_FILE = ServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.billyu.Duke-CSA.ServiceExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.jayzw.Duke-CSA.ServiceExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1709,7 +1709,7 @@
 				INFOPLIST_FILE = CSA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.billyu.Duke-CSA";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.jayzw.Duke-CSA";
 				PRODUCT_NAME = "Duke CSA";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CSA/CSA-Bridging-Header.h";
@@ -1737,7 +1737,7 @@
 				INFOPLIST_FILE = CSA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.billyu.Duke-CSA";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.jayzw.Duke-CSA";
 				PRODUCT_NAME = "Duke CSA";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CSA/CSA-Bridging-Header.h";
