@@ -65,10 +65,8 @@ class QAPostCell: UITableViewCell {
         
         //optional
         if post.title != "" {
-            mainPostTop.constant = 34
             postTitle.hidden = false
         } else {
-            mainPostTop.constant = 10
             postTitle.hidden = true
         }
         

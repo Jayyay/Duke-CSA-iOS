@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A239j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11173.2" systemVersion="16A254g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11143.2"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +50,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" text="QAPost Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9z-Xz-Zd6">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="OcN-1q-E0s"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="SQ0-PZ-AmK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" red="0.42352941179999998" green="0.35686274509999999" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -107,6 +107,7 @@
                             <constraint firstAttribute="trailing" secondItem="gWC-FH-xZ6" secondAttribute="trailing" constant="8" id="MNL-V6-Kmw"/>
                             <constraint firstItem="J9z-Xz-Zd6" firstAttribute="leading" secondItem="icw-4L-Xfi" secondAttribute="trailing" id="NFA-eb-g6O"/>
                             <constraint firstItem="PEh-3S-7ff" firstAttribute="leading" secondItem="rY7-1D-5Dn" secondAttribute="trailing" constant="8" id="eil-UE-547"/>
+                            <constraint firstItem="gWC-FH-xZ6" firstAttribute="top" secondItem="J9z-Xz-Zd6" secondAttribute="bottom" constant="8" id="h4i-rR-1Vk"/>
                             <constraint firstItem="rY7-1D-5Dn" firstAttribute="baseline" secondItem="PEh-3S-7ff" secondAttribute="baseline" id="pM2-WD-nPr"/>
                             <constraint firstItem="gWC-FH-xZ6" firstAttribute="trailing" secondItem="PEh-3S-7ff" secondAttribute="trailing" id="tvH-XR-3nr"/>
                         </constraints>
@@ -137,9 +138,9 @@
                     <constraint firstItem="nf0-qp-cVg" firstAttribute="leading" secondItem="JsF-jG-My1" secondAttribute="leadingMargin" id="8rF-AA-hEl"/>
                     <constraint firstAttribute="trailingMargin" secondItem="J9z-Xz-Zd6" secondAttribute="trailing" constant="10" id="A4T-gg-Y94"/>
                     <constraint firstAttribute="trailingMargin" secondItem="nf0-qp-cVg" secondAttribute="trailing" id="CEw-yf-nVu"/>
-                    <constraint firstItem="gWC-FH-xZ6" firstAttribute="top" secondItem="JsF-jG-My1" secondAttribute="topMargin" constant="34" id="Ow3-YJ-MJM"/>
                     <constraint firstItem="nf0-qp-cVg" firstAttribute="top" secondItem="JsF-jG-My1" secondAttribute="topMargin" id="R4D-do-Twz"/>
                     <constraint firstAttribute="bottomMargin" secondItem="PEh-3S-7ff" secondAttribute="bottom" id="a9F-i6-aFH"/>
+                    <constraint firstItem="gWC-FH-xZ6" firstAttribute="top" secondItem="JsF-jG-My1" secondAttribute="topMargin" priority="250" constant="34" id="rts-f0-WUb"/>
                     <constraint firstAttribute="bottomMargin" secondItem="nf0-qp-cVg" secondAttribute="bottom" id="w4u-Aj-x4K"/>
                 </constraints>
             </tableViewCellContentView>
@@ -148,7 +149,7 @@
                 <outlet property="dot" destination="No4-mU-HVa" id="NcN-nD-IDo"/>
                 <outlet property="downVoteButton" destination="TXS-Xn-i4h" id="blD-ie-nxA"/>
                 <outlet property="mainPostLabel" destination="gWC-FH-xZ6" id="s4a-Fy-x6G"/>
-                <outlet property="mainPostTop" destination="Ow3-YJ-MJM" id="kEa-xr-k9T"/>
+                <outlet property="mainPostTop" destination="rts-f0-WUb" id="OHn-DV-LNi"/>
                 <outlet property="postTitle" destination="J9z-Xz-Zd6" id="FgW-he-414"/>
                 <outlet property="timeLabel" destination="PEh-3S-7ff" id="3JT-TY-cTU"/>
                 <outlet property="upvoteButton" destination="eAm-OZ-D3r" id="yp0-Bn-fuL"/>
