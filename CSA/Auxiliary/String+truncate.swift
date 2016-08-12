@@ -10,10 +10,11 @@ import Foundation
 
 extension String {
     func truncate(length: Int, trailing: String? = "...") -> String {
-        if self.characters.count > length {
-            return self.substringToIndex(self.startIndex.advancedBy(length)) + (trailing ?? "")
+        let replacedLineBreaks = self.stringByReplacingOccurrencesOfString("\n", withString: " ")
+        if replacedLineBreaks.characters.count > length {
+            return replacedLineBreaks.substringToIndex(replacedLineBreaks.startIndex.advancedBy(length)) + (trailing ?? "")
         } else {
-            return self
+            return replacedLineBreaks
         }
     }
 }
