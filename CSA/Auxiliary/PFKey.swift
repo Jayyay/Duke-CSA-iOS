@@ -30,14 +30,15 @@ struct PFKey {
         static let RELATIONSHIP = "relationship"
         static let MYEVENTS_ARR = "myEvents"
     }
+    
     struct INSTALL {
         static let BINDED_USER = "user"
         struct CHANNEL {
             static let EVENTS = "event"
-            static let BULLETIN = "bulletin"
             static let RS = "rendezvous"
         }
     }
+    
     struct EVENT {
         static let CLASSKEY = "Event"
         static let TITLE = "title"
@@ -66,16 +67,7 @@ struct PFKey {
             }
         }
     }
-    struct BULLETIN {
-        static let CLASSKEY = "Bulletin"
-        static let TITLE = "title"
-        static let SUBTITLE = "subtitle"
-        static let WHEN = "when"
-        static let WHERE = "where"
-        static let TITPIC_DATA = "titlePicture"
-        static let DETAIL = "detail"
-        static let NEED_SIGN_UP = "needToSignUp"
-    }
+    
     struct RENDEZVOUS {
         static let CLASSKEY = "Rendezvous"
         static let AUTHOR = "author"
