@@ -20,19 +20,10 @@ class MeNotifTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 100
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.addTarget(self, action: #selector(MeNotifTableViewController.refreshSelector), forControlEvents: UIControlEvents.ValueChanged)
-        tableAutoRefresh()
+        refreshSelectorCacheFirst()
     }
 
     // MARK: - Data Query
-    func tableAutoRefresh(){
-        self.refreshControl!.beginRefreshing()
-        if tableView.contentOffset.y == 0 {
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.tableView.contentOffset.y = -self.refreshControl!.frame.height
-                }, completion: nil)
-        }
-        refreshSelectorCacheFirst()
-    }
     
     func refreshSelectorCacheFirst() {
         print("Notification Begin Refreshing Cache First")

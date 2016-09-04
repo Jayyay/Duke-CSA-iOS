@@ -277,7 +277,7 @@
                             <constraint firstItem="G0s-02-DGL" firstAttribute="leading" secondItem="4Z1-1M-yqJ" secondAttribute="leading" id="zUb-hZ-BPH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Events" id="bnV-3M-7Ch"/>
+                    <navigationItem key="navigationItem" title="News" id="bnV-3M-7Ch"/>
                     <connections>
                         <outlet property="eventTableView" destination="G0s-02-DGL" id="fJF-lz-10f"/>
                         <segue destination="rg1-ou-c3R" kind="show" identifier="eventDetailSegue" id="C0F-QU-M91"/>
@@ -1679,7 +1679,7 @@ Z290IHRvIHVwZGF0ZQ
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="class.png" translatesAutoresizingMaskIntoConstraints="NO" id="Wb3-Wc-u7d"/>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igV-wm-Tcv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Courses" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igV-wm-Tcv">
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
