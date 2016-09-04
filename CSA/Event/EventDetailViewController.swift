@@ -32,9 +32,6 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-
-        //refreshControl = UIRefreshControl()
-        //tableView.addSubview(refreshControl)
     }
     
     override func viewDidLoad() {
@@ -42,6 +39,7 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
         selectedEvent = AppData.EventData.selectedEvent
         initUI()
     }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.sideMenuController()?.sideMenu?.delegate = self

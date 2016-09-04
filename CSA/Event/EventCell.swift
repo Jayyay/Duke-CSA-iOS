@@ -76,7 +76,6 @@ class EventCell: UITableViewCell {
             if (notif.events.contains(evt.PFInstance.objectId!) || notif.newEvents.contains(evt.PFInstance.objectId!)) {
                 dot.backgroundColor = UIColor.redColor()
                 dot.hidden = false
-                print("dot")
             } else {
                 dot.hidden = true
             }

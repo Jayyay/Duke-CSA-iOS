@@ -10,7 +10,7 @@ import UIKit
 
 class EventMenuTableViewController: UITableViewController {
     var sourceNavigationController : ENSideMenuProtocol!
-    let vcNames:[String] = ["Details","Sign Up","Discussions","→"]
+    let vcNames:[String] = ["Details","More","Discussions","→"]
     override func viewDidLoad() {
         super.viewDidLoad()
         

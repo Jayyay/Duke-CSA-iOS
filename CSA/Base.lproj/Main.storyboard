@@ -1112,7 +1112,8 @@ Z290IHRvIHVwZGF0ZQ
                                                 <constraint firstAttribute="height" constant="20" id="rOD-mm-vJ7"/>
                                             </constraints>
                                         </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Details about the rendezvous. Please remember to check the tags below." translatesAutoresizingMaskIntoConstraints="NO" id="cwf-SN-vIW" userLabel="Detail">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Details about the rendezvous. Please remember to check the tags below." translatesAutoresizingMaskIntoConstraints="NO" id="cwf-SN-vIW" userLabel="Detail">
+                                            <frame key="frameInset" minX="8" minY="84" height="80"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="80" id="8fm-If-mnz"/>
@@ -1121,19 +1122,22 @@ Z290IHRvIHVwZGF0ZQ
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                         </textView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dukeBlueDevil0 copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="tIx-Fm-98z" userLabel="checkDetail">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="dukeBlueDevil0 copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="tIx-Fm-98z" userLabel="checkDetail">
+                                            <frame key="frameInset" minX="16" minY="114" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="2dz-iM-eSE"/>
                                                 <constraint firstAttribute="width" constant="20" id="QnD-Iz-Ncl"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dukeBlueDevil0 copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="XFX-mf-BdQ" userLabel="checkTag">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="dukeBlueDevil0 copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="XFX-mf-BdQ" userLabel="checkTag">
+                                            <frame key="frameInset" minX="16" minY="190" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="eNX-Jp-E7y"/>
                                                 <constraint firstAttribute="width" constant="20" id="gS9-G7-B5T"/>
                                             </constraints>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Zd-vQ-OqV" userLabel="Tag View">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Zd-vQ-OqV" userLabel="Tag View">
+                                            <frame key="frameInset" minX="8" minY="172" height="56"/>
                                             <subviews>
                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ty-Uy-JQc">
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1150,8 +1154,7 @@ Z290IHRvIHVwZGF0ZQ
                                                         <action selector="onClickTag:" destination="npX-8z-eAl" eventType="touchUpInside" id="4QW-44-m2B"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYb-qx-3S0">
-                                                    <frame key="frameInset" minX="48" minY="8" width="40" height="40"/>
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYb-qx-3S0">
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="bV0-t8-9Pg"/>
@@ -1166,8 +1169,7 @@ Z290IHRvIHVwZGF0ZQ
                                                         <action selector="onClickTag:" destination="npX-8z-eAl" eventType="touchUpInside" id="Agi-gM-ndP"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yx-3y-2YA">
-                                                    <frame key="frameInset" minX="88" minY="8" width="40" height="40"/>
+                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yx-3y-2YA">
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="Rnp-pt-IaG"/>
@@ -1182,8 +1184,7 @@ Z290IHRvIHVwZGF0ZQ
                                                         <action selector="onClickTag:" destination="npX-8z-eAl" eventType="touchUpInside" id="Mx9-pF-TT9"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="4" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tUg-Q0-ugp">
-                                                    <frame key="frameInset" minX="128" minY="8" width="40" height="40"/>
+                                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tUg-Q0-ugp">
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="OlP-Kp-gxZ"/>
@@ -1198,8 +1199,7 @@ Z290IHRvIHVwZGF0ZQ
                                                         <action selector="onClickTag:" destination="npX-8z-eAl" eventType="touchUpInside" id="ZLP-p8-ilH"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZ9-25-MDE">
-                                                    <frame key="frameInset" minX="168" minY="8" width="40" height="40"/>
+                                                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZ9-25-MDE">
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="OcK-6P-KRl"/>
@@ -1214,20 +1214,16 @@ Z290IHRvIHVwZGF0ZQ
                                                         <action selector="onClickTag:" destination="npX-8z-eAl" eventType="touchUpInside" id="fbm-iZ-YGR"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mE3-fS-IbT" userLabel="View1">
-                                                    <frame key="frameInset" minX="48" height="56"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mE3-fS-IbT" userLabel="View1">
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PD-a0-gYO" userLabel="View2">
-                                                    <frame key="frameInset" minX="88" height="56"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9PD-a0-gYO" userLabel="View2">
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="swI-rW-sW5" userLabel="View4">
-                                                    <frame key="frameInset" minX="168" height="56"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swI-rW-sW5" userLabel="View4">
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KPY-NV-BNk" userLabel="View3">
-                                                    <frame key="frameInset" minX="128" height="56"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPY-NV-BNk" userLabel="View3">
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                             </subviews>
@@ -3404,8 +3400,7 @@ Z290IHRvIHVwZGF0ZQ
                                     <frame key="frameInset" minY="64" width="375" height="183"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="InG-wh-2nn">
-                                            <frame key="frameInset" minX="8" minY="8" height="167"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="InG-wh-2nn">
                                             <color key="backgroundColor" red="0.89774381940000003" green="0.97931139030000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="    Developer's word: ">
