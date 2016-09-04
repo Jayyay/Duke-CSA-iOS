@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00066AFA1D7C924500DDAD4D /* class.png in Resources */ = {isa = PBXBuildFile; fileRef = 00066AF61D7C924500DDAD4D /* class.png */; };
+		00066AFB1D7C924500DDAD4D /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 00066AF71D7C924500DDAD4D /* contact.png */; };
+		00066AFC1D7C924500DDAD4D /* crush.png in Resources */ = {isa = PBXBuildFile; fileRef = 00066AF81D7C924500DDAD4D /* crush.png */; };
+		00066AFD1D7C924500DDAD4D /* spotlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 00066AF91D7C924500DDAD4D /* spotlight.png */; };
 		0008ED7D1D3570860049F22E /* NotifInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0008ED7C1D3570860049F22E /* NotifInfo.swift */; };
 		001FCEFA1D2347180025412B /* ReplyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001FCEF91D2347180025412B /* ReplyController.swift */; };
 		001FCEFD1D2352CB0025412B /* downvote-plain.png in Resources */ = {isa = PBXBuildFile; fileRef = 001FCEFB1D2352CB0025412B /* downvote-plain.png */; };
@@ -96,10 +100,6 @@
 		693D92591AE111F9009A2758 /* EventDiscussViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D92581AE111F9009A2758 /* EventDiscussViewController.swift */; };
 		693F2F811AE0F89D0015A85A /* pig.png in Resources */ = {isa = PBXBuildFile; fileRef = 693F2F801AE0F89D0015A85A /* pig.png */; };
 		6946006E1C13D0980080E3DE /* ZoomImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6946006D1C13D0980080E3DE /* ZoomImageViewController.swift */; };
-		6946007D1C13ECEF0080E3DE /* expcrush.png in Resources */ = {isa = PBXBuildFile; fileRef = 694600791C13ECEF0080E3DE /* expcrush.png */; };
-		6946007E1C13ECEF0080E3DE /* expspotlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 6946007A1C13ECEF0080E3DE /* expspotlight.png */; };
-		6946007F1C13ECEF0080E3DE /* expmore.png in Resources */ = {isa = PBXBuildFile; fileRef = 6946007B1C13ECEF0080E3DE /* expmore.png */; };
-		694600801C13ECEF0080E3DE /* expcontacts.png in Resources */ = {isa = PBXBuildFile; fileRef = 6946007C1C13ECEF0080E3DE /* expcontacts.png */; };
 		69510D541AD3BC9800F7ADE2 /* placeholder-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 69510D531AD3BC9800F7ADE2 /* placeholder-user.png */; };
 		695336A61B0B0B54007EF5A9 /* fbRound.png in Resources */ = {isa = PBXBuildFile; fileRef = 695336A51B0B0B54007EF5A9 /* fbRound.png */; };
 		695B172E1AF9EBBA00EBC1DF /* dukeBlueDevil0 copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 695B172D1AF9EBBA00EBC1DF /* dukeBlueDevil0 copy.png */; };
@@ -260,6 +260,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00066AF61D7C924500DDAD4D /* class.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = class.png; sourceTree = "<group>"; };
+		00066AF71D7C924500DDAD4D /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
+		00066AF81D7C924500DDAD4D /* crush.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crush.png; sourceTree = "<group>"; };
+		00066AF91D7C924500DDAD4D /* spotlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spotlight.png; sourceTree = "<group>"; };
 		0008DE0F1D58952C00EE1F6D /* Duke CSA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Duke CSA.entitlements"; sourceTree = "<group>"; };
 		0008ED7C1D3570860049F22E /* NotifInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifInfo.swift; sourceTree = "<group>"; };
 		001FCEF91D2347180025412B /* ReplyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyController.swift; sourceTree = "<group>"; };
@@ -352,10 +356,6 @@
 		693D92581AE111F9009A2758 /* EventDiscussViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDiscussViewController.swift; sourceTree = "<group>"; };
 		693F2F801AE0F89D0015A85A /* pig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pig.png; sourceTree = "<group>"; };
 		6946006D1C13D0980080E3DE /* ZoomImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomImageViewController.swift; sourceTree = "<group>"; };
-		694600791C13ECEF0080E3DE /* expcrush.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expcrush.png; sourceTree = "<group>"; };
-		6946007A1C13ECEF0080E3DE /* expspotlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expspotlight.png; sourceTree = "<group>"; };
-		6946007B1C13ECEF0080E3DE /* expmore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expmore.png; sourceTree = "<group>"; };
-		6946007C1C13ECEF0080E3DE /* expcontacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expcontacts.png; sourceTree = "<group>"; };
 		69510D531AD3BC9800F7ADE2 /* placeholder-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-user.png"; sourceTree = "<group>"; };
 		695336A51B0B0B54007EF5A9 /* fbRound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fbRound.png; sourceTree = "<group>"; };
 		695B172D1AF9EBBA00EBC1DF /* dukeBlueDevil0 copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dukeBlueDevil0 copy.png"; sourceTree = "<group>"; };
@@ -658,10 +658,10 @@
 				69A608171C444F0200D57ADC /* placeholder_event.jpg */,
 				00DE44D51D1F792600D6D351 /* compose.png */,
 				69A727B81BF5390900A8445E /* line0.png */,
-				694600791C13ECEF0080E3DE /* expcrush.png */,
-				6946007A1C13ECEF0080E3DE /* expspotlight.png */,
-				6946007B1C13ECEF0080E3DE /* expmore.png */,
-				6946007C1C13ECEF0080E3DE /* expcontacts.png */,
+				00066AF61D7C924500DDAD4D /* class.png */,
+				00066AF71D7C924500DDAD4D /* contact.png */,
+				00066AF81D7C924500DDAD4D /* crush.png */,
+				00066AF91D7C924500DDAD4D /* spotlight.png */,
 				69A727B61BF52D4F00A8445E /* line1.png */,
 				001FCEFB1D2352CB0025412B /* downvote-plain.png */,
 				001FCEFC1D2352CB0025412B /* upvote-plain.png */,
@@ -1265,6 +1265,7 @@
 				69AC5C511B9AC317002C2CFA /* coins.png in Resources */,
 				696C24AA1BB26C5F0016DE44 /* heart0.png in Resources */,
 				69CD64B81B97F22900A232AD /* under_construction in Resources */,
+				00066AFB1D7C924500DDAD4D /* contact.png in Resources */,
 				69C7C7CF1BEC28E0003B4622 /* flag_wood_bg.jpg in Resources */,
 				001FCEFE1D2352CB0025412B /* upvote-plain.png in Resources */,
 				69CD64B21B97EBD100A232AD /* spotlight0.png in Resources */,
@@ -1280,6 +1281,7 @@
 				6992EC511AD03AF9009F7197 /* calendar.png in Resources */,
 				692BAE471ADF5B850008F29B /* ghost.png in Resources */,
 				69AC5C591B9AC7AD002C2CFA /* blue_fish_dis.png in Resources */,
+				00066AFA1D7C924500DDAD4D /* class.png in Resources */,
 				005EAEE31D2B3B6D00E6E714 /* NoResultCell.xib in Resources */,
 				69339C231B6516C200EC8D99 /* flake1.png in Resources */,
 				6971CE6C1BEAEB4900384723 /* icon_snail.png in Resources */,
@@ -1294,10 +1296,9 @@
 				69AC5C471B9AB723002C2CFA /* spotlight_blue.png in Resources */,
 				69791EC71ADF8C7300123267 /* AlbumTriangleB.png in Resources */,
 				69703B401B6192080072B5F1 /* contactsAndroid.png in Resources */,
-				694600801C13ECEF0080E3DE /* expcontacts.png in Resources */,
 				692BAE461ADF5B850008F29B /* bone.png in Resources */,
 				692BAE3E1ADF58E00008F29B /* cat.png in Resources */,
-				6946007E1C13ECEF0080E3DE /* expspotlight.png in Resources */,
+				00066AFD1D7C924500DDAD4D /* spotlight.png in Resources */,
 				00B07A9F1D1EF026005F73DF /* NoAnswerCellNib.xib in Resources */,
 				69926AFE1ACF94C60080E51E /* Main.storyboard in Resources */,
 				001FCEFD1D2352CB0025412B /* downvote-plain.png in Resources */,
@@ -1311,7 +1312,6 @@
 				001FCF011D2359BE0025412B /* downvote-highlight.png in Resources */,
 				69D0FE5B1C4888B500064A94 /* placeholder-event.jpg in Resources */,
 				69BFFA851B661A0100986F6E /* RendezvousCellNib.xib in Resources */,
-				6946007D1C13ECEF0080E3DE /* expcrush.png in Resources */,
 				005255BD1D2855E100AFC0A8 /* ComposeKeyboardView.xib in Resources */,
 				69339C1F1B650E3B00EC8D99 /* Garden_5.jpg in Resources */,
 				69703B3E1B61904C0072B5F1 /* milkshake.png in Resources */,
@@ -1342,7 +1342,6 @@
 				69A608181C444F0200D57ADC /* placeholder_event.jpg in Resources */,
 				6971CE681BEAEB4900384723 /* icon_check.png in Resources */,
 				6971CE691BEAEB4900384723 /* icon_eliza.png in Resources */,
-				6946007F1C13ECEF0080E3DE /* expmore.png in Resources */,
 				699D67FC1B6015A7009783ED /* crush.jpg in Resources */,
 				69703B3C1B618F4C0072B5F1 /* heart.png in Resources */,
 				69D1B8081B6A779500D6B2FF /* gardenNoLogo.jpg in Resources */,
@@ -1351,6 +1350,7 @@
 				69D1B8041B6A4D1800D6B2FF /* DukeChapel.jpg in Resources */,
 				00DE44D81D1F794C00D6D351 /* ComposeAnswerCellNib.xib in Resources */,
 				69926B001ACF94C60080E51E /* Images.xcassets in Resources */,
+				00066AFC1D7C924500DDAD4D /* crush.png in Resources */,
 				697918661AFB55CA0098CAFB /* BasicUserCellNib.xib in Resources */,
 				69AC5C531B9AC515002C2CFA /* lollipop_dis.png in Resources */,
 				69CD64B71B97EFCD00A232AD /* spotlight_bg.jpg in Resources */,
