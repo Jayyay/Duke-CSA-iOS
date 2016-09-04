@@ -14,10 +14,10 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
     
     var needRefreshCurrentUser = true
     
-    var eventTableRefresher: UIRefreshControl!
+    var tableRefresher: UIRefreshControl!
     var currentTableView: UITableView!
     
-    var eventQueryCompletionCounter = 0
+    var queryCompletionCounter = 0
     
     //Cell reuse ID
     let ReuseID_EventCell = "IDEventCell"
@@ -30,17 +30,17 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
     
     let EVENT_SINGLE_LOAD_AMOUNT:Int = 8
     var EVENT_SKIP_AMOUNT:Int = 0
-    var eventLoadMoreFooterView: LoadMoreTableFooterView!
-    var eventAllowLoadingMore = true
-    var eventIsLoadingMore: Bool = false
-    var eventCouldLoadMore: Bool = false
+    var loadMoreFooterView: LoadMoreTableFooterView!
+    var allowLoadingMore = true
+    var isLoadingMore: Bool = false
+    var couldLoadMore: Bool = false
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad - EventTableViewController")
         generalInitUI()
-        eventTableInitUI()
+        tableInitUI()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,7 +49,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         hideSideMenuView()
         
         AppData.EventData.wipeSelectedEventData()
-        eventTableRefresher?.endRefreshing()
+        tableRefresher?.endRefreshing()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -90,7 +90,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         if AppStatus.EventStatus.tableShouldRefresh {
-            eventTableRefreshSelector()
+            tableRefreshSelector()
         }
     }
     
@@ -104,7 +104,7 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     // MARK: - Events
-    func eventTableInitUI(){
+    func tableInitUI(){
         currentTableView = eventTableView
         eventTableView.rowHeight = UITableViewAutomaticDimension
         eventTableView.estimatedRowHeight = 100
@@ -112,34 +112,34 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         let nib = UINib(nibName: "EventCellNib", bundle: nil)
         eventTableView.registerNib(nib, forCellReuseIdentifier: ReuseID_EventCell)
         
-        eventTableRefresher = UIRefreshControl()
+        tableRefresher = UIRefreshControl()
         //eventTableRefresher.attributedTitle = NSAttributedString(string: "Refreshing")
-        eventTableRefresher.addTarget(self, action: #selector(eventTableRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
-        eventTableView.addSubview(eventTableRefresher)
+        tableRefresher.addTarget(self, action: #selector(tableRefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
+        eventTableView.addSubview(tableRefresher)
         
-        eventLoadMoreFooterView = LoadMoreTableFooterView(frame: CGRectMake(0, eventTableView.contentSize.height, eventTableView.frame.size.width, eventTableView.frame.size.height))
-        eventLoadMoreFooterView.delegate = self
-        eventLoadMoreFooterView.backgroundColor = UIColor.clearColor()
-        eventTableView.addSubview(eventLoadMoreFooterView)
+        loadMoreFooterView = LoadMoreTableFooterView(frame: CGRectMake(0, eventTableView.contentSize.height, eventTableView.frame.size.width, eventTableView.frame.size.height))
+        loadMoreFooterView.delegate = self
+        loadMoreFooterView.backgroundColor = UIColor.clearColor()
+        eventTableView.addSubview(loadMoreFooterView)
     }
     
-    func eventTableRefreshSelector() {
+    func tableRefreshSelector() {
         print("Event Begin Refreshing")
         AppStatus.EventStatus.tableShouldRefresh = false
         AppStatus.EventStatus.lastRefreshTime = NSDate()
-        eventAllowLoadingMore = false
+        allowLoadingMore = false
         let query = PFQuery(className: PFKey.EVENT.CLASSKEY)
         query.whereKey(PFKey.IS_VALID, equalTo: true)
         query.orderByDescending(PFKey.CREATED_AT)
         query.limit = EVENT_SINGLE_LOAD_AMOUNT
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
-        self.eventQueryCompletionCounter = 0
+        self.queryCompletionCounter = 0
         query.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error:NSError?) -> Void in
-            self.eventQueryCompletionCounter += 1
+            self.queryCompletionCounter += 1
             self.eventQueryCompletionDataHandler(result: result,error: error, removeAll: true)
             self.eventQueryCompletionUIHandler(error: error)
-            if self.eventQueryCompletionCounter >= 2 {
-                self.eventAllowLoadingMore = true
+            if self.queryCompletionCounter >= 2 {
+                self.allowLoadingMore = true
             }
         }
     }
@@ -158,20 +158,17 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func eventQueryCompletionUIHandler(error error:NSError!){
-        if self.eventQueryCompletionCounter == 1 {
+        if self.queryCompletionCounter == 1 {
             /*if currentTableView == eventTableView {
                 self.view.makeToast(message: "Fetching events", duration: 1.0, position: HRToastPositionCenterAbove)
             }*/
             return
         }
-        if self.eventQueryCompletionCounter >= 2 {
-            eventTableRefresher!.endRefreshing()
+        if self.queryCompletionCounter >= 2 {
+            tableRefresher!.endRefreshing()
             if error == nil{
-                /*if currentTableView == eventTableView {
-                    self.view.makeToast(message: "Events refresh succeeded", duration: 0.5, position: HRToastPositionCenterAbove)
-                }*/
                 AppStatus.EventStatus.lastRefreshTime = NSDate()
-            }else{
+            } else {
                 if currentTableView == eventTableView {
                     self.view.makeToast(message: "Events refresh failed. Please check your internet connection.", duration: 1.5, position: HRToastPositionCenterAbove)
                 }
@@ -179,14 +176,14 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     func eventQueryCompletionDataHandler(result result:[PFObject]!, error:NSError!, removeAll:Bool){
-        print("Event query completed for the \(self.eventQueryCompletionCounter) time with: ", terminator: "")
+        print("Event query completed for the \(self.queryCompletionCounter) time with: ", terminator: "")
         if error == nil && result != nil{
             print("success!")
             if removeAll {
                 events.removeAll(keepCapacity: true)
                 EVENT_SKIP_AMOUNT = 0
             }
-            eventCouldLoadMore = result.count >= EVENT_SINGLE_LOAD_AMOUNT
+            couldLoadMore = result.count >= EVENT_SINGLE_LOAD_AMOUNT
             EVENT_SKIP_AMOUNT += result.count
             print("Find \(result.count) events.")
             for re in result{
@@ -227,34 +224,30 @@ class EBMainViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func loadMoreTableFooterDataSourceIsLoading(view: LoadMoreTableFooterView) -> Bool {
-        if currentTableView == eventTableView {
-            return eventIsLoadingMore
-        }else{
-            return bulletinIsLoadingMore
-        }
+        return isLoadingMore
     }
     
     func eventloadMoreTableViewDataSource() {
-        if eventIsLoadingMore {return}
-        eventIsLoadingMore = true
+        if isLoadingMore {return}
+        isLoadingMore = true
         eventLoadMoreSelector()
     }
     
     func doneEventLoadingMoreTableViewData() {
-        eventIsLoadingMore = false
-        eventLoadMoreFooterView.loadMoreScrollViewDataSourceDidFinishedLoading()
+        isLoadingMore = false
+        loadMoreFooterView.loadMoreScrollViewDataSourceDidFinishedLoading()
     }
     
     // UIScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        if (eventAllowLoadingMore && eventCouldLoadMore) {
-            eventLoadMoreFooterView.loadMoreScrollViewDidScroll(scrollView)
+        if (allowLoadingMore && couldLoadMore) {
+            loadMoreFooterView.loadMoreScrollViewDidScroll(scrollView)
         }
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if (eventAllowLoadingMore && eventCouldLoadMore) {
-            eventLoadMoreFooterView.loadMoreScrollViewDidEndDragging(scrollView)
+        if (allowLoadingMore && couldLoadMore) {
+            loadMoreFooterView.loadMoreScrollViewDidEndDragging(scrollView)
         }
     }
     
