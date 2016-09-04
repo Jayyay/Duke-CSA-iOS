@@ -115,15 +115,6 @@ class RsReplyViewController: ReplyController, UITableViewDataSource, ENSideMenuD
     
     
     // MARK: - Data Query
-    func rsReplyAutoRefresh(){
-        /*tableRefresher.beginRefreshing()
-        if tableView.contentOffset.y == 0 {
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.tableView.contentOffset.y = -self.tableRefresher.frame.height
-                }, completion: nil)
-        }*/
-        replyRefreshSelectorCacheFirst()
-    }
     
     func replyRefreshSelector() {
         print("Reply Begin Refreshing")
@@ -221,7 +212,7 @@ class RsReplyViewController: ReplyController, UITableViewDataSource, ENSideMenuD
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        rsReplyAutoRefresh()
+        replyRefreshSelectorCacheFirst()
         
         // update badge
         if let notif = AppData.NotifData.notifInfo {

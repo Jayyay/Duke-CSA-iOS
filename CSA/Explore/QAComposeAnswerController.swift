@@ -61,7 +61,7 @@ class QAComposeAnswerController: UIViewController, UITextViewDelegate {
             
             //case handle
             if success{
-                AppStatus.QAStatus.tableShouldRefresh = true
+                AppStatus.QAStatus.questionShouldRefresh = true
                 self.cleanPostView(true)
                 self.notifyQuestionAuthor()
             } else {

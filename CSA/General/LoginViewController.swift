@@ -272,10 +272,10 @@ class LoginViewController: UIViewController {
         install[PFKey.INSTALL.BINDED_USER] = PFUser.currentUser()!
         install.saveInBackground()
         AppStatus.EventStatus.tableShouldRefresh = true
-        AppStatus.BulletinStatus.tableShouldRefresh = true
         AppStatus.RendezvousStatus.tableShouldRefresh = true
         AppStatus.MeTableStatus.tableShouldRefreshLocally = true
-        AppStatus.QAStatus.tableShouldRefresh = true
+        AppStatus.QAStatus.QAShouldRefresh = true
+        AppStatus.QAStatus.questionShouldRefresh = true
     }
     
     func readyForLogin(){

@@ -71,12 +71,6 @@ struct AppFunc{
                 AppStatus.EventStatus.tableShouldRefresh = true
             }
         }
-        if let lastBulletinRefreshTime = AppStatus.BulletinStatus.lastRefreshTime {
-            let timeInterval = NSDate().timeIntervalSinceDate(lastBulletinRefreshTime)
-            if timeInterval >= 600 {
-                AppStatus.BulletinStatus.tableShouldRefresh = true
-            }
-        }
         if let lastRendezvousRefreshTime = AppStatus.RendezvousStatus.lastRefreshTime {
             let timeInterval = NSDate().timeIntervalSinceDate(lastRendezvousRefreshTime)
             if timeInterval >= 600 {

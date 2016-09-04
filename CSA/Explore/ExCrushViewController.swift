@@ -90,15 +90,6 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     //MARK: - Data Query
-    func tableAutoRefresh() {
-        refreshControl.beginRefreshing()
-        if tableView.contentOffset.y == 0 {
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.tableView.contentOffset.y = -self.refreshControl.frame.height
-                }, completion: nil)
-        }
-        refreshSelector()
-    }
     
     func refreshSelector() {//fetch user's all crushees first
         print("Crushees begin refreshing in main view")
@@ -269,7 +260,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
-        tableAutoRefresh()
+        refreshSelector()
     }
     
     deinit{
@@ -311,13 +302,7 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
                     AppData.CrushData.myCrusheeArray.append(ExCrush(parseObject: newCrush)!)
                     AppData.CrushData.buildMyCrusheeDict()
                     self.view.makeToast(message: "Succeeded.", duration: 0.5, position: HRToastPositionCenterAbove)
-                    //handle mutual crush
-                    /*
-                    if let val = AppData.CrushData.crusherDict[curCrushee.objectId!] {
-                    self.handleMutualCrush(curCrushee)
-                    }else {
                     
-                    }*/
                     //check for mutual crush
                     let mutualCrushQuery = PFQuery(className: PFKey.CRUSH.CLASSKEY)
                     mutualCrushQuery.whereKey(PFKey.IS_VALID, equalTo: true)
@@ -386,6 +371,4 @@ class ExCrushViewController: UIViewController, UITableViewDataSource, UITableVie
         crushee = cell.childUser
         displayMarkAlertView()
     }
-
-
 }

@@ -44,7 +44,7 @@ class RsGoingTableViewController: UITableViewController, ENSideMenuDelegate {
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        rsGoingAutoRefresh()
+        rsGoingRefreshSelector()
     }
     deinit{
         print("Release - RsGoingTableViewController")
@@ -52,9 +52,6 @@ class RsGoingTableViewController: UITableViewController, ENSideMenuDelegate {
     
     
     // MARK: - Data Query
-    func rsGoingAutoRefresh(){
-        rsGoingRefreshSelector()
-    }
     
     func rsGoingRefreshSelectorCacheFirst() {
         print("RsGoing Begin Refreshing Cache First")

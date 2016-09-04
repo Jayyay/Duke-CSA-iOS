@@ -127,7 +127,7 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
         AppData.EventData.discussVC = self
         print("viewDidLoad - EventDiscussViewController")
         initUI()
-        discussTableAutoRefresh()
+        discussRefreshSelectorCacheFirst()
     }
     
     var firstTimeLayingOut: Bool = true
@@ -161,15 +161,6 @@ class EventDiscussViewController: UIViewController, UITextViewDelegate, UITableV
     }
     
     // MARK: - Data Query
-    func discussTableAutoRefresh(){
-        tableRefresher.beginRefreshing()
-        if tableView.contentOffset.y == 0 {
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.tableView.contentOffset.y = -self.tableRefresher.frame.height
-                }, completion: nil)
-        }
-        discussRefreshSelectorCacheFirst()
-    }
     
     func discussRefreshSelector() {
         print("Discussion Begin Refreshing")

@@ -39,7 +39,7 @@ class QAAnswerViewController: ReplyController, UITableViewDataSource {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        QAReplyAutoRefresh()
+        replyRefreshSelector()
         
         // update badge
         if let notif = AppData.NotifData.notifInfo {
@@ -204,9 +204,6 @@ class QAAnswerViewController: ReplyController, UITableViewDataSource {
     }
     
     // MARK: - Data Query
-    func QAReplyAutoRefresh(){
-        replyRefreshSelector()
-    }
     
     func replyRefreshSelector() {
         print("Reply Begin Refreshing")

@@ -53,7 +53,6 @@ struct AppNotif {
         static let NEW_EVENT = "newEvent"
         static let NEW_EVENT_REPLY = "newEvDisRe"
         static let NEW_EVENT_LIKE = "newEvLike"
-        static let NEW_BULLETIN = "newBulletin"
         static let NEW_RENDEZVOUS = "newRs"
         static let MUTUAL_CRUSH = "mutualCrush"
         static let NEW_RS_REPLY = "newRsReply"

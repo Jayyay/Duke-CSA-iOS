@@ -41,7 +41,6 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         queryPredicate = NSPredicate(format: "type = %@", PFKey.QA.TYPE.QUESTION)
         
         initUI();
-        // Do any additional setup after loading the view.
     }
     
     func initUI() {
@@ -76,27 +75,19 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        QATableAutoRefresh()
         if let i = cameBackFromIndexPath {
             tableView.reloadRowsAtIndexPaths([i], withRowAnimation: UITableViewRowAnimation.None)
             cameBackFromIndexPath = nil
         }
-    }
-    
-    // MARK: - Data Query
-    func QATableAutoRefresh(){
-        tableRefresher.beginRefreshing()
-        if tableView.contentOffset.y == 0 {
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.tableView.contentOffset.y = -self.tableRefresher.frame.height
-                }, completion: nil)
-        }
+        
         QARefreshSelector()
     }
     
+    // MARK: - Data Query
+    
     func QARefreshSelector() {
         print("QA Begin Refreshing")
-        AppStatus.QAStatus.tableShouldRefresh = false
+        AppStatus.QAStatus.QAShouldRefresh = false
         allowLoadingMore = false
         let query = PFQuery(className: PFKey.QA.CLASSKEY, predicate: queryPredicate)
         query.includeKey(PFKey.QA.AUTHOR)
@@ -112,7 +103,7 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func QARefreshSelectorCacheFirst() {
         print("QA Begin Refreshing With Cache")
-        AppStatus.QAStatus.tableShouldRefresh = false
+        AppStatus.QAStatus.QAShouldRefresh = false
         allowLoadingMore = false
         let query = PFQuery(className: PFKey.QA.CLASSKEY, predicate: queryPredicate)
         query.whereKey(PFKey.IS_VALID, equalTo: true)
@@ -267,7 +258,7 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                                    completion: { _ in
                                     if (AppStatus.QAStatus.order == .New) {
                                         AppStatus.QAStatus.order = .Vote
-                                        self.QATableAutoRefresh()
+                                        self.QARefreshSelector()
                                     }
         })
     }
@@ -283,7 +274,7 @@ class QAViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                                    completion: { _ in
                                     if (AppStatus.QAStatus.order == .Vote) {
                                         AppStatus.QAStatus.order = .New
-                                        self.QATableAutoRefresh()
+                                        self.QARefreshSelector()
                                     }
         })
     }

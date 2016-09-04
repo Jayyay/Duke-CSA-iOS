@@ -46,22 +46,13 @@ class RsLikeTableViewController: UITableViewController, ENSideMenuDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         //if selectedRs.refreshLikesNeeded {}
-        rsLikeAutoRefresh()
+        rsLikeRefreshSelector()
     }
     deinit{
         print("Release - RsLikeTableViewController")
     }
     
     // MARK: - Data Query
-    func rsLikeAutoRefresh(){
-        /*refreshControl!.beginRefreshing()
-        if tableView.contentOffset.y == 0 {
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.tableView.contentOffset.y = -self.refreshControl!.frame.height
-                }, completion: nil)
-        }*/
-        rsLikeRefreshSelector()
-    }
     
     func rsLikeRefreshSelectorCacheFirst() {
         print("RsLike Begin Refreshing Cache First")

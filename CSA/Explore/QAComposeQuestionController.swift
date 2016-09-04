@@ -60,7 +60,7 @@ class QAComposeQuestionController: UIViewController, UITextViewDelegate, UITextF
             
             //case handle
             if success{
-                AppStatus.QAStatus.tableShouldRefresh = true
+                AppStatus.QAStatus.QAShouldRefresh = true
                 self.cleanPostView(shouldPop: true)
             } else {
                 self.view.makeToast(message: "Failed to post. Please check your internet connection.", duration: 1.5, position: HRToastPositionCenterAbove)

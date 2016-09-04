@@ -22,15 +22,6 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
     
     
     // MARK: - Data Query
-    func tableAutoRefresh(){
-        refreshControl!.beginRefreshing()
-        if tableView.contentOffset.y == 0 {
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.tableView.contentOffset.y = -self.refreshControl!.frame.height
-                }, completion: nil)
-        }
-        refreshSelector()
-    }
     
     func refreshSelector() {
         print("Contacts Begin Refreshing")
@@ -171,7 +162,7 @@ class ExContactsTableViewController: UITableViewController, UISearchBarDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
-        tableAutoRefresh()
+        refreshSelector()
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

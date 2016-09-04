@@ -118,13 +118,13 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
         
         AppData.RendezvousData.wipeSelectedRsData()
         tableRefresher.endRefreshing()
-        
     }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if AppStatus.RendezvousStatus.tableShouldRefresh {
-            rsTableAutoRefresh()
-        }else{
+            rsRefreshSelectorCacheFirst()
+        } else {
             if let i = cameBackFromIndexPath {
                 tableView.reloadRowsAtIndexPaths([i], withRowAnimation: UITableViewRowAnimation.None)
                 cameBackFromIndexPath = nil
@@ -134,15 +134,6 @@ class RendezvousViewController: UIViewController, UITableViewDataSource, UITable
     
     
     // MARK: - Data Query
-    func rsTableAutoRefresh(){
-        tableRefresher.beginRefreshing()
-        if tableView.contentOffset.y == 0 {
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.tableView.contentOffset.y = -self.tableRefresher.frame.height
-                }, completion: nil)
-        }
-        rsRefreshSelectorCacheFirst()
-    }
     
     func rsRefreshSelector() {
         print("Rendezvous Begin Refreshing")

@@ -18,17 +18,6 @@ struct AppStatus {
         }
     }
     
-    struct BulletinStatus{
-        static var lastRefreshTime:NSDate?
-        static var tableShouldRefresh = true
-        /*
-        static var tableShouldQueryFromCache = true
-        static var currentlyDisplayedView: ViewName = ViewName.Detail
-        enum ViewName:Int{
-            case Detail = 0, SignUp = 1, Discuss = 2
-        }*/
-    }
-    
     struct RendezvousStatus {
         static var lastRefreshTime:NSDate?
         static var tableShouldRefresh = true
@@ -40,7 +29,8 @@ struct AppStatus {
     
     struct QAStatus {
         static var lastRefreshTime:NSDate?
-        static var tableShouldRefresh = true
+        static var QAShouldRefresh = true
+        static var questionShouldRefresh = true
         static var currentlyDisplayedView: ViewName = ViewName.Reply
         static var order: QAPostOrder = .Vote
         enum ViewName:Int{

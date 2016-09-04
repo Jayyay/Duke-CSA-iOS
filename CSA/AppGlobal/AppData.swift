@@ -34,13 +34,6 @@ struct AppData {
         }
     }
     
-    struct BulletinData {
-        static var selectedBulletin:Bulletin!
-        static func wipeSelectedBulletinData() {
-            selectedBulletin = nil
-        }
-    }
-    
     struct RendezvousData {
         static var selectedRendezvous:Rendezvous!
         static var postVC:RsPostViewController!

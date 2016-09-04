@@ -71,8 +71,7 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
         tableView.registerNib(nib, forCellReuseIdentifier: ReuseID_ComposeAnswer)
         
         tableRefresher = UIRefreshControl()
-        //tableRefresher.attributedTitle = NSAttributedString(string: "Refreshing")
-        tableRefresher.addTarget(self, action: #selector(QAViewController.QARefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
+        tableRefresher.addTarget(self, action: #selector(QAQuestionViewController.QARefreshSelector), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(tableRefresher)
         
         loadMoreFooterView = LoadMoreTableFooterView(frame: CGRectMake(0, tableView.contentSize.height, tableView.frame.size.width, tableView.frame.size.height))
@@ -97,7 +96,6 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        QATableAutoRefresh()
         if let i = cameBackFromIndexPath {
             tableView.reloadRowsAtIndexPaths([i], withRowAnimation: UITableViewRowAnimation.None)
             cameBackFromIndexPath = nil
@@ -111,22 +109,15 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
                 AppNotif.showBadgeOnTabbar()
             }
         }
-    }
-    
-    // MARK: - Data Query
-    func QATableAutoRefresh(){
-        tableRefresher.beginRefreshing()
-        if tableView.contentOffset.y == 0 {
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.tableView.contentOffset.y = -self.tableRefresher.frame.height
-                }, completion: nil)
-        }
+        
         QARefreshSelector()
     }
     
+    // MARK: - Data Query
+    
     func QARefreshSelector() {
         print("QA Begin Refreshing")
-        AppStatus.QAStatus.tableShouldRefresh = false
+        AppStatus.QAStatus.questionShouldRefresh = false
         allowLoadingMore = false
         let query = PFQuery(className: PFKey.QA.CLASSKEY, predicate: queryPredicate)
         query.orderByDescending(PFKey.QA.VOTE)
@@ -143,7 +134,7 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
     
     func QARefreshSelectorCacheFirst() {
         print("QA Begin Refreshing With Cache")
-        AppStatus.QAStatus.tableShouldRefresh = false
+        AppStatus.QAStatus.QAShouldRefresh = false
         allowLoadingMore = false
         let query = PFQuery(className: PFKey.QA.CLASSKEY, predicate: queryPredicate)
         query.orderByDescending(PFKey.CREATED_AT)
@@ -178,15 +169,11 @@ class QAQuestionViewController: UIViewController, UITableViewDataSource, UITable
     
     func queryCompletionUIHandler(error error: NSError!) {
         if self.queryCompletionCounter == 1 {
-            /*
-             self.view.makeToast(message: "Fetching QA", duration: 1.0, position: HRToastPositionCenterAbove)*/
             return
         }
         if self.queryCompletionCounter >= 2 {
             tableRefresher.endRefreshing()
             if error == nil{
-                /*
-                 self.view.makeToast(message: "Refresh succeeded", duration: 0.5, position: HRToastPositionCenterAbove)*/
                 AppStatus.QAStatus.lastRefreshTime = NSDate()
             }else{
                 self.view.makeToast(message: "Refresh failed. Please try again later.", duration: 1.5, position: HRToastPositionCenterAbove)

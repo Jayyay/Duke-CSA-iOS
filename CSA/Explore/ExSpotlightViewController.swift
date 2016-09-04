@@ -199,7 +199,7 @@ class ExSpotlightViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
-        tableAutoRefresh()
+        myInfoRefreshSelector()
     }
     
     //MARK : - Data Query: Me 
@@ -220,15 +220,7 @@ class ExSpotlightViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     //MARK: - Data Query: User Table
-    func tableAutoRefresh() {
-        userTableRefresher!.beginRefreshing()
-        if userTableView.contentOffset.y == 0 {
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.userTableView.contentOffset.y = -self.userTableRefresher!.frame.height
-                }, completion: nil)
-        }
-        myInfoRefreshSelector()
-    }
+    
     func allContactsRefreshSelector() {
         print("Spotlight contacts begin refreshing")
         let query = PFQuery(className: PFKey.SPOTLIGHT.CLASSKEY)
