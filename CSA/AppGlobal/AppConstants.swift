@@ -25,6 +25,10 @@ struct AppConstants {
         static let c2 = UIColor(red: 192/255, green: 108/255, blue: 132/255, alpha: 1) //rgb(192, 108, 132)
         static let c3 = UIColor(red: 108/255, green: 91/255, blue: 123/255, alpha: 1) //rgb(108, 91, 123)
         static let c4 = UIColor(red: 53/255, green: 92/255, blue: 125/255, alpha: 1) //rgb(53, 92, 125)
+        static let p0 = UIColor(red: 238/255, green: 211/255, blue: 209/255, alpha: 1) //light pink
+        static let p1 = UIColor(red: 216/255, green: 130/255, blue: 145/255, alpha: 1) //
+        static let p2 = UIColor(red: 209/255, green: 85/255, blue: 102/255, alpha: 1) //dark pink
+        static let g0 = UIColor(red: 151/255, green: 151/255, blue: 151/255, alpha: 1) //icon grey
     }
     struct SoundFile {
         static let NOTIF_1 = "notif1.mp3"
