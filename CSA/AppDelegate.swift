@@ -36,15 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //navigation bar style
         UINavigationBar.appearance().barStyle = UIBarStyle.BlackOpaque
-        UINavigationBar.appearance().barTintColor = AppConstants.ColorSet0.c2
+        UINavigationBar.appearance().barTintColor = AppConstants.ColorSet0.p1
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         //tab bar style
-        UITabBar.appearance().barTintColor = AppConstants.ColorSet0.c4
+        UITabBar.appearance().barTintColor = UIColor.whiteColor()
         UITabBar.appearance().translucent = true
-        UITabBar.appearance().tintColor = UIColor.whiteColor()
+        UITabBar.appearance().tintColor = AppConstants.ColorSet0.p2
         
         // notification storage
         let notifInfo = NSKeyedUnarchiver.unarchiveObjectWithFile(NotifInfo.ArchiveURL!.path!) as? NotifInfo
